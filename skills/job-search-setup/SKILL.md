@@ -59,6 +59,8 @@ A "saved search" is just a job-board URL with the user's filters baked in, so th
 
 Either way, you can save more than one saved search (e.g., one broad, one narrow). Label them.
 
+**Also build ATS board search links.** Most roles live on company ATS boards (Ashby, Greenhouse, Lever, etc.), never on LinkedIn, and are far less contested. Build the user a one-click Google search scoped to those boards and restricted to recent postings, using their target titles and location. This is a free browser search (no API, no account) and `find-jobs` can read it just like a saved search. See `references/ats-search-links.md` for how to construct the links and what to generate (typically a "Fresh — NYC (past week)" and a "Fresh — Remote (past week)" link). Save them in the profile's **ATS Board Searches** section and show the user the clickable links.
+
 ## Step 3: Save the profile
 
 Write `job-search/profile.md` using the structure in `references/profile-template.md`. Fill every field you captured; leave a clear `(not set yet)` marker for anything skipped so other tools know it's missing rather than empty on purpose.

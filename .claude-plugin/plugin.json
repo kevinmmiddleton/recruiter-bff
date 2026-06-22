@@ -1,8 +1,8 @@
 {
   "name": "job-search-agent",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "license": "MIT",
-  "description": "A lightweight, on-demand job search toolkit. Set up a reusable saved search, scan for matching roles using your own logged-in browser or public ATS feeds, score any posting against your profile with an apply-or-skip verdict, track applications in a local file, and generate role-specific interview guides with a reusable story bank. No servers, no scrapers, no always-on machine required.",
+  "description": "A lightweight, on-demand job search toolkit. Set up a reusable saved search plus recency-filtered Google searches across company ATS boards, scan for matching roles using your own logged-in browser or public ATS feeds, score any posting against your profile with an apply-or-skip verdict, track applications in a local file, and generate role-specific interview guides with a reusable story bank. No servers, no scrapers, no always-on machine required.",
   "author": {
     "name": "Kevin Middleton"
   },

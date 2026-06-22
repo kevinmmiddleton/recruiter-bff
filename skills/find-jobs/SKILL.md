@@ -52,6 +52,12 @@ Either way, you end up with raw result text to parse. Never block the scan just 
 
 If the profile has a **Companies to Watch** list, also sweep those companies' public ATS feeds — Greenhouse, Lever, and Ashby publish every company's open roles as documented public JSON, no browser or login needed. Method and endpoint patterns are in `references/ats-feeds.md`. Fold the results into the same pipeline as the saved-search results; tag the source so the user can see which matches came from the watchlist.
 
+### ATS board sweep (runs alongside A or B)
+
+If the profile has **ATS Board Searches** (Google `site:` dork links), sweep those too. They surface fresh roles posted directly on company ATS boards (Ashby, Greenhouse, Lever, etc.) across *every* company at once — the postings that never reach LinkedIn and are far less contested. The recency filter is baked into each URL, so you only see recent postings. Open each link in the user's browser (Method A) and read the results, or hand the user the link to click and paste back (Method B). Fold into the same pipeline and tag the source as `ats-board`. Construction details, if the links are missing or need a refresh, are in `../job-search-setup/references/ats-search-links.md`.
+
+This complements the watchlist: the watchlist checks companies the user *named*; this sweeps the whole boards for anyone new.
+
 ## Step 3: Parse into job cards
 
 From the captured text, extract one record per posting:

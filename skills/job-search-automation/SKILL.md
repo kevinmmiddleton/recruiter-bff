@@ -32,11 +32,12 @@ Confirm the cadence with the user before creating it. After it's set, tell them 
 
 The default scan reads results from the user's **logged-in browser**. A scheduled task that fires while the user is away may not have an interactive browser session to drive — so the live-browser scan can fail or come back empty when run unattended. Be upfront about this. Options that work better for unattended runs:
 
-- **Use a public saved-search URL** (no login required) so the scan can read it without the user's session. LinkedIn's public job search works this way. This is the most reliable unattended setup.
+- **Use a public saved-search URL** (no login required) so the scan can read it without the user's session. LinkedIn's public job search works this way.
+- **Use the ATS Board Searches** (the Google `site:` dork links from setup). These are public Google searches with recency baked into the URL — no login at all, so they're the most reliable unattended source, and they only ever show fresh roles. A scheduled task can open them, read the results, and digest the new ones; or, lowest-effort, just re-send the one-click links as a "time to check" nudge (the links never go stale, so the same link always shows what's new).
 - **Treat the scheduled run as a prompt, not a scrape.** The task can assemble a "time to scan" digest and remind the user to run the live scan themselves when they're at the machine. Lower effort, still useful.
 - **Accept partial reliability.** If the browser session happens to be available, great; if not, the user runs it manually. Fine for many people.
 
-Recommend the public-saved-search approach for anyone who wants the schedule to actually fire on its own. Set expectations: this is convenience scheduling, not a guaranteed unattended scraper. For that, you need Tier 2.
+Recommend the public approaches — the ATS Board Searches and a public saved-search URL — for anyone who wants the schedule to actually fire on its own. Set expectations: this is convenience scheduling, not a guaranteed unattended scraper. For that, you need Tier 2.
 
 ## Tier 2 — Full self-hosted pipeline (the serious build)
 

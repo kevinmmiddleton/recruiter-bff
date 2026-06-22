@@ -41,6 +41,13 @@ _Last updated: YYYY-MM-DD_
 - **Secondary (narrow):** <paste URL or "(not set yet)">
 - **Board:** LinkedIn
 
+## ATS Board Searches (Google `site:` dorks)
+
+One-click Google searches scoped to company ATS boards (Ashby/Greenhouse/Lever/etc.) and restricted to recent postings — free browser search, no API. `find-jobs` reads these like saved searches. See `ats-search-links.md` for construction.
+
+- **Fresh — NYC (past week):** <Google URL with `tbs=qdr:w`> or "(not set yet)"
+- **Fresh — Remote (past week):** <Google URL with `tbs=qdr:w`> or "(not set yet)"
+
 ## Companies to Watch (optional)
 
 Companies the user would join in a heartbeat — scanned directly via their public ATS feeds on every `find-jobs` run, no saved search needed.
@@ -82,5 +89,6 @@ Companies the user would join in a heartbeat — scanned directly via their publ
 - **Strong-fit signals** drive the STRONG tier in scans and the score in the tracker. Keep them concrete.
 - **Exclusions** do the heavy lifting in filtering. A precise skip list removes more noise than any keyword adds signal. The named-companies block list grows over time — append, don't replace.
 - **Saved searches** are job-board URLs with filters applied. See `building-a-saved-search.md`.
+- **ATS board searches** are free Google `site:` dorks scoped to company ATS boards with recency baked into the URL. See `ats-search-links.md`. They complement the watchlist: the watchlist checks companies the user *names*; these sweep *every* company on those boards for fresh roles.
 - **Companies to watch** get swept directly via public ATS feeds (Greenhouse/Lever/Ashby) on every scan — fast and browser-free. Capture the board URL when known; `find-jobs` can derive it once and save it back.
 - **Proof points** can be deferred to first interview-guide use if the user is in a hurry, but they make every fit read sharper, so capture them when you can.

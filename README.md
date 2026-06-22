@@ -8,8 +8,8 @@ If you've ever seen a "job search automation" setup that needs a dedicated compu
 
 ## What it does
 
-- **Set up a search** — captures your target roles, location, comp floor, and dealbreakers once, then builds a reusable saved-search link you can run any time.
-- **Scan on demand** — opens your saved search in your own logged-in browser, reads the current results, filters out the noise, and shows you the matches with a quick fit read. Companies you name on a watchlist get swept directly through their public ATS job feeds — no browser needed.
+- **Set up a search** — captures your target roles, location, comp floor, and dealbreakers once, then builds a reusable saved-search link plus one-click, recency-filtered Google searches scoped to company ATS boards (Ashby, Greenhouse, Lever, and more).
+- **Scan on demand** — opens your saved search in your own logged-in browser, reads the current results, filters out the noise, and shows you the matches with a quick fit read. It also sweeps your ATS board searches — most roles are posted straight to a company's ATS and never hit LinkedIn — and companies you name on a watchlist get pulled directly through their public ATS job feeds, no browser needed.
 - **Score a posting** — paste a JD (or drop a link) and get a 1–5 scored evaluation: every requirement mapped to the specific line in your background that answers it, honest partials and gaps included, ending in a clear apply-or-skip verdict.
 - **Track applications** — a plain CSV in your own folder records every role: prospect, applied, interviewing, rejected. Opens in Excel, Numbers, or Google Sheets. Also gives you a pipeline scorecard and flags follow-ups going stale.
 - **Prep for interviews** — paste a job description and get a full, role-specific interview guide: company research, role analysis, fit mapping against your background, scripted answers, smart questions to ask, and red flags to probe. Behavioral stories accumulate in a story bank, so every guide reuses material you've already polished instead of starting from zero.
