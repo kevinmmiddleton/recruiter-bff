@@ -1,78 +1,80 @@
 ---
 name: find-jobs
 description: >
-  Runs an on-demand job scan against the user's saved search, filters the results against
-  their preferences, and surfaces the matches. Use when the user says "scan for jobs,"
-  "find me jobs," "any new roles," "what's out there," "run my job search," "check for
-  new postings," or "find matches." Pulls live results using the user's logged-in browser
-  (Claude-in-Chrome) when available, or a paste flow when it isn't. Classifies each role,
-  removes duplicates already in the tracker, and offers to log matches. Requires a profile
-  from job-search-setup; if none exists, route there first.
+  Runs an on-demand job scan against the user's saved searches, company job site searches, and
+  watchlist, filters the results against what they want, and shows the matches. Use when the
+  user says "scan for jobs," "find me jobs," "any new roles," "what's out there," "run my job
+  search," "check for new postings," "find matches," or "just the strong ones today." Reads
+  LinkedIn through the user's own logged-in browser (Claude in Chrome) when it's connected, or
+  from results the user pastes. Checks every role against the tracker and offers to log
+  matches. Needs the profile from job-search-setup.
 ---
 
-# Find Jobs — On-Demand Scan
+# Find Jobs: On-Demand Scan
 
-Pull fresh roles from the user's saved search, cut the noise, and show them what's worth their attention. This is the on-demand replacement for an always-on scraper: it runs only when asked, on a normal machine.
+Pull fresh roles from the user's sources, cut the noise, and show them what's worth their time. It runs only when asked, on a normal laptop.
+
+## Never
+
+- Never get around a login, and never fetch LinkedIn result pages with code. Use the browser the user controls, or their paste.
+- Never apply to anything or contact anyone.
+- Never hide a source failure. "Nothing new" and "nothing worked" must look different.
+- Never trust a URL the model rewrote. Carry the real posting link from the page.
 
 ## Step 1: Load the profile
 
-Read `job-search/profile.md` from the user's Cowork folder.
+Read `job-search/profile.md`, and `job-search/preferences.md` if it exists.
 
-- **No profile?** Tell the user you need to set up their search first, and hand off to `job-search-setup`. Don't guess preferences.
-- **No saved search in the profile?** Run the saved-search step of `job-search-setup`, then continue.
+- **No profile:** say you need to set up their search first and hand off to `job-search-setup`. Don't guess.
+- **No saved search:** run the saved-search step of setup, then continue.
 
-Pull out: target titles, seniority, location/work-mode, comp floor, strong-fit signals, exclusions, skip-list companies, and the saved-search URL(s).
+Pull out: target titles, seniority, location and work mode, pay floor, signals (strong, weak, parked), pickiness, exclusions with their exceptions, skip-list companies, saved searches, company job site searches, and companies to watch. From the preferences page: must-nots and company preferences.
+
+If the user asked for something different this time ("just the strong ones today," "include contract roles"), apply it to this scan only, and offer to save it if it sounds lasting.
 
 ## Step 2: Get the results
 
-Try these in order. Use the first one that works.
+Run every source the profile has. Keep a tally for each one: did it work, and how many results came back.
 
-### Method A — Logged-in browser (preferred)
+### Saved search: the user's browser (preferred)
 
-Use the Claude-in-Chrome extension to read the live search.
+Use the Claude in Chrome extension to read the live search.
 
-1. Confirm a browser is connected (`list_connected_browsers`). If the Chrome tools aren't loaded, load them via ToolSearch (`query: "chrome", max_results: 20`).
+1. Check a browser is connected (`list_connected_browsers`). If the Chrome tools aren't loaded, load them with ToolSearch (`query: "chrome", max_results: 20`).
 2. `navigate` to the saved-search URL.
-3. `get_page_text` (and scroll / read more if the board lazy-loads) to capture the visible result cards.
-4. If the page shows a login wall or "no results," tell the user what you saw and fall back to Method B.
+3. `get_page_text`, scrolling or loading more if the board loads lazily, to capture the result cards, including each card's posting age ("2 days ago") when shown.
+4. A login wall or an empty page: tell the user what you saw and use the paste flow.
 
-This sees what the user would see, including results behind their login. It does **not** log in for them — it uses the session they already have.
+This sees what the user would see, using the session they already have. It never logs in for them.
 
-### Method B — Paste flow (universal fallback)
+### Saved search: paste (always works)
 
-If no drivable browser is available, or Method A hit a wall:
+No browser, or the browser hit a wall: give the user their saved-search link, ask them to open it and paste the results (or the whole page) back. Never let a missing browser stop the scan.
 
-- Give the user their saved-search URL and ask them to open it, then paste the results (or the whole page text) back. Or ask them to paste a list of roles they're looking at.
+### Company job site searches (alongside either)
 
-Either way, you end up with raw result text to parse. Never block the scan just because the browser isn't connected — the paste flow always works.
+If the profile has company job site searches (Google searches limited to Ashby, Greenhouse, Lever, and similar, with recency built into the link), run them too: open each in the user's browser and read the results, or hand over the link to click and paste back. Tag these `ats-board`. If the links are missing or stale, `../job-search-setup/references/ats-search-links.md` explains how to build them.
 
-> Do not try to fetch LinkedIn (or similar) result pages with web_fetch/curl/python — they render client-side and return an empty shell, and scraping them programmatically is off-limits. Use the browser the user controls, or the paste flow.
+### Watchlist (alongside either)
 
-### Watchlist sweep (runs alongside A or B)
-
-If the profile has a **Companies to Watch** list, also sweep those companies' public ATS feeds — Greenhouse, Lever, and Ashby publish every company's open roles as documented public JSON, no browser or login needed. Method and endpoint patterns are in `references/ats-feeds.md`. Fold the results into the same pipeline as the saved-search results; tag the source so the user can see which matches came from the watchlist.
-
-### ATS board sweep (runs alongside A or B)
-
-If the profile has **ATS Board Searches** (Google `site:` dork links), sweep those too. They surface fresh roles posted directly on company ATS boards (Ashby, Greenhouse, Lever, etc.) across *every* company at once — the postings that never reach LinkedIn and are far less contested. The recency filter is baked into each URL, so you only see recent postings. Open each link in the user's browser (Method A) and read the results, or hand the user the link to click and paste back (Method B). Fold into the same pipeline and tag the source as `ats-board`. Construction details, if the links are missing or need a refresh, are in `../job-search-setup/references/ats-search-links.md`.
-
-This complements the watchlist: the watchlist checks companies the user *named*; this sweeps the whole boards for anyone new.
+If the profile has companies to watch, check their public job feeds directly. Greenhouse, Lever, and Ashby publish every company's open roles as public JSON, no browser or login needed. Endpoints and method are in `references/ats-feeds.md`. Narrow each company's feed to the user's function and titles before anything else; a big company's feed can have thousands of roles. Tag these `watchlist`.
 
 ## Step 3: Parse into job cards
 
-From the captured text, extract one record per posting:
+One record per posting:
 
 - **company**
 - **role** (title as posted)
-- **location** (and remote/hybrid/onsite if shown)
-- **comp** (only if the posting lists it — most don't)
+- **location** (and remote, hybrid, or on-site if shown)
+- **comp** (only if listed; most postings don't)
+- **posted** (the age or date if shown)
 - **url** (the direct posting link)
 
-Discard obvious junk: pagination text, "promoted" labels, ads, anything under ~20 characters or missing both a company and a title.
+Throw out page junk: pagination, "promoted" labels, ads, anything missing both a company and a title.
 
 ## Step 4: Check against the tracker
 
-Read the tracker (`job-search/applications.csv`) if it exists, and follow "Checking against the tracker" in `references/classification-rubric.md`:
+Read `job-search/applications.csv` if it exists, and follow "Checking against the tracker" in `references/classification-rubric.md`:
 
 - The same role at the same company is already tracked. Drop it and count it.
 - A different role at a company already in the tracker stays in, tagged **New role at a company you know**, with one line of history.
@@ -82,41 +84,57 @@ No tracker yet? Skip this step.
 
 ## Step 5: Classify each role
 
-Apply the rubric in `references/classification-rubric.md`, using the user's profile as the rule set. Tag every surviving role:
+Apply `references/classification-rubric.md`, with the profile and preferences page as the rules:
 
-- **STRONG** — clear fit and hits a strong-fit signal. Lead with these.
-- **INCLUDE** — fits the basic criteria, worth a look.
-- **EXCLUDE** — fails a rule (wrong level, excluded function/industry, skip-list company, wrong location). Don't show these by default; keep a count.
+- **STRONG:** a clear fit that hits a strong signal. Lead with these.
+- **INCLUDE:** fits the basics, worth a look. Weak signals can tip a borderline role in.
+- **EXCLUDE:** fails a rule (wrong level, an excluded function with no exception that applies, an excluded industry, a staffing firm or aggregator, a skip-list company, a place they won't work, a listed range entirely below the floor). Hidden, with a count.
 
-When genuinely unsure, lean INCLUDE. Better to show a borderline role and let the user dismiss it than to silently bury a good one. This mirrors how a well-tuned classifier behaves: high recall, let the human make the final cut.
+When genuinely unsure, INCLUDE. A borderline role the user dismisses in two seconds costs far less than a good one they never see.
+
+Pickiness decides what's shown: "strong plus maybe" (the default) shows STRONG and INCLUDE; "strong only" shows STRONG and a count of the rest.
 
 ## Step 6: Present the matches
 
-Lead with a one-line summary: "12 new roles, 3 strong." Then list STRONG first, then INCLUDE, grouped and skimmable. For each role:
+Open with the summary and the source-health line, then the roles:
 
 ```
-[STRONG] Company — Role
-  Location · Comp (if listed)
-  Why it fits: <one line tied to a profile signal>
+9 new roles, 3 strong.
+Sources: LinkedIn saved search ✓ 18 results · company job sites ✓ 2 searches, 11 results ·
+watchlist ✓ 4 of 5 companies (Acme's feed didn't respond).
+
+[STRONG] Fernhill: Senior Product Manager, Growth
+  New York (hybrid) · $175k to $205k · posted 2 days ago
+  Why it fits: growth role at a consumer subscription company, your strong signal
   <url>
+
+[INCLUDE] Northstar Learning: Senior PM, Retention · New role at a company you know
+  Remote (US) · $160k to $180k · posted 5 days ago
+  Why it fits: retention work; heads-up, the range starts under your floor
+  History: you applied for Product Lead in August; it closed.
+  <url>
+
+Hid 6: 2 staffing firms, 2 wrong level, 1 on-site only, 1 already tracked.
 ```
 
-Keep the "why" to a single, specific line — name the signal it hit ("regulated industry + 0-to-1," not "good match"). If you dropped roles, say so briefly: "Hid 8 (4 wrong level, 2 staffing firms, 2 already tracked)." Don't dump the excludes unless asked.
+- **The source-health line is never skipped.** A source that failed, timed out, or hit a login says so, and a source that returned zero results says "0 results," so the user can tell a quiet day from a broken search.
+- **"Why it fits"** is one specific line naming the signal it hit, never a generic compliment. Mention a weak or parked signal when it's the reason.
+- **Posting age** goes on every card when you know it. Very old postings (about 60 days or more) get a short flag: "posted 9 weeks ago, may be stale." Flag, don't hide.
+- If the user knows someone at a company (from `job-search/contacts.csv`, if it exists), add: "You know Priya Shah there."
 
-## Step 7: Offer to log them
+## Step 7: Offer next steps
 
-Ask if they want the matches saved to the tracker as prospects:
+> "Want me to add the strong ones to your tracker?"
 
-> "Want me to add the strong ones to your tracker so they're easy to find later?"
+On yes, hand the chosen roles to `application-tracker` to add as prospects. That's also what keeps future scans from showing them again.
 
-If yes, hand the selected roles to `application-tracker` to append with status `prospect`. This is also what makes future scans dedupe correctly — anything logged won't resurface.
+For a role the user is seriously considering, offer the fit check: `evaluate-role` reads the whole posting, checks it's still open, and gives a scored apply-or-skip answer.
 
-For roles the user is seriously considering, offer the deeper read: `evaluate-role` takes the full posting and produces a dimension-scored evaluation with a requirement-by-requirement match against their profile. A scan read is a glance; that's the decision tool.
+If a strong match is at a company where they know someone, mention that a referral usually beats a cold application, and offer to draft a short note (through `contacts`, if the user has a contacts file).
 
 ## Principles
 
-- **Run only when asked.** No background loop, no schedule unless the user set one up via `job-search-automation`.
-- **High recall, honest filtering.** Surface borderline roles; explain what you cut. The user's time is better spent dismissing than digging.
-- **Specific fit reads.** "Why it fits" should reference a real signal from their profile, never a generic compliment.
-- **Never scrape around a login.** Use the browser the user controls or the paste flow. No headless workarounds.
-- **The tracker is the memory.** Dedup depends on logging. Encourage saving matches so the next scan stays clean.
+- **Run only when asked.** No background loop unless the user set one up through `job-search-automation`.
+- **High recall, honest filtering.** Show borderline roles and say what you cut.
+- **Specific reasons.** Every "why it fits" ties to something in the profile.
+- **The tracker is the memory.** Logging matches keeps the next scan clean.

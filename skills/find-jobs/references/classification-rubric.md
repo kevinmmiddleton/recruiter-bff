@@ -1,39 +1,52 @@
 # Classification Rubric
 
-How to tag each scanned role STRONG / INCLUDE / EXCLUDE. The user's `profile.md` is the rule set; this file is the method. Run it per role, fast and consistently.
+How to tag each scanned role STRONG, INCLUDE, or EXCLUDE. The user's `profile.md` (and `preferences.md`, if it exists) are the rules; this file is the method. Run it per role, quickly and the same way every time.
 
 ## Decision order
 
-Check in this order. The first failing rule sends a role to EXCLUDE.
+Check in this order. The first rule a role fails sends it to EXCLUDE, with that reason.
 
-1. **Skip-list company?** If the company is on the user's named skip list, or matches an excluded company type (staffing/recruiting firm, agency, etc.) → EXCLUDE, reason "skip list."
-2. **Wrong level?** If the title's seniority is clearly below (or far above) the user's target seniority → EXCLUDE, reason "wrong level." Be generous with ambiguous titles ("Product Manager" with no modifier can be senior — don't cut it on level alone).
-3. **Wrong function/role type?** If it's an excluded function from the profile (e.g., ML/Data-Science PM when excluded, ad-tech PM, sales engineering) → EXCLUDE, reason "excluded function."
-4. **Excluded industry?** If the company is in an industry the user avoids → EXCLUDE, reason "excluded industry."
-5. **Wrong location?** If onsite-only in a place the user won't work, or a location they ruled out → EXCLUDE, reason "location." Remote/unspecified always passes.
-6. **Comp below floor?** Only if the posting actually lists comp and it's clearly below the floor → EXCLUDE, reason "comp below floor." **Unlisted comp passes** — most postings don't list it.
+1. **Skip list or excluded company type.** A named company on the skip list, or a staffing firm or job aggregator (see below) when the profile excludes those, is EXCLUDE: "staffing firm" or "skip list."
+2. **Wrong level.** Seniority clearly below the target, or far above it, is EXCLUDE: "wrong level." Be generous with unclear titles: a bare "Product Manager" can be senior, so don't cut it on level alone.
+3. **Excluded function, unless an exception applies.** If the role is an excluded function, check the exception written next to it first. "Data science PM out, growth analytics in": a growth analytics PM role passes. No exception applies: EXCLUDE, "excluded function."
+4. **Excluded industry.** An industry on the profile's exclusions or the preferences page's "no thanks" list: EXCLUDE, "excluded industry."
+5. **Location.** On-site only somewhere the user won't work, or a place they ruled out: EXCLUDE, "location." Remote or unstated always passes.
+6. **Pay.** Only when the posting lists a range and the whole range is below the floor: EXCLUDE, "pay below floor." A range that starts below the floor but reaches it passes, with a heads-up in "why it fits." Unlisted pay always passes.
 
-If a role survives all six, it's at least INCLUDE. Then check for STRONG:
+A role that survives all six is at least INCLUDE. Then:
 
-7. **Strong-fit signal?** If it hits one or more of the user's strong-fit signals (e.g., 0-to-1 build, regulated industry, internal tools/platform, AI tooling) → upgrade to **STRONG**.
+7. **Strong signal.** Hits one or more strong signals: upgrade to **STRONG**.
+8. **Weak signals** never make a role STRONG on their own. They can tip a borderline call into INCLUDE, and they're worth naming in "why it fits."
+9. **Parked signals** don't upgrade anything. If a role mainly hits a parked signal, show it as INCLUDE with a note ("touches something you parked: Group PM with reports").
 
-## The tie-breaker rule
+## The tie-breaker
 
-**When genuinely unsure, INCLUDE.** A scanner that only surfaces perfect matches misses good roles with imperfect titles. Optimize for recall: show the borderline role with an honest one-line read and let the user decide. The cost of a false include (a quick "skip") is far lower than the cost of a false exclude (a missed opportunity the user never sees).
+**When genuinely unsure, INCLUDE.** A scan that only shows perfect matches misses good roles with imperfect titles. A false include costs the user a two-second skip; a false exclude costs them a role they never see.
 
-## Level inference (titles are messy)
+## Staffing firms and job aggregators
 
-Map common title words to levels, but don't be rigid:
+Staffing firms post roles on behalf of unnamed clients; aggregators repost other companies' roles, often after the original closed. Both crowd out the real postings. Excluded by default; the user can turn it off.
 
-- **Below target (cut for a senior+ search):** Intern, Junior, Associate, Coordinator, Analyst-titled PM roles.
-- **At target:** Product Manager, Senior PM, Staff PM, Principal PM, Lead PM, Group PM, Product Lead, Head of Product (for director-level searches), Director of Product.
-- **Above target (flag, don't auto-cut):** VP Product, CPO — surface with a note rather than dropping, in case the user wants a stretch.
+**Name tells** (when the profile excludes staffing firms): "Staffing," "Talent," "Recruiting," "Search Partners," "Consulting Group" on an otherwise unknown company, or a company that posts the same role in many cities at once.
 
-A bare "Product Manager" with no seniority word is ambiguous. Default to INCLUDE and note the uncertainty rather than excluding.
+**Text tells** for an unknown company: "on behalf of our client," "our client is seeking," "staff augmentation," "contract-to-hire," "W2 or C2C," or a confidential company name. Two or more of these and the company is probably staffing.
 
-## Company-type inference
+**Well-known examples** (seed list; the user's skip list adds to it):
 
-When the company name alone tells you it's a staffing/recruiting firm, agency, or other excluded type (and it matches the user's exclusions), cut it without needing the full posting. Common staffing tells: "Staffing," "Talent," "Recruiting," "Consultants," generic three-letter outfits that repost the same roles. Only apply this if the user's profile excludes that company type.
+- **Staffing and recruiting firms:** Robert Half, TEKsystems, Insight Global, Randstad, Adecco, Kforce, Aerotek, Jobot, CyberCoders, Motion Recruitment.
+- **Aggregators that repost roles:** Lensa, Jooble, Talent.com, Adzuna, SimplyHired.
+
+If a role from an aggregator looks strong, don't throw the job away: look for the same role on the hiring company's own site and show that version instead.
+
+## Level from titles
+
+Titles are messy. Map them loosely:
+
+- **Below a senior search:** Intern, Junior, Associate, Coordinator, Analyst.
+- **At target:** Product Manager, Senior PM, Staff PM, Principal PM, Lead PM, Group PM, Product Lead, and Head of Product or Director of Product for director-level searches.
+- **Above target:** VP of Product, CPO. Show these with a note rather than cutting them, in case the user wants a stretch.
+
+Adjust the same idea for other fields: the user's target titles and seniority set the line.
 
 ## Checking against the tracker
 
@@ -47,9 +60,10 @@ Don't treat near-matches as already seen. "Senior Product Manager" and "Senior P
 
 ## Output per role
 
-For each non-excluded role, produce:
-- tier (STRONG / INCLUDE)
-- one-line "why it fits" that names the specific signal it hit
-- the fields needed for the tracker: company, role, location, comp (if listed), url
+For each role that's shown:
 
-For excluded roles, keep only a tally by reason for the "hid N" summary line. Don't trust model-paraphrased URLs — always carry the real posting URL from the parse step.
+- the tier (STRONG or INCLUDE)
+- one line of "why it fits" naming the signal it hit, plus any heads-up (pay starts below the floor, posted long ago)
+- the fields the tracker needs: company, role, location, comp (if listed), posted, url
+
+For hidden roles, keep only a tally by reason for the "Hid N" line. Always carry the real posting URL from the page, never one the model rewrote.
