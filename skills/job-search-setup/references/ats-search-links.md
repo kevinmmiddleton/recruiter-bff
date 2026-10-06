@@ -1,4 +1,4 @@
-# ATS Board Search Links (Google `site:` dorks)
+# Company Job Site Searches (Google `site:` links)
 
 Lots of roles are posted directly on a company's job site (Ashby, Greenhouse, Lever, and others, often called ATS boards) and never make it to LinkedIn, and those postings get far fewer applicants. Google has indexed all of them. This builds the user a **one-click Google search, scoped to those boards and restricted to recent postings**, that surfaces fresh roles across every company at once.
 
@@ -45,7 +45,7 @@ https://www.google.com/search?q=%28site%3Ajobs.ashbyhq.com+OR+site%3Aboards.gree
 
 ## What to generate
 
-Build a small, labeled set from the profile and save them (see the profile template's **ATS Board Searches** section):
+Build a small, labeled set from the profile and save them (see the profile template's **Company Job Site Searches** section):
 
 - **Fresh, NYC (past week):** combined-boards link, titles + metro, `qdr:w`.
 - **Fresh, remote (past week):** same, swap the metro for `remote`.

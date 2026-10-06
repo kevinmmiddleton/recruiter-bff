@@ -40,7 +40,7 @@ Older trackers have no `furthest_stage` or `next_date` columns. The snippets add
 
 **Prospects from a scan or an evaluation.** Append with `status=prospect`, the score, and the source. Exact duplicates (same company, same role after normalizing) are skipped. A different role at a company already in the tracker is a new row.
 
-**"I applied to X."** If X is a prospect, move it to `applied` and set `date_applied`. If it isn't tracked, add it, then mark it applied. Put the resume version or anything else they mention in `notes`.
+**"I applied to X."** If X is a prospect, move it to `applied` and set `date_applied` (to the day they applied, if they say "yesterday" or a date). If it isn't tracked, add it, then mark it applied. Put the resume version or anything else they mention in `notes`.
 
 **Moving forward.** Screens, interviews, finals, offers: update `status` and `last_update`, and set `next_date` when there's a date ("screen Thursday" means this coming Thursday; work out the date from today and say it back with the weekday). Add a dated note with any context.
 
@@ -53,7 +53,7 @@ Older trackers have no `furthest_stage` or `next_date` columns. The snippets add
 - An active process went silent for a month or more: suggest `ghosted`, and only change it on a yes. If they reply later, move it back.
 - The user pulled out: `withdrawn`. Decided not to apply: `skipped`.
 
-**Rejections.** Follow the safe rules in the schema file: only applications sent on or before the rejection, the exact role when the email names one, and a "which one?" question when a general no could mean more than one open application at that company. Leave `furthest_stage` where it was. Acknowledge a rejection in one line and move on; don't dwell, and don't spin it.
+**Rejections.** Follow the safe rules in the schema file: only applications sent on or before the rejection, the exact role when the email names one, and a "which one?" question when a general no could mean more than one open application at that company. If the company is only in the tracker as a prospect, ask whether that's the role they applied to (they likely forgot to log it); if it isn't in the tracker at all, offer to add it as rejected. Leave `furthest_stage` where it was. Acknowledge a rejection in one line and move on; don't dwell, and don't spin it.
 
 ## The pipeline table (on demand)
 
@@ -68,6 +68,7 @@ When the user asks "what's in my pipeline?", "show my applications," or "show me
 ```
 
 - **Order by what needs action:** offers, then anything with a `next_date` in the next 7 days, then follow-ups due (per the ladder), then the rest of the active processes, then `applied`, then prospects.
+- **Score:** a fit-check score shows with its decimal (4.4); a quick-scan score shows as "4 (scan)," so a role nobody has fully checked doesn't look as solid as one that has been.
 - **Next step** comes from the row: an upcoming date ("Prep: panel Fri Oct 16"), the follow-up ladder ("Nudge," "Chase or close," "Mark ghosted?"), "Decide: apply or skip" for prospects, "Waiting" for a recent application.
 - **Leave finished rows out by default** (rejected, closed, withdrawn, skipped, ghosted) and give one line of counts under the table instead: "Plus 12 finished: 7 rejected, 3 closed, 2 skipped." Show them if the user asks for everything.
 - **Long pipelines:** if there are more than about 25 open rows, show the top 25 and say how many more.

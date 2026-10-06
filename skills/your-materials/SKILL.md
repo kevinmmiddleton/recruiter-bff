@@ -59,7 +59,7 @@ Rewrite each bullet as **outcome, then how, then scope**: "[outcome, measured by
 
 ## LinkedIn
 
-- **Headline:** the target role plus the words recruiters search for, never "seeking opportunities." "Senior Product Manager · Growth, retention, and lifecycle · Consumer subscription."
+- **Headline:** the target role plus the words recruiters search for, never "seeking opportunities." "Senior Product Manager · Growth, retention, and lifecycle · Consumer subscription." If the profile doesn't have the current headline, ask for it, and save it to the profile once the user picks a new one. Only use search words the background can back up; a word they want to be found for, without proof behind it, is their call, so say which is which.
 - **About:** a short pitch with numbers, in first person, never blank: what the user does and for whom, two or three proof points with numbers, and the next role they want. Not a biography.
 - **Skills recruiters search for:** add the specific ones (tools, methods, domains). Many recruiter searches start from skills.
 - **Findability:** suggest sharing the resume with recruiters in LinkedIn's settings, and the private "open to work" setting (with a word of caution if the user is still employed).
@@ -89,7 +89,7 @@ If a "why us" draft reads hollow even after research, say so. Sometimes the draf
 
 Before handing over any draft, read it as a skeptical hiring manager would, and fix what you find. The checklist is in `references/review-pass.md`: flattery, groveling, adjectives used as evidence, buzzwords, sentences that could go to any company, the throat-clearing opener, the slogan closer, and three examples where two would do.
 
-Then show the result in the format at the end of that file (the flags, a verdict, the rewrite), so the user learns the pattern.
+Then show the result in the format at the end of that file (the flags, a verdict, the rewrite), so the user learns the pattern. For a single line, like a headline, keep it short: what's wrong in a sentence or two, then the rewrite.
 
 ## Learning the user's voice
 

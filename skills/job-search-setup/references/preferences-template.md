@@ -70,7 +70,9 @@ If I can't get there in one move: [step one], then [step two].
 
 ## How to build it (the conversation)
 
-Run this as a real conversation, a few questions at a time. It's the longest part of setup, so offer it after the first scan, never before. People who'd rather do it later can; nothing else waits on it.
+Run this as a real conversation, a few questions at a time. It's the longest part of setup, so it's offered later, once, at a quiet moment. People who'd rather do it later can; nothing else waits on it.
+
+Read the profile first. Confirm what it already knows (size, stage, industries, location, what makes a role top-tier) rather than asking again, and only ask what's new.
 
 1. **Start with what they'd hate.** Dislikes are easier to name than wants. "Think about your last few jobs. What drained you, and why?"
 2. **The bad-boss question.** "Have you had a bad boss or a bad job? What did it teach you about what you don't want?" The real must-nots come from here.
@@ -78,7 +80,7 @@ Run this as a real conversation, a few questions at a time. It's the longest par
 4. **Then what they love.** Ask separately what they're good at but don't enjoy. Those are different, and people drift into roles built on the second list.
 5. **The company.** Offer the size bands and ownership types as choices. Then the subject question, kept apart from strategy: "Would you care about this subject every day?" is a different question from "Would it look good on your resume?" A role can score well and still be wrong if the subject bores them.
 6. **Goals.** Next and long run. Several options are fine at the start.
-7. **Draft the one sentence.** Concrete words only, words a recruiter could search for: "a senior product manager role on a growth team at a consumer subscription company, hybrid in New York." Abstract phrases ("a mission-driven, people-first culture") don't help anyone help you. If the goal isn't reachable in one move, write the two steps.
+7. **Draft the one sentence.** Concrete words only, words a recruiter could search for: "a senior product manager role on a growth team at a consumer subscription company, hybrid in New York." Abstract phrases ("a mission-driven, people-first culture") don't help anyone help you. If the goal isn't reachable in one move, write the two steps; if it is, drop that line.
 8. **Close with homework, not a lecture.** "This is a draft until three people who know your work have seen it. Pick three, send them the page, and ask four questions:"
    - If you were in my shoes, how would you approach this search?
    - Is this accurate?
@@ -96,5 +98,6 @@ Run this as a real conversation, a few questions at a time. It's the longest par
 ## Rules
 
 - **The user's words.** Write what they said, tightened, not what sounds impressive.
+- **It's a shared page.** Things the user told you privately in setup (no direct reports, a skip list, why they're leaving) go on it only if they say so. Ask before carrying them over.
 - **No pay on this page.** Pay tiers live in `profile.md`.
 - **Never gate anything on it.** Scans, fit checks, and guides work without it, and get better with it.

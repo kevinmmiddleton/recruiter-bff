@@ -29,7 +29,7 @@ Every guide opens with the same four blocks, in this order: **the role in plain 
 
 1. Read `job-search/profile.md`. No profile: run `job-search-setup` first (it builds the background from the resume, so the user never answers twice).
 2. If the background is thin (no proof points, no voice notes), collect only what's missing (see `references/user-profile-template.md`) and write it back into the profile. Never start a second profile.
-3. Read, if they exist: `job-search/preferences.md` (must-haves and must-nots become questions), `job-search/story-bank.md` (reuse stories before drafting new ones), the company folder `job-search/interviews/<company>/` (`posting.md`, `evaluation.md`, and any existing `guide.md`), and `job-search/contacts.csv` (anyone the user knows there).
+3. Read, if they exist: `job-search/preferences.md` (must-haves and must-nots become questions), `job-search/story-bank.md` (reuse stories before drafting new ones), the company folder `job-search/interviews/<company>/` (`posting.md`, `evaluation.md`, and any existing `guide.md`), and `job-search/contacts.csv` (anyone the user knows there). No `contacts.csv` but a LinkedIn export (`Connections.csv`) in the Cowork folder? Mention it in one line: someone who works there is the best prep there is.
 4. Get the round details: when, what kind of round, and who. If the user doesn't say, ask once: "Who are you meeting, and when?" Work out real dates from today and say them back with the weekday.
 
 If there's no saved posting, ask for it (pasted text or a link) and save it as `posting.md` the way `evaluate-role` does.
@@ -44,6 +44,8 @@ Use web search. Find:
 - The people: titles and background for each interviewer, if the user named them. Use LinkedIn in the user's own browser if it's connected, or what the user tells you. Anything they've published is worth one reaction, once.
 
 Keep anything you couldn't confirm in a "Couldn't verify" line.
+
+**If web search isn't available,** say so once and build the company section from the posting alone, clearly labeled. Then give the user a ten-minute research list they can do themselves: the company's site and product, news from the last month, each interviewer's LinkedIn, and recent reviews. Offer to fold in whatever they paste. Never fill the gap with guesses.
 
 **Before a product or case round, the user should use the product as a customer:** sign up, buy, search, walk the main flow, hit the paywall. Give them a short log to fill in: each touchpoint in order (when, which screen or message, what it did), then "What works," "Where it could connect better," "Tradeoffs to have a view on," and "What I can't tell from here." Each finding states its evidence and its limit ("I tested on iPhone; Android may differ"). In the room, two findings at most, framed as observations, never gotchas: "Here's what I saw from the outside. What am I missing?" Outside a case round, one line is plenty, and something they liked beats something they'd fix.
 
@@ -108,7 +110,7 @@ Build the rest of the guide from `references/guide-template.md`:
 
 Save to `job-search/interviews/<company>/guide.md`. Share the top of the guide in the chat (verdict, next round, four blocks), and say the rest is in the file.
 
-Then offer: update the tracker (status and `next_date`) through `application-tracker`, and a practice run.
+Record what the user told you in the tracker through `application-tracker` (a booked round: the status and `next_date`, with `completed = False`) and say what changed. That's recording, not an offer. Then make **one** offer: usually a practice run for this round.
 
 ## After the round: debrief
 
@@ -124,12 +126,14 @@ When the user comes back from an interview, debrief right away, the same day if 
 
 Then write **carry forward** for each next interviewer: what they'll dig into, given what this round covered.
 
+If the user is short on time and skips the questions, write down what they did say, mark the rest "not reported," and move on. Don't ask twice.
+
 Write it into the guide's Round notes (never overwrite earlier rounds). Then:
 
 - Update the rest of the guide with what was learned (a watch-for answered, a new gap, the next round's people).
-- Update the story bank: mark stories used, note how they landed, and offer to bank any new story the user told.
-- Update the tracker through `application-tracker`: mark this round as happened (`completed = True`, so the furthest stage moves up), and set the status and `next_date` for what's next.
-- Offer thank-you notes (drafted by `application-tracker`), same day.
+- Update the story bank if it exists: mark stories used and note how they landed.
+- Update the tracker through `application-tracker`: mark this round as happened (`completed = True`, so the furthest stage moves up and the old date clears), and set the status and `next_date` for what's next.
+- Then **one** offer: thank-you notes (drafted by `application-tracker`), since they should go out the same day. Banking a new story or a practice run can wait for the next conversation, or go on the guide's prep checklist.
 
 How they treat the user is information about the job. An interview is the best behavior anyone will ever show, so take an early bad sign seriously and say so kindly.
 
@@ -144,8 +148,9 @@ When the user says "practice my interview" or "mock interview":
    - **What was soft for this interviewer:** an executive wanted the money first; the recommendation came late or hedged; the second half of the question got dropped; the number lost its other end.
    - **A tighter version,** in three to five bullets, in the user's words.
    - **A delivery note:** "Recommendation, what you wouldn't do, the cheapest test. Two or three breaths."
-4. After several questions, name the one pattern across them (running long, burying the result, dropping the second half).
+4. After several questions, name the one pattern across them (running long, burying the result, dropping the second half). If the session ends after one answer, give the one thing to watch instead.
 5. For stories, ask them to say it out loud and time it: about 90 seconds. Cut the setup, never the result.
+6. When they stop, offer once to add the pattern and the tighter versions to the guide's prep checklist, so the practice isn't lost.
 
 Keep the critique specific and kind. Practice is for finding the weak spots before the interviewer does.
 

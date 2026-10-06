@@ -43,16 +43,17 @@ From the resume, draft:
 - **Likely target titles,** from the arc and the most recent role.
 - **Lead-with guidance:** which proof points to put first for which kinds of roles.
 
-Then show a short summary of what you drafted (five to eight lines, not the whole profile) and ask only what the resume couldn't tell you. If the user has no resume handy, ask for the same things conversationally instead.
+Then show a short summary of what you drafted (five to eight lines, not the whole profile) and ask only what the resume couldn't tell you, including one question: "Anything you'd want to be upfront about in interviews, like a gap, a pivot, or something you haven't done yet?" If the user has no resume handy, ask for the same things conversationally instead.
 
 ## Step 2: The search essentials
 
-One or two turns, a few questions at a time. Use the AskUserQuestion tool for multiple-choice parts where it helps.
+One or two turns, a few questions at a time. Use the AskUserQuestion tool for multiple-choice parts where it helps; if it isn't available, ask in plain text with numbered choices.
 
 **What they want:**
 - Confirm the target titles (the words postings actually use) and seniority.
 - Location and work mode: city or metro; remote, hybrid (how many days), on-site. Anywhere they won't go?
-- Pay: their base floor. Comfortable and ideal numbers are optional; take them if offered. Most postings don't list pay, and that never counts against a role.
+- Pay: their base floor. Comfortable and ideal numbers are optional; take them if offered. Most postings don't list pay, and that never counts against a role. Then: "When a recruiter asks what you're targeting, what do you say?" Record their words as their pay line, or "(not set yet)" if they'd rather decide later. Never write it for them.
+- Company size and stage, if they care: size bands and stage (Series B or later, public, and so on).
 
 **What to cut, and what to flag:**
 - Functions to exclude, with exceptions written in. Ask: "Anything that's close to what you do but not it?" Write it as "data science PM out, growth analytics in." Exclude the function, not the whole field.
@@ -81,21 +82,23 @@ Then, in plain words:
 
 On yes, hand off to `find-jobs`.
 
-## Step 5: The preferences page (offer it after the first scan)
+## Step 5: The preferences page (offer it once, on its own)
 
-Once the user has seen a first scan, or whenever they ask, offer the shareable page:
+Offer the shareable page once, at a quiet moment: after the first fit check, or when the user asks what to do next. Never in the same message as another offer. When you offer it, change the profile's top line to `_Preferences page: not built yet (offered YYYY-MM-DD)_`, so no other skill offers it again. If the user asks for it, build it any time.
 
 > "One more thing worth doing this week, when you have half an hour: a one-page 'what I want next' you can share with people who can help. It ends with one sentence that makes it easy for anyone to keep an eye out for you. Scans work fine without it, and they get sharper with it."
 
-On yes, run the conversation in `references/preferences-template.md`: what they'd hate, the bad-boss question, flipping must-nots into must-haves, what they love (and what they're good at but don't enjoy), the company questions with the subject test ("would you care about this every day?"), goals, the one sentence, and the homework of sharing it with three people. Write `job-search/preferences.md` and link it from the top of `profile.md`.
+On yes, read the profile first, so you confirm what it already knows (size, stage, industries, location) instead of asking again. Then run the conversation in `references/preferences-template.md`: what they'd hate, the bad-boss question, flipping must-nots into must-haves, what they love (and what they're good at but don't enjoy), the company questions with the subject test ("would you care about this every day?"), goals, the one sentence, and the homework of sharing it with three people. Write `job-search/preferences.md` and link it from the top of `profile.md`.
 
 When the page turns up something the scan should use (a must-not, a company size, a subject they'd never work in), add it to the profile's exclusions or signals too, and say so.
 
-## Step 6: Reminders (offer once, at the end)
+## Step 6: Reminders (offer once, on its own)
+
+At a quiet moment, never stacked with another offer (often once the user has something in the tracker):
 
 > "Want me to check in on the days you pick, with follow-ups that are due, interviews coming up, and links to fresh roles?"
 
-On yes, hand off to `job-search-automation` to set up reminders. Record the days and time in the profile's Reminders section.
+On yes, hand off to `job-search-automation` to set them up. Record what happens in the profile's Reminders section: the days and time once the reminder exists, or "none (offered YYYY-MM-DD)" if the user says no, so it isn't offered again.
 
 ## Updating later
 

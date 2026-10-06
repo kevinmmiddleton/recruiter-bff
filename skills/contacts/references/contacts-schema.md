@@ -18,7 +18,7 @@
 | `notes` | Dated lines, newest last: what was said, what was asked, what was promised |
 | `source` | `linkedin-export`, `added`, or `gratitude-list` |
 
-**Honest warmth:** a connection with no logged contact is `never-spoke`, however familiar the name. Closeness changes only when the user says so or a real exchange is logged.
+**Honest warmth:** a connection with no logged contact is `never-spoke`, however familiar the name. Closeness changes only when the user says so or a real exchange is logged. If the user says they know someone but doesn't know when they last spoke, set the closeness and leave `last_contact` blank with a note ("date unknown"); blank means "never" only for `never-spoke`.
 
 **Check-in rhythm** (for `keep warm`): about every 30 days for `close`, 90 for `friendly`, 180 for `loose`. Never schedule check-ins for `never-spoke`. Each person has two clocks worth showing together: the opportunity ("Fernhill: screening, 6 days") and the relationship ("last spoke 29 days ago," or "never spoke").
 
@@ -42,7 +42,8 @@ Matches the export against the companies the user is pursuing (open rows in the 
 ```python
 import csv, os, re, io, datetime
 
-EXPORT = "job-search/Connections.csv"      # wherever the user saved it
+EXPORT = next((p for p in ["job-search/Connections.csv", "Connections.csv"] if os.path.exists(p)),
+              "Connections.csv")              # or wherever the user saved it
 TRACKER = "job-search/applications.csv"
 PROFILE = "job-search/profile.md"
 CONTACTS = "job-search/contacts.csv"
@@ -126,6 +127,12 @@ with open(CONTACTS, "w", newline="") as f:
 print(f"{len(people)} connections read; {sum(len(v) for v in added.values())} added at {len(added)} companies")
 for co, names in sorted(added.items()):
     print(f"  {co}: " + "; ".join(names))
+
+# 5. near misses: same first words, different company. Ask the user; never add them automatically.
+near = sorted({(p.get("Company",""), targets[t]) for p in people for t in targets
+               if clean(p.get("Company")) != t and clean(p.get("Company")).startswith(t + " ")})
+if near:
+    print("near misses to ask about:", "; ".join(f"{c} (vs {t})" for c, t in near))
 ```
 
 Small startups often aren't in an export at all, and titles are whatever people last put on their profile. Re-run the import when the user downloads a fresh export or the tracker grows.

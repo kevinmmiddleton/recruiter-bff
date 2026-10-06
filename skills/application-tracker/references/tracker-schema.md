@@ -9,7 +9,7 @@ The full definition of `job-search/applications.csv`, plus Python you can adapt 
 | `company` | Company name |
 | `role` | Role title as posted |
 | `location` | Location and work mode (remote, hybrid, onsite) |
-| `comp` | Pay, only if the posting listed it |
+| `comp` | Pay as the posting listed it, ranges written with "to" (`$175k to $205k`); blank if not listed |
 | `url` | Direct link to the posting |
 | `source` | Where it came from: `linkedin`, `ats-board`, `watchlist`, `referral`, `recruiter`, `pasted`, or the board's name |
 | `status` | Where it stands now (see below) |
@@ -82,6 +82,8 @@ Rejection emails are often vague ("we've decided to move forward with other cand
 - **Company name from the sender, too.** If the email's company name doesn't match, try the sender's domain ("careers@fernhillhealth.com") and the normalized name before saying "not in the tracker." Only then, if the user wants, add a new row as `rejected`.
 - **Generic rejection, one open application at that company:** that's the one. Update it.
 - **Generic rejection, several open applications at that company:** put it on a **"which one?"** list and ask. Don't guess.
+- **The company is in the tracker only as a prospect** (the user never logged applying): they probably applied and forgot to say so. Ask one question: "I have the Senior PM, Retention role as a prospect. Is that the one you applied to?" On yes, or "you pick," mark that row: set `date_applied` if they know it, `status` to `rejected`, and `furthest_stage` to `applied`. Run the rejection snippet with `include_prospects = True`.
+- **The company isn't in the tracker at all:** if the user wants it recorded, add it as rejected with the snippet below.
 - Set `status` to `rejected`, update `last_update`, leave `furthest_stage` alone, and add a dated note with the stage it ended at if known ("2026-10-06: rejected after the hiring manager round").
 
 For a batch, finish with a summary that includes days since applying: "Marked 4 rejected (after 6, 11, 19, and 30 days). 1 is on the which-one list: Acme sent a general no, and you have two roles open there."
@@ -181,7 +183,8 @@ else:
 rows, cols = load()
 new = [
     {"company":"Acme","role":"Senior Product Manager","location":"Remote (US)","comp":"",
-     "url":"https://...","source":"linkedin","score":"4"},
+     "url":"https://...","source":"linkedin","score":"4",
+     "notes":"2026-10-06: from the scan (STRONG). Range starts under the floor."},   # notes optional
 ]
 added, dupes = 0, []
 for n in new:
@@ -203,6 +206,7 @@ company, role, new_status = "Acme", "Senior Product Manager", "screening"
 completed = False    # True when this round has already happened (a debrief); False when it's only booked
 note = ""            # optional context, e.g. "screen with Dana Thursday"
 next_date = ""       # optional ISO date of the next thing
+on_date = TODAY      # the date it happened, if the user said ("I applied yesterday")
 
 rows, cols = load()
 matches, same = find(rows, company, role)
@@ -216,14 +220,16 @@ elif len(matches) != 1:
 else:
     r = matches[0]
     r["status"] = new_status
-    r["last_update"] = TODAY
+    r["last_update"] = on_date
     if new_status == "applied" and not r["date_applied"]:
-        r["date_applied"] = TODAY
+        r["date_applied"] = on_date
     raise_stage(r, new_status, completed)
     if next_date:
         r["next_date"] = next_date
+    elif completed and r["next_date"] and r["next_date"] <= TODAY:
+        r["next_date"] = ""          # the round it pointed to has happened
     if note:
-        r["notes"] = (r["notes"] + " | " if r["notes"] else "") + f"{TODAY}: {note}"
+        r["notes"] = (r["notes"] + " | " if r["notes"] else "") + f"{on_date}: {note}"
     save(rows, cols)
     print("updated:", r["company"], "|", r["role"], "->", new_status, "| furthest:", r["furthest_stage"],
           "| (the only role at this company)" if fallback else "")
@@ -238,8 +244,9 @@ company = "Acme"
 role = None                 # the role named in the email, or None if it's a general no
 email_date = "2026-10-06"   # the date the rejection arrived
 stage_note = ""             # e.g. "after the hiring manager round"
+include_prospects = False   # True only after the user confirms a prospect row is the one they applied to
 
-OPEN = {"applied","screening","interview","final","offer","hold"}
+OPEN = {"applied","screening","interview","final","offer","hold"} | ({"prospect"} if include_prospects else set())
 rows, cols = load()
 matches, same = find(rows, company, role)
 pool = matches if role else same
@@ -247,14 +254,34 @@ pool = [r for r in pool if r["status"] in OPEN
         and (r["date_applied"] or r["date_added"]) <= email_date]
 if len(pool) == 1:
     r = pool[0]
+    if r["status"] == "prospect":
+        r["furthest_stage"] = "applied"   # they applied; it just wasn't logged
     r["status"] = "rejected"; r["last_update"] = TODAY
     r["notes"] = (r["notes"] + " | " if r["notes"] else "") + f"{email_date}: rejected" + (f" {stage_note}" if stage_note else "")
     save(rows, cols)
     print("rejected:", r["role"], "| furthest stage stays", r["furthest_stage"])
 elif not pool:
-    print("NO MATCH: nothing open at", company, "applied on or before", email_date)
+    prospects = [r["role"] for r in same if r["status"] == "prospect"]
+    if prospects and not include_prospects:
+        print("ONLY PROSPECTS at", company, "- ask if they applied to one of:", prospects)
+    else:
+        print("NO MATCH: nothing open at", company, "applied on or before", email_date)
 else:
     print("WHICH ONE? ask the user:", [(r["role"], r["status"], r["date_applied"]) for r in pool])
+```
+
+### Record a role that isn't tracked, as rejected
+
+```python
+company, role = "Acme", "Senior Product Manager"   # role "" if the email doesn't say
+email_date = "2026-10-06"
+rows, cols = load()
+r = {c: "" for c in cols}
+r.update({"company": company, "role": role or "(role not stated)", "source": "pasted",
+          "status": "rejected", "furthest_stage": "applied", "date_added": TODAY,
+          "last_update": TODAY, "notes": f"{email_date}: rejected (applied outside the tracker)"})
+rows.append(r); save(rows, cols)
+print("added as rejected:", company, "|", r["role"])
 ```
 
 ### Read back: counts, the follow-up ladder, and furthest stages

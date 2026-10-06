@@ -35,27 +35,31 @@ Scheduled tasks run while the Claude desktop app is open. If the app is closed w
 
 - **Coming up:** interviews and deadlines in the next 7 days (from the tracker's `next_date`), each with its date, weekday, and the path to its interview guide if one exists.
 - **Follow-ups due:** active processes (screening, interview, final, offer) that have gone quiet, using the tracker's ladder: nudge at 7 to 13 days, chase or close at 14 to 29, "mark ghosted?" at 30 or more. Cold applications never appear here.
-- **Roles you meant to apply to:** prospects scored 4 or higher, added in the last 14 days, not yet applied to or skipped.
+- **Roles you meant to apply to:** prospects scored 4 or higher, added in the last 14 days, not yet applied to or skipped, at companies that haven't already rejected or closed out the user.
+- **People to get back to:** from `contacts.csv`, if it exists: next moves due in the next 7 days or overdue.
 - **Fresh roles:** the user's one-click company job site search links from the profile, plus a line: "Say 'scan for jobs' when you're at your computer to check your saved search too."
 
 If nothing is due, the reminder is one line plus the fresh-role links. Keep it short enough to read on a phone in 20 seconds.
 
 ### Setting it up
 
-1. Ask which days and what time. Offer a sensible default: weekdays at 8:30am, or Monday, Wednesday, and Friday.
-2. Turn it into a cron expression in the user's local time: weekdays at 8:30 is `30 8 * * 1-5`; Mon, Wed, Fri at 8:30 is `30 8 * * 1,3,5`.
-3. Find the full path to the user's `job-search/` folder. The task starts fresh each time with no memory of this conversation, so the prompt must name the folder.
+1. Ask which days and what time. Offer a sensible default: weekdays at 8:30am, or Monday, Wednesday, and Friday. If a time could be morning or evening ("8:30"), assume morning and say so in your reply. Times are the computer's local time zone.
+2. Turn it into a cron expression in that local time: weekdays at 8:30 is `30 8 * * 1-5`; Mon and Thu at 8:30 is `30 8 * * 1,4`.
+3. Find the full path to the user's `job-search/` folder: the Cowork working folder's path plus `job-search/` (run `pwd` in that folder if you need it). The task starts fresh each time with no memory of this conversation, so the prompt must name the folder.
 4. Create the task with the scheduled-tasks tool, using the prompt below with the path and the user's name filled in. Title it something the user will recognize, like "Job search check-in."
-5. Record the days and time in the Reminders section of `job-search/profile.md`.
+5. Only once the task exists, record the days and time in the Reminders section of `job-search/profile.md`.
 6. Tell the user: when it runs, how schedules really run (above), and that they can say "change my reminders" or "stop my reminders" anytime.
+
+**If the scheduled-tasks tool isn't available,** say so plainly: "I can't create scheduled tasks from here." Give the user the title, the schedule in words, and the prompt, so they can set it up from Cowork's scheduled tasks themselves, and don't record anything in the profile until it exists.
 
 **Task prompt** (fill in the bracketed parts):
 
 ```
 Job search check-in for [name]. Their files are in [full path to job-search/].
 
-Read applications.csv and profile.md there. Do not change any file, apply to anything,
-send anything, or contact anyone. Today's date and weekday come from the system.
+Read applications.csv, profile.md, and contacts.csv (if it exists) there. Do not change any
+file, apply to anything, send anything, or contact anyone. Today's date and weekday come from
+the system.
 
 Write a short check-in, plain text, in this order, skipping empty sections:
 
@@ -67,11 +71,13 @@ Write a short check-in, plain text, in this order, skipping empty sections:
    days, "chase or close" for 14 to 29, "mark ghosted?" for 30 or more. Never include rows
    with status applied.
 3. Roles you meant to apply to: status prospect, score 4 or higher, date_added within the
-   last 14 days.
-4. Fresh roles: copy the links from the "Company Job Site Searches" section of profile.md,
+   last 14 days, and no rejected or closed row for the same company.
+4. People to get back to: rows in contacts.csv whose next_date is today, past, or within 7
+   days, and whose next_move isn't "none". For each: name, company, next move.
+5. Fresh roles: copy the links from the "Company Job Site Searches" section of profile.md,
    then add: "Say 'scan for jobs' when you're at your computer to check your saved search too."
 
-If sections 1 to 3 are all empty, write "Nothing due today." and then section 4.
+If sections 1 to 4 are all empty, write "Nothing due today." and then section 5.
 Use real dates with weekdays (Tue Oct 13), never "next week." No more than about 15 lines.
 End by offering to draft any follow-up the user wants.
 ```

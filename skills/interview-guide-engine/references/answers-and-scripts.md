@@ -45,6 +45,8 @@ Several applications at one company: "I applied broadly here because [the work] 
 
 Spoken lines only. The user's own line lives in the profile ("What I say when asked about pay"), with their floor, comfortable, and ideal numbers. Know all three before any call; if they aren't set, ask before the round.
 
+**Which line to use:** when the posting lists a range, compare it with the user's own line. If their target sits inside the posted range, "The posted range works for me" is enough, and their own line is the answer if pushed for a number. If their target is near or above the top, use their own line, or the near-the-top version below. Never give two different numbers to the same company.
+
 **The range is posted.**
 > "The posted range works for me."
 If asked for a number: one inside the band, near the top. Being coy about a public band gains nothing. If the top of the band is about the user's current pay, tell them privately that the upside here is the role and equity, not salary.
@@ -73,7 +75,7 @@ With a real offer: "I have an offer with a decision date of [date], so I wanted 
 
 Then ask theirs: "What does the timeline look like, and how many rounds are left after this?" Count the calendar: if four rounds over six weeks can't fit inside the user's window, thank them warmly and say so. Don't name other companies. With an outside recruiter, ask for the hiring manager's own read on timing.
 
-Only say what's true.
+Only say what's true. If this is the user's only active process, don't invent urgency. "I'm actively interviewing and can move quickly" is honest and enough; or say nothing about other processes and just ask for their timeline.
 
 ## Live case method
 

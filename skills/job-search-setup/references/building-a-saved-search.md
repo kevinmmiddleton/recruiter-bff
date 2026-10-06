@@ -18,14 +18,14 @@ Append these parameters, joined with `&`:
 |-----------|---------|---------|
 | `keywords` | Search terms (URL-encode spaces as `%20`) | `keywords=product%20manager` |
 | `location` | Location text | `location=New%20York%2C%20New%20York%2C%20United%20States` |
-| `f_E` | Experience level (comma-joined) | `f_E=4,5,6` |
-| `f_TPR` | Date posted (seconds) | `f_TPR=r86400` (last 24h) |
+| `f_E` | Experience level (comma-joined) | `f_E=4` |
+| `f_TPR` | Date posted (seconds) | `f_TPR=r604800` (last week) |
 | `f_WT` | Work type (comma-joined) | `f_WT=2` (remote) |
 | `sortBy` | Sort order | `sortBy=DD` (most recent) |
 
-**`f_E` experience codes:** `2`=Entry, `3`=Associate, `4`=Mid-Senior, `5`=Director, `6`=Executive. For a senior PM search, `4,5,6` is the usual choice.
+**`f_E` experience codes:** `2`=Entry, `3`=Associate, `4`=Mid-Senior, `5`=Director, `6`=Executive. Pick the levels the user is actually after: a senior individual-contributor search is usually `4` alone; add `5` for director-level searches. `6` (executive) lets VP and C-level roles in, so leave it out unless they want those.
 
-**`f_TPR` time windows:** `r86400`=last 24 hours, `r43200`=last 12 hours, `r604800`=last week. For a scan you run daily, `r86400` is right. For a twice-daily scan, `r43200`.
+**`f_TPR` time windows:** `r86400`=last 24 hours, `r43200`=last 12 hours, `r604800`=last week. Match it to how often the user scans. Scans here run when the user asks, often a few times a week, so `r604800` (last week) is the default; use `r86400` for someone who scans every morning.
 
 **`f_WT` work types:** `1`=Onsite, `2`=Remote, `3`=Hybrid. Comma-join for multiple (`f_WT=2,3`). Omit the parameter entirely to include all.
 
@@ -36,7 +36,7 @@ Append these parameters, joined with `&`:
 A senior PM, NYC metro, remote-or-hybrid, looking at the last 24 hours, newest first:
 
 ```
-https://www.linkedin.com/jobs/search/?keywords=product%20manager&location=New%20York%2C%20New%20York%2C%20United%20States&f_E=4,5,6&f_WT=2,3&f_TPR=r86400&sortBy=DD
+https://www.linkedin.com/jobs/search/?keywords=product%20manager&location=New%20York%2C%20New%20York%2C%20United%20States&f_E=4&f_WT=2,3&f_TPR=r604800&sortBy=DD
 ```
 
 Confirm the assembled URL with the user before saving. If you want to be sure it's valid, you can open it in the browser during setup and check that real results load.

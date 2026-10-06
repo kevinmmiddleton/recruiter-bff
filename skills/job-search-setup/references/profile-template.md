@@ -12,7 +12,7 @@ Fill in what's known. Mark anything not captured yet as `(not set yet)`, so othe
 # Job Search Profile
 
 _Last updated: YYYY-MM-DD_
-_Preferences page: job-search/preferences.md (or "not built yet")_
+_Preferences page: job-search/preferences.md (or "not built yet," with "offered YYYY-MM-DD" once it's been offered)_
 
 ## Search Targets
 
@@ -23,6 +23,11 @@ _Preferences page: job-search/preferences.md (or "not built yet")_
 - **Won't work in:** fully on-site roles; anywhere outside the New York metro unless remote
 - **Pay (base):** floor $170,000 · comfortable $185,000 · ideal $200,000+
 - **Unlisted pay:** neutral. Most postings don't list it, so it never counts against a role.
+
+## Company
+
+- **Size:** 50 to 2,000 people
+- **Stage and ownership:** Series B or later, or public
 
 ## Signals
 
@@ -85,10 +90,11 @@ Outcome first, then how, then scope. Both ends of every number.
 - **Phrases I like:** framings the user has tested and approved
 - **Be upfront about:** a gap, a title mismatch, a pivot, or "nothing"
 - **What I say when asked about pay:** the user's own line, in their words, or "(not set yet)"
+- **Current LinkedIn headline:** as it reads today, or "(not set yet)"
 
 ## Reminders
 
-- **Days and time:** e.g., Mon, Wed, Fri at 8:30am, or "none"
+- **Days and time:** e.g., Mon, Wed, Fri at 8:30am; "none (offered YYYY-MM-DD)"; or "(not offered yet)"
 ```
 
 ---
@@ -108,6 +114,7 @@ Outcome first, then how, then scope. Both ends of every number.
 - **Temporary blocks** carry a reason and a revisit date: "Acme: hiring freeze, revisit January," or a cooling-off period after a rejection when the same role keeps getting reposted. The named-companies list grows over time; append, don't replace.
 - **Direct reports** the user doesn't want: flag the role and let them decide; don't skip it automatically.
 - **Company types** default to excluding staffing firms and aggregators that repost roles. The user can turn that off.
+- **Company size and stage** shape the fit check's company score and the scan's ranking. A size or stage the user dislikes is a soft warning unless they call it a dealbreaker.
 - **Proof points** come from the resume first. Never invent a number: if the resume says "improved conversion," write that and mark the number as a gap to fill, like `[from ?% to ?%]`.
 - **Pay line:** this is what the user has decided to say. Skills can remind them of it; they never say it for the user.
 - **Reminders** are set up by `job-search-automation`; this records what the user chose.

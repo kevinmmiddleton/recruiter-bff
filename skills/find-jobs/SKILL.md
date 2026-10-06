@@ -51,6 +51,8 @@ This sees what the user would see, using the session they already have. It never
 
 No browser, or the browser hit a wall: give the user their saved-search link, ask them to open it and paste the results (or the whole page) back. Never let a missing browser stop the scan.
 
+Pasted results often have no links. Leave the link blank (never make one up), say once that the paste had no links, and ask the user to copy a role's address when they open it, so the tracker can keep it.
+
 ### Company job site searches (alongside either)
 
 If the profile has company job site searches (Google searches limited to Ashby, Greenhouse, Lever, and similar, with recency built into the link), run them too: open each in the user's browser and read the results, or hand over the link to click and paste back. Tag these `ats-board`. If the links are missing or stale, `../job-search-setup/references/ats-search-links.md` explains how to build them.
@@ -107,7 +109,7 @@ watchlist ✓ 4 of 5 companies (Acme's feed didn't respond).
 
 [STRONG] Fernhill: Senior Product Manager, Growth
   New York (hybrid) · $175k to $205k · posted 2 days ago
-  Why it fits: growth role at a consumer subscription company, your strong signal
+  Why it fits: a growth role, your strong signal; the range clears your floor
   <url>
 
 [INCLUDE] Northstar Learning: Senior PM, Retention · New role at a company you know
@@ -121,15 +123,19 @@ Hid 6: 2 staffing firms, 2 wrong level, 1 on-site only, 1 already tracked.
 
 - **The source-health line is never skipped.** A source that failed, timed out, or hit a login says so, and a source that returned zero results says "0 results," so the user can tell a quiet day from a broken search. Say it louder, in its own line, when fewer than half the sources worked, when a logged-in source keeps returning nothing (the login has probably expired), or when saving to the tracker failed.
 - **Carry each role's real source** (`linkedin`, `ats-board`, `watchlist`, `pasted`) into the tracker. It's what later shows which sources lead to interviews.
-- **"Why it fits"** is one specific line naming the signal it hit, never a generic compliment. Add any flag after it: a weak signal ("heads-up: contract-to-hire"), a parked lane, an unknown company, pay that starts below the floor.
+- **"Why it fits"** is one specific line naming the signal it hit, never a generic compliment. Use only what the card, the posting, or the user said. Don't describe a company you can't verify ("a consumer subscription company") unless the listing says so; if it matters and you can't tell, say that instead ("I can't tell what Tallyho does; check before you spend time"). Add any flag after it: a weak signal ("heads-up: contract-to-hire"), a parked lane, an unknown company, pay that starts below the floor.
 - **Posting age** goes on every card when you know it. Very old postings (about 60 days or more) get a short flag: "posted 9 weeks ago, may be stale." Flag, don't hide.
 - If the user knows someone at a company (from `job-search/contacts.csv`, if it exists), add: "You know Priya Shah there."
 
-## Step 7: Offer next steps
+## Step 7: One next step
+
+Make **one** offer per message. Usually it's the tracker:
 
 > "Want me to add the strong ones to your tracker?"
 
-On yes, hand the chosen roles to `application-tracker` to add as prospects. That's also what keeps future scans from showing them again.
+On yes, hand the chosen roles to `application-tracker` to add as prospects. That's also what keeps future scans from showing them again. Don't stack other offers (the preferences page, reminders) into the same message; they come at a quieter moment.
+
+**Who you know there.** If there's no `job-search/contacts.csv` but a LinkedIn connections export (`Connections.csv`) is in the Cowork folder, and it's never been offered, add one line to the next scan instead of the tracker offer: "Your LinkedIn export is in your folder. Want me to check who you know at these companies?" (That's the `contacts` skill.)
 
 For a role the user is seriously considering, offer the fit check: `evaluate-role` reads the whole posting, checks it's still open, and gives a scored apply-or-skip answer.
 

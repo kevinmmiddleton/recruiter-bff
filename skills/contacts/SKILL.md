@@ -30,7 +30,7 @@ Most hires come through people, not job boards. This skill helps the user see wh
 
 1. If there's no export in the folder yet, walk the user through downloading it (steps in the schema file; about 10 minutes, done by them on LinkedIn).
 2. Run the import. It reads `Connections.csv`, matches people to companies the user is pursuing (open rows in the tracker and the watchlist), and adds only those people, as `never-spoke`.
-3. Go through the matches company by company: "At Fernhill you're connected to Priya Shah, a talent partner, and Marco Diaz, VP of Product. Do you know either of them?" Set closeness from the answers.
+3. Show any near misses the import listed (a company name that starts the same, like "Fernhill Partners" for Fernhill) and ask whether they're the same company. Then go through the matches company by company: "At Fernhill you're connected to Priya Shah, a senior talent partner, and Marco Diaz, a director of product design. Do you know either of them?" Set closeness from the answers.
 4. Re-run it when the tracker grows. It never adds the same person twice.
 
 People's titles in the export are whatever they last put on LinkedIn, so they can be out of date. Say so when it matters.
@@ -60,11 +60,12 @@ Pace it: about one referral ask a day is plenty, and better than ten in an after
 Every contact gets at most one next move. Pick the first that applies:
 
 1. **Reply:** they reached out and are waiting.
-2. **Follow up:** there's an active interview process at their company.
-3. **Ask for an intro:** there's no direct line, but a mutual contact could introduce the user (the draft goes to the mutual).
-4. **Ask for a referral** or **nudge:** the user applied there and knows them, or they're the recruiter.
-5. **Keep warm:** they matter to the user's career, including after a rejection from their company.
-6. **Thank:** they helped, and haven't been thanked yet.
+2. **Follow up:** they're part of an active process: the recruiter, or someone the user has met in the interviews.
+3. **Ask for a referral or a good word:** the user knows them at least `friendly` and has applied there. Before a referral, it's "would you refer me?"; once the user is interviewing, it's "could you put in a good word, or tell me how the team works?"
+4. **Nudge:** they're the recruiter and the user applied but hasn't heard back.
+5. **Ask for an intro:** there's no direct line, but a mutual contact could introduce the user (the draft goes to the mutual).
+6. **Keep warm:** they matter to the user's career, including after a rejection from their company.
+7. **Thank:** they helped, and haven't been thanked yet.
 
 Never nudge a hiring manager or recruiter about a role they rejected the user from.
 
