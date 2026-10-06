@@ -95,7 +95,7 @@ After the user logs an interview (or finishes a debrief), offer once: "Want than
 
 When the user asks for a weekly review, or "how's my search going," read the whole file and report like a coach:
 
-1. **This week:** applications sent, processes that moved forward, rejections, what's coming up (with dates).
+1. **This week:** applications sent, processes that moved forward, rejections, what's coming up (with dates), and, if `job-search/contacts.csv` exists, conversations held and messages sent (from `last_contact` dates). Keep scheduling conversations even in busy interview weeks, so the next week isn't empty.
 2. **Open loops:** every active process with its next step, and anything the user promised to send (look in `notes` for promised follow-ups and in the company folders for unsent drafts).
 3. **Where things stall:** count `furthest_stage` across finished rows. "Most of your finished processes ended after the recruiter screen" is useful. Only say it when there are enough rows to mean something (about 8 or more).
 4. **By source:** which sources produced screens and interviews (from `source` and `furthest_stage`), so the user can spend time where it pays off. If a source never produces anything after a few weeks, say so once.
