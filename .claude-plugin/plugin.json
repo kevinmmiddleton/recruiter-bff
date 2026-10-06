@@ -1,10 +1,10 @@
 {
-  "name": "job-search-agent",
-  "version": "0.3.0",
+  "name": "recruiter-bff",
+  "version": "0.4.0",
   "license": "MIT",
-  "description": "A lightweight, on-demand job search toolkit. Set up a reusable saved search plus recency-filtered Google searches across company ATS boards, scan for matching roles using your own logged-in browser or public ATS feeds, score any posting against your profile with an apply-or-skip verdict, track applications in a local file, and generate role-specific interview guides with a reusable story bank. No servers, no scrapers, no always-on machine required.",
+  "description": "A recruiter that works for you. Role-specific interview guides with a reusable story bank, an apply-or-skip score for any posting, on-demand scans for fresh roles from your own browser or public company job feeds, and a tracker in a plain file you own. No servers, no scrapers, no always-on machine. Formerly Job Search Agent.",
   "author": {
     "name": "Kevin Middleton"
   },
-  "keywords": ["job search", "career", "applications", "interview", "product management", "recruiting", "on-demand"]
+  "keywords": ["job search", "career", "applications", "interview", "interview prep", "product management", "recruiting", "on-demand"]
 }

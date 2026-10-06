@@ -1,6 +1,13 @@
-![Job Search Agent. Turn Claude into your job search assistant.](https://github.com/kevinmmiddleton/job-search-agent/raw/main/banner.svg)
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/kevinmmiddleton/recruiter-bff/raw/main/assets/brand/svg/recruiter-bff-horizontal-white.svg">
+    <img src="https://github.com/kevinmmiddleton/recruiter-bff/raw/main/assets/brand/svg/recruiter-bff-horizontal.svg" alt="Recruiter BFF. A recruiter that works for you." width="300">
+  </picture>
+</p>
 
-# Job Search Agent
+# Recruiter BFF
+
+A recruiter that works for you. *Formerly Job Search Agent.*
 
 A lightweight, on-demand job search toolkit for Cowork. No servers, no scrapers, no always-on machine. Everything runs when you ask it to, from a normal laptop.
 
@@ -17,11 +24,13 @@ If you've ever seen a "job search automation" setup that needs a dedicated compu
 
 ## Install
 
-Download the plugin: **[job-search-agent.plugin](https://github.com/kevinmmiddleton/job-search-agent/releases/latest/download/job-search-agent.plugin)**
+Download the plugin: **[recruiter-bff.plugin](https://github.com/kevinmmiddleton/recruiter-bff/releases/latest/download/recruiter-bff.plugin)**
 
 Then open Cowork and drag the file into the window, or go to **Settings → Capabilities → Install plugin** and select it.
 
 That's the whole install. The six skills below will be available the next time you start a conversation.
+
+**Switching from Job Search Agent?** Uninstall Job Search Agent first, then install Recruiter BFF. Your `job-search/` folder stays exactly where it is, and Recruiter BFF picks it right back up. (With both installed, both answer "scan for jobs.")
 
 ## First-time setup
 

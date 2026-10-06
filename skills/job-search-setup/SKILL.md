@@ -3,7 +3,7 @@ name: job-search-setup
 description: >
   Onboards a user's job search and builds a reusable saved search. Use when the user
   says "set up my job search," "help me start a job search," "what should I search for,"
-  "set up my search," "build my saved search," or when another job-search-agent skill
+  "set up my search," "build my saved search," or when another Recruiter BFF skill
   reports that no profile exists yet. Also use when the user says "update my job profile,"
   "change my search," "edit my preferences," or "add a company to my skip list." Captures
   target roles, location, comp floor, dealbreakers, and background once, then saves a

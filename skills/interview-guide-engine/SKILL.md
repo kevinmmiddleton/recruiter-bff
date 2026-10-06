@@ -16,7 +16,7 @@ Generate interview guides that help the user walk into any conversation with a c
 
 ## Profile: read the shared profile first
 
-This skill shares one profile with the rest of the Job Search Agent plugin: `job-search/profile.md` in the user's Cowork folder.
+This skill shares one profile with the rest of the Recruiter BFF plugin: `job-search/profile.md` in the user's Cowork folder.
 
 1. Read `job-search/profile.md`.
 2. If it doesn't exist, run `job-search-setup` first (it captures the same background fields, so the user never answers twice).

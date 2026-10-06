@@ -1,6 +1,6 @@
 # Job Search Profile — Template
 
-This is the shared profile for the Job Search Agent plugin. It lives at `job-search/profile.md` in the user's Cowork folder. Every skill in the plugin reads it: `find-jobs` uses the search section, `application-tracker` uses the strong-fit signals for scoring, and `interview-guide-engine` uses the background section.
+This is the shared profile for the Recruiter BFF plugin. It lives at `job-search/profile.md` in the user's Cowork folder. Every skill in the plugin reads it: `find-jobs` uses the search section, `application-tracker` uses the strong-fit signals for scoring, and `interview-guide-engine` uses the background section.
 
 Fill in what's known. Mark anything not yet captured as `(not set yet)` so other tools can tell the difference between "empty on purpose" and "not asked yet."
 
