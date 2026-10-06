@@ -119,13 +119,16 @@ The tracker is already a CSV, so it opens in Excel, Numbers, or Google Sheets as
 
 End with at most one offer. If several apply, pick the first that fits:
 
-1. Anything time-sensitive: thank-you notes the same day, a reply someone is waiting on.
-2. The next step for what the user just did: add it to the tracker, run a fit check, practice for the round.
-3. Checking the user's LinkedIn export for people they know.
-4. The preferences page.
-5. Reminders.
+1. **Anything time-sensitive:** thank-you notes the same day, a reply someone is waiting on.
+2. **Someone to ask before applying:** after a fit check that says apply, if the user knows someone there (from `contacts.csv`), offer the referral note; if there's no `contacts.csv` but a LinkedIn export is in the folder, offer to check it. A referral matters most before the application goes in.
+3. **The obvious next step for what the user just did:** after a scan, adding matches to the tracker; after a fit check, adding the role to the tracker (once per role; skip it if the role is already tracked); after a booked round, a practice run.
+4. **Checking the user's LinkedIn export** for people they know, in general.
+5. **The preferences page.**
+6. **Reminders.**
 
-Before offering 3, 4, or 5, check the **Offered** section of `job-search/profile.md` and skip anything already offered; when you offer one, add a dated line there. Saying a fact ("this read uses your profile alone") isn't an offer.
+Logging an application or a status change has no next step of its own. That reply is the quiet moment for 4, 5, and 6.
+
+Before offering 4, 5, or 6, check the **Offered** section of `job-search/profile.md` and skip anything already offered; when you offer one, add a dated line there. For reminders, also skip them if the profile's Reminders status is anything other than "(not set yet)." Saying a fact ("this read uses your profile alone") isn't an offer.
 
 ## Principles
 

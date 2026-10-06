@@ -34,8 +34,10 @@ If there's no preferences page, don't wait for one. The page is a possible offer
 
 Rewrite each bullet as **outcome, then how, then scope**: "[outcome, measured by a metric] by [how], for [scope: users, team, budget, markets]." An outcome with no context ("increased margins 1%") doesn't say what skill it shows.
 
-> Before: "Responsible for onboarding and paywall experiments."
-> After: "Raised trial-to-paid conversion from 9% to 13% over 18 months by running 40+ onboarding and paywall tests with a team of 6."
+> Before: "Responsible for checkout improvements."
+> After: "Cut checkout drop-off from 32% to 21% in two quarters by redesigning the address step, for a store with 2 million monthly shoppers."
+
+Keep each fact with the accomplishment it belongs to: a team size or a timeframe from one bullet doesn't move to another.
 
 - **No "responsible for," "helped with," or "worked on"** as the main verb. Use the strongest verb the user could defend if an interviewer said "walk me through it." If they helped, say helped; "led" has to be true.
 - **Both ends of the number, so nobody does arithmetic:** the multiple as the headline, the endpoints beside it: "about 50x lift (0.1% to as high as 7.3%)." Then the parts behind it if there are several. "As high as" reads honest; "at peak" reads cherry-picked. When it comes up out loud, volunteer the settled number too: "it peaked at 7.3% and settled around 5."
@@ -105,13 +107,16 @@ When the user edits a draft, notice what they changed: what they cut, what they 
 
 End with at most one offer. If several apply, pick the first that fits:
 
-1. Anything time-sensitive: thank-you notes the same day, a reply someone is waiting on.
-2. The next step for what the user just did: add it to the tracker, run a fit check, practice for the round.
-3. Checking the user's LinkedIn export for people they know.
-4. The preferences page.
-5. Reminders.
+1. **Anything time-sensitive:** thank-you notes the same day, a reply someone is waiting on.
+2. **Someone to ask before applying:** after a fit check that says apply, if the user knows someone there (from `contacts.csv`), offer the referral note; if there's no `contacts.csv` but a LinkedIn export is in the folder, offer to check it. A referral matters most before the application goes in.
+3. **The obvious next step for what the user just did:** after a scan, adding matches to the tracker; after a fit check, adding the role to the tracker (once per role; skip it if the role is already tracked); after a booked round, a practice run.
+4. **Checking the user's LinkedIn export** for people they know, in general.
+5. **The preferences page.**
+6. **Reminders.**
 
-Before offering 3, 4, or 5, check the **Offered** section of `job-search/profile.md` and skip anything already offered; when you offer one, add a dated line there. Saying a fact ("this read uses your profile alone") isn't an offer.
+Logging an application or a status change has no next step of its own. That reply is the quiet moment for 4, 5, and 6.
+
+Before offering 4, 5, or 6, check the **Offered** section of `job-search/profile.md` and skip anything already offered; when you offer one, add a dated line there. For reminders, also skip them if the profile's Reminders status is anything other than "(not set yet)." Saying a fact ("this read uses your profile alone") isn't an offer.
 
 ## Principles
 

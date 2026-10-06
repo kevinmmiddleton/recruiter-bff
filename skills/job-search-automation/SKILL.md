@@ -79,7 +79,8 @@ Write a short check-in, plain text, in this order, skipping empty sections:
 
 If sections 1 to 4 are all empty, write "Nothing due today." and then section 5.
 Use real dates with weekdays (Tue Oct 13), never "next week." No more than about 15 lines.
-End by offering to draft any follow-up the user wants.
+If section 2 or 4 has anything, end with one offer: to draft those messages. Otherwise end
+with section 5.
 ```
 
 ### Changing or stopping

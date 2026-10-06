@@ -38,15 +38,15 @@ From read one, every requirement traced to a line in the background.
 
 ### Logistics (15%)
 
-- **5:** location and work mode inside the rules; listed pay at or above comfortable
-- **4:** inside the rules; pay unlisted, or listed between floor and comfortable
+- **5:** location and work mode inside the rules; the listed range reaches the comfortable number
+- **4:** inside the rules; pay unlisted, or the range tops out between the floor and comfortable
 - **3:** workable with a compromise the user said they'd consider
 - **2:** conflicts with a stated rule (hybrid in a city they ruled out)
 - **1:** breaks a hard rule (on-site only where they won't work; listed range entirely below the floor)
 
 ### Company signals (10%)
 
-- **5:** a subject they'd care about every day, and the size, stage, and ownership they want
+- **5:** a subject they'd care about every day, and the size, stage, and ownership they want. With no preferences page, use the profile's industries and strong signals for the subject, and don't go above 4.5 on a subject the user hasn't confirmed.
 - **4:** neutral to positive; nothing they've ruled out
 - **3:** no information either way
 - **2:** near something they've ruled out, or a size or ownership type they said they dislike

@@ -44,7 +44,7 @@ Staffing firms post roles on behalf of unnamed clients; aggregators repost other
 
 **Block by full name, never by a shared word;** a staffing firm can share a word with a real employer. **Don't block discovery sources** like LinkedIn, Indeed, ZipRecruiter, or Built In: they're where roles are found, not who's hiring.
 
-If a role from an aggregator looks strong, don't throw the job away: look for the same role on the hiring company's own site and show that version instead.
+If a role from an aggregator looks strong, don't throw the job away: look for the same role on the hiring company's own site and show that version instead. If you can't search (no web access) or the employer isn't named, keep it hidden but mention it in one line with its title, so the user can look for the original.
 
 ## Level from titles
 

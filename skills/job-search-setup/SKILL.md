@@ -39,7 +39,7 @@ Ask for the resume first: "Paste your resume, or tell me which file in your fold
 From the resume, draft:
 
 - **Background:** current or most recent title, years of experience, a two-sentence career arc.
-- **Proof points:** the 3 to 6 strongest accomplishments, each written outcome first, then how, then scope, with both ends of any number ("trial-to-paid conversion from 9% to 13% across 40+ tests, with a team of 6"). Where the resume gives no number, keep the outcome in words and add a placeholder.
+- **Proof points:** the 3 to 6 strongest accomplishments, each written outcome first, then how, then scope, with both ends of any number ("checkout drop-off from 32% to 21%, by redesigning the address step, for a 2-million-user store"). Keep each fact with the accomplishment the resume ties it to; a team size from one bullet doesn't belong on another. Where the resume gives no number, keep the outcome in words and add a placeholder.
 - **Likely target titles,** from the arc and the most recent role.
 - **Lead-with guidance:** which proof points to put first for which kinds of roles.
 
@@ -84,7 +84,7 @@ On yes, hand off to `find-jobs`.
 
 ## Step 5: The preferences page (offer it once, on its own)
 
-Offer the shareable page once, at a quiet moment: in a message that has no other offer (after logging an application is a good one), or when the user asks what to do next. Check the profile's **Offered** section first, and add "Preferences page: YYYY-MM-DD" when you offer it, so no skill offers it twice. If the user asks for it, build it any time.
+Offer the shareable page once, at a quiet moment, following "Ending a reply" (logging an application is the usual one), or when the user asks what to do next. Check the profile's **Offered** section first, and add "Preferences page: YYYY-MM-DD" when you offer it, so no skill offers it twice. If the user asks for it, build it any time.
 
 > "One more thing worth doing this week, when you have half an hour: a one-page 'what I want next' you can share with people who can help. It ends with one sentence that makes it easy for anyone to keep an eye out for you. Scans work fine without it, and they get sharper with it."
 
@@ -108,13 +108,16 @@ For a one-field change (raise the floor, add a skip-list company, add an excepti
 
 End with at most one offer. If several apply, pick the first that fits:
 
-1. Anything time-sensitive: thank-you notes the same day, a reply someone is waiting on.
-2. The next step for what the user just did: add it to the tracker, run a fit check, practice for the round.
-3. Checking the user's LinkedIn export for people they know.
-4. The preferences page.
-5. Reminders.
+1. **Anything time-sensitive:** thank-you notes the same day, a reply someone is waiting on.
+2. **Someone to ask before applying:** after a fit check that says apply, if the user knows someone there (from `contacts.csv`), offer the referral note; if there's no `contacts.csv` but a LinkedIn export is in the folder, offer to check it. A referral matters most before the application goes in.
+3. **The obvious next step for what the user just did:** after a scan, adding matches to the tracker; after a fit check, adding the role to the tracker (once per role; skip it if the role is already tracked); after a booked round, a practice run.
+4. **Checking the user's LinkedIn export** for people they know, in general.
+5. **The preferences page.**
+6. **Reminders.**
 
-Before offering 3, 4, or 5, check the **Offered** section of `job-search/profile.md` and skip anything already offered; when you offer one, add a dated line there. Saying a fact ("this read uses your profile alone") isn't an offer.
+Logging an application or a status change has no next step of its own. That reply is the quiet moment for 4, 5, and 6.
+
+Before offering 4, 5, or 6, check the **Offered** section of `job-search/profile.md` and skip anything already offered; when you offer one, add a dated line there. For reminders, also skip them if the profile's Reminders status is anything other than "(not set yet)." Saying a fact ("this read uses your profile alone") isn't an offer.
 
 ## Principles
 
