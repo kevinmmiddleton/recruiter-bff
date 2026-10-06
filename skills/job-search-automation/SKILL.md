@@ -1,55 +1,117 @@
 ---
 name: job-search-automation
 description: >
-  Explains how to make the job scan run on its own, and helps set it up. Use when the user
-  says "automate my job search," "can this run automatically," "schedule my scan," "run this
-  every morning," "do this on a schedule," "set up automation," or asks what it would take to
-  build a real always-on pipeline. Covers two tiers: a Cowork scheduled task (no hardware) and
-  a full self-hosted pipeline (the serious build). Offers to set up the scheduled task; explains
-  the rest honestly, including the tradeoffs.
+  Sets up reminders and scheduled scans, and explains what a fully automatic job search would
+  take. Use when the user says "remind me," "check in with me on Mondays," "set up reminders,"
+  "change my reminders," "stop my reminders," "automate my job search," "can this run
+  automatically," "schedule my scan," "run this every morning," or asks what it would take to
+  build an always-on pipeline. Covers reminders on the user's chosen days (reliable, reads only
+  their files), a scheduled scan (convenient, with a catch), and the serious self-hosted build.
 ---
 
 # Job Search Automation
 
-Help the user decide how hands-off they want their search to be, then either set up the lightweight option or explain what the serious build takes. Be honest about the tradeoffs — automation here has a real catch, and the user should hear it before committing.
+Help the user decide how hands-off they want their search to be, set up what fits, and be honest about the limits before they rely on it.
 
-There are two tiers. Most people want Tier 1. Tier 2 is a genuine engineering project.
+Three options, from most reliable to most ambitious:
 
-## Tier 1 — Cowork scheduled task (no hardware)
+1. **Reminders on your days.** A check-in on the days and time the user picks. It reads only their files, so it works every time it runs. Most people should start here.
+2. **A scheduled scan.** Cowork runs the job scan on a schedule. Convenient, with a real catch.
+3. **A self-hosted pipeline.** An always-on machine that scans and texts matches. A genuine engineering project.
 
-Cowork can run a task on a schedule without you asking. This is the lightweight way to "automate" the scan: tell Cowork to run your job search every weekday morning and review what it found.
+## Never
 
-### How to set it up
+- Never create a scheduled task without a clear yes and confirmed days and time.
+- Never let a scheduled task apply to anything, send anything, or contact anyone. Reminders and digests only.
+- Never promise a schedule fires when it can't. Say how it really runs.
 
-If the user wants it, use the scheduled-tasks tool to create a task. A good default:
+## How schedules run (say this every time you set one up)
 
-- **Cadence:** weekdays at 8am (cron `0 8 * * 1-5`), or whatever they prefer.
-- **Prompt for the task:** something like *"Run my job scan: load my job-search profile, pull my saved search, filter and dedupe against my tracker, and give me a short digest of new matches (strong first). Don't apply to anything."*
+Scheduled tasks run while the Claude desktop app is open. If the app is closed when one is due, it runs the next time the app opens. So "Monday at 8:30" really means "Monday at 8:30 if Claude is open, or as soon as you open it after that."
 
-Confirm the cadence with the user before creating it. After it's set, tell them they can change or cancel it anytime ("reschedule my job scan," "stop my job scan").
+## 1. Reminders on your days
 
-### The honest catch
+### What a reminder covers
 
-The default scan reads results from the user's **logged-in browser**. A scheduled task that fires while the user is away may not have an interactive browser session to drive — so the live-browser scan can fail or come back empty when run unattended. Be upfront about this. Options that work better for unattended runs:
+- **Coming up:** interviews and deadlines in the next 7 days (from the tracker's `next_date`), each with its date, weekday, and the path to its interview guide if one exists.
+- **Follow-ups due:** active processes (screening, interview, final, offer) that have gone quiet, using the tracker's ladder: nudge at 7 to 13 days, chase or close at 14 to 29, "mark ghosted?" at 30 or more. Cold applications never appear here.
+- **Roles you meant to apply to:** prospects scored 4 or higher, added in the last 14 days, not yet applied to or skipped.
+- **Fresh roles:** the user's one-click company job site search links from the profile, plus a line: "Say 'scan for jobs' when you're at your computer to check your saved search too."
 
-- **Use a public saved-search URL** (no login required) so the scan can read it without the user's session. LinkedIn's public job search works this way.
-- **Use the ATS Board Searches** (the Google `site:` dork links from setup). These are public Google searches with recency baked into the URL — no login at all, so they're the most reliable unattended source, and they only ever show fresh roles. A scheduled task can open them, read the results, and digest the new ones; or, lowest-effort, just re-send the one-click links as a "time to check" nudge (the links never go stale, so the same link always shows what's new).
-- **Treat the scheduled run as a prompt, not a scrape.** The task can assemble a "time to scan" digest and remind the user to run the live scan themselves when they're at the machine. Lower effort, still useful.
-- **Accept partial reliability.** If the browser session happens to be available, great; if not, the user runs it manually. Fine for many people.
+If nothing is due, the reminder is one line plus the fresh-role links. Keep it short enough to read on a phone in 20 seconds.
 
-Recommend the public approaches — the ATS Board Searches and a public saved-search URL — for anyone who wants the schedule to actually fire on its own. Set expectations: this is convenience scheduling, not a guaranteed unattended scraper. For that, you need Tier 2.
+### Setting it up
 
-## Tier 2 — Full self-hosted pipeline (the serious build)
+1. Ask which days and what time. Offer a sensible default: weekdays at 8:30am, or Monday, Wednesday, and Friday.
+2. Turn it into a cron expression in the user's local time: weekdays at 8:30 is `30 8 * * 1-5`; Mon, Wed, Fri at 8:30 is `30 8 * * 1,3,5`.
+3. Find the full path to the user's `job-search/` folder. The task starts fresh each time with no memory of this conversation, so the prompt must name the folder.
+4. Create the task with the scheduled-tasks tool, using the prompt below with the path and the user's name filled in. Title it something the user will recognize, like "Job search check-in."
+5. Record the days and time in the Reminders section of `job-search/profile.md`.
+6. Tell the user: when it runs, how schedules really run (above), and that they can say "change my reminders" or "stop my reminders" anytime.
 
-For someone who wants scans to run twice a day, every day, untouched — classifying results with a model and texting them the matches — that's a real always-on system. It's the difference between "Cowork reminds me and helps when I'm there" and "a machine does it whether I'm there or not."
+**Task prompt** (fill in the bracketed parts):
 
-Don't try to build this inside Cowork. Instead, when the user asks what it would take, walk them through the blueprint in `references/full-pipeline-blueprint.md`. It covers the components, the rough effort, the ongoing cost, and the maintenance reality — drawn from a working production system. Summarize the shape of it, then offer the full blueprint if they're serious.
+```
+Job search check-in for [name]. Their files are in [full path to job-search/].
 
-The one-line version: a dedicated always-on computer runs a scheduled script that fetches the board with a headless browser, classifies each role with a cheap LLM API call against your saved preferences, dedupes against a running list, and pushes matches to you (text/email/Slack) plus a tracker. Roughly $1–2/month in API cost, a weekend or two to build, and ongoing upkeep when the job board changes its HTML.
+Read applications.csv and profile.md there. Do not change any file, apply to anything,
+send anything, or contact anyone. Today's date and weekday come from the system.
+
+Write a short check-in, plain text, in this order, skipping empty sections:
+
+1. Coming up (next 7 days): rows whose next_date falls within 7 days. For each: weekday and
+   date, company, role, what it is (from status and the latest notes line), and the path
+   interviews/<company>/guide.md if that file exists.
+2. Follow-ups due: rows with status screening, interview, final, or offer, whose next_date is
+   blank or in the past, and whose last_update is 7 or more days ago. Say "nudge" for 7 to 13
+   days, "chase or close" for 14 to 29, "mark ghosted?" for 30 or more. Never include rows
+   with status applied.
+3. Roles you meant to apply to: status prospect, score 4 or higher, date_added within the
+   last 14 days.
+4. Fresh roles: copy the links from the "Company Job Site Searches" section of profile.md,
+   then add: "Say 'scan for jobs' when you're at your computer to check your saved search too."
+
+If sections 1 to 3 are all empty, write "Nothing due today." and then section 4.
+Use real dates with weekdays (Tue Oct 13), never "next week." No more than about 15 lines.
+End by offering to draft any follow-up the user wants.
+```
+
+### Changing or stopping
+
+"Change my reminders": list the user's scheduled tasks, find the check-in, and update its schedule (or prompt) after confirming the new days and time. "Stop my reminders": find it and disable or delete it after confirming. Update the profile's Reminders section either way.
+
+## 2. A scheduled scan
+
+Cowork can also run the scan itself on a schedule: load the profile, pull the saved search, filter and check against the tracker, and give a digest of new matches.
+
+**The catch, stated plainly:** the scan reads LinkedIn through the user's own logged-in browser. A task that runs while they're away may not have a browser it can drive, so that part can fail or come back empty. What works better unattended:
+
+- **The company job site searches** from setup are public Google searches with recency built into the URL. No login, so they're the most reliable unattended source.
+- **The watchlist** reads public job feeds directly, no browser needed.
+- **Or treat the run as a nudge:** the task sends the links and reminds the user to run the full scan when they're at their computer. For most people, reminders (option 1) already do this.
+
+If they still want it, set it up like a reminder: confirm days and time, then create a task with a self-contained prompt such as:
+
+```
+Run a job scan for [name]. Their files are in [full path to job-search/]. Read profile.md and
+applications.csv. Check the company job site searches and the companies to watch in
+profile.md, filter the results against the profile's targets and exclusions, drop roles
+already in applications.csv, and write a short digest of new matches, strongest first, each
+with company, role, location, one line on why it fits, and the link. If a source fails, say
+which one. Do not apply to anything, send anything, or change any file.
+```
+
+## 3. A self-hosted pipeline
+
+For someone who wants scans twice a day, every day, untouched, with matches texted to them, that's a real always-on system. It's the difference between "Claude reminds me and helps when I'm there" and "a machine does it whether I'm there or not."
+
+Don't build this inside Cowork. When the user asks what it would take, summarize the blueprint in `references/full-pipeline-blueprint.md`: the parts, the effort, the cost, and the upkeep. Offer the full blueprint if they're serious.
+
+The one-line version: an always-on computer runs a scheduled script that loads the job board in a headless browser, classifies each role with a cheap model call against the user's preferences, checks it against a running list, and sends matches by text or email, plus a tracker. Roughly $1 to $2 a month in model costs, a weekend or two to build, and ongoing upkeep when the job board changes its pages.
 
 ## How to talk about this
 
-- **Lead with Tier 1.** It's what most people should do, and it's a two-minute setup.
-- **State the catch plainly.** The browser-session limitation is real; don't sell unattended reliability the lightweight tier can't deliver.
-- **Don't auto-create anything.** Offer to set up the scheduled task; create it only on a clear yes, with a confirmed cadence.
-- **Tier 2 is opt-in and serious.** Present it as a blueprint for the ambitious, not a recommendation. Be honest that it's an engineering project with real maintenance.
+- **Lead with reminders.** They're reliable and take two minutes.
+- **State how schedules run.** The app has to be open, and a missed run happens at the next launch.
+- **The scheduled scan is convenience, not a guarantee.** Say why.
+- **The self-hosted pipeline is opt-in and serious.** A blueprint for the ambitious, with real upkeep.

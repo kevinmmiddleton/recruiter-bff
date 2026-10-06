@@ -1,10 +1,10 @@
 # ATS Board Search Links (Google `site:` dorks)
 
-Most roles are posted directly on a company's ATS board (Ashby, Greenhouse, Lever, etc.) and never make it to LinkedIn — and those postings are far less contested. Google has indexed all of them. This builds the user a **one-click Google search, scoped to those boards and restricted to recent postings**, that surfaces fresh roles across every company at once.
+Lots of roles are posted directly on a company's job site (Ashby, Greenhouse, Lever, and others, often called ATS boards) and never make it to LinkedIn, and those postings get far fewer applicants. Google has indexed all of them. This builds the user a **one-click Google search, scoped to those boards and restricted to recent postings**, that surfaces fresh roles across every company at once.
 
 ## Why the browser, not an API
 
-Google's normal **web search** (in the user's browser) supports the `site:` operator, `OR`, and a recency filter (`tbs=qdr:`) — all for free, no key, no account, no billing. (Paid SERP APIs gate exactly these operators behind their paid tiers; don't send the user down that road. The browser does it for free and better.) This keeps the feature true to the plugin: no infrastructure, no credentials.
+Google's normal **web search** (in the user's browser) supports the `site:` operator, `OR`, and a recency filter (`tbs=qdr:`), all for free: no key, no account, no billing. (Paid SERP APIs gate exactly these operators behind their paid tiers; don't send the user down that road. The browser does it for free and better.) This keeps the feature true to the plugin: no infrastructure, no credentials.
 
 ## The ATS domains
 
@@ -47,11 +47,11 @@ https://www.google.com/search?q=%28site%3Ajobs.ashbyhq.com+OR+site%3Aboards.gree
 
 Build a small, labeled set from the profile and save them (see the profile template's **ATS Board Searches** section):
 
-- **Fresh — NYC (past week):** combined-boards link, titles + metro, `qdr:w`.
-- **Fresh — Remote (past week):** same, swap the metro for `remote`.
+- **Fresh, NYC (past week):** combined-boards link, titles + metro, `qdr:w`.
+- **Fresh, remote (past week):** same, swap the metro for `remote`.
 - *(optional)* a **daily** variant with `qdr:d` for someone checking every morning.
 
-Keep it to two or three links. They're personalized but evergreen — because recency is in the URL, the *same link* always shows only what's new. The user clicks; no regeneration needed.
+Keep it to two or three links. They're personalized but evergreen: because recency is in the URL, the *same link* always shows only what's new. The user clicks; no regeneration needed.
 
 ## Reading the results (for `find-jobs`)
 

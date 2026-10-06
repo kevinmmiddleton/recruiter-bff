@@ -4,7 +4,7 @@ A saved search is just a job-board URL with the user's filters baked in. Save it
 
 ## LinkedIn: build the URL from the user's answers
 
-LinkedIn's public job search reads filters from URL parameters, so you can assemble a working search link from the onboarding answers — the user never has to touch the site.
+LinkedIn's public job search reads filters from URL parameters, so you can assemble a working search link from the setup answers, and the user never has to touch the site.
 
 Base:
 
@@ -29,7 +29,7 @@ Append these parameters, joined with `&`:
 
 **`f_WT` work types:** `1`=Onsite, `2`=Remote, `3`=Hybrid. Comma-join for multiple (`f_WT=2,3`). Omit the parameter entirely to include all.
 
-**`sortBy`:** `DD`=date (newest first) — best for scanning. `R`=relevance.
+**`sortBy`:** `DD`=date (newest first), best for scanning. `R`=relevance.
 
 ### Worked example
 
@@ -45,7 +45,7 @@ Confirm the assembled URL with the user before saving. If you want to be sure it
 
 LinkedIn treats the keyword field as an OR-ish phrase match. To cover several titles, either:
 - keep `keywords` broad (`product%20manager`) and let the plugin's filtering catch level/title, or
-- save two searches — one broad, one narrow (e.g., `product%20lead`) — and scan both.
+- save two searches, one broad and one narrow (e.g., `product%20lead`), and scan both.
 
 ## Any other board: capture an existing search
 
@@ -55,7 +55,7 @@ For Indeed, Built In, Wellfound, Otta, a company careers page, or anything else:
 2. Have them copy the URL from the address bar once the results look right.
 3. Paste it in. Save it as the saved search.
 
-The scan doesn't care which board the URL points at — it reads whatever results that page shows. The only requirement is that the URL reliably reproduces the same filtered search.
+The scan doesn't care which board the URL points at. It reads whatever results that page shows. The only requirement is that the URL reliably reproduces the same filtered search.
 
 ## Saving
 

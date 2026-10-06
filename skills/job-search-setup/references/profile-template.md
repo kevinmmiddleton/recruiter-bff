@@ -1,8 +1,10 @@
-# Job Search Profile — Template
+# Job Search Profile: Template
 
-This is the shared profile for the Recruiter BFF plugin. It lives at `job-search/profile.md` in the user's Cowork folder. Every skill in the plugin reads it: `find-jobs` uses the search section, `application-tracker` uses the strong-fit signals for scoring, and `interview-guide-engine` uses the background section.
+The private profile for Recruiter BFF lives at `job-search/profile.md` in the user's Cowork folder. Every skill reads it. Scans use the targets, signals, and exclusions; the fit check uses all of it; interview guides and materials use the background.
 
-Fill in what's known. Mark anything not yet captured as `(not set yet)` so other tools can tell the difference between "empty on purpose" and "not asked yet."
+Its shareable partner is `job-search/preferences.md` (see `preferences-template.md`). Pay, the skip list, and searches stay here, private.
+
+Fill in what's known. Mark anything not captured yet as `(not set yet)`, so other skills can tell "empty on purpose" from "not asked yet."
 
 ---
 
@@ -10,85 +12,98 @@ Fill in what's known. Mark anything not yet captured as `(not set yet)` so other
 # Job Search Profile
 
 _Last updated: YYYY-MM-DD_
+_Preferences page: job-search/preferences.md (or "not built yet")_
 
 ## Search Targets
 
-- **Target titles:** Product Manager, Senior Product Manager, Product Lead, Group PM
-- **Seniority:** Senior, Staff/Principal, Lead/Director
+- **Target titles:** Senior Product Manager, Product Lead, Group Product Manager
+- **Seniority:** Senior, Staff or Principal, Lead
 - **Location:** New York metro
-- **Work mode:** Remote (US) or hybrid NYC
-- **Will not relocate to / work in:** (e.g., New Jersey onsite)
-- **Compensation floor (base):** $150,000
-- **Note on comp:** Most postings don't list it. Include unlisted-comp roles by default.
+- **Work mode:** remote (US) or hybrid in New York, up to 3 days in the office
+- **Won't work in:** fully on-site roles; anywhere outside the New York metro unless remote
+- **Pay (base):** floor $170,000 · comfortable $185,000 · ideal $200,000+
+- **Unlisted pay:** neutral. Most postings don't list it, so it never counts against a role.
 
-## Strong-Fit Signals (flag these as top-tier)
+## Signals
 
-- Enterprise / internal tools / platform
-- 0-to-1 product builds
-- Regulated industries (finance, healthcare, gov/civic)
-- AI tooling / LLM products
+- **Strong** (makes a role top-tier on its own): growth, retention, or lifecycle work; consumer subscription products
+- **Weak** (a plus, not enough on its own): consumer health; experimentation-heavy teams
+- **Parked** (interesting, not pursuing right now): Group PM roles with direct reports
+- **Pickiness:** strong plus maybe (show STRONG and INCLUDE) | strong only
 
-## Exclusions
+## Exclusions (exceptions written in)
 
-- **Role types / functions:** ML/Data-Science PM (AI tooling is OK), ad-tech PM, payments PM
-- **Industries:** (e.g., gambling, adult)
-- **Company types:** staffing/recruiting firms, advertising agencies
-- **Named companies to skip:** (your block list — add over time)
+- **Functions:** data science PM (but growth analytics is fine); ad-tech PM
+- **Industries:** crypto; gambling and sports betting
+- **Company types:** staffing and recruiting firms; job aggregators that repost other companies' roles
+- **Named companies to skip:** (add over time)
 
 ## Saved Searches
 
-- **Primary (broad):** <paste URL>
-- **Secondary (narrow):** <paste URL or "(not set yet)">
+- **Primary (broad):** <URL>
+- **Secondary (narrow):** <URL or "(not set yet)">
 - **Board:** LinkedIn
 
-## ATS Board Searches (Google `site:` dorks)
+## Company Job Site Searches
 
-One-click Google searches scoped to company ATS boards (Ashby/Greenhouse/Lever/etc.) and restricted to recent postings — free browser search, no API. `find-jobs` reads these like saved searches. See `ats-search-links.md` for construction.
+One-click Google searches limited to company job sites (Ashby, Greenhouse, Lever, and others) and to recent posts. Free, in the user's own browser. See `ats-search-links.md`.
 
-- **Fresh — NYC (past week):** <Google URL with `tbs=qdr:w`> or "(not set yet)"
-- **Fresh — Remote (past week):** <Google URL with `tbs=qdr:w`> or "(not set yet)"
+- **Fresh, New York (past week):** <Google URL with `tbs=qdr:w`> or "(not set yet)"
+- **Fresh, remote (past week):** <Google URL with `tbs=qdr:w`> or "(not set yet)"
 
-## Companies to Watch (optional)
+## Companies to Watch
 
-Companies the user would join in a heartbeat — scanned directly via their public ATS feeds on every `find-jobs` run, no saved search needed.
+Companies the user would jump at, checked through their public job feeds on every scan.
 
-- **[Company]** — board URL if known (e.g., `boards.greenhouse.io/acme`), or "(ATS unknown)"
-- **[Company]** — `jobs.lever.co/acme`
+- **[Company]:** board URL if known (`boards.greenhouse.io/acme`), or "(job site unknown)"
 
-## Background (for fit reads + interview prep)
+## Background (drafted from the resume)
 
-- **Current/most recent title:** Senior Product Manager
-- **Years of experience:** 12
-- **Career arc (2 sentences):** ...
-- **Why looking:** ...
+- **Name:**
+- **Current or most recent title:**
+- **Years of experience:**
+- **Career arc (2 sentences):**
+- **Currently:** employed / searching full time / between roles since [month]
+- **Why looking:**
 
-### Proof Points (3–6 strongest)
+### Proof Points (3 to 6 strongest)
 
-1. **[Company]** — what you did — measurable result
-2. **[Company]** — what you did — measurable result
-3. **[Company]** — what you did — measurable result
+Outcome first, then how, then scope. Both ends of every number.
+
+1. **[Company]:** [outcome, with the number from and to], by [how], [scope: team, users, budget]
+2. ...
 
 ### Lead-With Guidance
 
-- For AI/tooling roles, lead with: ...
+- For growth roles, lead with: ...
 - For platform roles, lead with: ...
 
-## Voice & Logistics
+## Voice and Logistics
 
-- **How I sound in interviews:** dry, concise, warm
-- **Go-to question for interviewers:** ...
-- **Be upfront about:** (career gap, title mismatch, domain pivot — or "nothing")
-- **Salary expectation to state when asked:** ...
+- **How I sound in interviews:** e.g., warm, direct, concise
+- **Go-to question for interviewers:**
+- **Phrases I like:** framings the user has tested and approved
+- **Be upfront about:** a gap, a title mismatch, a pivot, or "nothing"
+- **What I say when asked about pay:** the user's own line, in their words, or "(not set yet)"
+
+## Reminders
+
+- **Days and time:** e.g., Mon, Wed, Fri at 8:30am, or "none"
 ```
 
 ---
 
-## Field notes for whoever fills this in
+## Field notes
 
-- **Target titles** should be the literal phrases that appear in postings. "Product Lead" and "Group PM" surface different results than "Product Manager." Capture all the user actually wants.
-- **Strong-fit signals** drive the STRONG tier in scans and the score in the tracker. Keep them concrete.
-- **Exclusions** do the heavy lifting in filtering. A precise skip list removes more noise than any keyword adds signal. The named-companies block list grows over time — append, don't replace.
-- **Saved searches** are job-board URLs with filters applied. See `building-a-saved-search.md`.
-- **ATS board searches** are free Google `site:` dorks scoped to company ATS boards with recency baked into the URL. See `ats-search-links.md`. They complement the watchlist: the watchlist checks companies the user *names*; these sweep *every* company on those boards for fresh roles.
-- **Companies to watch** get swept directly via public ATS feeds (Greenhouse/Lever/Ashby) on every scan — fast and browser-free. Capture the board URL when known; `find-jobs` can derive it once and save it back.
-- **Proof points** can be deferred to first interview-guide use if the user is in a hurry, but they make every fit read sharper, so capture them when you can.
+- **Target titles** are the literal phrases postings use. "Product Lead" and "Group PM" turn up different results than "Product Manager."
+- **Pay tiers:** the floor filters (a listed range entirely below it is excluded); comfortable and ideal shape the fit check and the pay scripts in interview guides. If the user gives only a floor, that's enough.
+- **Signals:**
+  - **Strong** signals make a role STRONG in a scan and lift the target-fit score.
+  - **Weak** signals are tie-breakers: they can lift a borderline role into INCLUDE and get named in "why it fits," but never make a role STRONG alone.
+  - **Parked** signals are things the user cares about but isn't chasing right now (often a lane where they keep stalling). Don't treat them as strong. Mention a parked match in one line so it isn't lost.
+- **Pickiness** sets what a scan shows: "strong plus maybe" shows STRONG and INCLUDE (the default); "strong only" shows STRONG and gives a count of the rest. The user can change it for a single scan ("just the strong ones today").
+- **Exclusions with exceptions:** exclude the function, not the whole company or field, and write the exception next to it: "data science PM out, growth analytics in." A precise exclusion removes more noise than any keyword adds. The named-companies list grows over time; append, don't replace.
+- **Company types** default to excluding staffing firms and aggregators that repost roles. The user can turn that off.
+- **Proof points** come from the resume first. Never invent a number: if the resume says "improved conversion," write that and mark the number as a gap to fill, like `[from ?% to ?%]`.
+- **Pay line:** this is what the user has decided to say. Skills can remind them of it; they never say it for the user.
+- **Reminders** are set up by `job-search-automation`; this records what the user chose.

@@ -1,83 +1,110 @@
 ---
 name: job-search-setup
 description: >
-  Onboards a user's job search and builds a reusable saved search. Use when the user
-  says "set up my job search," "help me start a job search," "what should I search for,"
-  "set up my search," "build my saved search," or when another Recruiter BFF skill
-  reports that no profile exists yet. Also use when the user says "update my job profile,"
-  "change my search," "edit my preferences," or "add a company to my skip list." Captures
-  target roles, location, comp floor, dealbreakers, and background once, then saves a
-  shared profile that every other tool in this plugin reads.
+  Sets up the user's job search, starting from their resume, and builds the searches every
+  other Recruiter BFF skill reuses. Use when the user says "set up my job search," "help me
+  start a job search," "here's my resume," "what should I search for," "build my saved
+  search," or when another Recruiter BFF skill finds no profile yet. Also use for "update my
+  job profile," "change my search," "raise my pay floor," "add a company to my skip list,"
+  "build my preferences page," "what do I want next," or "update my preferences." Saves a
+  private profile (searches, pay, exclusions, background) and, when the user is ready, a
+  shareable one-page preferences file.
 ---
 
 # Job Search Setup
 
-Capture what the user is looking for and who they are, save it once, and build a search they can reuse forever. Every other tool in this plugin reads the profile this skill creates, so do this well.
+Learn what the user wants and who they are, save it once, and build searches they can reuse. Every other skill reads what this one writes, so do it well, and do it fast: the user should be able to run a first scan within a few minutes.
 
-## Step 0: Find (or create) the data home
+## Never
 
-All of this plugin's data lives in a `job-search/` folder inside the user's Cowork working folder.
+- Never invent a number, a tool, a title, or experience. If the resume doesn't say it, leave a visible placeholder like `[from ?% to ?%]` and ask.
+- Never upgrade the user's words to sound bigger ("helped with" stays "helped with" until they tell you more).
+- Never decide pay expectations, employment status, or work authorization for the user. Record what they choose to say.
+- Never make the first scan wait on the preferences page.
 
-1. Identify the user's connected/working folder (the one Cowork can write to).
+## Step 0: Find or create the data home
+
+All of Recruiter BFF's data lives in a `job-search/` folder in the user's Cowork working folder.
+
+1. Find the working folder Cowork can write to.
 2. Create `job-search/` there if it doesn't exist.
-3. The profile path is `job-search/profile.md`.
+3. The private profile is `job-search/profile.md`; the shareable page is `job-search/preferences.md`.
 
-If `job-search/profile.md` already exists and the user said something like "set up my job search," they may want to start over or just review. Read it, summarize what's there, and ask whether to update it or build a search. Don't silently overwrite a profile.
+If `profile.md` already exists and the user said "set up my job search," read it, summarize it in a few lines, and ask whether to update it or start over. Never overwrite a profile without asking.
 
-## Step 1: Onboarding conversation
+## Step 1: Start from the resume
 
-Capture enough to (a) filter jobs well and (b) write interview guides that sound like the user. Ask conversationally across a few turns. Do **not** dump all questions at once. Use the AskUserQuestion tool for the multiple-choice parts where it helps; use plain conversation for the open-ended parts.
+Ask for the resume first: "Paste your resume, or tell me which file in your folder it is." A PDF or document in their folder is fine; read it directly.
 
-**Turn 1 — What they're looking for (search essentials):**
-- Target job titles (e.g., "Product Manager, Product Lead, Group PM"). Get the words that actually appear in postings.
-- Seniority level(s): IC / Senior / Staff·Principal / Lead·Manager / Director+.
-- Location: city or metro, and remote / hybrid / onsite. Anywhere they won't go?
-- Compensation floor (base). Note that most postings don't list comp; that's fine.
+From the resume, draft:
 
-**Turn 2 — Dealbreakers and signals:**
-- Role types or functions to exclude (e.g., "no sales-engineering, no pure data-science PM").
-- Industries to avoid, and industries that excite them.
-- Company types to skip (e.g., staffing/recruiting firms, agencies) and any named companies to block.
-- "Strong fit" signals — the kinds of roles to flag as top-tier (e.g., "0-to-1 builds, regulated industries, internal tools, AI tooling").
+- **Background:** current or most recent title, years of experience, a two-sentence career arc.
+- **Proof points:** the 3 to 6 strongest accomplishments, each written outcome first, then how, then scope, with both ends of any number ("trial-to-paid conversion from 9% to 13% across 40+ tests, with a team of 6"). Where the resume gives no number, keep the outcome in words and add a placeholder.
+- **Likely target titles,** from the arc and the most recent role.
+- **Lead-with guidance:** which proof points to put first for which kinds of roles.
 
-**Turn 3 — Background (powers fit reads + interview prep):**
-- Current/most recent title, years of experience, and a two-sentence career arc.
-- Why they're looking.
-- 3–6 strongest accomplishments — for each: company, what they did, measurable result. (If they'd rather do this later, that's fine; the interview-guide tool will collect missing pieces on first use.)
-- How they sound (formal/casual, dry/warm, concise/expansive) and a go-to question they like to ask interviewers.
-- Anything to be upfront about (career gap, title mismatch, domain pivot) so guides address it head-on.
+Then show a short summary of what you drafted (five to eight lines, not the whole profile) and ask only what the resume couldn't tell you. If the user has no resume handy, ask for the same things conversationally instead.
 
-Keep it light. If the user is impatient, capture Turn 1 + Turn 2 (enough to scan) and tell them the rest fills in later.
+## Step 2: The search essentials
 
-## Step 2: Build the saved search
+One or two turns, a few questions at a time. Use the AskUserQuestion tool for multiple-choice parts where it helps.
 
-A "saved search" is just a job-board URL with the user's filters baked in, so the scan can reuse it. Help them get one.
+**What they want:**
+- Confirm the target titles (the words postings actually use) and seniority.
+- Location and work mode: city or metro; remote, hybrid (how many days), on-site. Anywhere they won't go?
+- Pay: their base floor. Comfortable and ideal numbers are optional; take them if offered. Most postings don't list pay, and that never counts against a role.
 
-**Preferred — build a LinkedIn search URL directly.** LinkedIn's public job search accepts URL parameters, so you can construct a link from their answers without them touching the site. See `references/building-a-saved-search.md` for the parameter reference and worked examples. Confirm the constructed URL with the user.
+**What to cut, and what to flag:**
+- Functions to exclude, with exceptions written in. Ask: "Anything that's close to what you do but not it?" Write it as "data science PM out, growth analytics in." Exclude the function, not the whole field.
+- Industries to avoid. Company types to skip: staffing firms and job aggregators that repost other companies' roles are excluded by default; say so and let them turn it off.
+- **Strong signals:** what makes a role top-tier for them ("growth or retention work at a consumer subscription company").
+- **Weak and parked signals** (optional, one question): "Anything that's a nice plus but wouldn't make a role great on its own? Anything you're interested in but not chasing right now?"
 
-**Alternative — capture an existing search.** If the user prefers another board (Indeed, Built In, Wellfound, a company careers page) or already has a search they like: ask them to set their filters on the site, copy the URL from the address bar, and paste it. Save that.
+Keep it light. If the user is impatient, titles, location, floor, and exclusions are enough to scan. Everything else fills in later.
 
-Either way, you can save more than one saved search (e.g., one broad, one narrow). Label them.
+## Step 3: Build the searches
 
-**Also build ATS board search links.** Most roles live on company ATS boards (Ashby, Greenhouse, Lever, etc.), never on LinkedIn, and are far less contested. Build the user a one-click Google search scoped to those boards and restricted to recent postings, using their target titles and location. This is a free browser search (no API, no account) and `find-jobs` can read it just like a saved search. See `references/ats-search-links.md` for how to construct the links and what to generate (typically a "Fresh — NYC (past week)" and a "Fresh — Remote (past week)" link). Save them in the profile's **ATS Board Searches** section and show the user the clickable links.
+A saved search is a job-board URL with the user's filters built in, so a scan can reuse it.
 
-## Step 3: Save the profile
+- **LinkedIn search URL:** build it from their answers. See `references/building-a-saved-search.md` for the parameters and worked examples. Show the user the link and confirm it.
+- **Or capture one they already use:** they set filters on any board, copy the address bar, and paste it. Save it. More than one saved search is fine (broad and narrow); label each.
+- **Company job site searches:** lots of roles get posted straight to company job sites (Ashby, Greenhouse, Lever, and others) and never reach LinkedIn. Build one-click Google searches limited to those sites and to recent posts, using their titles and location. They're free and run in the user's own browser. See `references/ats-search-links.md` for how to build them; typically one for their city and one for remote. Show the links.
+- **Companies to watch** (optional): "Any companies you'd jump at?" Scans check their public job feeds directly.
 
-Write `job-search/profile.md` using the structure in `references/profile-template.md`. Fill every field you captured; leave a clear `(not set yet)` marker for anything skipped so other tools know it's missing rather than empty on purpose.
+## Step 4: Save, then scan
 
-Then confirm in plain language:
+Write `job-search/profile.md` using `references/profile-template.md`. Fill every field you captured and mark the rest `(not set yet)`.
 
-> "Saved. I'll use this for scans, fit reads, and interview prep. You can change anything anytime — just say 'update my job profile.' Want me to run a first scan now?"
+Then, in plain words:
 
-If yes, hand off to the `find-jobs` skill.
+> "Saved. I'll use this for scans, fit checks, and interview prep, and you can change anything by telling me. Want me to run your first scan now?"
+
+On yes, hand off to `find-jobs`.
+
+## Step 5: The preferences page (offer it after the first scan)
+
+Once the user has seen a first scan, or whenever they ask, offer the shareable page:
+
+> "One more thing worth doing this week, when you have half an hour: a one-page 'what I want next' you can share with people who can help. It ends with one sentence that makes it easy for anyone to keep an eye out for you. Scans work fine without it, and they get sharper with it."
+
+On yes, run the conversation in `references/preferences-template.md`: what they'd hate, the bad-boss question, flipping must-nots into must-haves, what they love (and what they're good at but don't enjoy), the company questions with the subject test ("would you care about this every day?"), goals, the one sentence, and the homework of sharing it with three people. Write `job-search/preferences.md` and link it from the top of `profile.md`.
+
+When the page turns up something the scan should use (a must-not, a company size, a subject they'd never work in), add it to the profile's exclusions or signals too, and say so.
+
+## Step 6: Reminders (offer once, at the end)
+
+> "Want me to check in on the days you pick, with follow-ups that are due, interviews coming up, and links to fresh roles?"
+
+On yes, hand off to `job-search-automation` to set up reminders. Record the days and time in the profile's Reminders section.
 
 ## Updating later
 
-When the user wants to change preferences, add a skip-list company, raise the comp floor, or revise their search: read the current `profile.md`, make the targeted change, and write it back. Don't re-run full onboarding for a one-field edit.
+For a one-field change (raise the floor, add a skip-list company, add an exception), read `profile.md`, make the change, write it back, and say what changed. Don't rerun setup. If the change belongs on the preferences page too, update both.
 
 ## Principles
 
-- **Ask once, reuse everywhere.** This profile feeds every other tool. A few extra minutes here saves repetition later.
-- **Capture the words postings use.** "Product Lead" and "Group PM" are different searches. Get the user's real target titles, not a category.
-- **Dealbreakers are as valuable as wants.** A good skip list removes more noise than a good keyword adds signal.
-- **Plain language with the user.** Never expose file paths or schema unless they ask. Talk about "your search" and "your preferences," not "profile.md."
+- **Ask once, reuse everywhere.** A few extra minutes here saves the user repeating themselves for months.
+- **The resume does the first draft.** The user corrects; they don't fill in forms.
+- **The words postings use.** Real target titles, not a category.
+- **What to cut matters as much as what to find.** A precise exclusion removes more noise than any keyword adds.
+- **Plain language with the user.** Say "your search" and "your preferences," not file names, unless they ask.
