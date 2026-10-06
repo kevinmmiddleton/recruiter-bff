@@ -33,6 +33,8 @@ Staffing firms post roles on behalf of unnamed clients; aggregators repost other
 
 **Name tells** (when the profile excludes staffing firms): "Staffing," "Talent," "Recruiting," "Search Partners," "Consulting Group" on an otherwise unknown company, or a company that posts the same role in many cities at once.
 
+**Card tells,** on LinkedIn result cards: hourly pay ("$75/hr") on a role that's normally salaried, plus Easy Apply, from a company the user doesn't know. Hourly pay alone means contract work, a weak signal for most people.
+
 **The rule for an unknown company:** a name that isn't widely recognizable, and a posting that mentions consulting, staffing, talent solutions, recruitment process outsourcing (RPO), staff or talent augmentation, "on behalf of our client," "W2 or C2C," or contract-to-hire: probably staffing. Exclude it, and say so in the tally.
 
 **Types to exclude:** staffing and recruiting agencies (including niche and interim staffing firms); IT consulting and staff-augmentation firms that place contractors; RPO firms; aggregators that repost other companies' roles under their own name (remote-job aggregators, newsletter job boards, "AI job matching" boards); and candidate-matching services.

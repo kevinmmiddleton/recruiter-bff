@@ -40,10 +40,13 @@ Run every source the profile has. Keep a tally for each one: did it work, and ho
 
 Use the Claude in Chrome extension to read the live search.
 
-1. Check a browser is connected (`list_connected_browsers`). If the Chrome tools aren't loaded, load them with ToolSearch (`query: "chrome", max_results: 20`).
-2. `navigate` to the saved-search URL.
-3. `get_page_text`, scrolling or loading more if the board loads lazily, to capture the result cards, including each card's posting age ("2 days ago") when shown.
-4. A login wall or an empty page: tell the user what you saw and use the paste flow.
+1. Check a browser is connected (`list_connected_browsers`). If the Chrome tools aren't loaded, load them with ToolSearch (`query: "chrome", max_results: 20`). Work in a new tab, and close it when you're done.
+2. `navigate` to the saved-search URL and wait a few seconds for it to load.
+3. **Don't use `get_page_text` on a LinkedIn search.** It returns the description of whichever job is open on the right, not the list. Instead, use `find` ("job search results list") to get the results list, scroll inside the results column a few times (LinkedIn fills in the cards as you scroll, about 25 to a page), then `read_page` on the list's reference. A card that's still empty after scrolling is usually an ad slot; skip it.
+4. From each card, take: title, company, location and work mode ("New York, NY (Hybrid)"), pay if shown ("$75/hr - $85/hr" or "$110K/yr - $145K/yr"), posting age ("2 hours ago"), and the link. Links look like `/jobs/view/4476505407/?...`: keep `https://www.linkedin.com/jobs/view/4476505407/` and drop the tracking parameters.
+5. Keep LinkedIn's own signals when a card shows them: **"N connections work here"** (a contacts hint: worth offering a check of the user's LinkedIn export, or a look at who it is), "school alum works here," "Easy Apply," "Actively reviewing applicants," "Viewed" (the user already opened it). Ignore "You'd be a top applicant"; it's a paid-feature badge, not a fit read.
+6. More than one page: add `&start=25` (then `&start=50`) to the search URL. For a recent search sorted by newest, the first page or two is usually enough.
+7. A login wall, an empty page, or a different search page than expected: tell the user what you saw and use the paste flow. LinkedIn has been moving people to a new AI-powered search; if a saved search link stops showing classic results, say so and help the user rebuild the link or paste results instead.
 
 This sees what the user would see, using the session they already have. It never logs in for them.
 
