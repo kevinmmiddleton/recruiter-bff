@@ -70,9 +70,15 @@ From the captured text, extract one record per posting:
 
 Discard obvious junk: pagination text, "promoted" labels, ads, anything under ~20 characters or missing both a company and a title.
 
-## Step 4: Remove duplicates
+## Step 4: Check against the tracker
 
-Read the tracker (`job-search/applications.csv`) if it exists. Drop any posting already recorded there — match on company + role, allowing for fuzzy variation ("Sr. Product Manager" == "Senior Product Manager"). This prevents re-surfacing roles the user already saw, applied to, or skipped. If there's no tracker yet, skip this step.
+Read the tracker (`job-search/applications.csv`) if it exists, and follow "Checking against the tracker" in `references/classification-rubric.md`:
+
+- The same role at the same company is already tracked. Drop it and count it.
+- A different role at a company already in the tracker stays in, tagged **New role at a company you know**, with one line of history.
+- A role whose old row is `closed` or `hold` may be back. Show it with its history.
+
+No tracker yet? Skip this step.
 
 ## Step 5: Classify each role
 

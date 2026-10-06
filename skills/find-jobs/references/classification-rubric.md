@@ -35,12 +35,15 @@ A bare "Product Manager" with no seniority word is ambiguous. Default to INCLUDE
 
 When the company name alone tells you it's a staffing/recruiting firm, agency, or other excluded type (and it matches the user's exclusions), cut it without needing the full posting. Common staffing tells: "Staffing," "Talent," "Recruiting," "Consultants," generic three-letter outfits that repost the same roles. Only apply this if the user's profile excludes that company type.
 
-## Fuzzy dedup (against the tracker)
+## Checking against the tracker
 
-Two roles are the "same" for dedup purposes if the company matches and the role is a near-match after normalizing:
-- Strip seniority prefixes ("Sr.", "Senior", "Staff", "Lead") before comparing.
-- Normalize punctuation and spacing.
-- Treat "Sr Product Manager" and "Senior Product Manager, Platform" at the same company as a likely duplicate — when in doubt about a near-match, treat it as seen (the user already triaged that company/role family).
+Normalize company and role the same way the tracker does (lowercase, drop punctuation, `sr` to `senior`, `pm` to `product manager`, `&` to `and`; keep seniority words).
+
+- **Same company, same role:** already tracked. Drop it from the list and count it in the "already tracked" tally.
+- **Same company, different role:** show it, tagged **New role at a company you know**, with one line of history from the tracker: "You applied for Senior PM in August; it closed after the recruiter screen." The user decides. A rejection for one role says little about another, and a company that liked them once is worth a look.
+- **Same role, but the old row is `closed` or `hold`:** it may be back. Show it with the history line ("This closed in September; it looks reposted").
+
+Don't treat near-matches as already seen. "Senior Product Manager" and "Senior Product Manager, Platform" at the same company can be different jobs, so show the new one with its history and let the user dismiss it.
 
 ## Output per role
 
