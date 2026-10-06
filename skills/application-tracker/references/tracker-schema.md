@@ -11,7 +11,7 @@ The full definition of `job-search/applications.csv`, plus Python you can adapt 
 | `location` | Location and work mode (remote, hybrid, onsite) |
 | `comp` | Pay as the posting listed it, ranges written with "to" (`$175k to $205k`); blank if not listed |
 | `url` | Direct link to the posting |
-| `source` | Where it came from: `linkedin`, `ats-board`, `watchlist`, `referral`, `recruiter`, `pasted`, or the board's name |
+| `source` | Where the role came from, not how it reached you: `linkedin` (including pasted LinkedIn results), `ats-board`, `watchlist`, `referral`, `recruiter`, the board's name, or `pasted` only when the origin is unknown |
 | `status` | Where it stands now (see below) |
 | `score` | 1 to 5 fit score (5 is exceptional), blank if never scored. Evaluations from `evaluate-role` write the score with one decimal (4.6); quick scans write 4 for STRONG and 3 for INCLUDE. Rows from older versions may have 1 to 3 scan scores. |
 | `date_added` | ISO date the row entered the tracker |
@@ -242,9 +242,10 @@ If the role isn't in the tracker at all (the user applied outside a scan), appen
 ```python
 company = "Acme"
 role = None                 # the role named in the email, or None if it's a general no
-email_date = "2026-10-06"   # the date the rejection arrived
+email_date = TODAY          # the date the rejection arrived, if the user says or the email shows it
 stage_note = ""             # e.g. "after the hiring manager round"
 include_prospects = False   # True only after the user confirms a prospect row is the one they applied to
+date_applied = ""           # if the user says when they applied (ISO date); used for a confirmed prospect
 
 OPEN = {"applied","screening","interview","final","offer","hold"} | ({"prospect"} if include_prospects else set())
 rows, cols = load()
@@ -256,6 +257,7 @@ if len(pool) == 1:
     r = pool[0]
     if r["status"] == "prospect":
         r["furthest_stage"] = "applied"   # they applied; it just wasn't logged
+        r["date_applied"] = r["date_applied"] or date_applied
     r["status"] = "rejected"; r["last_update"] = TODAY
     r["notes"] = (r["notes"] + " | " if r["notes"] else "") + f"{email_date}: rejected" + (f" {stage_note}" if stage_note else "")
     save(rows, cols)

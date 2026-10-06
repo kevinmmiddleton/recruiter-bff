@@ -47,10 +47,10 @@ If nothing is due, the reminder is one line plus the fresh-role links. Keep it s
 2. Turn it into a cron expression in that local time: weekdays at 8:30 is `30 8 * * 1-5`; Mon and Thu at 8:30 is `30 8 * * 1,4`.
 3. Find the full path to the user's `job-search/` folder: the Cowork working folder's path plus `job-search/` (run `pwd` in that folder if you need it). The task starts fresh each time with no memory of this conversation, so the prompt must name the folder.
 4. Create the task with the scheduled-tasks tool, using the prompt below with the path and the user's name filled in. Title it something the user will recognize, like "Job search check-in."
-5. Only once the task exists, record the days and time in the Reminders section of `job-search/profile.md`.
+5. Record it in the Reminders status of `job-search/profile.md`: "Mon and Thu at 8:30am (created YYYY-MM-DD)".
 6. Tell the user: when it runs, how schedules really run (above), and that they can say "change my reminders" or "stop my reminders" anytime.
 
-**If the scheduled-tasks tool isn't available,** say so plainly: "I can't create scheduled tasks from here." Give the user the title, the schedule in words, and the prompt, so they can set it up from Cowork's scheduled tasks themselves, and don't record anything in the profile until it exists.
+**If the scheduled-tasks tool isn't available,** say so plainly: "I can't create scheduled tasks from here." Give the user the title, the schedule in words, and the prompt, so they can set it up from Cowork's scheduled tasks themselves. Record the Reminders status as "requested Mon and Thu at 8:30am, not created yet (YYYY-MM-DD)", so nobody offers reminders again and a later conversation can finish the job.
 
 **Task prompt** (fill in the bracketed parts):
 
@@ -64,8 +64,8 @@ the system.
 Write a short check-in, plain text, in this order, skipping empty sections:
 
 1. Coming up (next 7 days): rows whose next_date falls within 7 days. For each: weekday and
-   date, company, role, what it is (from status and the latest notes line), and the path
-   interviews/<company>/guide.md if that file exists.
+   date, company, role, what it is (from status and the last entry in notes; entries are
+   separated by " | ", newest last), and the path interviews/<company>/guide.md if it exists.
 2. Follow-ups due: rows with status screening, interview, final, or offer, whose next_date is
    blank or in the past, and whose last_update is 7 or more days ago. Say "nudge" for 7 to 13
    days, "chase or close" for 14 to 29, "mark ghosted?" for 30 or more. Never include rows
@@ -84,7 +84,7 @@ End by offering to draft any follow-up the user wants.
 
 ### Changing or stopping
 
-"Change my reminders": list the user's scheduled tasks, find the check-in, and update its schedule (or prompt) after confirming the new days and time. "Stop my reminders": find it and disable or delete it after confirming. Update the profile's Reminders section either way.
+"Change my reminders": list the user's scheduled tasks, find the check-in, and update its schedule (or prompt) after confirming the new days and time. "Stop my reminders": find it and disable or delete it after confirming. Update the profile's Reminders status either way. If the status says "not created yet," there's nothing to change: offer to create it now, or update the requested days and time.
 
 ## 2. A scheduled scan
 

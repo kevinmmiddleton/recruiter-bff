@@ -121,8 +121,8 @@ watchlist ✓ 4 of 5 companies (Acme's feed didn't respond).
 Hid 6: 2 staffing firms, 2 wrong level, 1 on-site only, 1 already tracked.
 ```
 
-- **The source-health line is never skipped.** A source that failed, timed out, or hit a login says so, and a source that returned zero results says "0 results," so the user can tell a quiet day from a broken search. Say it louder, in its own line, when fewer than half the sources worked, when a logged-in source keeps returning nothing (the login has probably expired), or when saving to the tracker failed.
-- **Carry each role's real source** (`linkedin`, `ats-board`, `watchlist`, `pasted`) into the tracker. It's what later shows which sources lead to interviews.
+- **The source-health line is never skipped.** A source that failed, timed out, or hit a login says so, and a source that returned zero results says "0 results," so the user can tell a quiet day from a broken search. Say it louder, in its own line, when fewer than half the sources you tried worked, when a logged-in source keeps returning nothing (the login has probably expired), or when saving to the tracker failed. A source the user chose to skip, or one that can't run in this session (no browser, no web access), isn't a failure: label it "skipped" or "not available here" and leave it out of the count.
+- **Carry each role's real source** into the tracker: where it came from, not how it reached you. Pasted LinkedIn results are `linkedin`; pasted company job site results are `ats-board`. It's what later shows which sources lead to interviews.
 - **"Why it fits"** is one specific line naming the signal it hit, never a generic compliment. Use only what the card, the posting, or the user said. Don't describe a company you can't verify ("a consumer subscription company") unless the listing says so; if it matters and you can't tell, say that instead ("I can't tell what Tallyho does; check before you spend time"). Add any flag after it: a weak signal ("heads-up: contract-to-hire"), a parked lane, an unknown company, pay that starts below the floor.
 - **Posting age** goes on every card when you know it. Very old postings (about 60 days or more) get a short flag: "posted 9 weeks ago, may be stale." Flag, don't hide.
 - If the user knows someone at a company (from `job-search/contacts.csv`, if it exists), add: "You know Priya Shah there."
@@ -135,11 +135,23 @@ Make **one** offer per message. Usually it's the tracker:
 
 On yes, hand the chosen roles to `application-tracker` to add as prospects. That's also what keeps future scans from showing them again. Don't stack other offers (the preferences page, reminders) into the same message; they come at a quieter moment.
 
-**Who you know there.** If there's no `job-search/contacts.csv` but a LinkedIn connections export (`Connections.csv`) is in the Cowork folder, and it's never been offered, add one line to the next scan instead of the tracker offer: "Your LinkedIn export is in your folder. Want me to check who you know at these companies?" (That's the `contacts` skill.)
+**Who you know there.** If there's no `job-search/contacts.csv` but a LinkedIn connections export (`Connections.csv`) is in the Cowork folder, it's worth one offer, following the order in "Ending a reply": "Your LinkedIn export is in your folder. Want me to check who you know at these companies?" (That's the `contacts` skill.)
 
 For a role the user is seriously considering, offer the fit check: `evaluate-role` reads the whole posting, checks it's still open, and gives a scored apply-or-skip answer.
 
 If a strong match is at a company where they know someone, mention that a referral usually beats a cold application, and offer to draft a short note (through `contacts`, if the user has a contacts file).
+
+## Ending a reply
+
+End with at most one offer. If several apply, pick the first that fits:
+
+1. Anything time-sensitive: thank-you notes the same day, a reply someone is waiting on.
+2. The next step for what the user just did: add it to the tracker, run a fit check, practice for the round.
+3. Checking the user's LinkedIn export for people they know.
+4. The preferences page.
+5. Reminders.
+
+Before offering 3, 4, or 5, check the **Offered** section of `job-search/profile.md` and skip anything already offered; when you offer one, add a dated line there. Saying a fact ("this read uses your profile alone") isn't an offer.
 
 ## Principles
 

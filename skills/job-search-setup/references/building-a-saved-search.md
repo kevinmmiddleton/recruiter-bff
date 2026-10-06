@@ -33,7 +33,7 @@ Append these parameters, joined with `&`:
 
 ### Worked example
 
-A senior PM, NYC metro, remote-or-hybrid, looking at the last 24 hours, newest first:
+A senior PM, NYC metro, remote or hybrid, looking at the last week, newest first:
 
 ```
 https://www.linkedin.com/jobs/search/?keywords=product%20manager&location=New%20York%2C%20New%20York%2C%20United%20States&f_E=4&f_WT=2,3&f_TPR=r604800&sortBy=DD

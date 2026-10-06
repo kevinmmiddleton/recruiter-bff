@@ -12,7 +12,7 @@ Fill in what's known. Mark anything not captured yet as `(not set yet)`, so othe
 # Job Search Profile
 
 _Last updated: YYYY-MM-DD_
-_Preferences page: job-search/preferences.md (or "not built yet," with "offered YYYY-MM-DD" once it's been offered)_
+_Preferences page: job-search/preferences.md (or "not built yet")_
 
 ## Search Targets
 
@@ -94,7 +94,13 @@ Outcome first, then how, then scope. Both ends of every number.
 
 ## Reminders
 
-- **Days and time:** e.g., Mon, Wed, Fri at 8:30am; "none (offered YYYY-MM-DD)"; or "(not offered yet)"
+- **Status:** e.g., "Mon, Wed, Fri at 8:30am (created YYYY-MM-DD)"; "requested Mon and Thu at 8:30am, not created yet (YYYY-MM-DD)"; "none"; or "(not set yet)"
+
+## Offered
+
+Optional things already offered, with the date, so no skill offers them twice. Add a line whenever you offer one.
+
+- (e.g., "Preferences page: 2026-10-07", "LinkedIn export check: 2026-10-06", "Reminders: 2026-10-08")
 ```
 
 ---
@@ -117,4 +123,6 @@ Outcome first, then how, then scope. Both ends of every number.
 - **Company size and stage** shape the fit check's company score and the scan's ranking. A size or stage the user dislikes is a soft warning unless they call it a dealbreaker.
 - **Proof points** come from the resume first. Never invent a number: if the resume says "improved conversion," write that and mark the number as a gap to fill, like `[from ?% to ?%]`.
 - **Pay line:** this is what the user has decided to say. Skills can remind them of it; they never say it for the user.
-- **Reminders** are set up by `job-search-automation`; this records what the user chose.
+- **Reminders** are set up by `job-search-automation`; this records what the user chose and whether the reminder actually exists.
+- **Offered** keeps the one-offer-per-message rule from turning into the same offer every day. Check it before offering anything optional.
+- **Fields setup doesn't ask for** (voice, go-to question, phrases, the current LinkedIn headline) get filled in later by the skills that need them: interview guides and materials. Leave them `(not set yet)` until then.

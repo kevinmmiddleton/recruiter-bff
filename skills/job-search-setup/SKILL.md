@@ -84,7 +84,7 @@ On yes, hand off to `find-jobs`.
 
 ## Step 5: The preferences page (offer it once, on its own)
 
-Offer the shareable page once, at a quiet moment: after the first fit check, or when the user asks what to do next. Never in the same message as another offer. When you offer it, change the profile's top line to `_Preferences page: not built yet (offered YYYY-MM-DD)_`, so no other skill offers it again. If the user asks for it, build it any time.
+Offer the shareable page once, at a quiet moment: in a message that has no other offer (after logging an application is a good one), or when the user asks what to do next. Check the profile's **Offered** section first, and add "Preferences page: YYYY-MM-DD" when you offer it, so no skill offers it twice. If the user asks for it, build it any time.
 
 > "One more thing worth doing this week, when you have half an hour: a one-page 'what I want next' you can share with people who can help. It ends with one sentence that makes it easy for anyone to keep an eye out for you. Scans work fine without it, and they get sharper with it."
 
@@ -98,11 +98,23 @@ At a quiet moment, never stacked with another offer (often once the user has som
 
 > "Want me to check in on the days you pick, with follow-ups that are due, interviews coming up, and links to fresh roles?"
 
-On yes, hand off to `job-search-automation` to set them up. Record what happens in the profile's Reminders section: the days and time once the reminder exists, or "none (offered YYYY-MM-DD)" if the user says no, so it isn't offered again.
+Check the profile's Reminders status and **Offered** section first; don't offer reminders to someone who already has them, already asked for them, or already said no. When you offer, add "Reminders: YYYY-MM-DD" to Offered. On yes, hand off to `job-search-automation` to set them up.
 
 ## Updating later
 
 For a one-field change (raise the floor, add a skip-list company, add an exception), read `profile.md`, make the change, write it back, and say what changed. Don't rerun setup. If the change belongs on the preferences page too, update both.
+
+## Ending a reply
+
+End with at most one offer. If several apply, pick the first that fits:
+
+1. Anything time-sensitive: thank-you notes the same day, a reply someone is waiting on.
+2. The next step for what the user just did: add it to the tracker, run a fit check, practice for the round.
+3. Checking the user's LinkedIn export for people they know.
+4. The preferences page.
+5. Reminders.
+
+Before offering 3, 4, or 5, check the **Offered** section of `job-search/profile.md` and skip anything already offered; when you offer one, add a dated line there. Saying a fact ("this read uses your profile alone") isn't an offer.
 
 ## Principles
 

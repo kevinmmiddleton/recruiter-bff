@@ -28,8 +28,8 @@ Every guide opens with the same four blocks, in this order: **the role in plain 
 ## Step 0: Load what's known
 
 1. Read `job-search/profile.md`. No profile: run `job-search-setup` first (it builds the background from the resume, so the user never answers twice).
-2. If the background is thin (no proof points, no voice notes), collect only what's missing (see `references/user-profile-template.md`) and write it back into the profile. Never start a second profile.
-3. Read, if they exist: `job-search/preferences.md` (must-haves and must-nots become questions), `job-search/story-bank.md` (reuse stories before drafting new ones), the company folder `job-search/interviews/<company>/` (`posting.md`, `evaluation.md`, and any existing `guide.md`), and `job-search/contacts.csv` (anyone the user knows there). No `contacts.csv` but a LinkedIn export (`Connections.csv`) in the Cowork folder? Mention it in one line: someone who works there is the best prep there is.
+2. If there are no proof points, collect them first (see `references/user-profile-template.md`) and write them back into the profile. Voice notes are nice to have: if they're missing, write in plain, direct sentences built from the user's own resume wording, ask one optional question ("How would you describe how you come across in interviews?"), and move on. Never start a second profile.
+3. Read, if they exist: `job-search/preferences.md` (must-haves and must-nots become questions), `job-search/story-bank.md` (reuse stories before drafting new ones), the company folder `job-search/interviews/<company>/` (`posting.md`, `evaluation.md`, and any existing `guide.md`), and `job-search/contacts.csv` (anyone the user knows there). No `contacts.csv` but a LinkedIn export (`Connections.csv`) in the Cowork folder? Checking it is a possible offer (see "Ending a reply"): someone who works there is the best prep there is.
 4. Get the round details: when, what kind of round, and who. If the user doesn't say, ask once: "Who are you meeting, and when?" Work out real dates from today and say them back with the weekday.
 
 If there's no saved posting, ask for it (pasted text or a link) and save it as `posting.md` the way `evaluate-role` does.
@@ -45,7 +45,7 @@ Use web search. Find:
 
 Keep anything you couldn't confirm in a "Couldn't verify" line.
 
-**If web search isn't available,** say so once and build the company section from the posting alone, clearly labeled. Then give the user a ten-minute research list they can do themselves: the company's site and product, news from the last month, each interviewer's LinkedIn, and recent reviews. Offer to fold in whatever they paste. Never fill the gap with guesses.
+**If web search isn't available,** say so once and build the company section from the posting alone, clearly labeled. Then put a ten-minute research list in the prep checklist for the user to do themselves: the company's site and product, news from the last month, each interviewer's LinkedIn, and recent reviews. Anything they paste later gets folded in. Never fill the gap with guesses.
 
 **Before a product or case round, the user should use the product as a customer:** sign up, buy, search, walk the main flow, hit the paywall. Give them a short log to fill in: each touchpoint in order (when, which screen or message, what it did), then "What works," "Where it could connect better," "Tradeoffs to have a view on," and "What I can't tell from here." Each finding states its evidence and its limit ("I tested on iPhone; Android may differ"). In the room, two findings at most, framed as observations, never gotchas: "Here's what I saw from the outside. What am I missing?" Outside a case round, one line is plenty, and something they liked beats something they'd fix.
 
@@ -120,11 +120,11 @@ When the user comes back from an interview, debrief right away, the same day if 
 2. **The process as they described it,** and where it differs from the posting.
 3. **What the round actually was,** and what they asked. Anything you didn't expect?
 4. **What landed,** including any "nobody's raised that before." What fell flat?
-5. **Lines worth reusing,** word for word.
+5. **Lines worth reusing,** word for word. If the user says "I used my line," copy it from the profile, so every round says it the same way.
 6. **What changed** in your read of the role, the team, or the timeline?
 7. **How they treated you:** did they listen? Say "we" or "I"? Rush you? Did you feel like a priority or a nuisance? Do they understand their own business? Anything off you can't name yet?
 
-Then write **carry forward** for each next interviewer: what they'll dig into, given what this round covered.
+Then write **carry forward** for each next interviewer: what they'll dig into, given what this round covered. Then update the rest of the guide for the next round, as if it were new: the top block (verdict, next round), likely questions and answers for that interviewer, and questions to ask them.
 
 If the user is short on time and skips the questions, write down what they did say, mark the rest "not reported," and move on. Don't ask twice.
 
@@ -162,6 +162,18 @@ Prep compounds when stories are kept. The bank lives at `job-search/story-bank.m
 - **Check for gaps** before each round: if the round will ask about a failure or a disagreement and the bank has none, say so and help draft one from the user's real experience.
 - **Deposit:** after a guide or a debrief, offer once to save any new story.
 - **Maintain:** when the user corrects a story, fix the bank, not just the guide. Around ten stories, suggest which one a new story replaces.
+
+## Ending a reply
+
+End with at most one offer. If several apply, pick the first that fits:
+
+1. Anything time-sensitive: thank-you notes the same day, a reply someone is waiting on.
+2. The next step for what the user just did: add it to the tracker, run a fit check, practice for the round.
+3. Checking the user's LinkedIn export for people they know.
+4. The preferences page.
+5. Reminders.
+
+Before offering 3, 4, or 5, check the **Offered** section of `job-search/profile.md` and skip anything already offered; when you offer one, add a dated line there. Saying a fact ("this read uses your profile alone") isn't an offer.
 
 ## Principles
 

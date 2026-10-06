@@ -105,6 +105,18 @@ Early in a search, or whenever the user feels stuck, offer this once:
 
 These run alongside scanning and applying, never instead of them.
 
+## Ending a reply
+
+End with at most one offer. If several apply, pick the first that fits:
+
+1. Anything time-sensitive: thank-you notes the same day, a reply someone is waiting on.
+2. The next step for what the user just did: add it to the tracker, run a fit check, practice for the round.
+3. Checking the user's LinkedIn export for people they know.
+4. The preferences page.
+5. Reminders.
+
+Before offering 3, 4, or 5, check the **Offered** section of `job-search/profile.md` and skip anything already offered; when you offer one, add a dated line there. Saying a fact ("this read uses your profile alone") isn't an offer.
+
 ## Principles
 
 - **People first, boards second.** When a strong role turns up at a company where the user knows someone, the person is the next step.

@@ -75,7 +75,7 @@ Check the role against the preferences page and the profile, separately from the
 - The subject test: is this a subject they said they'd care about every day?
 - Any parked signal it touches.
 
-Off-target roles get flagged, never hidden. Sometimes the off-plan role is the right one, and the user decides. If there's no preferences page yet, use the profile alone. Mention that the page would sharpen this read only if the profile's top line doesn't show it was already offered, and then note the offer there ("not built yet, offered YYYY-MM-DD") so no skill asks twice.
+Off-target roles get flagged, never hidden. Sometimes the off-plan role is the right one, and the user decides. If there's no preferences page yet, use the profile alone and say so in a line ("I read this against your profile; there's no preferences page yet"). That's a fact, not an offer; the page itself is offered by setup at a quieter moment.
 
 ## Step 6: Score it
 
@@ -109,7 +109,7 @@ Tiers: **4.5 and up** apply now · **4.0 to 4.4** strong, apply · **3.5 to 3.9*
 
 If the user disagrees with a read, update it. If the disagreement shows a preference the profile or page doesn't have, offer to add it so future scores improve.
 
-If the user knows someone at the company (from `job-search/contacts.csv`), add one line: "You know Priya Shah there. A referral beats a cold application; want a short note asking her?" If there's no `contacts.csv` but a LinkedIn export (`Connections.csv`) is in the Cowork folder, say instead: "Your LinkedIn export is in your folder; want me to check who you know at Fernhill?"
+If the user knows someone at the company (from `job-search/contacts.csv`), add one line: "You know Priya Shah there. A referral beats a cold application; want a short note asking her?" If there's no `contacts.csv` but a LinkedIn export (`Connections.csv`) is in the Cowork folder, that check is a possible offer; follow "Ending a reply" (it waits if the tracker offer is due, and never repeats once offered).
 
 ## Step 8: Save it
 
@@ -150,6 +150,18 @@ Then the tracker, through `application-tracker`:
 - **Not in the tracker yet:** offer once to add it, as `prospect` (or `skipped` if the verdict was skip and the user agrees), with the score to one decimal and the verdict in `notes`.
 
 Comparing several roles? Score each the same way and finish with a one-line ranking.
+
+## Ending a reply
+
+End with at most one offer. If several apply, pick the first that fits:
+
+1. Anything time-sensitive: thank-you notes the same day, a reply someone is waiting on.
+2. The next step for what the user just did: add it to the tracker, run a fit check, practice for the round.
+3. Checking the user's LinkedIn export for people they know.
+4. The preferences page.
+5. Reminders.
+
+Before offering 3, 4, or 5, check the **Offered** section of `job-search/profile.md` and skip anything already offered; when you offer one, add a dated line there. Saying a fact ("this read uses your profile alone") isn't an offer.
 
 ## Principles
 

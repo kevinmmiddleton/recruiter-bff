@@ -28,7 +28,7 @@ Make the resume, LinkedIn, and written answers say what the user has actually do
 
 Read `job-search/profile.md` (background, proof points, voice) and `job-search/preferences.md` if it exists (the one sentence, must-haves). If the user is working on a specific application, read that company's folder in `job-search/interviews/<company>/` (the saved posting and evaluation).
 
-If there's no preferences page, don't wait for one. Mention once that the summary and headline get easier once the one sentence exists, and offer it later.
+If there's no preferences page, don't wait for one. The page is a possible offer (see "Ending a reply"); it makes the summary and headline easier, since they should say the one sentence.
 
 ## Resume bullets
 
@@ -100,6 +100,18 @@ When the user edits a draft, notice what they changed: what they cut, what they 
 - Approved resume bullets and the summary: offer to update the proof points in `job-search/profile.md`.
 - Answers worth reusing: offer to save them in `job-search/materials/answers.md`, with the question, the answer, and a note on what to change for the next company.
 - Nothing is overwritten without the user's yes.
+
+## Ending a reply
+
+End with at most one offer. If several apply, pick the first that fits:
+
+1. Anything time-sensitive: thank-you notes the same day, a reply someone is waiting on.
+2. The next step for what the user just did: add it to the tracker, run a fit check, practice for the round.
+3. Checking the user's LinkedIn export for people they know.
+4. The preferences page.
+5. Reminders.
+
+Before offering 3, 4, or 5, check the **Offered** section of `job-search/profile.md` and skip anything already offered; when you offer one, add a dated line there. Saying a fact ("this read uses your profile alone") isn't an offer.
 
 ## Principles
 

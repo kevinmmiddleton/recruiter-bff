@@ -120,6 +120,6 @@ Newest round first.
 
 ## Notes
 
-- **The top must fit on one screen.** If the verdict, next round, and four blocks run past that, cut words, not blocks.
+- **Keep the top tight.** The verdict and next round take a few lines; the four blocks can run longer, but keep each gap to a handful of short lines and each block skimmable. Cut words, not blocks.
 - **Real dates with weekdays.** "Thu Oct 8, 2:00pm ET," never "Thursday" alone.
 - **Mark what you couldn't verify.** A fact without a source goes under "Couldn't verify," never in the snapshot.
