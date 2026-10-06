@@ -1,21 +1,27 @@
-# What this plugin connects to
+# What Recruiter BFF connects to
 
-This plugin is deliberately low-dependency. It works with tools you already have, and degrades gracefully when something isn't connected.
+Very little, on purpose. It works with tools you already have, and every step has a way to work without the optional pieces.
 
-## Browser (for scanning)
+## A browser Claude can drive (optional, for scans)
 
-The `find-jobs` scan reads live results from a job board. The best experience uses a browser Claude can drive directly:
+The scan reads your saved LinkedIn search the way you'd see it. The best way is the **Claude in Chrome extension**: Claude opens your saved search in your own logged-in Chrome and reads the results, including roles behind your login.
 
-- **Claude-in-Chrome extension** — lets Claude open your saved search in your own logged-in Chrome and read the results. This is the closest thing to a real scanner: it sees what you'd see, including roles behind a login.
+Without the extension, the scan asks you to open the search yourself and paste the results in. Slower, no setup, works on any computer.
 
-If the extension isn't installed, `find-jobs` falls back to a **paste flow**: you open your saved search yourself, copy the results (or the page), and paste them in. Slower, but zero setup and works on any machine.
+Recruiter BFF never logs in to anything for you and never stores passwords. It only reads pages in a browser session you already control.
 
-The plugin never logs into anything on your behalf and never stores credentials. It reads pages in a browser session you already control.
+## Web search (for interview research and company job sites)
 
-## Scheduling (for automation, optional)
+Interview guides research the company and check recent news with Claude's web search. The company job site searches are ordinary Google searches you (or Claude, in your browser) open. Watchlist companies are read from the public job feeds that Greenhouse, Lever, and Ashby publish for every company, with no login.
 
-The `job-search-automation` tool can set up a **Cowork scheduled task** so your scan runs on a cadence (e.g., every weekday at 8am) without you asking. This uses Cowork's built-in scheduling — no extra connector. See that skill for the honest tradeoffs of running a browser-based scan unattended.
+## Scheduling (optional, for reminders and scheduled scans)
 
-## Job board
+Reminders and scheduled scans use Cowork's built-in scheduled tasks. No extra connector. Scheduled tasks run while the Claude desktop app is open; if it's closed when one is due, it runs the next time the app opens.
 
-Examples throughout assume **LinkedIn**, because its public search URLs are easy to save and reuse. The same approach works for Indeed, Built In, Wellfound, a company careers page, or any board with a stable, filterable search URL. Setup will help you build the link for whichever board you use.
+## Your LinkedIn connections (optional, for contacts)
+
+The contacts skill reads `Connections.csv`, a file you download yourself from LinkedIn (Settings & Privacy → Data privacy → Get a copy of your data → Connections). No connector and no login: the file stays in your folder.
+
+## Job boards
+
+Examples use **LinkedIn**, because its search links are easy to save and reuse. The same approach works for Indeed, Built In, Wellfound, a company's careers page, or any board with a stable search link. Setup helps you build the link for the board you use.
