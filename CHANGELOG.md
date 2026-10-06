@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.1 (2026-10-06)
+
+- **Fix: the first status update no longer wipes an empty tracker.** If you logged "I applied" before the tracker had any rows, the update step could rewrite `applications.csv` with no header at all. It now keeps the header row whether or not the file has rows yet.
+
 ## 0.4.0 (2026-10-06): Recruiter BFF
 
 - **New name.** Job Search Agent is now Recruiter BFF: a recruiter that works for you. The GitHub repo moved to `kevinmmiddleton/recruiter-bff`, and old links redirect.

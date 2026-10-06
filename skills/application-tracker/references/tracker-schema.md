@@ -95,9 +95,11 @@ import csv, datetime
 path = "job-search/applications.csv"
 today = datetime.date.today().isoformat()
 target_company, target_role, new_status = "Acme", "Senior Product Manager", "applied"
+cols = ["company","role","location","comp","url","source","status","score","date_added","date_applied","last_update","notes"]
 def norm(s): return " ".join((s or "").lower().replace("sr.","senior").replace("sr ","senior ").split())
 with open(path, newline="") as f:
-    rows = list(csv.DictReader(f)); cols = rows[0].keys() if rows else []
+    reader = csv.DictReader(f); rows = list(reader)
+    cols = reader.fieldnames or cols  # the header row, even when there are no data rows yet
 hit = 0
 for r in rows:
     if norm(r["company"]) == norm(target_company) and target_role.split()[0].lower() in norm(r["role"]):
