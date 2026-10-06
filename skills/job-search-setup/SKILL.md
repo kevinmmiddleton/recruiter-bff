@@ -58,7 +58,7 @@ One or two turns, a few questions at a time. Use the AskUserQuestion tool for mu
 - Functions to exclude, with exceptions written in. Ask: "Anything that's close to what you do but not it?" Write it as "data science PM out, growth analytics in." Exclude the function, not the whole field.
 - Industries to avoid. Company types to skip: staffing firms and job aggregators that repost other companies' roles are excluded by default; say so and let them turn it off.
 - **Strong signals:** what makes a role top-tier for them ("growth or retention work at a consumer subscription company").
-- **Weak and parked signals** (optional, one question): "Anything that's a nice plus but wouldn't make a role great on its own? Anything you're interested in but not chasing right now?"
+- **Weak and parked signals** (optional, one question): "Anything that isn't a dealbreaker but makes you hesitate, like contract roles or titles that turn out to be sales? And is there a kind of role you like but keep stalling in?" Weak signals get flagged and ranked lower, never cut. Parked lanes still show up, below the strong ones, with a note.
 
 Keep it light. If the user is impatient, titles, location, floor, and exclusions are enough to scan. Everything else fills in later.
 

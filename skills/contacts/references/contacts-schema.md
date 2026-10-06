@@ -20,7 +20,9 @@
 
 **Honest warmth:** a connection with no logged contact is `never-spoke`, however familiar the name. Closeness changes only when the user says so or a real exchange is logged.
 
-**Check-in rhythm** (for `keep warm`): about every 30 days for `close`, 90 for `friendly`, 180 for `loose`. Never schedule check-ins for `never-spoke`.
+**Check-in rhythm** (for `keep warm`): about every 30 days for `close`, 90 for `friendly`, 180 for `loose`. Never schedule check-ins for `never-spoke`. Each person has two clocks worth showing together: the opportunity ("Fernhill: screening, 6 days") and the relationship ("last spoke 29 days ago," or "never spoke").
+
+**Logging a touch:** the date, the channel (email, LinkedIn, text, call, in person), and the direction ("they reached out" or "I reached out").
 
 ## Getting the LinkedIn connections export
 
@@ -51,21 +53,26 @@ ALIASES = {  # the user's own clean-ups: export spelling -> tracker spelling
 }
 TODAY = datetime.date.today().isoformat()
 
-SUFFIX = r"\b(inc|incorporated|llc|ltd|limited|corp|corporation|co|company|plc|gmbh|the)\b"
+SUFFIX = r"\s+(inc|incorporated|llc|ltd|limited|corp|corporation|co|company|plc|gmbh|sa|ag|nv)$"  # legal suffixes only: "Fernhill Labs" is not "Fernhill"
 def clean(name):
-    s = (name or "").lower().replace("&", " and ")
+    s = re.sub(r"\(.*?\)", " ", (name or "")).lower().replace("&", " and ")
     s = re.sub(r"[^\w\s]", " ", s)
-    s = re.sub(SUFFIX, " ", s)
     s = " ".join(s.split())
+    s = re.sub(r"^the\s+", "", s)
+    for _ in range(3):                  # strip up to three trailing legal suffixes, never words in the middle
+        s = re.sub(SUFFIX, "", s)
     return ALIASES.get(s, s)
 
+# Same-function titles: set these from the user's target function. Product management shown here;
+# neighbors that share a word ("Product Designer," "Product Marketing") are left out on purpose.
+SAME_FUNCTION = r"product manager|product management|head of product|(vp|vice president|director)\W+(of\s+)?product\b(?!\s+(design|marketing))|\bcpo\b|chief product|product owner|product lead|\bpm\b"
 def tags_for(title):
     t = (title or "").lower(); tags = []
-    if re.search(r"recruit|talent|\bsourc(er|ing)\b|people partner", t): tags.append("recruiter")
-    if re.search(r"\bproduct\b|\bpm\b", t): tags.append("product")
+    if re.search(r"recruit|talent acquisition|talent partner|\bsourc(er|ing)\b|people ops|head of (people|talent)|\bhrbp\b|human resources|staffing", t): tags.append("recruiter")
+    if re.search(SAME_FUNCTION, t): tags.append("product")
     if re.search(r"engineer|developer|\bcto\b", t): tags.append("engineering")
     if re.search(r"design|\bux\b", t): tags.append("design")
-    if re.search(r"\b(vp|vice president|director|head of|chief|founder|co-founder|ceo|coo|cpo|gm|general manager)\b", t): tags.append("leader")
+    if re.search(r"\b(vp|vice president|director|head of|chief|founder|co-founder|ceo|coo|cpo|gm|general manager|partner)\b", t) and "talent partner" not in t: tags.append("leader")
     return ";".join(tags)
 
 # 1. read the export, skipping LinkedIn's note lines above the header
@@ -121,7 +128,9 @@ for co, names in sorted(added.items()):
     print(f"  {co}: " + "; ".join(names))
 ```
 
-After the import, walk through the matches with the user, company by company: "Do you actually know Priya? How well?" Set `closeness` from their answers. Everyone they don't recognize stays `never-spoke`.
+Small startups often aren't in an export at all, and titles are whatever people last put on their profile. Re-run the import when the user downloads a fresh export or the tracker grows.
+
+After the import, walk through the matches with the user, company by company, recruiters first, then people in the user's own function, then leaders, then everyone else: "Do you actually know Priya? How well?" Set `closeness` from their answers. Everyone they don't recognize stays `never-spoke`.
 
 ## Adding and updating by hand
 

@@ -40,17 +40,35 @@ People's titles in the export are whatever they last put on LinkedIn, so they ca
 When the user asks "who can help with my applications," or once a week if they've asked for that:
 
 1. List open applications (applied, screening, interview) at companies where they know someone.
-2. For each, suggest the best person and the move:
-   - **A recruiter or talent partner there:** a short note that they applied, why they're a fit in one line, and a request to make sure the application gets a look.
-   - **Someone on or near the team:** a referral ask, if the user knows them at least `friendly`. A referral usually beats a cold application by a wide margin.
+2. Show them as a table: Company | Status | Contact | Title | Path (recruiter nudge or referral ask).
+3. For each, suggest the best person and the move:
+   - **A recruiter or talent partner there:** a recruiter nudge.
+   - **Someone in the user's function or leading the team:** a referral ask, if the user knows them at least `friendly`. A referral usually beats a cold application by a wide margin.
    - **A `never-spoke` connection:** usually skip, or a light, specific note if the user wants to try.
-3. Draft the messages, one at a time.
+4. Draft the messages, one at a time. For first-degree connections, it's a message, not a connection request.
+
+Starting points (rewrite in the user's voice):
+
+> **Recruiter nudge:** "Hi [name], I recently applied for the [role] at [company] and wanted to put it on your radar. Quick background: [years] in [field], mostly [the most relevant work], based in [city]. I think it's a strong fit and would love to get in front of the right person. Happy to send my resume; my work is at [link]. Thanks for any help."
+
+> **Referral ask:** "Hi [name], I applied for the [role] at [company] this week and wanted to reach out since you [lead / work on] [area]. [One line of matching proof.] Would you be open to 15 minutes so I can hear how your team approaches it? My work is at [link]. Either way, thanks." 
 
 Pace it: about one referral ask a day is plenty, and better than ten in an afternoon. Asks spread out get answered.
 
 ## One next move per person
 
-Every contact gets at most one next move: `reply`, `follow up`, `ask for an intro`, `ask for a referral`, `nudge`, `keep warm`, `thank`, or `none`. When the user asks "who should I reach out to this week?", list the moves due (by `next_date`) and the `keep warm` check-ins that are due by closeness (about every 30 days for close, 90 for friendly, 180 for loose).
+Every contact gets at most one next move. Pick the first that applies:
+
+1. **Reply:** they reached out and are waiting.
+2. **Follow up:** there's an active interview process at their company.
+3. **Ask for an intro:** there's no direct line, but a mutual contact could introduce the user (the draft goes to the mutual).
+4. **Ask for a referral** or **nudge:** the user applied there and knows them, or they're the recruiter.
+5. **Keep warm:** they matter to the user's career, including after a rejection from their company.
+6. **Thank:** they helped, and haven't been thanked yet.
+
+Never nudge a hiring manager or recruiter about a role they rejected the user from.
+
+When the user asks "who should I reach out to this week?", list the moves that are due (by `next_date`) and the `keep warm` check-ins due by closeness (about every 30 days for close, 90 for friendly, 180 for loose), each with its draft ready on request.
 
 ## Writing the message
 
@@ -63,6 +81,8 @@ Give first, keep it short:
 - **One proof link** at most (the user's LinkedIn, a portfolio, a project).
 - **The one sentence** from the preferences page, when the ask is "keep an eye out," so they know exactly what to look for.
 - Match how well they know each other: a close friend gets a text-length note; a loose connection gets context first ("We met at the product meetup in March").
+- **Reply in the existing thread** when there is one; it carries the context.
+- **Check the tracker before suggesting an open role** in a message. Never suggest one the user already applied to or was rejected from.
 
 **Warm intros are double opt-in.** When the user asks a mutual contact for an intro, the draft asks the mutual to check with the other person first, and offers a short forwardable blurb so it's easy.
 

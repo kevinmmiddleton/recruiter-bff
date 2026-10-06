@@ -11,11 +11,13 @@ The top of the guide is what the user reads in the five minutes before a call: t
 
 _Updated YYYY-MM-DD · from the posting saved [date] · [live on the company's site / couldn't confirm]_
 
-**Verdict:** [one honest line on fit] **The one big risk:** [the gap or concern most likely to sink it, in a phrase]
+**Verdict:** [strong / split / stretch]: [where you're strong]. **The one big risk:** [usually a missing stated requirement]. [What it means for this round.]
+**Bottom line:** [the open question, often pay or timing] · [the one job for this call]
 
-**Next round:** [Weekday Month Day, time, time zone] · [round type] with [name, title]
+**Next round:** [Weekday Month Day, time, time zone] · [format, link] · [round type] with [name, role] · [length]
 - **It tests:** [what this round is really for]
 - **It doesn't test:** [what not to over-prepare for this round]
+- **Sized to the time:** [e.g., "30 minutes: land two or three things, ask two questions"]
 
 ---
 
@@ -30,10 +32,11 @@ _Updated YYYY-MM-DD · from the posting saved [date] · [live on the company's s
 
 ## Your gaps
 
-- **[Gap]**
+- **[The gap, plainly]**
   - **They'll ask:** "[the question, as they'd say it]"
   - **Honest answer:** "Not yet. The closest I've done is ..." [in the user's voice, two or three sentences]
-  - **Point to instead:** [the adjacent proof]
+  - **Point to instead:** [the adjacent proof, and why it transfers]
+  - **Don't claim:** [the stretch to avoid]
   - **Raise it first?** [this round: yes or no, and why]
 
 ## Questions to ask
@@ -56,8 +59,11 @@ _Updated YYYY-MM-DD · from the posting saved [date] · [live on the company's s
 ## Everything else
 
 ### The people
-**[Name, title]**: what they're screening for · 2 or 3 points to land · likely probes · two questions for them
-(For panels: confirm who's who in the first minute.)
+| Time | Who | Screening for |
+|---|---|---|
+
+**[Name, title]**: why they're on this panel · 2 or 3 points to land, in their language · likely probes, with answers · two questions · one real overlap, mentioned once
+(Confirm who's who in the first minute: "[Name], I understand this role would report to you.")
 
 ### The company
 - **Snapshot:** what they sell, to whom, how they make money, size and stage
@@ -96,14 +102,18 @@ Clarify · find where people drop out · ideas easiest to undo first · the test
 
 ## Round notes
 
+Newest round first.
+
 ### Round [N]: [type], [date] with [names]
-- **Asked:** ...
-- **Landed:** ...
+- **Result and next step:** [who, when, format]
+- **The process, as described:** [and where it differs from the posting]
+- **What it actually was / what they asked:** ...
+- **Landed:** [including any "nobody's raised that before"]
 - **Fell flat:** ...
-- **What changed:** [new information about the role, the team, the process]
+- **Lines to reuse:** "[word for word]"
+- **What changed:** [in the user's read of the role, the team, the timeline]
 - **Read on them:** [did they listen; "we" or "I"; rushed or present; how they treated the user]
-- **Carry forward:** [what to fix or repeat next round]
-- **Next:** [the next step and date]
+- **Carry forward:** [per next interviewer: what they'll dig into]
 ```
 
 ---

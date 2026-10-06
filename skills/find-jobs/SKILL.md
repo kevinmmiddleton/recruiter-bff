@@ -87,10 +87,12 @@ No tracker yet? Skip this step.
 Apply `references/classification-rubric.md`, with the profile and preferences page as the rules:
 
 - **STRONG:** a clear fit that hits a strong signal. Lead with these.
-- **INCLUDE:** fits the basics, worth a look. Weak signals can tip a borderline role in.
+- **INCLUDE:** fits the basics, worth a look. Parked lanes and unknown companies land here, flagged.
 - **EXCLUDE:** fails a rule (wrong level, an excluded function with no exception that applies, an excluded industry, a staffing firm or aggregator, a skip-list company, a place they won't work, a listed range entirely below the floor). Hidden, with a count.
 
 When genuinely unsure, INCLUDE. A borderline role the user dismisses in two seconds costs far less than a good one they never see.
+
+Weak signals (soft warnings like contract-to-hire) never cut or upgrade a role: they add a flag and rank it lower within its tier.
 
 Pickiness decides what's shown: "strong plus maybe" (the default) shows STRONG and INCLUDE; "strong only" shows STRONG and a count of the rest.
 
@@ -117,8 +119,9 @@ watchlist ✓ 4 of 5 companies (Acme's feed didn't respond).
 Hid 6: 2 staffing firms, 2 wrong level, 1 on-site only, 1 already tracked.
 ```
 
-- **The source-health line is never skipped.** A source that failed, timed out, or hit a login says so, and a source that returned zero results says "0 results," so the user can tell a quiet day from a broken search.
-- **"Why it fits"** is one specific line naming the signal it hit, never a generic compliment. Mention a weak or parked signal when it's the reason.
+- **The source-health line is never skipped.** A source that failed, timed out, or hit a login says so, and a source that returned zero results says "0 results," so the user can tell a quiet day from a broken search. Say it louder, in its own line, when fewer than half the sources worked, when a logged-in source keeps returning nothing (the login has probably expired), or when saving to the tracker failed.
+- **Carry each role's real source** (`linkedin`, `ats-board`, `watchlist`, `pasted`) into the tracker. It's what later shows which sources lead to interviews.
+- **"Why it fits"** is one specific line naming the signal it hit, never a generic compliment. Add any flag after it: a weak signal ("heads-up: contract-to-hire"), a parked lane, an unknown company, pay that starts below the floor.
 - **Posting age** goes on every card when you know it. Very old postings (about 60 days or more) get a short flag: "posted 9 weeks ago, may be stale." Flag, don't hide.
 - If the user knows someone at a company (from `job-search/contacts.csv`, if it exists), add: "You know Priya Shah there."
 

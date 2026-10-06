@@ -34,9 +34,10 @@ Pull out: target titles and seniority, signals (strong, weak, parked), exclusion
 
 Then:
 
-- **Still open?** If the posting came from LinkedIn, a job aggregator, or a recruiter, look for the same role on the company's own careers page or job site. Aggregator copies often outlive the real posting. Report one of: "Live on the company's site" (with that link), "Not on the company's site; it may be closed," or "Couldn't check." Don't block the evaluation on it.
+- **Still open?** If the posting came from LinkedIn, a job aggregator, or a recruiter, look for the same role on the company's own careers page or job site. Aggregator copies often outlive the real posting. Report one of: "Live on the company's site" (with that link, and any differences in title, level, location, or pay), "Not on the company's site; it may be closed," or "Unverified: couldn't check." Never imply a role is live when you couldn't check. Don't block the evaluation on it.
 - **How old is it?** Note the posting date if you can find it ("posted 3 days ago," "posted 6 weeks ago").
-- **Light ghost-job flags.** Flag, never cut: reposted several times, open for more than about 60 days, vague duties with a kitchen-sink list, no pay range in a place that requires one (New York, California, Colorado, Washington, and others), or the same role listed in many cities at once. One line, no lecture: "Heads-up: posted 9 weeks ago and reposted twice. Worth a quick check before you spend an evening on it."
+- **Light ghost-job flags.** Flag, never cut: reposted several times, open for more than about 60 days, vague duties with a kitchen-sink list, no pay range in a place that requires one (New York, California, Colorado, Washington, and others), or the same role listed in many cities at once. One line, no lecture: "Heads-up: posted 9 weeks ago and reposted twice. Worth a quick check before you spend an evening on it." A repost isn't always bad news: it often means the last search ended without a hire, which can be a good moment to apply.
+- **Timing matters.** Applications in the first day or two get read most. If a strong role is fresh, say so: "Posted yesterday; if you're applying, sooner is better."
 
 If all you have is a title, company, and location, say the evaluation will be shallow and offer to go ahead or wait for the full text.
 
@@ -81,7 +82,7 @@ Off-target roles get flagged, never hidden. Sometimes the off-plan role is the r
 Apply `references/scoring-rubric.md`. Score each dimension from 1 to 5, then take the weighted average:
 
 - **Requirements match** (40%): from read one.
-- **Target fit** (25%): title, seniority, and function against the targets; strong signals lift it, weak signals can tip a borderline call; the one sentence counts here.
+- **Target fit** (25%): title, seniority, and function against the targets; strong signals lift it, weak signals (soft warnings) pull it down a little, parked lanes hold it in the middle; the one sentence counts here.
 - **Logistics** (15%): location, work mode, and pay against the profile.
 - **Company signals** (10%): industry, size, stage, and ownership against stated preferences; the subject test.
 - **Posting quality** (10%): how clear and specific the posting is; ghost-job flags count here.

@@ -32,21 +32,25 @@ If there's no preferences page, don't wait for one. Mention once that the summar
 
 ## Resume bullets
 
-Rewrite each bullet as **outcome, then how, then scope**:
+Rewrite each bullet as **outcome, then how, then scope**: "[outcome, measured by a metric] by [how], for [scope: users, team, budget, markets]." An outcome with no context ("increased margins 1%") doesn't say what skill it shows.
 
 > Before: "Responsible for onboarding and paywall experiments."
 > After: "Raised trial-to-paid conversion from 9% to 13% over 18 months by running 40+ onboarding and paywall tests with a team of 6."
 
 - **No "responsible for," "helped with," or "worked on"** as the main verb. Use the strongest verb the user could defend if an interviewer said "walk me through it." If they helped, say helped; "led" has to be true.
-- **Both ends of the number, then the parts behind it:** "from 0.1% to 7.3%, about 50x." "As high as" reads honest; "at peak" reads cherry-picked.
+- **Both ends of the number, so nobody does arithmetic:** the multiple as the headline, the endpoints beside it: "about 50x lift (0.1% to as high as 7.3%)." Then the parts behind it if there are several. "As high as" reads honest; "at peak" reads cherry-picked. When it comes up out loud, volunteer the settled number too: "it peaked at 7.3% and settled around 5."
+- **Credit the right cause.** If the user built the thing behind a result they didn't own alone: "built the tools behind a 50x lift," not "drove a 50x lift."
+- **Show skills through use:** "built the weekly dashboards in Amplitude," not "expert in Amplitude." 
 - **Real results, not targets.** "Projected to save $2M" is a plan. Say what actually happened, or say it's a projection.
-- **Cut bullets that only describe the job** ("managed the roadmap"). Never cut a bullet that has a number; fix it instead.
+- **Cut bullets that only describe the job** ("managed the roadmap," "partnered with design and engineering") and bullets that repeat the role's intro line. Never cut a bullet that has a number or a named outcome; fix it instead. To hit a page limit, cut filler before real experience, and make the same cut on every surface at once.
+- **Weight by recency and proof.** The strongest recent roles get the most bullets (about six for the last decade is plenty); older roles get a line.
+- **Test it on an outsider.** Someone outside the field should be able to say what the user does and what they achieved.
 - **Translate internal jargon.** Project code names and internal team names mean nothing outside the company. Say what it was in plain words.
 
 ## Resume structure
 
-- **The summary argues one point and has a number.** It's not a career history. It says the one sentence in searchable words and backs it with the best proof. Two or three lines.
-- **A truthful "current" line** if there's a gap: what the user has actually been doing ("Searching full time and building [project]"). Never call it consulting without clients.
+- **The summary argues one point and has a number.** A thesis, not a timeline: not "[Title] with 8+ years of experience," but what kind of builder this is, the thread through the career, and the best proof. It says the one sentence in searchable words. Two or three lines, at least one hard number. Each resume version gets its own summary, leading with that version's hook. Check it against how the user talks about themselves out loud ("I thrive in chaos" fights "I want stability").
+- **A truthful "current" line** if there's a gap since the last role, so the blank doesn't invite bad guesses: "[Independent], [City], [Month Year] to present: [what actually happened and can be checked, with a link]." Shipped, published, built, studied. Never call it consulting without paying clients. The user confirms it before it goes on anything, and the spoken answer in interviews matches it.
 - **The header title is the title recruiters search for,** as long as it's honest.
 - **Order by relevance.** The top third of page one gets read; put the proof for the one sentence there.
 - **A few versions by job type, not one per job.** Tailor the written answers, not the whole resume. A role-specific version can wait for an interview invite.
@@ -56,8 +60,15 @@ Rewrite each bullet as **outcome, then how, then scope**:
 ## LinkedIn
 
 - **Headline:** the target role plus the words recruiters search for, never "seeking opportunities." "Senior Product Manager · Growth, retention, and lifecycle · Consumer subscription."
-- **About:** a short pitch with numbers, written in first person, that says the one sentence and backs it up. Not a biography.
-- **Every surface matches.** Titles, dates, and claims must be identical across the resume, LinkedIn, and any personal site. Mismatches come up at reference checks. When the user asks, compare them side by side and list every difference.
+- **About:** a short pitch with numbers, in first person, never blank: what the user does and for whom, two or three proof points with numbers, and the next role they want. Not a biography.
+- **Skills recruiters search for:** add the specific ones (tools, methods, domains). Many recruiter searches start from skills.
+- **Findability:** suggest sharing the resume with recruiters in LinkedIn's settings, and the private "open to work" setting (with a word of caution if the user is still employed).
+- **Every surface matches.** The current resume is the source; LinkedIn and any personal site follow it: titles, dates, and the wording of claims. A claim softened to "helped secure" on the resume can't say "secured" on LinkedIn. A recruiter who sees two different titles starts asking questions. When the user asks, compare them and write the fixes as pairs, most important first:
+  ```
+  P0  Find: "Lead PM" (LinkedIn) · Replace: "Senior PM" · Why: matches the resume and the offer letter
+  P1  Find: "drove 13% conversion" (site) · Replace: "raised trial-to-paid from 9% to 13%" · Why: both ends, same as the resume
+  ```
+  P0 is accuracy and stale things (an old resume PDF still linked); P1 is consistency; P2 is polish. Note any deliberate differences so nobody "fixes" them later.
 - **Fix it once, then close the tab.** Endless profile tinkering feels like progress and usually isn't. Say so kindly if the user is on their fifth round of headline tweaks.
 
 ## Written answers
@@ -65,7 +76,8 @@ Rewrite each bullet as **outcome, then how, then scope**:
 For "why us," "tell us about a time," cover notes, and short-answer boxes:
 
 1. **Lead with what the user brings,** not a warm-up paragraph. The first sentence should answer the question.
-2. **"Why us" formula:** something the user did that looks like the company's product or problem, plus one fact about the company that only research turns up. Then the **swap test**: if another company's name could be swapped in and the answer still works, it isn't done.
+2. **"Why us" formula:** open with something the user built that resembles the company's product, if it's true: "I've built [X], and it's a small version of what you do." ("Small," never "worse.") Add one fact about their business that only research turns up, and tie the user's proof to the posting's own words: "That's most of your [named requirement]." Then the **swap test** on every sentence: put a competitor's name in. If it's still true, it's generic; make it specific or cut it. An open "tell us about yourself" box may want a plain background statement instead.
+   Keep logistics (location, start date) out of why-fit answers.
 3. **Lead with the story the role is buying,** based on the posting's requirements, not on the company's industry.
 4. **Honest gaps:** "Not yet. The closest I've done is ..."
 5. **AI credit, if it comes up:** additive, never exclusionary. "Built with a small team, including an AI coding assistant," not "not written by AI."
@@ -77,7 +89,7 @@ If a "why us" draft reads hollow even after research, say so. Sometimes the draf
 
 Before handing over any draft, read it as a skeptical hiring manager would, and fix what you find. The checklist is in `references/review-pass.md`: flattery, groveling, adjectives used as evidence, buzzwords, sentences that could go to any company, the throat-clearing opener, the slogan closer, and three examples where two would do.
 
-Then show the draft with a short list of what changed and why, so the user learns the pattern.
+Then show the result in the format at the end of that file (the flags, a verdict, the rewrite), so the user learns the pattern.
 
 ## Learning the user's voice
 

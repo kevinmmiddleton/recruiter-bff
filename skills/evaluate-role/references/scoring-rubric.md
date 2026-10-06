@@ -31,9 +31,9 @@ From read one, every requirement traced to a line in the background.
 ### Target fit (25%)
 
 - **5:** target title and seniority, hits a strong signal, and matches the one sentence (if there is one)
-- **4:** target title and seniority, no strong signal; or a weak signal plus a close match to the one sentence
-- **3:** an adjacent title or unclear seniority, plausibly in range
-- **2:** outside the targets but arguably transferable; or it mainly hits a parked signal
+- **4:** target title and seniority, no strong signal
+- **3:** an adjacent title or unclear seniority, plausibly in range; or a target role that carries a weak signal (a soft warning like contract-to-hire)
+- **2:** outside the targets but arguably transferable; or it mainly hits a parked lane
 - **1:** wrong function or clearly the wrong level
 
 ### Logistics (15%)

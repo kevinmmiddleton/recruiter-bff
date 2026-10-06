@@ -30,7 +30,7 @@ Columns, in order:
 company,role,location,comp,url,source,status,score,date_added,date_applied,last_update,notes,furthest_stage,next_date
 ```
 
-Statuses: `prospect`, `applied`, `screening`, `interview`, `final`, `offer`, `rejected`, `closed`, `hold`, `ghosted`, `withdrawn`, `skipped`. Full meanings, the matching rules, and the Python snippets are in `references/tracker-schema.md`. Read it before your first write in a conversation.
+Statuses: `prospect`, `applied`, `screening`, `interview`, `final`, `offer`, `accepted`, `rejected`, `closed`, `hold`, `ghosted`, `withdrawn`, `skipped`. Full meanings, the matching rules, and the Python snippets are in `references/tracker-schema.md`. Read it before your first write in a conversation.
 
 Older trackers have no `furthest_stage` or `next_date` columns. The snippets add them on the next write and change nothing else. Tell the user once, in a sentence.
 
@@ -42,7 +42,9 @@ Older trackers have no `furthest_stage` or `next_date` columns. The snippets add
 
 **"I applied to X."** If X is a prospect, move it to `applied` and set `date_applied`. If it isn't tracked, add it, then mark it applied. Put the resume version or anything else they mention in `notes`.
 
-**Moving forward.** Screens, interviews, finals, offers: update `status` and `last_update`, raise `furthest_stage`, and set `next_date` when there's a date ("screen Thursday" means next Thursday's date; work it out from today and say the date back). Add a dated note with any context.
+**Moving forward.** Screens, interviews, finals, offers: update `status` and `last_update`, and set `next_date` when there's a date ("screen Thursday" means this coming Thursday; work out the date from today and say it back with the weekday). Add a dated note with any context.
+
+**Booked vs. happened.** `furthest_stage` counts only rounds that have taken place. When a round is booked, update with `completed = False`; when the user reports it happened (usually in a debrief), run the update again with the same status and `completed = True`. An accepted offer is `accepted`, and `furthest_stage` stays `offer`.
 
 **Honest endings.**
 - The company said no: `rejected`.
@@ -85,11 +87,12 @@ When a nudge is due, offer to draft it. Keep it short and friendly, and give the
 
 After the user logs an interview (or finishes a debrief), offer once: "Want thank-you notes for the people you met?"
 
-- One note per interviewer, plus the recruiter.
-- Each one names something specific from that conversation, ties it back to the role in one line, and stays under about 120 words.
-- If the role might pause or close, add a light "keep me in mind for what comes next."
-- Pull names and details from the guide's round notes when they exist. If you don't know who was there, ask.
-- Drafts only. The user sends them, ideally the same day.
+- One note per interviewer, plus the recruiter, sent the same day.
+- Each one recaps something specific from that conversation and adds one point: a thought on a problem they raised, a link that answers a question, a line on why the user is more interested now. Under about 120 words.
+- For the recruiter, if they couldn't share what the hiring manager would cover, a one-line summary of how it went helps them advocate.
+- If the role is paused: thank the hiring manager for their time across the rounds, acknowledge the pause, and ask to be kept in mind for future roles on the team.
+- Pull names and details from the guide's round notes. If you don't know who was there, ask.
+- Drafts only. The user sends them. Good notes keep the relationship even after a no.
 
 ## Weekly review
 
@@ -98,9 +101,12 @@ When the user asks for a weekly review, or "how's my search going," read the who
 1. **This week:** applications sent, processes that moved forward, rejections, what's coming up (with dates), and, if `job-search/contacts.csv` exists, conversations held and messages sent (from `last_contact` dates). Keep scheduling conversations even in busy interview weeks, so the next week isn't empty.
 2. **Open loops:** every active process with its next step, and anything the user promised to send (look in `notes` for promised follow-ups and in the company folders for unsent drafts).
 3. **Where things stall:** count `furthest_stage` across finished rows. "Most of your finished processes ended after the recruiter screen" is useful. Only say it when there are enough rows to mean something (about 8 or more).
-4. **By source:** which sources produced screens and interviews (from `source` and `furthest_stage`), so the user can spend time where it pays off. If a source never produces anything after a few weeks, say so once.
-5. **One process carrying everything:** if one company is the only active process past the screen, say so warmly and suggest keeping a few more moving, so one no doesn't empty the pipeline.
-6. **Your preferences:** if `job-search/preferences.md` exists, ask one question: "Is anything in your preferences changing?" Searches teach people what they want.
+4. **By source:** how many roles came from each source and how far they got (from `source` and `furthest_stage`), with referrals compared to cold applications. That shows where time pays off. If a source never produces anything after a few weeks, say so once.
+5. **Processes to protect:** the active processes that matter most, so none goes cold, plus housekeeping (rejections to log, rounds to mark as happened).
+6. **One process carrying everything:** if one company is the only active process past the screen, say so warmly and suggest reopening the top of the funnel now rather than waiting on one outcome, so one no doesn't empty the pipeline.
+7. **Your preferences:** if `job-search/preferences.md` exists, ask one question: "Is anything in your preferences changing?" Searches teach people what they want.
+
+A rhythm that works for many people: warm contacts and recruiters early in the week, applications midweek, prep and follow-ups late in the week. Offer it once; don't prescribe it. Never lecture about application volume. If the user wants to put extra effort somewhere, referrals are where it pays.
 
 Notice the effort, not just the outcomes. A week with no interviews but steady applications is still a real week. Keep the whole review skimmable, and never repeat a suggestion the user already declined.
 

@@ -43,7 +43,9 @@ Use web search. Find:
 - 4 to 6 numbers worth having in mind (not reciting), each with its source.
 - The people: titles and background for each interviewer, if the user named them. Use LinkedIn in the user's own browser if it's connected, or what the user tells you. Anything they've published is worth one reaction, once.
 
-Keep anything you couldn't confirm in a "Couldn't verify" line. Before a product or case round, tell the user to use the product as a customer and bring two or three observations, framed as observations, never gotchas.
+Keep anything you couldn't confirm in a "Couldn't verify" line.
+
+**Before a product or case round, the user should use the product as a customer:** sign up, buy, search, walk the main flow, hit the paywall. Give them a short log to fill in: each touchpoint in order (when, which screen or message, what it did), then "What works," "Where it could connect better," "Tradeoffs to have a view on," and "What I can't tell from here." Each finding states its evidence and its limit ("I tested on iPhone; Android may differ"). In the room, two findings at most, framed as observations, never gotchas: "Here's what I saw from the outside. What am I missing?" Outside a case round, one line is plenty, and something they liked beats something they'd fix.
 
 ## Step 2: The role, in plain words
 
@@ -57,15 +59,19 @@ For each theme, the proof point that answers it: the company, what the user did,
 
 Every real gap gets its own entry, not a footnote under fit:
 
+- **The gap, plainly:** "You haven't managed a PM."
 - **They'll ask:** the question as an interviewer would put it.
 - **Honest answer:** in the user's voice. "Not yet. The closest I've done is ..." then the adjacent proof. Short, and never apologetic.
-- **Point to instead:** the proof that covers the most ground.
-- **Raise it first?** Per round. Raise it yourself when it's obvious from the resume and the round is about depth (hiring manager, panel), so you frame it before they do. Let it come up naturally in a recruiter screen, and have the answer ready.
+- **Point to instead:** the proof that covers the most ground, and why it transfers.
+- **Don't claim:** the stretch to avoid ("running a program with six people isn't managing them").
+- **Raise it first?** Per round. When the gap is a stated requirement and the round is the hiring manager or a fit round, say it before they find it, so the user frames it. In a recruiter screen, answer it if asked.
+
+Say each gap the same way in every round.
 
 ## Step 5: Questions to ask
 
-- **Per interviewer, in the order the user meets them.** Different people deserve different questions.
-- **"If you only get two":** the two that matter most for this decision.
+- **Per interviewer, in the order the user meets them.** Tune them to the person: an executive gets why this seat exists, a peer gets the day-to-day, the recruiter gets next steps and timeline.
+- **"If you only get two":** "Ask Alex the renewal question and Dana the timeline one." For a short hiring-manager slot, exactly two plus a backup.
 - **Screen them back:** new seat or backfill (and how the last person did); how long the manager and their boss have been there; a real disagreement and how it was resolved; what happened after a project that didn't work.
 - **From the preferences page:** every must-have and must-not that the posting doesn't answer becomes a question. If remote matters, ask how decisions get made across locations; if a bad manager was the lesson, ask how disagreements get settled.
 - **The user's go-to question,** if the profile has one, as their closer.
@@ -74,8 +80,8 @@ Each question should get real information and show how the user thinks. Skip any
 
 ## Step 6: The verdict and the next round (top of the guide)
 
-- **Verdict:** one honest line on fit, plus **the one big risk** most likely to sink it.
-- **Next round:** date, time, time zone, type, who. Then **what this round tests and what it doesn't:**
+- **Verdict:** strong, split, or stretch, in one honest line: where the user is strong, **the one big risk** (usually a missing stated requirement), and what that means for this round ("You advanced anyway, so the experiments landed. Lead with them, and be relaxed about the people-management question"). End with a **bottom line**: the open question (often pay or timing) and the one job for this call.
+- **Next round:** date, time, time zone, format and link if known, who and their role, and how long. Size the plan to the time: "Thirty minutes: land two or three things, ask two questions." Then **what this round tests and what it doesn't:**
   - **Recruiter screen:** motivation, logistics, pay range, the basic story. Not deep craft.
   - **Hiring manager:** judgment, depth, the stories behind the resume, whether they'd want to work with the user.
   - **Panel:** each person is screening for something different (see the people section).
@@ -88,7 +94,7 @@ If this round is a stretch the user is taking for practice (the pay is under the
 
 Build the rest of the guide from `references/guide-template.md`:
 
-- **The people:** for each interviewer, what they're screening for, two or three points to land, likely probes, two questions. For panels, a reminder to confirm who's who in the first minute.
+- **The people:** for a panel, a small table first (time, who, what they're screening for); the order often mirrors the role's main partners. Then for each person: why they're on this panel and what they're deciding, two or three points to land in their language, likely probes with answers, two questions, and one real overlap with their background, mentioned once. A reminder to confirm who's who in the first minute: "Alex, I understand this role would report to you." 
 - **The company:** snapshot, numbers with sources, recent news with the date checked, product homework.
 - **Tell me about yourself:** three or four sentences: the pattern of the career, two proof points tied to their themes, why this is the natural next step. In the user's voice, not a resume read aloud.
 - **Likely questions and answers:** five to seven for this round, each under 150 words, in the user's voice, with real proof points. Pull behavioral answers from the story bank first. For a two-part "and" question, answer the second half first, since that's the part people forget. No "great question," no "happy to walk through examples."
@@ -106,19 +112,23 @@ Then offer: update the tracker (status and `next_date`) through `application-tra
 
 ## After the round: debrief
 
-When the user comes back from an interview, debrief right away, while it's fresh. Ask a few at a time:
+When the user comes back from an interview, debrief right away, the same day if possible. Ask a few at a time:
 
-1. What did they ask? Anything you didn't expect?
-2. What landed? What fell flat?
-3. What changed: anything new about the role, the team, the process, the timeline?
-4. How did they treat you? Did they listen? Say "we" or "I"? Rush you? Did you feel like a priority or a nuisance? Do they understand their own business? Anything off you can't name yet?
-5. What's next, and when?
+1. **Result and next step:** who's next, when, and in what format?
+2. **The process as they described it,** and where it differs from the posting.
+3. **What the round actually was,** and what they asked. Anything you didn't expect?
+4. **What landed,** including any "nobody's raised that before." What fell flat?
+5. **Lines worth reusing,** word for word.
+6. **What changed** in your read of the role, the team, or the timeline?
+7. **How they treated you:** did they listen? Say "we" or "I"? Rush you? Did you feel like a priority or a nuisance? Do they understand their own business? Anything off you can't name yet?
+
+Then write **carry forward** for each next interviewer: what they'll dig into, given what this round covered.
 
 Write it into the guide's Round notes (never overwrite earlier rounds). Then:
 
 - Update the rest of the guide with what was learned (a watch-for answered, a new gap, the next round's people).
 - Update the story bank: mark stories used, note how they landed, and offer to bank any new story the user told.
-- Update the tracker's status and `next_date` through `application-tracker`.
+- Update the tracker through `application-tracker`: mark this round as happened (`completed = True`, so the furthest stage moves up), and set the status and `next_date` for what's next.
 - Offer thank-you notes (drafted by `application-tracker`), same day.
 
 How they treat the user is information about the job. An interview is the best behavior anyone will ever show, so take an early bad sign seriously and say so kindly.
@@ -129,8 +139,12 @@ When the user says "practice my interview" or "mock interview":
 
 1. Play the interviewer for the next round, in that person's voice and with their priorities (a recruiter asks different things than a hiring manager).
 2. One question at a time. Wait for the full answer.
-3. After each answer: what landed, what was weak, and a tighter version in the user's words.
-4. After four to six questions: the pattern across answers (running long, burying the result, skipping the "why").
+3. After each answer, a four-part critique:
+   - **What landed.**
+   - **What was soft for this interviewer:** an executive wanted the money first; the recommendation came late or hedged; the second half of the question got dropped; the number lost its other end.
+   - **A tighter version,** in three to five bullets, in the user's words.
+   - **A delivery note:** "Recommendation, what you wouldn't do, the cheapest test. Two or three breaths."
+4. After several questions, name the one pattern across them (running long, burying the result, dropping the second half).
 5. For stories, ask them to say it out loud and time it: about 90 seconds. Cut the setup, never the result.
 
 Keep the critique specific and kind. Practice is for finding the weak spots before the interviewer does.

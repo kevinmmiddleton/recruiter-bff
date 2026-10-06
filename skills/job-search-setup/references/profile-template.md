@@ -26,9 +26,9 @@ _Preferences page: job-search/preferences.md (or "not built yet")_
 
 ## Signals
 
-- **Strong** (makes a role top-tier on its own): growth, retention, or lifecycle work; consumer subscription products
-- **Weak** (a plus, not enough on its own): consumer health; experimentation-heavy teams
-- **Parked** (interesting, not pursuing right now): Group PM roles with direct reports
+- **Strong** (what I want most; makes a role top-tier): growth, retention, or lifecycle work; consumer subscription products
+- **Parked** (a lane I like but keep stalling in, or am not chasing right now): Group PM roles with direct reports
+- **Weak** (soft warnings: flag it, rank it lower, never cut it): contract or contract-to-hire roles; titles that often mean sales-facing work
 - **Pickiness:** strong plus maybe (show STRONG and INCLUDE) | strong only
 
 ## Exclusions (exceptions written in)
@@ -98,11 +98,15 @@ Outcome first, then how, then scope. Both ends of every number.
 - **Target titles** are the literal phrases postings use. "Product Lead" and "Group PM" turn up different results than "Product Manager."
 - **Pay tiers:** the floor filters (a listed range entirely below it is excluded); comfortable and ideal shape the fit check and the pay scripts in interview guides. If the user gives only a floor, that's enough.
 - **Signals:**
-  - **Strong** signals make a role STRONG in a scan and lift the target-fit score.
-  - **Weak** signals are tie-breakers: they can lift a borderline role into INCLUDE and get named in "why it fits," but never make a role STRONG alone.
-  - **Parked** signals are things the user cares about but isn't chasing right now (often a lane where they keep stalling). Don't treat them as strong. Mention a parked match in one line so it isn't lost.
+  - Signals rank roles; they never cut them. Cutting is what exclusions are for.
+  - **Strong** signals make a role STRONG in a scan (the "why it fits" line names the one it hit) and lift the target-fit score.
+  - **Parked** lanes are ones the user likes but keeps stalling in, or isn't chasing right now. Show a parked match below the strong ones, as INCLUDE, with the reason and a note to revisit.
+  - **Weak** signals are soft warnings: contract roles, titles that often turn out to be sales-facing, anything the user hesitates on without ruling out. Flag the role and rank it lower; never hide it.
 - **Pickiness** sets what a scan shows: "strong plus maybe" shows STRONG and INCLUDE (the default); "strong only" shows STRONG and gives a count of the rest. The user can change it for a single scan ("just the strong ones today").
-- **Exclusions with exceptions:** exclude the function, not the whole company or field, and write the exception next to it: "data science PM out, growth analytics in." A precise exclusion removes more noise than any keyword adds. The named-companies list grows over time; append, don't replace.
+- **Exclusions with exceptions:** exclude the function, not the employer, and write the exception on the same line: "data science PM out, growth analytics in." A precise exclusion removes more noise than any keyword adds.
+- **Industries** are judged by the company's core business, not one product line. A software company that sells *to* an excluded industry gets shown with a flag, not cut.
+- **Temporary blocks** carry a reason and a revisit date: "Acme: hiring freeze, revisit January," or a cooling-off period after a rejection when the same role keeps getting reposted. The named-companies list grows over time; append, don't replace.
+- **Direct reports** the user doesn't want: flag the role and let them decide; don't skip it automatically.
 - **Company types** default to excluding staffing firms and aggregators that repost roles. The user can turn that off.
 - **Proof points** come from the resume first. Never invent a number: if the resume says "improved conversion," write that and mark the number as a gap to fill, like `[from ?% to ?%]`.
 - **Pay line:** this is what the user has decided to say. Skills can remind them of it; they never say it for the user.
