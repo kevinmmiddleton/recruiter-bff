@@ -1,39 +1,47 @@
 # Background Fields for Interview Guides
 
-The interview-guide-engine reads the **shared** profile at `job-search/profile.md` (created by `job-search-setup`). It does **not** keep a separate profile file. This reference lists the background fields a good guide needs — if any are missing or marked `(not set yet)` in the shared profile, collect them and write them back into the relevant sections of `job-search/profile.md`.
+Interview guides read the shared profile at `job-search/profile.md` (built by `job-search-setup`, usually from the resume). There is no separate profile for guides. This file lists the fields a good guide needs. If any are missing or marked `(not set yet)`, collect only those and write them back into `job-search/profile.md`.
 
-These fields live in the **Background**, **Lead-With Guidance**, and **Voice & Logistics** sections of the shared profile template. Layout to populate:
+## Background (profile "Background")
 
-## Background (→ profile "Background" section)
 - **Name**
-- **Current/most recent title**
+- **Current or most recent title**
 - **Years of experience**
-- **Career arc** (2–3 sentences)
-- **Currently:** employed / active search / passive
-- **"Why are you looking" story** (their prepared answer)
+- **Career arc** (2 to 3 sentences)
+- **Currently:** employed, searching full time, or between roles since a month
+- **Why looking:** their prepared answer, in their words
 
-## Proof Points (→ profile "Proof Points")
-4–6 strongest accomplishments. For each:
-- **[Company]** — what they did — measurable result
+## Proof points (profile "Proof Points")
 
-Group by strength area if it helps (e.g., "Platform," "0-to-1," "AI tooling").
+The 4 to 6 strongest accomplishments. Each one: outcome first, then how, then scope, with both ends of any number.
 
-## Lead-With Guidance (→ profile "Lead-With Guidance")
-Which proof points to emphasize by role type:
+- **[Company]:** [outcome, from and to], by [how], [scope]
 
-| Role Type | Lead With |
+Group them by strength if that helps ("growth," "platform," "0 to 1").
+
+## Lead-with guidance (profile "Lead-With Guidance")
+
+Which proof points go first for which kind of role:
+
+| Role type | Lead with |
 |-----------|-----------|
-| AI / tooling | ... |
-| Platform / internal tools | ... |
-| Consumer / growth | ... |
+| Growth | ... |
+| Platform or internal tools | ... |
 
-## Voice & Logistics (→ profile "Voice & Logistics")
-- **How they sound in interviews:** formal/casual, dry/warm, concise/expansive
-- **Go-to interview question** (their closer, if any)
-- **Approved phrases:** framings they've tested and like — reuse and adapt
-- **Be upfront about:** honest gaps the guide should address head-on (gap, title mismatch, pivot) — or "nothing"
-- **Salary expectation to state when asked**
+## Voice and logistics (profile "Voice and Logistics")
 
-## Why share one profile
+- **How they sound in interviews:** warm or formal, dry or bright, short or expansive
+- **Go-to question** for interviewers, if they have one
+- **Phrases they like:** framings they've tested; reuse and adapt them
+- **Be upfront about:** a gap, a title mismatch, a pivot, or "nothing"
+- **What they say when asked about pay:** their own line, or "(not set yet)"
 
-The search tools and the interview tool need overlapping facts (titles, level, comp, background). Keeping a single profile means the user answers once. When this skill fills a gap, the next scan and the next guide both benefit. Never fork a second profile file.
+## Also read, if they exist
+
+- `job-search/preferences.md`: must-haves and must-nots become questions to ask; the one sentence shapes the fit story.
+- `job-search/story-bank.md`: reuse banked stories before drafting new ones.
+- `job-search/interviews/<company>/posting.md` and `evaluation.md`: the saved posting and the fit check, so the guide starts from what's already known.
+
+## Why one profile
+
+Scans, fit checks, guides, and materials need the same facts. One profile means the user answers once, and a gap filled for a guide improves the next scan too. Never start a second profile file.
