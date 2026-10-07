@@ -55,6 +55,7 @@ Titles are messy. Map them loosely:
 - **Below a senior search:** Intern, Junior, Associate, Coordinator, Analyst.
 - **At target:** Product Manager, Senior PM, Staff PM, Principal PM, Lead PM, Group PM, Product Lead, and Head of Product or Director of Product for director-level searches.
 - **Above target:** VP of Product, CPO. Show these with a note rather than cutting them, in case the user wants a stretch.
+- **Numbered levels** ("Product Manager II") usually sit below senior, and "III" or "IV" can be senior. They vary by company, so check the posting's years of experience before cutting one; when unsure, INCLUDE with a note.
 
 Adjust the same idea for other fields: the user's target titles and seniority set the line.
 

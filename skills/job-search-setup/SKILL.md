@@ -110,12 +110,12 @@ End with at most one offer. If several apply, pick the first that fits:
 
 1. **Anything time-sensitive:** thank-you notes the same day, a reply someone is waiting on.
 2. **Someone to ask before applying:** after a fit check that says apply, if the user knows someone there (from `contacts.csv`), offer the referral note; if there's no `contacts.csv` but a LinkedIn export is in the folder, offer to check it. A referral matters most before the application goes in.
-3. **The obvious next step for what the user just did:** after a scan, adding matches to the tracker; after a fit check, adding the role to the tracker (once per role; skip it if the role is already tracked); after a booked round, a practice run.
+3. **The obvious next step for what the user just did:** after setup, a first scan; after a scan, adding matches to the tracker (or a fit check on a strong one); after a fit check, adding the role to the tracker (once per role; skip it if the role is already tracked); after a booked round, a practice run; after building the preferences page, drafting the message to share it.
 4. **Checking the user's LinkedIn export** for people they know, in general.
 5. **The preferences page.**
 6. **Reminders.**
 
-Logging an application or a status change has no next step of its own. That reply is the quiet moment for 4, 5, and 6.
+Logging an application or a status change has no next step of its own. That reply is the quiet moment for 4, 5, and 6. A reply that carries out something the user just said yes to (a contacts import, a draft, the preferences page) doesn't add a new optional offer; at most it ends with that task's own next step from 3.
 
 Before offering 4, 5, or 6, check the **Offered** section of `job-search/profile.md` and skip anything already offered; when you offer one, add a dated line there. For reminders, also skip them if the profile's Reminders status is anything other than "(not set yet)." Saying a fact ("this read uses your profile alone") isn't an offer.
 

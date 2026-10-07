@@ -51,7 +51,9 @@ Starting points (rewrite in the user's voice):
 
 > **Recruiter nudge:** "Hi [name], I recently applied for the [role] at [company] and wanted to put it on your radar. Quick background: [years] in [field], mostly [the most relevant work], based in [city]. I think it's a strong fit and would love to get in front of the right person. Happy to send my resume; my work is at [link]. Thanks for any help."
 
-> **Referral ask:** "Hi [name], I applied for the [role] at [company] this week and wanted to reach out since you [lead / work on] [area]. [One line of matching proof.] Would you be open to 15 minutes so I can hear how your team approaches it? My work is at [link]. Either way, thanks." 
+> **Referral ask, before applying:** "Hi [name], I'm about to apply for the [role] at [company] and wanted to ask you first. [One line of matching proof.] Would you be comfortable referring me? Here's the posting, and a two-line summary you can forward: [summary]. No pressure either way, and thanks."
+
+> **After applying:** "Hi [name], I applied for the [role] at [company] this week and wanted to reach out since you [lead / work on] [area]. [One line of matching proof.] Would you be open to 15 minutes so I can hear how your team approaches it? My work is at [link]. Either way, thanks." 
 
 Pace it: about one referral ask a day is plenty, and better than ten in an afternoon. Asks spread out get answered.
 
@@ -61,7 +63,7 @@ Every contact gets at most one next move. Pick the first that applies:
 
 1. **Reply:** they reached out and are waiting.
 2. **Follow up:** they're part of an active process: the recruiter, or someone the user has met in the interviews.
-3. **Ask for a referral or a good word:** the user knows them at least `friendly` and has applied there. Before a referral, it's "would you refer me?"; once the user is interviewing, it's "could you put in a good word, or tell me how the team works?"
+3. **Ask for a referral or a good word:** the user knows them at least `friendly` and has applied there or is about to (a fit check said apply). Before applying, it's "would you refer me?", which is when a referral helps most; once the user is interviewing, it's "could you put in a good word, or tell me how the team works?"
 4. **Nudge:** they're the recruiter and the user applied but hasn't heard back.
 5. **Ask for an intro:** there's no direct line, but a mutual contact could introduce the user (the draft goes to the mutual).
 6. **Keep warm:** they matter to the user's career, including after a rejection from their company.
@@ -111,12 +113,12 @@ End with at most one offer. If several apply, pick the first that fits:
 
 1. **Anything time-sensitive:** thank-you notes the same day, a reply someone is waiting on.
 2. **Someone to ask before applying:** after a fit check that says apply, if the user knows someone there (from `contacts.csv`), offer the referral note; if there's no `contacts.csv` but a LinkedIn export is in the folder, offer to check it. A referral matters most before the application goes in.
-3. **The obvious next step for what the user just did:** after a scan, adding matches to the tracker; after a fit check, adding the role to the tracker (once per role; skip it if the role is already tracked); after a booked round, a practice run.
+3. **The obvious next step for what the user just did:** after setup, a first scan; after a scan, adding matches to the tracker (or a fit check on a strong one); after a fit check, adding the role to the tracker (once per role; skip it if the role is already tracked); after a booked round, a practice run; after building the preferences page, drafting the message to share it.
 4. **Checking the user's LinkedIn export** for people they know, in general.
 5. **The preferences page.**
 6. **Reminders.**
 
-Logging an application or a status change has no next step of its own. That reply is the quiet moment for 4, 5, and 6.
+Logging an application or a status change has no next step of its own. That reply is the quiet moment for 4, 5, and 6. A reply that carries out something the user just said yes to (a contacts import, a draft, the preferences page) doesn't add a new optional offer; at most it ends with that task's own next step from 3.
 
 Before offering 4, 5, or 6, check the **Offered** section of `job-search/profile.md` and skip anything already offered; when you offer one, add a dated line there. For reminders, also skip them if the profile's Reminders status is anything other than "(not set yet)." Saying a fact ("this read uses your profile alone") isn't an offer.
 

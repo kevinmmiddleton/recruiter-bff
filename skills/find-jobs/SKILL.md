@@ -92,7 +92,7 @@ No tracker yet? Skip this step.
 Apply `references/classification-rubric.md`, with the profile and preferences page as the rules:
 
 - **STRONG:** a clear fit that hits a strong signal. Lead with these.
-- **INCLUDE:** fits the basics, worth a look. Parked lanes and unknown companies land here, flagged.
+- **INCLUDE:** fits the basics, worth a look. Parked lanes land here, flagged. An unknown company is flagged too, but it can still be STRONG.
 - **EXCLUDE:** fails a rule (wrong level, an excluded function with no exception that applies, an excluded industry, a staffing firm or aggregator, a skip-list company, a place they won't work, a listed range entirely below the floor). Hidden, with a count.
 
 When genuinely unsure, INCLUDE. A borderline role the user dismisses in two seconds costs far less than a good one they never see.
@@ -124,7 +124,7 @@ watchlist ✓ 4 of 5 companies (Acme's feed didn't respond).
 Hid 6: 2 staffing firms, 2 wrong level, 1 on-site only, 1 already tracked.
 ```
 
-- **The source-health line is never skipped.** A source that failed, timed out, or hit a login says so, and a source that returned zero results says "0 results," so the user can tell a quiet day from a broken search. Say it louder, in its own line, when fewer than half the sources you tried worked, when a logged-in source keeps returning nothing (the login has probably expired), or when saving to the tracker failed. A source the user chose to skip, or one that can't run in this session (no browser, no web access), isn't a failure: label it "skipped" or "not available here" and leave it out of the count.
+- **The source-health line is never skipped.** List each saved search on its own ("LinkedIn, New York ✓ 18 · LinkedIn, remote: skipped"), so a partial paste is clear. A source that failed, timed out, or hit a login says so, and a source that returned zero results says "0 results," so the user can tell a quiet day from a broken search. Say it louder, in its own line, when fewer than half the sources you tried worked, when a logged-in source keeps returning nothing (the login has probably expired), or when saving to the tracker failed. A source the user chose to skip, or one that can't run in this session (no browser, no web access), isn't a failure: label it "skipped" or "not available here" and leave it out of the count.
 - **Carry each role's real source** into the tracker: where it came from, not how it reached you. Pasted LinkedIn results are `linkedin`; pasted company job site results are `ats-board`. It's what later shows which sources lead to interviews.
 - **"Why it fits"** is one specific line naming the signal it hit, never a generic compliment. Use only what the card, the posting, or the user said. Don't describe a company you can't verify ("a consumer subscription company") unless the listing says so; if it matters and you can't tell, say that instead ("I can't tell what Tallyho does; check before you spend time"). Add any flag after it: a weak signal ("heads-up: contract-to-hire"), a parked lane, an unknown company, pay that starts below the floor.
 - **Posting age** goes on every card when you know it. Very old postings (about 60 days or more) get a short flag: "posted 9 weeks ago, may be stale." Flag, don't hide.
@@ -150,12 +150,12 @@ End with at most one offer. If several apply, pick the first that fits:
 
 1. **Anything time-sensitive:** thank-you notes the same day, a reply someone is waiting on.
 2. **Someone to ask before applying:** after a fit check that says apply, if the user knows someone there (from `contacts.csv`), offer the referral note; if there's no `contacts.csv` but a LinkedIn export is in the folder, offer to check it. A referral matters most before the application goes in.
-3. **The obvious next step for what the user just did:** after a scan, adding matches to the tracker; after a fit check, adding the role to the tracker (once per role; skip it if the role is already tracked); after a booked round, a practice run.
+3. **The obvious next step for what the user just did:** after setup, a first scan; after a scan, adding matches to the tracker (or a fit check on a strong one); after a fit check, adding the role to the tracker (once per role; skip it if the role is already tracked); after a booked round, a practice run; after building the preferences page, drafting the message to share it.
 4. **Checking the user's LinkedIn export** for people they know, in general.
 5. **The preferences page.**
 6. **Reminders.**
 
-Logging an application or a status change has no next step of its own. That reply is the quiet moment for 4, 5, and 6.
+Logging an application or a status change has no next step of its own. That reply is the quiet moment for 4, 5, and 6. A reply that carries out something the user just said yes to (a contacts import, a draft, the preferences page) doesn't add a new optional offer; at most it ends with that task's own next step from 3.
 
 Before offering 4, 5, or 6, check the **Offered** section of `job-search/profile.md` and skip anything already offered; when you offer one, add a dated line there. For reminders, also skip them if the profile's Reminders status is anything other than "(not set yet)." Saying a fact ("this read uses your profile alone") isn't an offer.
 
