@@ -2,17 +2,19 @@
 
 How to score one posting against the user's profile and preferences. Five dimensions, each 1 to 5; the overall score is the weighted average. The profile and the preferences page are the rules; this file is the method.
 
-> The dimensional approach is adapted from [career-ops](https://github.com/santifer/career-ops) by santifer (MIT), reworked for this plugin's profile and on-demand flow.
+> The dimensional approach is adapted from [career-ops](https://github.com/career-ops-hq/career-ops) by santifer (MIT), reworked for this plugin's profile and on-demand flow.
 
 ## Dimensions and weights
 
-| Dimension | Weight | What it measures |
-|---|---|---|
-| Requirements match | 40% | How much of the posting the user's background actually answers |
-| Target fit | 25% | Whether this is the kind of role they're after |
-| Logistics | 15% | Location, work mode, and pay against their rules |
-| Company signals | 10% | Industry, size, stage, ownership, and subject against their preferences |
-| Posting quality | 10% | Whether the posting itself is a good sign |
+| Dimension | Label the user sees | Weight | What it measures |
+|---|---|---|---|
+| Requirements match | Requirements | 40% | How much of the posting the user's background actually answers |
+| Target fit | What you want | 25% | Whether this is the kind of role they're after |
+| Logistics | Logistics and pay | 15% | Location, work mode, and pay against their rules |
+| Company signals | Company | 10% | Industry, size, stage, ownership, and subject against their preferences |
+| Posting quality | Posting | 10% | Whether the posting itself is a good sign |
+
+Use the labels in the second column wherever the user sees scores: the fit check reply and the Scores line in `fit-check.md`.
 
 ## Anchors
 
@@ -44,6 +46,8 @@ From read one, every requirement traced to a line in the background.
 - **2:** conflicts with a stated rule (hybrid in a city they ruled out)
 - **1:** breaks a hard rule (on-site only where they won't work; listed range entirely below the floor)
 
+**Only a floor set** (no comfortable number, as in every 0.4 profile): score pay against the floor alone, and never invent a comfortable number. With location and work mode inside the rules, a listed range that starts at or above the floor scores 5; one that starts below the floor but reaches it scores 4; unlisted pay scores 4, as above; a range entirely below the floor scores 1.
+
 ### Company signals (10%)
 
 - **5:** a subject they'd care about every day, and the size, stage, and ownership they want. With no preferences page, use the profile's industries and strong signals for the subject, and don't go above 4.5 on a subject the user hasn't confirmed.
@@ -67,7 +71,7 @@ A clear, specific posting signals a team that knows what it's hiring for.
 - **Unknowns score 3.** Missing pay, unstated work mode, no stage information: neutral, never a penalty.
 - **The gate comes first.** If the role fails a hard rule from the find-jobs classification rubric (skip-list company, a place they won't work, an excluded function with no exception that applies), say so. It needs a skip, not a score. Score it anyway only if the user asks.
 - **Exceptions win.** If an exclusion has an exception and the role fits the exception, it passes the gate ("data science PM out, growth analytics in": a growth analytics PM role passes).
-- **Round to one decimal,** for the verdict and for the tracker.
+- **Round to one decimal, half up,** everywhere a score is computed or shown: the verdict, `fit-check.md`, and the tracker. 4.85 becomes 4.9; 4.84 becomes 4.8. If you compute it in code, use `Decimal(str(round(x, 2))).quantize(Decimal("0.1"), rounding=ROUND_HALF_UP)`; Python's `round(x, 1)` gives 4.8 for 4.85.
 - **Show the dimension scores.** The overall number earns trust by being something you can take apart.
 
 ## Tiers

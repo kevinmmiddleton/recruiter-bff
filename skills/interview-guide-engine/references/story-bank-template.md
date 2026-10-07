@@ -2,7 +2,7 @@
 
 The story bank lives at `job-search/interview-stories.md` in the user's Cowork folder. It holds the user's 5 to 10 best interview stories in STAR+R form, so guides reuse proven material instead of writing it fresh every time. The user owns this file: add or change a story only with their OK.
 
-The STAR+R idea, a Reflection line on every story, is adapted from [career-ops](https://github.com/santifer/career-ops) by santifer (MIT).
+The STAR+R idea, a Reflection line on every story, is adapted from [career-ops](https://github.com/career-ops-hq/career-ops) by santifer (MIT).
 
 ---
 

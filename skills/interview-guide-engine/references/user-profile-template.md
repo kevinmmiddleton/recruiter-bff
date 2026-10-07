@@ -7,13 +7,13 @@ Interview guides read the shared profile at `job-search/search-profile.md` (buil
 - **Name**
 - **Current or most recent title**
 - **Years of experience**
-- **Career arc** (2 to 3 sentences)
+- **Career arc** (2 sentences)
 - **Currently:** employed, searching full time, or between roles since a month
 - **Why looking:** their prepared answer, in their words
 
 ## Proof points (profile "Proof Points")
 
-The 4 to 6 strongest accomplishments. Each one: outcome first, then how, then scope, with both ends of any number.
+The 3 to 6 strongest accomplishments. Each one: outcome first, then how, then scope, with both ends of any number.
 
 - **[Company]:** [outcome, from and to], by [how], [scope]
 

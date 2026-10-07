@@ -9,7 +9,7 @@ Starting points for the hard parts of an interview. Every script gets rewritten 
 - **Two-part questions ("and"):** answer the second half first. The half people drop ("what was hard about it," "where did it break," "what would worry me about hiring you") is usually what's being tested, and it holds the best material. Leading with it makes the rest sound like context, not spin.
 - **No filler.** Drop "great question," "I'm always up for a challenge," and closing on "happy to walk through some examples." Start with the substance; stop when it's said.
 - **Match the room.** A recruiter wants three clear sentences. A hiring manager wants the decision and why. An engineer wants the evidence and its limits. An executive wants the result in their metric, what you wouldn't do, and the cheapest way to test the idea.
-- **Same story everywhere.** Assume notes travel between interviewers. Claims, numbers, and dates must match across rounds and the written application. Reread the guide's "say carefully" notes before each call.
+- **Same story everywhere.** Assume notes travel between interviewers. Claims, numbers, and dates must match across rounds and the written application. Reread the story bank's "Say carefully" lines before each call.
 - **Honest gaps:** "Not yet. The closest I've done is ..." Then the proof. No apology, no spin.
 - **Never run the user's own work down,** even in a "what would you do differently" answer. Name the lesson, not a failing.
 

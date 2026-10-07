@@ -2,9 +2,9 @@
 
 What it actually takes to build a job-scan system that runs unattended, twice a day, forever: classifying roles with a model and pushing matches to your phone. This is a real engineering project, not a Cowork feature. The blueprint below is distilled from a working production system so you can judge the effort honestly before committing.
 
-Share this with anyone who asks "could I just automate the whole thing?" The answer is yes, and here's the shape of it.
+Share this with anyone who asks "could I just automate the whole thing?" The answer is yes, and here's how it fits together.
 
-## The shape
+## How it fits together
 
 ```
 Scheduler (fires 2x/day)
@@ -27,7 +27,7 @@ Orchestrator script
 
 **2. A scheduler.** Whatever your OS offers: cron (Linux), launchd or the Shortcuts app (macOS), Task Scheduler (Windows). Fires the orchestrator on a cadence. Watch out for: the machine being asleep, network not ready on wake (add DNS retries), and overlapping runs.
 
-**3. A fetcher (headless browser).** The hard part. Job boards render results with JavaScript and actively discourage scraping, so a plain HTTP fetch returns an empty shell. You need a real browser driven headlessly (e.g., Playwright with headless Chromium). Expect to handle: login walls, stale sessions, layout changes that break extraction, and the occasional block. Public search URLs (no login) are far more durable than authenticated ones. Budget for this breaking a few times a year.
+**3. A fetcher (headless browser).** The hard part. Job boards render results with JavaScript and actively discourage scraping, so a plain HTTP fetch returns an empty shell. You need a real browser driven headlessly (e.g., Playwright with headless Chromium). Expect to handle: login walls, stale sessions, layout changes that break extraction, and the occasional block. Public search URLs (no login) are far more durable than authenticated ones. Budget for this breaking a few times a year. Check the board's terms first: LinkedIn doesn't allow automated access, so the durable choice is the public company job feeds this plugin already uses.
 
 **4. An extractor.** Parse the fetched HTML into clean records (company, title, location, URL). Multiple strategies (data attributes, href patterns, embedded JSON) give resilience when one breaks. This step is also the main cost control: it shrinks a ~200KB page to ~35KB of structured text before the model ever sees it.
 

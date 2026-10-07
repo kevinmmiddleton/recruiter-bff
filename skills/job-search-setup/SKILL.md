@@ -24,13 +24,18 @@ Learn what the user wants and who they are, save it once, and build searches the
 
 ## Step 0: Find or create the data home
 
-All of Recruiter BFF's data lives in a `job-search/` folder in the user's Cowork working folder.
+All of Recruiter BFF's data lives in a `job-search/` folder inside a folder on the user's computer that they connected for this.
 
-1. Find the working folder Cowork can write to.
-2. Create `job-search/` there if it doesn't exist.
-3. The private profile is `job-search/search-profile.md`; the shareable page is `job-search/looking-for.md`; the resume lives in `job-search/resume/`.
+1. Find the folder the user connected: in Cowork, a folder on their computer; in Claude Code or another agent, the folder you're working in.
+2. If no folder is connected, or you can't tell which one is theirs (Cowork on the web or a phone, a Chat conversation, or the Claude desktop app is closed), stop and say: "I can't reach a folder on your computer from here. In the Claude desktop app on your computer, choose Cowork if you see a Chat/Cowork switch, connect the folder you want to use for your job search, and ask again." Never create `job-search/` in a temporary workspace or start a second one somewhere else; it won't be there next time.
+3. Create `job-search/` there if it doesn't exist. If it's missing but the user talks about an earlier setup, ask whether they connected a different folder last time before starting over.
+4. The private profile is `job-search/search-profile.md`; the shareable page is `job-search/looking-for.md`; the resume lives in `job-search/resume/`.
 
 **Folders from 0.4.** If `job-search/` still has 0.4's file names, rename them before anything else, then tell the user in one line ("I gave your job-search files clearer names; nothing inside them changed"): `profile.md` to `search-profile.md`, `preferences.md` to `looking-for.md`, `applications.csv` to `job-tracker.csv`, `story-bank.md` to `interview-stories.md`, `interviews/` to `companies/`, and inside each company folder `guide.md` to `interview-guide.md`. If a new name already exists, don't overwrite it; ask which to keep.
+
+**If you can't rename** (the shell can't reach the folder, as in Cowork's cloud sessions, and the file tools can't rename or delete files), don't promise a rename that can't happen. Keep using the 0.4 names for everything: `profile.md`, `applications.csv`, `story-bank.md`, and new company folders under the existing `interviews/`, with the guide saved as `guide.md` (a new `job-post.md` or `fit-check.md` goes in the same folder). Never write a copy under a new name while the old file stays; two copies drift apart. Tell the user once: "I can't rename files from here, so I'll keep using your current file names. Both work. If you'd like the new names, rename these in Finder or File Explorer: `profile.md` to `search-profile.md`, `preferences.md` to `looking-for.md`, `applications.csv` to `job-tracker.csv`, `story-bank.md` to `interview-stories.md`, `interviews` to `companies`, and `guide.md` to `interview-guide.md` in each company folder." Then add a dated line to the profile's Offered section ("Rename list: YYYY-MM-DD") so later conversations use the old names without telling them again.
+
+A 0.4 profile also uses older headings and field names ("Strong-Fit Signals," "ATS Board Searches," "Compensation floor (base)," "Salary expectation to state when asked," and others). Read them as their 1.0 names, and treat a missing Reminders section as "(not set yet)". The first time you write the profile, move it to the 1.0 names using "Upgrading a 0.4 profile" in `references/profile-template.md`: same content, new headings, plus the Resume line and the Reminders and Offered sections. Say so in one line ("I moved your profile to the new section names; what you wrote is the same").
 
 If `search-profile.md` already exists and the user said "set up my job search," read it, summarize it in a few lines, and ask whether to update it or start over. Never overwrite a profile without asking.
 
@@ -40,8 +45,8 @@ Ask for the resume first: "Paste your resume, or tell me which file in your fold
 
 **Save it in the job-search folder,** so every skill works from the same version:
 
-- A file: copy it into `job-search/resume/` with its name unchanged. Copy, never move; the original stays where the user keeps it.
-- Pasted text, or always alongside a file: write `job-search/resume/resume.md`, a plain-text copy of the resume as given, with a first line like `_Copied from Sam-Okafor-resume.pdf on 2026-10-06_`. Don't edit or improve it; it's the record of what the user's resume actually says.
+- A file: copy it into `job-search/resume/` with its name unchanged. Copy, never move; the original stays where the user keeps it. If you can't copy files from here (the shell can't reach the folder, and the file tools can't copy a PDF or Word file), skip the copy and make `resume.md`'s first line say where the original is (`_Text of Sam-Okafor-resume.pdf, which stays in Documents, on 2026-10-06_`). Never write the resume's text into a file named `.pdf` or `.docx`.
+- Pasted text, or always alongside a file: write `job-search/resume/resume.md`, a plain-text copy of the resume as given, with a first line like `_Copied from Sam-Okafor-resume.pdf on 2026-10-06_`, or `_Pasted in chat on 2026-10-06_` for pasted text. Don't edit or improve it; it's the record of what the user's resume actually says.
 - Tell the user in one line: "I saved a copy of your resume in your job-search folder, so fit checks and interview guides all work from the same version." 
 
 From the resume, draft:
@@ -65,7 +70,7 @@ One or two turns, a few questions at a time. Use the AskUserQuestion tool for mu
 
 **What to cut, and what to flag:**
 - Functions to exclude, with exceptions written in. Ask: "Anything that's close to what you do but not it?" Write it as "data science PM out, growth analytics in." Exclude the function, not the whole field.
-- Industries to avoid. Company types to skip: staffing firms and job aggregators that repost other companies' roles are excluded by default; say so and let them turn it off.
+- Industries to avoid. Company types to skip: staffing firms and job aggregators that repost other companies' roles are excluded by default; say so and let them turn it off. They stay excluded unless the profile explicitly says to include them; a blank line or "(none stated)" keeps the default.
 - **Strong signals:** what makes a role top-tier for them ("growth or retention work at a consumer subscription company").
 - **Weak and parked signals** (optional, one question): "Anything that isn't a dealbreaker but makes you hesitate, like contract roles or titles that turn out to be sales? And is there a kind of role you like but keep stalling in?" Weak signals get flagged and ranked lower, never cut. Parked lanes still show up, below the strong ones, with a note.
 
@@ -112,7 +117,9 @@ Check the profile's Reminders status and **Offered** section first; don't offer 
 
 For a one-field change (raise the floor, add a skip-list company, add an exception), read `search-profile.md`, make the change, write it back, and say what changed. Don't rerun setup. If the change belongs on the preferences page too, update both.
 
-**A new resume.** When the user shares an updated resume, add the new file to `job-search/resume/` next to the old one (never overwrite or delete the old file), replace `resume.md` with the new text, update the profile's Resume line, and offer to refresh the proof points from what changed. Versions for different kinds of roles ("my growth version") sit side by side in the same folder, each named so the user can tell them apart; the profile lists them.
+**A restated search.** When the user describes their whole search again, change only what differs. Something they didn't mention isn't removed unless they say so: keep it, and say in one line what you kept ("I kept retention and your four strong signals; say if any should go").
+
+**A new resume.** When the user shares an updated resume, add the new file to `job-search/resume/` next to the old one (never overwrite or delete the old file) (if you can't copy files from here, skip that, as in Step 1), replace `resume.md` with the new text, update the profile's Resume line (add it under the title if the profile has none, as 0.4 profiles don't), and offer to refresh the proof points from what changed. Versions for different kinds of roles ("my growth version") sit side by side in the same folder, each named so the user can tell them apart; the profile lists them.
 
 ## Ending a reply
 
@@ -120,14 +127,14 @@ End with at most one offer. If several apply, pick the first that fits:
 
 1. **Anything time-sensitive:** thank-you notes the same day, a reply someone is waiting on.
 2. **Someone to ask before applying:** after a fit check that says apply, if the user knows someone there (from `contacts.csv`), offer the referral note; if there's no `contacts.csv` but a LinkedIn export is in the folder, offer to check it. A referral matters most before the application goes in.
-3. **The obvious next step for what the user just did:** after setup, a first scan; after a scan, adding matches to the tracker (or a fit check on a strong one); after a fit check, adding the role to the tracker (once per role; skip it if the role is already tracked); after a booked round, a practice run; after building the preferences page, drafting the message to share it.
-4. **Checking the user's LinkedIn export** for people they know, in general.
+3. **The obvious next step for what the user just did:** after setup, a first scan; after a scan, adding matches to the tracker (or a fit check on a strong one); after a fit check, adding the role to the tracker (once per role; skip it if the role is already tracked); after a booked round, the interview guide if that company doesn't have one yet, otherwise a practice run; after building the preferences page, drafting the message to share it.
+4. **Checking the user's LinkedIn export** for people they know, in general. If there's no export in the folder, offer once to walk them through requesting one (LinkedIn usually sends it within about 10 minutes; the steps are in the contacts skill), then move on.
 5. **The preferences page.**
 6. **Reminders.**
 
-Logging an application or a status change has no next step of its own. That reply is the quiet moment for 4, 5, and 6. A reply that carries out something the user just said yes to (a contacts import, a draft, the preferences page) doesn't add a new optional offer; at most it ends with that task's own next step from 3.
+Logging an application or another status change has no next step of its own (a booked round is the exception: see 3). That reply is the quiet moment for 4, 5, and 6. A reply that carries out something the user just said yes to (a contacts import, a draft, the preferences page) doesn't add a new optional offer; at most it ends with that task's own next step from 3.
 
-Before offering 4, 5, or 6, check the **Offered** section of `job-search/search-profile.md` and skip anything already offered; when you offer one, add a dated line there. For reminders, also skip them if the profile's Reminders status is anything other than "(not set yet)." Saying a fact ("this read uses your profile alone") isn't an offer.
+Before offering 4, 5, or 6, check the **Offered** section of `job-search/search-profile.md` and skip anything already offered; when you offer one, add a dated line there. For reminders, also skip them if the profile's Reminders status is anything other than "(not set yet)" or missing. Saying a fact ("this read uses your profile alone") isn't an offer.
 
 ## Principles
 

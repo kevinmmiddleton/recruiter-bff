@@ -6,8 +6,8 @@ How to tag each scanned role STRONG, INCLUDE, or EXCLUDE. The user's `search-pro
 
 Check in this order. The first rule a role fails sends it to EXCLUDE, with that reason.
 
-1. **Skip list or excluded company type.** A named company on the skip list, or a staffing firm or job aggregator (see below) when the profile excludes those, is EXCLUDE: "staffing firm" or "skip list."
-2. **Wrong level.** Seniority clearly below the target, or far above it, is EXCLUDE: "wrong level." Be generous with unclear titles: a bare "Product Manager" can be senior, so don't cut it on level alone.
+1. **Skip list or excluded company type.** A named company on the skip list, or a staffing firm or job aggregator (see below) unless the profile explicitly says to include them, is EXCLUDE: "staffing firm" or "skip list."
+2. **Wrong level.** Seniority clearly below the target is EXCLUDE: "wrong level." Roles above it show with a note instead (see "Level from titles"). Be generous with unclear titles: a bare "Product Manager" can be senior, so don't cut it on level alone.
 3. **Excluded function, unless an exception applies.** If the role is an excluded function, check the exception written next to it first. "Data science PM out, growth analytics in": a growth analytics PM role passes. No exception applies: EXCLUDE, "excluded function."
 4. **Excluded industry.** Judge by the company's core business, not one product line. A company whose core business is on the exclusions or the preferences page's "no thanks" list: EXCLUDE, "excluded industry." A software company that sells *to* that industry: show it with a flag.
 5. **Location.** On-site only somewhere the user won't work, or a place they ruled out: EXCLUDE, "location." Remote or unstated always passes.
@@ -29,9 +29,9 @@ Signals rank; exclusions cut. Keep the two apart.
 
 ## Staffing firms and job aggregators
 
-Staffing firms post roles on behalf of unnamed clients; aggregators repost other companies' roles, often after the original closed. Both crowd out the real postings. Excluded by default; the user can turn it off.
+Staffing firms post roles on behalf of unnamed clients; aggregators repost other companies' roles, often after the original closed. Both crowd out the real postings. Excluded by default; the user can turn it off. Only an explicit line in the profile turns it off ("include staffing firms"). A missing company-types line, or one that says "(none stated)," keeps them excluded.
 
-**Name tells** (when the profile excludes staffing firms): "Staffing," "Talent," "Recruiting," "Search Partners," "Consulting Group" on an otherwise unknown company, or a company that posts the same role in many cities at once.
+**Name tells** (unless the profile includes staffing firms): "Staffing," "Talent," "Recruiting," "Search Partners," "Consulting Group" on an otherwise unknown company, or a company that posts the same role in many cities at once.
 
 **Card tells,** on LinkedIn result cards: hourly pay ("$75/hr") on a role that's normally salaried, plus Easy Apply, from a company the user doesn't know. Hourly pay alone means contract work, a weak signal for most people.
 

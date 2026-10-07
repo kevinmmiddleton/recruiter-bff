@@ -96,6 +96,7 @@ Outcome first, then how, then scope. Both ends of every number.
 ## Reminders
 
 - **Status:** e.g., "Mon, Wed, Fri at 8:30am (created YYYY-MM-DD)"; "requested Mon and Thu at 8:30am, not created yet (YYYY-MM-DD)"; "none"; or "(not set yet)"
+- **Scheduled scan:** same forms, e.g., "every day at 7:30am (created YYYY-MM-DD)"; "requested every day at 7:30am, not created yet (YYYY-MM-DD)"; "none"; or "(not set yet)"
 
 ## Offered
 
@@ -120,11 +121,43 @@ Optional things already offered, with the date, so no skill offers them twice. A
 - **Industries** are judged by the company's core business, not one product line. A software company that sells *to* an excluded industry gets shown with a flag, not cut.
 - **Temporary blocks** carry a reason and a revisit date: "Acme: hiring freeze, revisit January," or a cooling-off period after a rejection when the same role keeps getting reposted. The named-companies list grows over time; append, don't replace.
 - **Direct reports** the user doesn't want: flag the role and let them decide; don't skip it automatically.
-- **Company types** default to excluding staffing firms and aggregators that repost roles. The user can turn that off.
+- **Company types** default to excluding staffing firms and aggregators that repost roles. The user can turn that off, but only an explicit line does it ("include staffing firms"); a missing line or "(none stated)" keeps the default.
 - **Company size and stage** shape the fit check's company score and the scan's ranking. A size or stage the user dislikes is a soft warning unless they call it a dealbreaker.
 - **The resume** lives in `job-search/resume/`: the user's own files, unchanged, plus `resume.md`, a plain-text copy of the current version. It's the record of what the resume really says, so every claim a skill makes can be checked against it. The profile summarizes it; it never replaces it.
 - **Proof points** come from the resume first. Never invent a number: if the resume says "improved conversion," write that and mark the number as a gap to fill, like `[from ?% to ?%]`.
 - **Pay line:** this is what the user has decided to say. Skills can remind them of it; they never say it for the user.
-- **Reminders** are set up by `job-search-automation`; this records what the user chose and whether the reminder actually exists.
+- **Reminders and the scheduled scan** are set up by `job-search-automation`; these lines record what the user chose and whether each task actually exists.
 - **Offered** keeps the one-offer-per-message rule from turning into the same offer every day. Check it before offering anything optional.
 - **Fields setup doesn't ask for** (voice, go-to question, phrases, the current LinkedIn headline) get filled in later by the skills that need them: interview guides and materials. Leave them `(not set yet)` until then.
+
+## Upgrading a 0.4 profile
+
+A profile from Job Search Agent or Recruiter BFF 0.4 has the same kinds of facts under older names. Skills read the old names as the new ones. The first time a skill writes the profile, it moves the old names to the new ones and keeps every value exactly as written:
+
+| 0.4 | 1.0 |
+|---|---|
+| `## Search Targets` field "Compensation floor (base): $170,000" | "Pay (base): floor $170,000" (add comfortable and ideal only if the user gives them) |
+| `## Search Targets` field "Note on comp" | "Unlisted pay" |
+| `## Search Targets` field "Will not relocate to / work in" (or "Will not work") | "Won't work in" |
+| `## Search Targets` fields "Will not work" and "Will not relocate to," when they're separate | one "Won't work in" line with both ("fully on-site roles; not relocating to Boston"); leave out a part that says "(not set yet)" |
+| `## Search Targets` field "Ideal focus" | added to **Strong** in `## Signals`, unless Strong already says the same thing |
+| `## Exclusions` field "Work arrangement" | added to "Won't work in" in Search Targets, unless it's already there |
+| `## Search Targets` field "Company size / stage," if there is one | a `## Company` section with "Size" and "Stage and ownership" |
+| `## Strong-Fit Signals (flag these as top-tier)` | `## Signals`: the old list becomes **Strong**; add **Parked** and **Weak** as "(not set yet)" and **Pickiness** as "strong plus maybe" |
+| `## Exclusions` | `## Exclusions (exceptions written in)` |
+| `## Exclusions` field "Role types / functions" | "Functions" |
+| `## Exclusions` field "Company types: (none stated)" or missing | "Company types: staffing and recruiting firms; job aggregators that repost other companies' roles" (the default; tell the user once) |
+| `## ATS Board Searches (Google site: dorks)` | `## Company Job Site Searches` |
+| `## Companies to Watch (optional)` | `## Companies to Watch` |
+| `## Background (for fit reads + interview prep)` | `## Background (drafted from the resume)` |
+| "Current/most recent title" | "Current or most recent title" |
+| `### Proof Points (3–6 strongest)` | `### Proof Points (3 to 6 strongest)` |
+| `## Voice & Logistics` | `## Voice and Logistics` |
+| "Salary expectation to state when asked" | "What I say when asked about pay" |
+| no "Phrases I like" or "Current LinkedIn headline" | add both to Voice and Logistics as "(not set yet)" |
+| `## Field notes for whoever fills this in` | drop it (the field notes live here) |
+| no Resume line | `_Resume: job-search/resume/resume.md, ..._` under the title if a copy exists, or `_Resume: not saved yet_` |
+| no Preferences page line | `_Preferences page: job-search/looking-for.md_` if it exists, or "not built yet" |
+| no `## Reminders` or `## Offered` | add both, with Status and Scheduled scan as "(not set yet)" and an empty Offered list |
+
+Anything else the user added stays where it is. Tell the user in one line that the section names changed and what they wrote didn't.

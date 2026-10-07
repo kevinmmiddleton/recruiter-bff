@@ -49,7 +49,7 @@ LinkedIn treats the keyword field as an OR-ish phrase match. To cover several ti
 
 ## Any other board: capture an existing search
 
-For Indeed, Built In, Wellfound, Otta, a company careers page, or anything else:
+For Indeed, Built In, Wellfound, a company careers page, or anything else:
 
 1. Ask the user to go to the board and set their filters (title, location, date, remote, etc.).
 2. Have them copy the URL from the address bar once the results look right.
