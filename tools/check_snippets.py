@@ -425,6 +425,12 @@ def tracker_cases():
     out = run(d, add([{"company": "Brightloop", "role": "PM", "source": "linkedin", "score": "4"}]))
     check("rows run together with no dates but a link: stops too",
           out.startswith("CAN'T READ") and "ran together" in out and text(d) == before, out)
+    before = (H12 + "Fernhill,Senior PM,NYC,,,linkedin,screening,4.6,15/10/2026,15/10/2026,15/10/2026,coffee chat" + chr(10)
+              + "Acme,PM,Remote,,,ats-board,prospect,4,16/10/2026,,16/10/2026," + chr(10)).replace(chr(10), "")
+    d = folder("rows_ran_together_day_first", before)
+    out = run(d, add([{"company": "Brightloop", "role": "PM", "source": "linkedin", "score": "4"}]))
+    check("rows run together with day-first dates and no links: stops on the status",
+          out.startswith("CAN'T READ") and "ran together" in out and text(d) == before, out)
 
     # A 0.4 folder the rename couldn't reach: the snippets use applications.csv
     d = WORK / "old_names"
@@ -591,6 +597,11 @@ def contacts_cases():
     out = run(d, IMPORT, base=False)
     check("a contacts copy that ran together, caught by its link and date: stops, file untouched",
           out.startswith("CAN'T READ") and "ran together" in out and text(d, CONTACTS_PATH) == before, out)
+
+    d = contacts_folder("contacts_export_replacement_char", export=EXPORT.replace("José", "Jos\ufffd"))
+    out = run(d, FIRST, base=False)
+    check("an export copy with the replacement character: nothing saved, so contacts.csv stays readable",
+          out.startswith("NOT SAVED") and not (d / CONTACTS_PATH).exists(), out)
 
     d = contacts_folder("contacts_wrong_file", export="first name,last name,url\nA,B,c\n")
     out = run(d, IMPORT, base=False)

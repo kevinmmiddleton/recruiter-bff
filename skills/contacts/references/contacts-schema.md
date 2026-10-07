@@ -102,6 +102,10 @@ def read_csv(path):
 def write_csv(path, rows, cols):
     """Write the whole file in place (so it keeps its permissions), in UTF-8. A new file gets Excel's start mark, so Excel
     shows accented names correctly; an existing one is written back the way it was read (an empty file counts as new)."""
+    if any("\ufffd" in v for r in rows for v in r.values() if isinstance(v, str)):   # read_csv refuses a file with it, so it's new
+        raise SystemExit("NOT SAVED: a new value holds the replacement character (\ufffd), so a letter was lost on the way in "
+                         "(often an export opened and saved again in Excel). Use Connections.csv as LinkedIn sent it, or ask "
+                         "the user for the real spelling, then run this again.")
     bom = True
     if os.path.exists(path):
         with open(path, "rb") as f:

@@ -160,8 +160,9 @@ def load(path=PATH, must_exist=True):
             reader = csv.DictReader(io.StringIO(text, newline=""))
             rows = list(reader)
             cols = list(reader.fieldnames or COLS)
-            if not rows and any(re.fullmatch(r"\d{4}-\d{2}-\d{2}", iso(c)) or "://" in c for c in cols):
-                # a real header holds no dates (in any format iso() reads) and no links, so this one swallowed the rows
+            if not rows and (set(cols) & set(STAGES + ["accepted", "rejected", "closed", "hold", "ghosted", "withdrawn", "skipped"])
+                             or any(re.fullmatch(r"\d{4}-\d{2}-\d{2}", iso(c)) or "://" in c for c in cols)):
+                # every row has a status, and a real header holds no status, date, or link, so this one swallowed the rows
                 raise SystemExit("CAN'T READ " + path + ": its rows ran together into the header, so a copy lost the line "
                                  "breaks (Excel on a Mac can end rows with a bare carriage return). Write the copy again with "
                                  "each row on its own line, then run this again. Never write this copy back.")
