@@ -115,6 +115,8 @@ job-search/
 
 **Coming from 0.4?** The first time you use 1.0, it gives your files the names above if it can. Where it can't rename files (Cowork can't from every session), it keeps your current names, which work just as well, and tells you once how to rename them yourself if you'd like. The first time it updates your tracker, it adds two columns: the furthest stage each role reached, and the date of the next thing, filled in from your notes only when a note names one clear upcoming date. The first time it updates your profile, it moves it to the new section names. It tells you each time. Your notes, answers, and entries stay as you wrote them.
 
+**Had Job Search Agent?** Uninstall it first, so only one of them answers.
+
 **It never acts for you.** It never applies to a job, sends a message, or contacts anyone. You decide, and you hit send.
 
 ## The eight skills
