@@ -23,7 +23,7 @@ A scan says a role exists and looks plausible. This skill answers the next quest
 
 ## Step 1: Load what you know
 
-Read `job-search/profile.md`. No profile: hand off to `job-search-setup` rather than scoring against guesses. Also read `job-search/preferences.md` if it exists.
+Read `job-search/profile.md`. No profile: hand off to `job-search-setup` rather than scoring against guesses. Also read `job-search/preferences.md` and `job-search/resume/resume.md` if they exist. The resume is where evidence comes from: cite its lines, not just the profile's summary.
 
 Pull out: target titles and seniority, signals (strong, weak, parked), exclusions and their exceptions, location and work mode, pay tiers, background and proof points, and from the preferences page the one sentence, must-haves, must-nots, and company preferences.
 

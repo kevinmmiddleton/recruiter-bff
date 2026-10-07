@@ -28,13 +28,19 @@ All of Recruiter BFF's data lives in a `job-search/` folder in the user's Cowork
 
 1. Find the working folder Cowork can write to.
 2. Create `job-search/` there if it doesn't exist.
-3. The private profile is `job-search/profile.md`; the shareable page is `job-search/preferences.md`.
+3. The private profile is `job-search/profile.md`; the shareable page is `job-search/preferences.md`; the resume lives in `job-search/resume/`.
 
 If `profile.md` already exists and the user said "set up my job search," read it, summarize it in a few lines, and ask whether to update it or start over. Never overwrite a profile without asking.
 
 ## Step 1: Start from the resume
 
 Ask for the resume first: "Paste your resume, or tell me which file in your folder it is." A PDF or document in their folder is fine; read it directly.
+
+**Save it in the job-search folder,** so every skill works from the same version:
+
+- A file: copy it into `job-search/resume/` with its name unchanged. Copy, never move; the original stays where the user keeps it.
+- Pasted text, or always alongside a file: write `job-search/resume/resume.md`, a plain-text copy of the resume as given, with a first line like `_Copied from Sam-Okafor-resume.pdf on 2026-10-06_`. Don't edit or improve it; it's the record of what the user's resume actually says.
+- Tell the user in one line: "I saved a copy of your resume in your job-search folder, so fit checks and interview guides all work from the same version." 
 
 From the resume, draft:
 
@@ -103,6 +109,8 @@ Check the profile's Reminders status and **Offered** section first; don't offer 
 ## Updating later
 
 For a one-field change (raise the floor, add a skip-list company, add an exception), read `profile.md`, make the change, write it back, and say what changed. Don't rerun setup. If the change belongs on the preferences page too, update both.
+
+**A new resume.** When the user shares an updated resume, add the new file to `job-search/resume/` next to the old one (never overwrite or delete the old file), replace `resume.md` with the new text, update the profile's Resume line, and offer to refresh the proof points from what changed. Versions for different kinds of roles ("my growth version") sit side by side in the same folder, each named so the user can tell them apart; the profile lists them.
 
 ## Ending a reply
 

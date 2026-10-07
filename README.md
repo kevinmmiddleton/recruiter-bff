@@ -96,6 +96,7 @@ Everything is in a `job-search/` folder in your Cowork folder:
 
 ```
 job-search/
+├── resume/               # your resume files, plus a plain-text copy every tool reads
 ├── profile.md            # your search, pay, dealbreakers, and background (private)
 ├── preferences.md        # what you want next, in one page you can share
 ├── applications.csv      # your tracker; opens in any spreadsheet app

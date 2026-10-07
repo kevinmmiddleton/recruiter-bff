@@ -38,6 +38,7 @@ Which proof points go first for which kind of role:
 
 ## Also read, if they exist
 
+- `job-search/resume/resume.md`: the resume as it stands. Proof points and answers should match its wording.
 - `job-search/preferences.md`: must-haves and must-nots become questions to ask; the one sentence shapes the fit story.
 - `job-search/story-bank.md`: reuse banked stories before drafting new ones.
 - `job-search/interviews/<company>/posting.md` and `evaluation.md`: the saved posting and the fit check, so the guide starts from what's already known.

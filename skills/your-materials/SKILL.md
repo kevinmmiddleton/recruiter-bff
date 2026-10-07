@@ -26,7 +26,7 @@ Make the resume, LinkedIn, and written answers say what the user has actually do
 
 ## Before you start
 
-Read `job-search/profile.md` (background, proof points, voice) and `job-search/preferences.md` if it exists (the one sentence, must-haves). If the user is working on a specific application, read that company's folder in `job-search/interviews/<company>/` (the saved posting and evaluation).
+Read `job-search/resume/resume.md` (the resume as it stands), `job-search/profile.md` (background, proof points, voice), and `job-search/preferences.md` if it exists (the one sentence, must-haves). No saved resume? Ask for it, and save it the way setup does. If the user is working on a specific application, read that company's folder in `job-search/interviews/<company>/` (the saved posting and evaluation).
 
 If there's no preferences page, don't wait for one. The page is a possible offer (see "Ending a reply"); it makes the summary and headline easier, since they should say the one sentence.
 
@@ -58,6 +58,7 @@ Keep each fact with the accomplishment it belongs to: a team size or a timeframe
 - **A few versions by job type, not one per job.** Tailor the written answers, not the whole resume. A role-specific version can wait for an interview invite.
 - **Plain format:** one column, no skill bars or charts, saved as PDF.
 - **Record which version went where** in the tracker's notes when the user applies.
+- **Versions live in `job-search/resume/`,** side by side, named so the user can tell them apart ("Sam-Okafor-growth.pdf"). Rewrites you suggest are drafts: the user updates their real resume, then shares the new file, and it's saved next to the old one.
 
 ## LinkedIn
 

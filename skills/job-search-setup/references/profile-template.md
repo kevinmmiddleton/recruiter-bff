@@ -13,6 +13,7 @@ Fill in what's known. Mark anything not captured yet as `(not set yet)`, so othe
 
 _Last updated: YYYY-MM-DD_
 _Preferences page: job-search/preferences.md (or "not built yet")_
+_Resume: job-search/resume/resume.md, copied from Sam-Okafor-resume.pdf on YYYY-MM-DD. Other versions: Sam-Okafor-growth.pdf (growth roles)._
 
 ## Search Targets
 
@@ -121,6 +122,7 @@ Optional things already offered, with the date, so no skill offers them twice. A
 - **Direct reports** the user doesn't want: flag the role and let them decide; don't skip it automatically.
 - **Company types** default to excluding staffing firms and aggregators that repost roles. The user can turn that off.
 - **Company size and stage** shape the fit check's company score and the scan's ranking. A size or stage the user dislikes is a soft warning unless they call it a dealbreaker.
+- **The resume** lives in `job-search/resume/`: the user's own files, unchanged, plus `resume.md`, a plain-text copy of the current version. It's the record of what the resume really says, so every claim a skill makes can be checked against it. The profile summarizes it; it never replaces it.
 - **Proof points** come from the resume first. Never invent a number: if the resume says "improved conversion," write that and mark the number as a gap to fill, like `[from ?% to ?%]`.
 - **Pay line:** this is what the user has decided to say. Skills can remind them of it; they never say it for the user.
 - **Reminders** are set up by `job-search-automation`; this records what the user chose and whether the reminder actually exists.

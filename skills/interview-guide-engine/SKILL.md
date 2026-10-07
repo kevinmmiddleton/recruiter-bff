@@ -27,7 +27,7 @@ Every guide opens with the same four blocks, in this order: **the role in plain 
 
 ## Step 0: Load what's known
 
-1. Read `job-search/profile.md`. No profile: run `job-search-setup` first (it builds the background from the resume, so the user never answers twice).
+1. Read `job-search/profile.md` and `job-search/resume/resume.md`. No profile: run `job-search-setup` first (it builds the background from the resume, so the user never answers twice). Proof points and answers trace back to the resume's own wording.
 2. If there are no proof points, collect them first (see `references/user-profile-template.md`) and write them back into the profile. Voice notes are nice to have: if they're missing, write in plain, direct sentences built from the user's own resume wording, ask one optional question ("How would you describe how you come across in interviews?"), and move on. Never start a second profile.
 3. Read, if they exist: `job-search/preferences.md` (must-haves and must-nots become questions), `job-search/story-bank.md` (reuse stories before drafting new ones), the company folder `job-search/interviews/<company>/` (`posting.md`, `evaluation.md`, and any existing `guide.md`), and `job-search/contacts.csv` (anyone the user knows there). No `contacts.csv` but a LinkedIn export (`Connections.csv`) in the Cowork folder? Checking it is a possible offer (see "Ending a reply"): someone who works there is the best prep there is.
 4. Get the round details: when, what kind of round, and who. If the user doesn't say, ask once: "Who are you meeting, and when?" Work out real dates from today and say them back with the weekday.
