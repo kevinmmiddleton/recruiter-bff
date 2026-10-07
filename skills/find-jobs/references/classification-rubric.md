@@ -1,6 +1,6 @@
 # Classification Rubric
 
-How to tag each scanned role STRONG, INCLUDE, or EXCLUDE. The user's `profile.md` (and `preferences.md`, if it exists) are the rules; this file is the method. Run it per role, quickly and the same way every time.
+How to tag each scanned role STRONG, INCLUDE, or EXCLUDE. The user's `search-profile.md` (and `looking-for.md`, if it exists) are the rules; this file is the method. Run it per role, quickly and the same way every time.
 
 ## Decision order
 

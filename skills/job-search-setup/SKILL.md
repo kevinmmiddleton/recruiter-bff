@@ -28,9 +28,11 @@ All of Recruiter BFF's data lives in a `job-search/` folder in the user's Cowork
 
 1. Find the working folder Cowork can write to.
 2. Create `job-search/` there if it doesn't exist.
-3. The private profile is `job-search/profile.md`; the shareable page is `job-search/preferences.md`; the resume lives in `job-search/resume/`.
+3. The private profile is `job-search/search-profile.md`; the shareable page is `job-search/looking-for.md`; the resume lives in `job-search/resume/`.
 
-If `profile.md` already exists and the user said "set up my job search," read it, summarize it in a few lines, and ask whether to update it or start over. Never overwrite a profile without asking.
+**Folders from 0.4.** If `job-search/` still has 0.4's file names, rename them before anything else, then tell the user in one line ("I gave your job-search files clearer names; nothing inside them changed"): `profile.md` to `search-profile.md`, `preferences.md` to `looking-for.md`, `applications.csv` to `job-tracker.csv`, `story-bank.md` to `interview-stories.md`, `interviews/` to `companies/`, and inside each company folder `guide.md` to `interview-guide.md`. If a new name already exists, don't overwrite it; ask which to keep.
+
+If `search-profile.md` already exists and the user said "set up my job search," read it, summarize it in a few lines, and ask whether to update it or start over. Never overwrite a profile without asking.
 
 ## Step 1: Start from the resume
 
@@ -80,7 +82,7 @@ A saved search is a job-board URL with the user's filters built in, so a scan ca
 
 ## Step 4: Save, then scan
 
-Write `job-search/profile.md` using `references/profile-template.md`. Fill every field you captured and mark the rest `(not set yet)`.
+Write `job-search/search-profile.md` using `references/profile-template.md`. Fill every field you captured and mark the rest `(not set yet)`.
 
 Then, in plain words:
 
@@ -94,7 +96,7 @@ Offer the shareable page once, at a quiet moment, following "Ending a reply" (lo
 
 > "One more thing worth doing this week, when you have half an hour: a one-page 'what I want next' you can share with people who can help. It ends with one sentence that makes it easy for anyone to keep an eye out for you. Scans work fine without it, and they get sharper with it."
 
-On yes, read the profile first, so you confirm what it already knows (size, stage, industries, location) instead of asking again. Then run the conversation in `references/preferences-template.md`: what they'd hate, the bad-boss question, flipping must-nots into must-haves, what they love (and what they're good at but don't enjoy), the company questions with the subject test ("would you care about this every day?"), goals, the one sentence, and the homework of sharing it with three people. Write `job-search/preferences.md` and link it from the top of `profile.md`.
+On yes, read the profile first, so you confirm what it already knows (size, stage, industries, location) instead of asking again. Then run the conversation in `references/preferences-template.md`: what they'd hate, the bad-boss question, flipping must-nots into must-haves, what they love (and what they're good at but don't enjoy), the company questions with the subject test ("would you care about this every day?"), goals, the one sentence, and the homework of sharing it with three people. Write `job-search/looking-for.md` and link it from the top of `search-profile.md`.
 
 When the page turns up something the scan should use (a must-not, a company size, a subject they'd never work in), add it to the profile's exclusions or signals too, and say so.
 
@@ -108,7 +110,7 @@ Check the profile's Reminders status and **Offered** section first; don't offer 
 
 ## Updating later
 
-For a one-field change (raise the floor, add a skip-list company, add an exception), read `profile.md`, make the change, write it back, and say what changed. Don't rerun setup. If the change belongs on the preferences page too, update both.
+For a one-field change (raise the floor, add a skip-list company, add an exception), read `search-profile.md`, make the change, write it back, and say what changed. Don't rerun setup. If the change belongs on the preferences page too, update both.
 
 **A new resume.** When the user shares an updated resume, add the new file to `job-search/resume/` next to the old one (never overwrite or delete the old file), replace `resume.md` with the new text, update the profile's Resume line, and offer to refresh the proof points from what changed. Versions for different kinds of roles ("my growth version") sit side by side in the same folder, each named so the user can tell them apart; the profile lists them.
 
@@ -125,7 +127,7 @@ End with at most one offer. If several apply, pick the first that fits:
 
 Logging an application or a status change has no next step of its own. That reply is the quiet moment for 4, 5, and 6. A reply that carries out something the user just said yes to (a contacts import, a draft, the preferences page) doesn't add a new optional offer; at most it ends with that task's own next step from 3.
 
-Before offering 4, 5, or 6, check the **Offered** section of `job-search/profile.md` and skip anything already offered; when you offer one, add a dated line there. For reminders, also skip them if the profile's Reminders status is anything other than "(not set yet)." Saying a fact ("this read uses your profile alone") isn't an offer.
+Before offering 4, 5, or 6, check the **Offered** section of `job-search/search-profile.md` and skip anything already offered; when you offer one, add a dated line there. For reminders, also skip them if the profile's Reminders status is anything other than "(not set yet)." Saying a fact ("this read uses your profile alone") isn't an offer.
 
 ## Principles
 

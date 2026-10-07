@@ -14,6 +14,8 @@ description: >
 
 Make the resume, LinkedIn, and written answers say what the user has actually done, in words recruiters search for and in the user's own voice. Do this after the one sentence exists if possible: know the target, then make the materials say it.
 
+**Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), rename them first, as in Step 0 of `job-search-setup`.
+
 ## Never
 
 - Never invent a number, a tool, a title, or experience. Where a number is missing, leave a visible placeholder like `[from ?% to ?%]` and ask.
@@ -26,7 +28,7 @@ Make the resume, LinkedIn, and written answers say what the user has actually do
 
 ## Before you start
 
-Read `job-search/resume/resume.md` (the resume as it stands), `job-search/profile.md` (background, proof points, voice), and `job-search/preferences.md` if it exists (the one sentence, must-haves). No saved resume? Ask for it, and save it the way setup does. If the user is working on a specific application, read that company's folder in `job-search/interviews/<company>/` (the saved posting and evaluation).
+Read `job-search/resume/resume.md` (the resume as it stands), `job-search/search-profile.md` (background, proof points, voice), and `job-search/looking-for.md` if it exists (the one sentence, must-haves). No saved resume? Ask for it, and save it the way setup does. If the user is working on a specific application, read that company's folder in `job-search/companies/<company>/` (the saved posting and evaluation).
 
 If there's no preferences page, don't wait for one. The page is a possible offer (see "Ending a reply"); it makes the summary and headline easier, since they should say the one sentence.
 
@@ -100,7 +102,7 @@ When the user edits a draft, notice what they changed: what they cut, what they 
 
 ## Where things go
 
-- Approved resume bullets and the summary: offer to update the proof points in `job-search/profile.md`.
+- Approved resume bullets and the summary: offer to update the proof points in `job-search/search-profile.md`.
 - Answers worth reusing: offer to save them in `job-search/materials/answers.md`, with the question, the answer, and a note on what to change for the next company.
 - Nothing is overwritten without the user's yes.
 
@@ -117,7 +119,7 @@ End with at most one offer. If several apply, pick the first that fits:
 
 Logging an application or a status change has no next step of its own. That reply is the quiet moment for 4, 5, and 6. A reply that carries out something the user just said yes to (a contacts import, a draft, the preferences page) doesn't add a new optional offer; at most it ends with that task's own next step from 3.
 
-Before offering 4, 5, or 6, check the **Offered** section of `job-search/profile.md` and skip anything already offered; when you offer one, add a dated line there. For reminders, also skip them if the profile's Reminders status is anything other than "(not set yet)." Saying a fact ("this read uses your profile alone") isn't an offer.
+Before offering 4, 5, or 6, check the **Offered** section of `job-search/search-profile.md` and skip anything already offered; when you offer one, add a dated line there. For reminders, also skip them if the profile's Reminders status is anything other than "(not set yet)." Saying a fact ("this read uses your profile alone") isn't an offer.
 
 ## Principles
 

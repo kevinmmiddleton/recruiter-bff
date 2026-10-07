@@ -14,6 +14,8 @@ description: >
 
 A scan says a role exists and looks plausible. This skill answers the next question: is this one worth an application? It reads the whole posting, checks it's still live, makes two separate reads (does the user fit what they want, and does the role fit what the user wants), scores it, and says what it would do.
 
+**Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), rename them first, as in Step 0 of `job-search-setup`.
+
 ## Never
 
 - Never invent or stretch evidence. If the background is adjacent, call it partial and say why.
@@ -23,7 +25,7 @@ A scan says a role exists and looks plausible. This skill answers the next quest
 
 ## Step 1: Load what you know
 
-Read `job-search/profile.md`. No profile: hand off to `job-search-setup` rather than scoring against guesses. Also read `job-search/preferences.md` and `job-search/resume/resume.md` if they exist. The resume is where evidence comes from: cite its lines, not just the profile's summary.
+Read `job-search/search-profile.md`. No profile: hand off to `job-search-setup` rather than scoring against guesses. Also read `job-search/looking-for.md` and `job-search/resume/resume.md` if they exist. The resume is where evidence comes from: cite its lines, not just the profile's summary.
 
 Pull out: target titles and seniority, signals (strong, weak, parked), exclusions and their exceptions, location and work mode, pay tiers, background and proof points, and from the preferences page the one sentence, must-haves, must-nots, and company preferences.
 
@@ -113,9 +115,9 @@ If the user knows someone at the company (from `job-search/contacts.csv`), add o
 
 ## Step 8: Save it
 
-The first time a role is evaluated, save two files in the company folder, `job-search/interviews/<company>/` (create it; use a short lowercase name like `fernhill`). Postings get taken down, and the guide needs the text later.
+The first time a role is evaluated, save two files in the company folder, `job-search/companies/<company>/` (create it; use a short lowercase name like `fernhill`). Postings get taken down, and the guide needs the text later.
 
-`posting.md`:
+`job-post.md`:
 ```
 # [Company]: [Role]
 Saved: YYYY-MM-DD · Link: [url or "none given"] · Live on the company's site: [yes, with link / not found / unverified]
@@ -124,7 +126,7 @@ Posted: [date or age, if known]
 [the full posting text, as given]
 ```
 
-`evaluation.md`:
+`fit-check.md`:
 ```
 # Fit check: [Company], [Role]
 YYYY-MM-DD · [score] / 5 · [verdict]
@@ -142,7 +144,7 @@ Requirements [x] · Target fit [x] · Logistics [x] · Company [x] · Posting [x
 [what to lead with; what to expect]
 ```
 
-If the files already exist for the same role, update `evaluation.md` and keep the original posting. For a second role at the same company, use a suffix: `posting-product-lead.md`.
+If the files already exist for the same role, update `fit-check.md` and keep the original job post. For a second role at the same company, add the role to the name: `job-post-product-lead.md`, `fit-check-product-lead.md`.
 
 Then the tracker, through `application-tracker`:
 
@@ -164,7 +166,7 @@ End with at most one offer. If several apply, pick the first that fits:
 
 Logging an application or a status change has no next step of its own. That reply is the quiet moment for 4, 5, and 6. A reply that carries out something the user just said yes to (a contacts import, a draft, the preferences page) doesn't add a new optional offer; at most it ends with that task's own next step from 3.
 
-Before offering 4, 5, or 6, check the **Offered** section of `job-search/profile.md` and skip anything already offered; when you offer one, add a dated line there. For reminders, also skip them if the profile's Reminders status is anything other than "(not set yet)." Saying a fact ("this read uses your profile alone") isn't an offer.
+Before offering 4, 5, or 6, check the **Offered** section of `job-search/search-profile.md` and skip anything already offered; when you offer one, add a dated line there. For reminders, also skip them if the profile's Reminders status is anything other than "(not set yet)." Saying a fact ("this read uses your profile alone") isn't an offer.
 
 ## Principles
 

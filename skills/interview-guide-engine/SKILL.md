@@ -17,6 +17,8 @@ Help the user walk into every conversation knowing what the role really is, how 
 
 Every guide opens with the same four blocks, in this order: **the role in plain words, your fit, your gaps, questions to ask.** Above them sit a one-line verdict and the next round. Everything else comes after.
 
+**Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), rename them first, as in Step 0 of `job-search-setup`.
+
 ## Never
 
 - Never invent a fact about the company or a person. If you can't verify it, mark it "couldn't verify," and never repeat a claim without a source.
@@ -27,12 +29,12 @@ Every guide opens with the same four blocks, in this order: **the role in plain 
 
 ## Step 0: Load what's known
 
-1. Read `job-search/profile.md` and `job-search/resume/resume.md`. No profile: run `job-search-setup` first (it builds the background from the resume, so the user never answers twice). Proof points and answers trace back to the resume's own wording.
+1. Read `job-search/search-profile.md` and `job-search/resume/resume.md`. No profile: run `job-search-setup` first (it builds the background from the resume, so the user never answers twice). Proof points and answers trace back to the resume's own wording.
 2. If there are no proof points, collect them first (see `references/user-profile-template.md`) and write them back into the profile. Voice notes are nice to have: if they're missing, write in plain, direct sentences built from the user's own resume wording, ask one optional question ("How would you describe how you come across in interviews?"), and move on. Never start a second profile.
-3. Read, if they exist: `job-search/preferences.md` (must-haves and must-nots become questions), `job-search/story-bank.md` (reuse stories before drafting new ones), the company folder `job-search/interviews/<company>/` (`posting.md`, `evaluation.md`, and any existing `guide.md`), and `job-search/contacts.csv` (anyone the user knows there). No `contacts.csv` but a LinkedIn export (`Connections.csv`) in the Cowork folder? Checking it is a possible offer (see "Ending a reply"): someone who works there is the best prep there is.
+3. Read, if they exist: `job-search/looking-for.md` (must-haves and must-nots become questions), `job-search/interview-stories.md` (reuse stories before drafting new ones), the company folder `job-search/companies/<company>/` (`job-post.md`, `fit-check.md`, and any existing `interview-guide.md`), and `job-search/contacts.csv` (anyone the user knows there). No `contacts.csv` but a LinkedIn export (`Connections.csv`) in the Cowork folder? Checking it is a possible offer (see "Ending a reply"): someone who works there is the best prep there is.
 4. Get the round details: when, what kind of round, and who. If the user doesn't say, ask once: "Who are you meeting, and when?" Work out real dates from today and say them back with the weekday.
 
-If there's no saved posting, ask for it (pasted text or a link) and save it as `posting.md` the way `evaluate-role` does.
+If there's no saved job post, ask for it (pasted text or a link) and save it as `job-post.md` the way `evaluate-role` does.
 
 ## Step 1: Research the company and the people
 
@@ -108,7 +110,7 @@ Build the rest of the guide from `references/guide-template.md`:
 
 ## Step 8: Save and hand off
 
-Save to `job-search/interviews/<company>/guide.md`. Share the top of the guide in the chat (verdict, next round, four blocks), and say the rest is in the file.
+Save to `job-search/companies/<company>/interview-guide.md`. Share the top of the guide in the chat (verdict, next round, four blocks), and say the rest is in the file.
 
 Record what the user told you in the tracker through `application-tracker` (a booked round: the status and `next_date`, with `completed = False`) and say what changed. That's recording, not an offer. Then make **one** offer: usually a practice run for this round.
 
@@ -156,7 +158,7 @@ Keep the critique specific and kind. Practice is for finding the weak spots befo
 
 ## The story bank
 
-Prep compounds when stories are kept. The bank lives at `job-search/story-bank.md` (format in `references/story-bank-template.md`): 5 to 10 stories in STAR+R form (situation, task, action, result, reflection).
+Prep compounds when stories are kept. The bank lives at `job-search/interview-stories.md` (format in `references/story-bank-template.md`): 5 to 10 stories in STAR+R form (situation, task, action, result, reflection).
 
 - **Reuse** a matching story before drafting a new one; adapt the emphasis to this role, never the facts.
 - **Check for gaps** before each round: if the round will ask about a failure or a disagreement and the bank has none, say so and help draft one from the user's real experience.
@@ -176,7 +178,7 @@ End with at most one offer. If several apply, pick the first that fits:
 
 Logging an application or a status change has no next step of its own. That reply is the quiet moment for 4, 5, and 6. A reply that carries out something the user just said yes to (a contacts import, a draft, the preferences page) doesn't add a new optional offer; at most it ends with that task's own next step from 3.
 
-Before offering 4, 5, or 6, check the **Offered** section of `job-search/profile.md` and skip anything already offered; when you offer one, add a dated line there. For reminders, also skip them if the profile's Reminders status is anything other than "(not set yet)." Saying a fact ("this read uses your profile alone") isn't an offer.
+Before offering 4, 5, or 6, check the **Offered** section of `job-search/search-profile.md` and skip anything already offered; when you offer one, add a dated line there. For reminders, also skip them if the profile's Reminders status is anything other than "(not set yet)." Saying a fact ("this read uses your profile alone") isn't an offer.
 
 ## Principles
 

@@ -59,4 +59,4 @@ The scan doesn't care which board the URL points at. It reads whatever results t
 
 ## Saving
 
-Write the chosen URL(s) into the **Saved Searches** section of `job-search/profile.md`. Label each (e.g., "Primary (broad)" / "Secondary (narrow)") and record which board it's on. The `find-jobs` skill picks these up automatically.
+Write the chosen URL(s) into the **Saved Searches** section of `job-search/search-profile.md`. Label each (e.g., "Primary (broad)" / "Secondary (narrow)") and record which board it's on. The `find-jobs` skill picks these up automatically.

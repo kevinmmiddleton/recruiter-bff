@@ -1,6 +1,6 @@
 # Interview Guide: Template
 
-Saved as `job-search/interviews/<company>/guide.md`. One guide per company; each round adds a section, and earlier rounds are never overwritten.
+Saved as `job-search/companies/<company>/interview-guide.md`. One guide per company; each round adds a section, and earlier rounds are never overwritten.
 
 The top of the guide is what the user reads in the five minutes before a call: the verdict, the next round, then the four blocks. Everything else sits below, for the night before.
 

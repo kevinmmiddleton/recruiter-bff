@@ -1,8 +1,8 @@
 # Job Search Profile: Template
 
-The private profile for Recruiter BFF lives at `job-search/profile.md` in the user's Cowork folder. Every skill reads it. Scans use the targets, signals, and exclusions; the fit check uses all of it; interview guides and materials use the background.
+The private profile for Recruiter BFF lives at `job-search/search-profile.md` in the user's Cowork folder. Every skill reads it. Scans use the targets, signals, and exclusions; the fit check uses all of it; interview guides and materials use the background.
 
-Its shareable partner is `job-search/preferences.md` (see `preferences-template.md`). Pay, the skip list, and searches stay here, private.
+Its shareable partner is `job-search/looking-for.md` (see `preferences-template.md`). Pay, the skip list, and searches stay here, private.
 
 Fill in what's known. Mark anything not captured yet as `(not set yet)`, so other skills can tell "empty on purpose" from "not asked yet."
 
@@ -12,7 +12,7 @@ Fill in what's known. Mark anything not captured yet as `(not set yet)`, so othe
 # Job Search Profile
 
 _Last updated: YYYY-MM-DD_
-_Preferences page: job-search/preferences.md (or "not built yet")_
+_Preferences page: job-search/looking-for.md (or "not built yet")_
 _Resume: job-search/resume/resume.md, copied from Sam-Okafor-resume.pdf on YYYY-MM-DD. Other versions: Sam-Okafor-growth.pdf (growth roles)._
 
 ## Search Targets

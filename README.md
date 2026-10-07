@@ -97,13 +97,13 @@ Everything is in a `job-search/` folder in your Cowork folder:
 ```
 job-search/
 ├── resume/               # your resume files, plus a plain-text copy every tool reads
-├── profile.md            # your search, pay, dealbreakers, and background (private)
-├── preferences.md        # what you want next, in one page you can share
-├── applications.csv      # your tracker; opens in any spreadsheet app
-├── story-bank.md         # your interview stories, reused across guides
+├── search-profile.md            # your search, pay, dealbreakers, and background (private)
+├── looking-for.md        # what you want next, in one page you can share
+├── job-tracker.csv      # your tracker; opens in any spreadsheet app
+├── interview-stories.md         # your interview stories, reused across guides
 ├── contacts.csv          # people at companies you're pursuing, and next moves
-└── interviews/
-    └── <company>/        # posting.md, evaluation.md, guide.md
+└── companies/
+    └── <company>/        # job-post.md, fit-check.md, interview-guide.md
 ```
 
 **Your files are yours.** There's no Recruiter BFF server. Claude reads these files when you ask, the way it reads anything else you share with it, and writes to them only when you say so in a conversation. Installing a new version replaces the plugin's skills, never your files. Everything is plain markdown and CSV, so if you stop using the plugin tomorrow, it's all still readable.

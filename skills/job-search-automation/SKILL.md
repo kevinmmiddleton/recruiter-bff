@@ -19,6 +19,8 @@ Three options, from most reliable to most ambitious:
 2. **A scheduled scan.** Cowork runs the job scan on a schedule. Convenient, with a real catch.
 3. **A self-hosted pipeline.** An always-on machine that scans and texts matches. A genuine engineering project.
 
+**Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), rename them first, as in Step 0 of `job-search-setup`.
+
 ## Never
 
 - Never create a scheduled task without a clear yes and confirmed days and time.
@@ -47,7 +49,7 @@ If nothing is due, the reminder is one line plus the fresh-role links. Keep it s
 2. Turn it into a cron expression in that local time: weekdays at 8:30 is `30 8 * * 1-5`; Mon and Thu at 8:30 is `30 8 * * 1,4`.
 3. Find the full path to the user's `job-search/` folder: the Cowork working folder's path plus `job-search/` (run `pwd` in that folder if you need it). The task starts fresh each time with no memory of this conversation, so the prompt must name the folder.
 4. Create the task with the scheduled-tasks tool, using the prompt below with the path and the user's name filled in. Title it something the user will recognize, like "Job search check-in."
-5. Record it in the Reminders status of `job-search/profile.md`: "Mon and Thu at 8:30am (created YYYY-MM-DD)".
+5. Record it in the Reminders status of `job-search/search-profile.md`: "Mon and Thu at 8:30am (created YYYY-MM-DD)".
 6. Tell the user: when it runs, how schedules really run (above), and that they can say "change my reminders" or "stop my reminders" anytime.
 
 **If the scheduled-tasks tool isn't available,** say so plainly: "I can't create scheduled tasks from here." Give the user the title, the schedule in words, and the prompt, so they can set it up from Cowork's scheduled tasks themselves. Record the Reminders status as "requested Mon and Thu at 8:30am, not created yet (YYYY-MM-DD)", so nobody offers reminders again and a later conversation can finish the job.
@@ -57,7 +59,7 @@ If nothing is due, the reminder is one line plus the fresh-role links. Keep it s
 ```
 Job search check-in for [name]. Their files are in [full path to job-search/].
 
-Read applications.csv, profile.md, and contacts.csv (if it exists) there. Do not change any
+Read job-tracker.csv, search-profile.md, and contacts.csv (if it exists) there. Do not change any
 file, apply to anything, send anything, or contact anyone. Today's date and weekday come from
 the system.
 
@@ -65,7 +67,7 @@ Write a short check-in, plain text, in this order, skipping empty sections:
 
 1. Coming up (next 7 days): rows whose next_date falls within 7 days. For each: weekday and
    date, company, role, what it is (from status and the last entry in notes; entries are
-   separated by " | ", newest last), and the path interviews/<company>/guide.md if it exists.
+   separated by " | ", newest last), and the path companies/<company>/interview-guide.md if it exists.
 2. Follow-ups due: rows with status screening, interview, final, or offer, whose next_date is
    blank or in the past, and whose last_update is 7 or more days ago. Say "nudge" for 7 to 13
    days, "chase or close" for 14 to 29, "mark ghosted?" for 30 or more. Never include rows
@@ -74,7 +76,7 @@ Write a short check-in, plain text, in this order, skipping empty sections:
    last 14 days, and no rejected or closed row for the same company.
 4. People to get back to: rows in contacts.csv whose next_date is today, past, or within 7
    days, and whose next_move isn't "none". For each: name, company, next move.
-5. Fresh roles: copy the links from the "Company Job Site Searches" section of profile.md,
+5. Fresh roles: copy the links from the "Company Job Site Searches" section of search-profile.md,
    then add: "Say 'scan for jobs' when you're at your computer to check your saved search too."
 
 If sections 1 to 4 are all empty, write "Nothing due today." and then section 5.
@@ -100,10 +102,10 @@ Cowork can also run the scan itself on a schedule: load the profile, pull the sa
 If they still want it, set it up like a reminder: confirm days and time, then create a task with a self-contained prompt such as:
 
 ```
-Run a job scan for [name]. Their files are in [full path to job-search/]. Read profile.md and
-applications.csv. Check the company job site searches and the companies to watch in
-profile.md, filter the results against the profile's targets and exclusions, drop roles
-already in applications.csv, and write a short digest of new matches, strongest first, each
+Run a job scan for [name]. Their files are in [full path to job-search/]. Read search-profile.md and
+job-tracker.csv. Check the company job site searches and the companies to watch in
+search-profile.md, filter the results against the profile's targets and exclusions, drop roles
+already in job-tracker.csv, and write a short digest of new matches, strongest first, each
 with company, role, location, one line on why it fits, and the link. If a source fails, say
 which one. Do not apply to anything, send anything, or change any file.
 ```

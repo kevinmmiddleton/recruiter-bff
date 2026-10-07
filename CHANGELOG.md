@@ -2,12 +2,14 @@
 
 ## 1.0.0 (unreleased)
 
+**Clearer file names.** Your `job-search/` folder now reads like what's in it: `search-profile.md`, `looking-for.md`, `job-tracker.csv`, `interview-stories.md`, `contacts.csv`, `resume/`, and `companies/<company>/` with `job-post.md`, `fit-check.md`, and `interview-guide.md`. A 0.4 folder is renamed automatically the first time you use 1.0; nothing inside the files changes.
+
 **Interview guides that open with the four blocks.** Every guide starts with the role in plain words, your fit, your gaps, and questions to ask, under a one-line verdict and the next round (what it tests, and what it doesn't). Gaps get their own section: what they'll ask, the honest answer, what to point to instead, and whether to raise it first. Below that: a plan for each interviewer, research with sources, scripts for the awkward questions and the pay question, and a method for case rounds.
 
 - **Debriefs and practice.** Debrief right after each round; the guide, the story bank, and the tracker update together, and thank-you notes are drafted. "Practice my interview" plays the interviewer, with critique after every answer.
 - **Setup starts from your resume,** and keeps a copy in `job-search/resume/` so every tool works from the same version (new versions sit next to the old ones). It drafts your background and proof points, then asks only what's missing. The first scan never waits on anything else.
-- **A preferences page you can share** (`preferences.md`): what you want next, ending in one sentence that makes it easy for people to help. Adapted from Phyl Terry's *Never Search Alone*.
-- **Two reads in every fit check:** do you fit what they want, and does the role fit what you want. It checks the posting is still live on the company's site, notes its age, flags possible ghost jobs, and saves the posting and the evaluation.
+- **A preferences page you can share** (`looking-for.md`): what you want next, ending in one sentence that makes it easy for people to help. Adapted from Phyl Terry's *Never Search Alone*.
+- **Two reads in every fit check:** do you fit what they want, and does the role fit what you want. It checks the posting is still live on the company's site, notes its age, flags possible ghost jobs, and saves the job post and the fit check in the company folder.
 - **Sharper scans:** strong, weak, and parked signals; a pickiness setting; exclusions with exceptions; staffing firms and aggregators filtered out; and a source-health line, so "nothing new" never hides "a source broke." A new role at a company you already know shows up with its history instead of disappearing.
 - **The tracker, safer and more useful.** Updates match the exact role, rejections only touch applications sent before them, and a general no with several open roles asks which one. New `closed` status (not a rejection), plus `furthest_stage` and `next_date` columns, added the next time the tracker is written. Follow-ups for active processes only. "What's in my pipeline?" shows a table sorted by what needs doing, and there's a weekly review.
 - **Reminders on your days:** follow-ups due, interviews coming up, roles to apply to, and fresh-role links. They read only your files, so they run reliably while the Claude app is open.

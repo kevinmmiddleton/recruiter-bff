@@ -44,8 +44,8 @@ import csv, os, re, io, datetime
 
 EXPORT = next((p for p in ["job-search/Connections.csv", "Connections.csv"] if os.path.exists(p)),
               "Connections.csv")              # or wherever the user saved it
-TRACKER = "job-search/applications.csv"
-PROFILE = "job-search/profile.md"
+TRACKER = "job-search/job-tracker.csv"
+PROFILE = "job-search/search-profile.md"
 CONTACTS = "job-search/contacts.csv"
 COLS = ["name","company","title","tags","closeness","linkedin_url","last_contact",
         "next_move","next_date","notes","source"]

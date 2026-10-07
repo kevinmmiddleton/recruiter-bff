@@ -14,6 +14,8 @@ description: >
 
 Pull fresh roles from the user's sources, cut the noise, and show them what's worth their time. It runs only when asked, on a normal laptop.
 
+**Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), rename them first, as in Step 0 of `job-search-setup`.
+
 ## Never
 
 - Never get around a login, and never fetch LinkedIn result pages with code. Use the browser the user controls, or their paste.
@@ -23,7 +25,7 @@ Pull fresh roles from the user's sources, cut the noise, and show them what's wo
 
 ## Step 1: Load the profile
 
-Read `job-search/profile.md`, and `job-search/preferences.md` if it exists.
+Read `job-search/search-profile.md`, and `job-search/looking-for.md` if it exists.
 
 - **No profile:** say you need to set up their search first and hand off to `job-search-setup`. Don't guess.
 - **No saved search:** run the saved-search step of setup, then continue.
@@ -79,7 +81,7 @@ Throw out page junk: pagination, "promoted" labels, ads, anything missing both a
 
 ## Step 4: Check against the tracker
 
-Read `job-search/applications.csv` if it exists, and follow "Checking against the tracker" in `references/classification-rubric.md`:
+Read `job-search/job-tracker.csv` if it exists, and follow "Checking against the tracker" in `references/classification-rubric.md`:
 
 - The same role at the same company is already tracked. Drop it and count it.
 - A different role at a company already in the tracker stays in, tagged **New role at a company you know**, with one line of history.
@@ -157,7 +159,7 @@ End with at most one offer. If several apply, pick the first that fits:
 
 Logging an application or a status change has no next step of its own. That reply is the quiet moment for 4, 5, and 6. A reply that carries out something the user just said yes to (a contacts import, a draft, the preferences page) doesn't add a new optional offer; at most it ends with that task's own next step from 3.
 
-Before offering 4, 5, or 6, check the **Offered** section of `job-search/profile.md` and skip anything already offered; when you offer one, add a dated line there. For reminders, also skip them if the profile's Reminders status is anything other than "(not set yet)." Saying a fact ("this read uses your profile alone") isn't an offer.
+Before offering 4, 5, or 6, check the **Offered** section of `job-search/search-profile.md` and skip anything already offered; when you offer one, add a dated line there. For reminders, also skip them if the profile's Reminders status is anything other than "(not set yet)." Saying a fact ("this read uses your profile alone") isn't an offer.
 
 ## Principles
 

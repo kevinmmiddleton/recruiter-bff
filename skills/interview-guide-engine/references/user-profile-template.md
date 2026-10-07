@@ -1,6 +1,6 @@
 # Background Fields for Interview Guides
 
-Interview guides read the shared profile at `job-search/profile.md` (built by `job-search-setup`, usually from the resume). There is no separate profile for guides. This file lists the fields a good guide needs. If any are missing or marked `(not set yet)`, collect only those and write them back into `job-search/profile.md`.
+Interview guides read the shared profile at `job-search/search-profile.md` (built by `job-search-setup`, usually from the resume). There is no separate profile for guides. This file lists the fields a good guide needs. If any are missing or marked `(not set yet)`, collect only those and write them back into `job-search/search-profile.md`.
 
 ## Background (profile "Background")
 
@@ -39,9 +39,9 @@ Which proof points go first for which kind of role:
 ## Also read, if they exist
 
 - `job-search/resume/resume.md`: the resume as it stands. Proof points and answers should match its wording.
-- `job-search/preferences.md`: must-haves and must-nots become questions to ask; the one sentence shapes the fit story.
-- `job-search/story-bank.md`: reuse banked stories before drafting new ones.
-- `job-search/interviews/<company>/posting.md` and `evaluation.md`: the saved posting and the fit check, so the guide starts from what's already known.
+- `job-search/looking-for.md`: must-haves and must-nots become questions to ask; the one sentence shapes the fit story.
+- `job-search/interview-stories.md`: reuse banked stories before drafting new ones.
+- `job-search/companies/<company>/job-post.md` and `fit-check.md`: the saved job post and the fit check, so the guide starts from what's already known.
 
 ## Why one profile
 

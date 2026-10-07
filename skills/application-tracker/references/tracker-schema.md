@@ -1,6 +1,6 @@
 # Tracker Schema and Snippets
 
-The full definition of `job-search/applications.csv`, plus Python you can adapt for safe edits. Always change the CSV through the `csv` module from the shell. Never hand-type rows.
+The full definition of `job-search/job-tracker.csv`, plus Python you can adapt for safe edits. Always change the CSV through the `csv` module from the shell. Never hand-type rows.
 
 ## Columns
 
@@ -97,7 +97,7 @@ Adapt paths and values, and run them from the shell. They keep quoting correct, 
 ```python
 import csv, os, datetime, re, tempfile
 
-PATH = "job-search/applications.csv"
+PATH = "job-search/job-tracker.csv"
 COLS = ["company","role","location","comp","url","source","status","score",
         "date_added","date_applied","last_update","notes","furthest_stage","next_date"]
 STAGES = ["prospect","applied","screening","interview","final","offer"]

@@ -1,6 +1,6 @@
 # Preferences Page: Template and How to Build It
 
-`job-search/preferences.md` is the user's one-page answer to "what do you want next?" It's written to be shared: with former colleagues, recruiters, friends, anyone who might help. Pay, the skip list, and saved searches stay private in `profile.md`; this page has no numbers anyone would mind seeing.
+`job-search/looking-for.md` is the user's one-page answer to "what do you want next?" It's written to be shared: with former colleagues, recruiters, friends, anyone who might help. Pay, the skip list, and saved searches stay private in `search-profile.md`; this page has no numbers anyone would mind seeing.
 
 Every skill reads it. Scans filter on the must-nots and the company preferences. The fit check reads a posting against it ("does this fit what you want?"). Interview guides turn must-haves and must-nots into questions to ask. Materials make the resume summary and LinkedIn headline say the one sentence. Contacts include the one sentence in every ask, so people know what to watch for.
 
@@ -99,5 +99,5 @@ Read the profile first. Confirm what it already knows (size, stage, industries, 
 
 - **The user's words.** Write what they said, tightened, not what sounds impressive.
 - **It's a shared page.** Things the user told you privately in setup (no direct reports, a skip list, why they're leaving) go on it only if they say so. Ask before carrying them over.
-- **No pay on this page.** Pay tiers live in `profile.md`.
+- **No pay on this page.** Pay tiers live in `search-profile.md`.
 - **Never gate anything on it.** Scans, fit checks, and guides work without it, and get better with it.

@@ -12,7 +12,9 @@ description: >
 
 # Application Tracker
 
-A tracker that's just a file the user owns: `job-search/applications.csv` in their Cowork folder. No database, no server. You keep it accurate, and you read it back like a coach who knows what needs doing next.
+A tracker that's just a file the user owns: `job-search/job-tracker.csv` in their Cowork folder. No database, no server. You keep it accurate, and you read it back like a coach who knows what needs doing next.
+
+**Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), rename them first, as in Step 0 of `job-search-setup`.
 
 ## Never
 
@@ -107,7 +109,7 @@ When the user asks for a weekly review, or "how's my search going," read the who
 4. **By source:** how many roles came from each source and how far they got (from `source` and `furthest_stage`), with referrals compared to cold applications. That shows where time pays off. If a source never produces anything after a few weeks, say so once.
 5. **Processes to protect:** the active processes that matter most, so none goes cold, plus housekeeping (rejections to log, rounds to mark as happened).
 6. **One process carrying everything:** if one company is the only active process past the screen, say so warmly and suggest reopening the top of the funnel now rather than waiting on one outcome, so one no doesn't empty the pipeline.
-7. **Your preferences:** if `job-search/preferences.md` exists, ask one question: "Is anything in your preferences changing?" Searches teach people what they want.
+7. **Your preferences:** if `job-search/looking-for.md` exists, ask one question: "Is anything in your preferences changing?" Searches teach people what they want.
 
 A rhythm that works for many people: warm contacts and recruiters early in the week, applications midweek, prep and follow-ups late in the week. Offer it once; don't prescribe it. Never lecture about application volume. If the user wants to put extra effort somewhere, referrals are where it pays.
 
@@ -130,7 +132,7 @@ End with at most one offer. If several apply, pick the first that fits:
 
 Logging an application or a status change has no next step of its own. That reply is the quiet moment for 4, 5, and 6. A reply that carries out something the user just said yes to (a contacts import, a draft, the preferences page) doesn't add a new optional offer; at most it ends with that task's own next step from 3.
 
-Before offering 4, 5, or 6, check the **Offered** section of `job-search/profile.md` and skip anything already offered; when you offer one, add a dated line there. For reminders, also skip them if the profile's Reminders status is anything other than "(not set yet)." Saying a fact ("this read uses your profile alone") isn't an offer.
+Before offering 4, 5, or 6, check the **Offered** section of `job-search/search-profile.md` and skip anything already offered; when you offer one, add a dated line there. For reminders, also skip them if the profile's Reminders status is anything other than "(not set yet)." Saying a fact ("this read uses your profile alone") isn't an offer.
 
 ## Principles
 
