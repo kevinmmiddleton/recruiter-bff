@@ -49,7 +49,7 @@ Spoken lines only. The user's own line lives in the profile ("What I say when as
 
 **The range is posted.**
 > "The posted range works for me."
-If asked for a number: one inside the band, near the top. Being coy about a public band gains nothing. If the top of the band is about the user's current pay, tell them privately that the upside here is the role and equity, not salary.
+If asked for a number, the user picks it. Offer the usual option: one inside the band, near the top, since being coy about a public band gains nothing. If the top of the band is about the user's current pay, tell them privately that the upside here is the role and equity, not salary.
 
 **The range isn't posted.**
 > "What's the range for the role? Happy to tell you if we're in the same neighborhood."
