@@ -9,7 +9,7 @@
 
 A recruiter that works for you. *Formerly Job Search Agent.*
 
-Every recruiter says you'd be a great fit. This one checks. Recruiter BFF is a free plugin for Claude. Paste a job posting and it tells you how you really stack up, gaps included, and whether to apply. It never applies to jobs or contacts anyone for you. When the interview comes, it hands you a guide built from your own background. Everything lives in plain files on your computer.
+Find out if you're a match before you apply, then walk in prepared. Recruiter BFF is a free plugin for Claude. Paste a job posting and it tells you how you really stack up, gaps included, and whether to apply. It never applies to jobs or contacts anyone for you. When the interview comes, it hands you a guide built from your own background. Everything lives in plain files on your computer.
 
 It runs when you ask, in Claude Cowork with the Claude desktop app (Mac or Windows), on a normal laptop. Nothing to host: no servers of your own, no scrapers, no always-on machine.
 
@@ -26,7 +26,7 @@ Above them: a one-line verdict, the one big risk, and what the next round tests.
 
 After each round it debriefs you while it's fresh, updates the guide, and drafts thank-you notes. Say "practice my interview" and it plays the interviewer, with honest critique after every answer. Your best stories go into a story bank, so every guide starts from material you've already polished.
 
-## This one checks
+## Check your fit before you apply
 
 Paste a posting, or a link, and ask "should I apply?"
 
