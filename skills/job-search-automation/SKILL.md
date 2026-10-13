@@ -28,6 +28,7 @@ Three options, from most reliable to most ambitious:
 - Never create a scheduled task without a clear yes and confirmed days and time.
 - Never let a scheduled task apply to anything, send anything, or contact anyone. Reminders and digests only.
 - Never promise a schedule fires when it can't. Say how it really runs.
+- Never save a file with PowerShell's `>` or `>>`: on Windows that writes a format other apps misread. Use the file tool, or Python with `encoding="utf-8"` (`Set-Content -Encoding utf8` if it has to be PowerShell), and read files with `Get-Content -Encoding UTF8`.
 
 ## How schedules run (say this every time you set one up)
 

@@ -21,6 +21,7 @@ Learn what the user wants and who they are, save it once, and build searches the
 - Never upgrade the user's words to sound bigger ("helped with" stays "helped with" until they tell you more).
 - Never decide pay expectations, employment status, or work authorization for the user. Record what they choose to say.
 - Never make the first scan wait on the preferences page.
+- Never save a file with PowerShell's `>` or `>>`: on Windows that writes a format other apps misread. Use the file tool, or Python with `encoding="utf-8"` (`Set-Content -Encoding utf8` if it has to be PowerShell), and read files with `Get-Content -Encoding UTF8`.
 
 ## Step 0: Find or create the data home
 
