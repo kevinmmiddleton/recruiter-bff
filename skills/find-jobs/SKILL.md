@@ -151,7 +151,7 @@ Make **one** offer per message. Usually it's the tracker:
 
 With no tracker yet, the offer is application-tracker's "No tracker yet" question instead (still one offer), and if the profile says the user tracks elsewhere, there's no tracker offer. On yes, hand the chosen roles to `application-tracker` to add as prospects. That's also what keeps future scans from showing them again. Don't stack other offers (the preferences page, reminders) into the same message; they come at a quieter moment.
 
-**Who you know there.** If there's no `job-search/contacts.csv` but a LinkedIn connections export (`Connections.csv`) is in the Cowork folder, it's worth one offer, following the order in "Ending a reply": "Your LinkedIn export is in your folder. Want me to check who you know at these companies?" (That's the `contacts` skill.)
+**Who you know there.** If there's no `job-search/contacts.csv` but a LinkedIn connections export (`Connections.csv`) is in the user's folder, it's worth one offer, following the order in "Ending a reply": "Your LinkedIn export is in your folder. Want me to check who you know at these companies?" (That's the `contacts` skill.)
 
 For a role the user is seriously considering, offer the fit check: `evaluate-role` reads the whole posting, checks it's still open, and gives a scored apply-or-skip answer.
 

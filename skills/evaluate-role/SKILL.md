@@ -123,7 +123,7 @@ Tiers: **4.5 and up** apply now · **4.0 to 4.4** strong, apply · **3.5 to 3.9*
 
 If the user disagrees with a read, update it. If the disagreement shows a preference the profile or page doesn't have, offer to add it so future scores improve.
 
-If the user knows someone at the company (from `job-search/contacts.csv`), add one line: "You know Priya Shah there. A referral beats a cold application; want a short note asking her?" If there's no `contacts.csv` but a LinkedIn export (`Connections.csv`) is in the Cowork folder, that check is a possible offer; follow "Ending a reply" (it waits if the tracker offer is due, and never repeats once offered).
+If the user knows someone at the company (from `job-search/contacts.csv`), add one line: "You know Priya Shah there. A referral beats a cold application; want a short note asking her?" If there's no `contacts.csv` but a LinkedIn export (`Connections.csv`) is in the user's folder, that check is a possible offer; follow "Ending a reply" (it waits if the tracker offer is due, and never repeats once offered).
 
 ## Step 8: Save it
 

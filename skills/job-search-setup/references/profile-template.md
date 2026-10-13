@@ -1,6 +1,6 @@
 # Job Search Profile: Template
 
-The private profile for Recruiter BFF lives at `job-search/search-profile.md` in the user's Cowork folder. Every skill reads it. Scans use the targets, signals, and exclusions; the fit check uses all of it; interview guides and materials use the background.
+The private profile for Recruiter BFF lives at `job-search/search-profile.md` in the user's folder. Every skill reads it. Scans use the targets, signals, and exclusions; the fit check uses all of it; interview guides and materials use the background.
 
 Its shareable partner is `job-search/looking-for.md` (see `preferences-template.md`). Pay, the skip list, and searches stay here, private.
 
