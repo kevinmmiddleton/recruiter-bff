@@ -1,0 +1,20 @@
+{
+  "name": "recruiter-bff",
+  "interface": {
+    "displayName": "Recruiter BFF"
+  },
+  "plugins": [
+    {
+      "name": "recruiter-bff",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

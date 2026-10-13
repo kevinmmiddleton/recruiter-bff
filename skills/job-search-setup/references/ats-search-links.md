@@ -37,7 +37,7 @@ A Google search URL is `https://www.google.com/search?q=<QUERY>&tbs=qdr:<R>`, UR
 
 ### Encoding
 
-Spaces → `+` (or `%20`), `"` → `%22`, `(` → `%28`, `)` → `%29`, leave `OR`, `site:`, and `:` as-is. Worked example (week recency):
+Spaces -> `+` (or `%20`), `"` -> `%22`, `(` -> `%28`, `)` -> `%29`, leave `OR`, `site:`, and `:` as-is. Worked example (week recency):
 
 ```
 https://www.google.com/search?q=%28site%3Ajobs.ashbyhq.com+OR+site%3Aboards.greenhouse.io+OR+site%3Ajob-boards.greenhouse.io+OR+site%3Ajobs.lever.co+OR+site%3Ajobs.smartrecruiters.com+OR+site%3Acareers.workable.com%29+%28%22senior+product+manager%22+OR+%22product+manager%22%29+%22New+York%22&tbs=qdr:w
@@ -55,4 +55,4 @@ Keep it to two or three links. They're personalized but evergreen: because recen
 
 ## Reading the results (for `find-jobs`)
 
-These links are read like any other source: open in a browser Claude can drive (the Claude desktop app's built-in browser, or the user's Chrome through Claude in Chrome), `get_page_text`, parse the result cards into job records, then run the normal dedupe → classify → present pipeline. If Google throws a CAPTCHA on an automated read, hand the user the link to click and use the paste flow. The URL needs no login, but Google shows results only to a real browser (a plain fetch gets a page asking for JavaScript), so a scheduled run with no browser hands the user the links instead. For an unattended run, the watchlist's public job feeds are the reliable source.
+These links are read like any other source: open in a browser Claude can drive (the Claude desktop app's built-in browser, or the user's Chrome through Claude in Chrome), `get_page_text`, parse the result cards into job records, then run the normal dedupe -> classify -> present pipeline. If Google throws a CAPTCHA on an automated read, hand the user the link to click and use the paste flow. The URL needs no login, but Google shows results only to a real browser (a plain fetch gets a page asking for JavaScript), so a scheduled run with no browser hands the user the links instead. For an unattended run, the watchlist's public job feeds are the reliable source.

@@ -8,17 +8,17 @@ Share this with anyone who asks "could I just automate the whole thing?" The ans
 
 ```
 Scheduler (fires 2x/day)
-   │
-   ▼
+   |
+   v
 Orchestrator script
-   │
-   ├── Fetch: headless browser loads your saved search → raw HTML
-   ├── Extract: parse HTML into structured job cards (cuts ~200KB → ~35KB)
-   ├── Pre-filter (no model): drop URLs/companies/roles already seen
-   ├── Classify: one cheap LLM API call tags each role INCLUDE/EXCLUDE/STRONG
-   ├── Assemble: rebuild matches with real URLs, write to a tracker
-   ├── Notify: push the matches to you (text / email / chat)
-   └── Log: append metrics for debugging
+   |
+   - Fetch: headless browser loads your saved search -> raw HTML
+   - Extract: parse HTML into structured job cards (cuts ~200KB -> ~35KB)
+   - Pre-filter (no model): drop URLs/companies/roles already seen
+   - Classify: one cheap LLM API call tags each role INCLUDE/EXCLUDE/STRONG
+   - Assemble: rebuild matches with real URLs, write to a tracker
+   - Notify: push the matches to you (text / email / chat)
+   - Log: append metrics for debugging
 ```
 
 ## Components, and what each one costs you

@@ -28,7 +28,7 @@
 
 The user downloads it themselves; it takes a few minutes:
 
-1. On LinkedIn: **Me → Settings & Privacy → Data privacy → Get a copy of your data.**
+1. On LinkedIn: **Me > Settings & Privacy > Data privacy > Get a copy of your data.**
 2. Choose **"Want something in particular?"**, tick **Connections**, and request the archive.
 3. LinkedIn emails a download link, usually within about 10 minutes. The file inside is `Connections.csv`.
 4. Save it into the Cowork folder (anywhere is fine; `job-search/` is tidy).
