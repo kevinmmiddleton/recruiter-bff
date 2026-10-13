@@ -121,6 +121,8 @@ At a quiet moment, never stacked with another offer (often once the user has som
 
 > "Want me to check in on the days you pick, with follow-ups that are due, interviews coming up, and links to fresh roles?"
 
+In Codex, which can't schedule anything, offer it as: "Want a short check-in each day you open Codex here, with follow-ups that are due, interviews coming up, and links to fresh roles?"
+
 Check the profile's Reminders status and **Offered** section first; don't offer reminders to someone who already has them, already asked for them, or already said no. When you offer, add "Reminders: YYYY-MM-DD" to Offered. On yes, hand off to `job-search-automation` to set them up.
 
 ## Updating later

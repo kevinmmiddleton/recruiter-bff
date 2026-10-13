@@ -7,6 +7,7 @@ description: >
   automatically," "schedule my scan," "run this every morning," or asks what it would take to
   build an always-on pipeline. Covers reminders on the user's chosen days (they read only
   the user's files), a scheduled scan (convenient, with a catch), and the serious self-hosted build.
+  In Codex, where nothing can be scheduled, offers a check-in when Codex opens and a calendar reminder.
 ---
 
 # Job Search Automation
@@ -30,7 +31,7 @@ Three options, from most reliable to most ambitious:
 - Never promise a schedule fires when it can't. Say how it really runs.
 - Never save a file with PowerShell's `>` or `>>`: on Windows that writes a format other apps misread. Use the file tool, or Python with `encoding="utf-8"` (`Set-Content -Encoding utf8` if it has to be PowerShell), and read files with `Get-Content -Encoding UTF8`.
 
-## How schedules run (say this every time you set one up)
+## How schedules run in the Claude desktop app (say this every time you set one up)
 
 Check what the scheduling tool's own description says, and tell the user that. In the Claude desktop app (October 2026), a new scheduled task runs in the cloud, where it can't see the user's files. If the tool can tie the task to this computer and the folder itself, do that and say so. If not, the user turns on two settings once, and you give them the exact clicks: **"Open Scheduled in the sidebar, click the task ('Job search check-in'), click the pencil, open Advanced settings, and on the General tab turn on Require this computer and set Local folder to [the folder they connected]. Then click Save changes."** Until they do, each run says it couldn't reach the folder.
 
@@ -153,6 +154,50 @@ Do not apply to anything, send anything, or change any file, with one exception:
 the digest showed to scan-history.csv, the way the find-jobs skill's references/scan-history.md
 says, so the next scan doesn't show them as new.
 ```
+
+## In Codex and other coding agents
+
+Codex can't schedule anything by itself, and there's no scheduled-tasks tool to call. Say that once, plainly ("Codex can't run anything on a schedule by itself, but here's what works"), then offer these, in this order. Reminders still read only the user's files and never send, apply, or contact anyone.
+
+**1. A check-in when Codex opens (start here).** Codex reads a file called `AGENTS.md` in the folder it's opened in at the start of every session. With a yes, add this section to `AGENTS.md` in the folder that holds `job-search/` (create the file if there isn't one; if the user opens Codex inside `job-search/` itself, put it there and drop the `job-search/` prefix):
+
+```
+## Recruiter BFF check-in
+At the start of a session in this folder, before answering, read the Reminders line in
+job-search/search-profile.md. If it says "check-in when Codex opens" and its last check-in
+date isn't today, first give the Recruiter BFF check-in: the five sections of the reminder in
+the job-search-automation skill, read-only, about 15 lines. Then change only that date to
+today, and answer what the user asked. If the user says "skip the check-in," skip it for this
+session.
+```
+
+Record it in the profile's Reminders status: "check-in when Codex opens (set up YYYY-MM-DD), last check-in YYYY-MM-DD". Tell the user it runs the first time they open Codex in this folder each day, and only then.
+
+**2. A calendar reminder.** For a nudge on set days even when Codex is closed, ask which days and what time (same defaults as above), then write `job-search/check-in-reminder.ics` and tell the user to double-click it to add a repeating event to their calendar (Apple Calendar, Outlook, or Google Calendar's import). Fill in the start date (the next chosen day, `YYYYMMDD`), the time (`HHMMSS`, local time), and the days (`MO`, `TU`, `WE`, `TH`, `FR`, `SA`, `SU`):
+
+```
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Recruiter BFF//Check-in//EN
+BEGIN:VEVENT
+UID:recruiter-bff-check-in-[YYYYMMDD of today]@recruiter-bff
+DTSTAMP:[YYYYMMDD of today]T000000Z
+DTSTART:[YYYYMMDD]T[HHMMSS]
+DURATION:PT15M
+RRULE:FREQ=WEEKLY;BYDAY=[MO,TH]
+SUMMARY:Job search check-in
+DESCRIPTION:Open Codex in your job-search folder and ask: what's due?
+END:VEVENT
+END:VCALENDAR
+```
+
+Record it: "calendar reminder Mon and Thu at 8:30am (made YYYY-MM-DD)". A calendar file can't remove its own event, so to change or stop it, the user deletes the event in their calendar; for new days, make a new file. This works anywhere the user can open a file, including the Claude desktop app when the scheduled-tasks tool isn't available.
+
+**3. Running with nobody there (only if they ask).** A computer's own scheduler (cron or launchd on a Mac, Task Scheduler on Windows) can start `codex exec` with the task prompt from section 1, so a check-in runs while they're away and is saved to a text file they open later. It's real setup: Codex must be signed in on that computer, the computer must be awake, each run uses their Codex plan, and flags change between versions. Never set it up without a clear yes. Check `codex exec --help` on their computer first and build the command from what it says, keep the run read-only, write the output to a file outside `job-search/` (like `check-in-latest.txt` next to it), and record it in the profile ("Codex scheduled check-in, weekdays 8:30am (set up YYYY-MM-DD)"). To stop it, remove the scheduler entry.
+
+**A scheduled scan in Codex:** there isn't one. Offer the check-in instead (it carries the fresh-role links), and "scan for jobs" whenever they're in Codex. In a Codex scan, the companies to watch work through their public feeds when Codex's network access is on; the saved LinkedIn search and the job site searches come back as links to click, or the user pastes the results.
+
+**Changing or stopping in Codex:** "change my reminders" edits the days and time (a new calendar file, or the scheduler entry); "stop my reminders" removes the `AGENTS.md` section, tells them to delete the calendar event, and removes any scheduler entry they set up. Update the profile's Reminders status either way.
 
 ## 3. A self-hosted pipeline
 
