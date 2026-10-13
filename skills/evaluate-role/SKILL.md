@@ -43,7 +43,7 @@ Pull out: target titles and seniority, signals (strong, weak, parked), exclusion
 ## Step 2: Get the full posting, and check it's live
 
 - **Pasted text:** use it as is.
-- **A link:** if a browser Claude can drive is connected, open it and read the page. Otherwise try a direct fetch for company job sites (Greenhouse, Lever, and Ashby pages usually fetch cleanly). If the page comes back empty or behind a login (LinkedIn often does), ask the user to paste the text. Never get around a login.
+- **A link:** if a browser Claude can drive is connected, open it and read the page. Otherwise try a direct fetch for company job sites (Greenhouse, Lever, and Ashby pages usually fetch cleanly; in Codex, `curl -sL` when its network access is on). If the page comes back empty or behind a login (LinkedIn often does), ask the user to paste the text. Never get around a login.
 
 Then:
 

@@ -54,7 +54,7 @@ Use web search. Find:
 
 Keep anything you couldn't confirm in a "Couldn't verify" line.
 
-**If web search isn't available,** say so once and build the company section from the posting alone, clearly labeled. Then put a ten-minute research list in the prep checklist for the user to do themselves: the company's site and product, news from the last month, each interviewer's LinkedIn, and recent reviews. Anything they paste later gets folded in. Never fill the gap with guesses.
+**If web search isn't available** (in Codex it's a setting that may be off), say so once and build the company section from the posting alone, clearly labeled. Then put a ten-minute research list in the prep checklist for the user to do themselves: the company's site and product, news from the last month, each interviewer's LinkedIn, and recent reviews. Anything they paste later gets folded in. Never fill the gap with guesses.
 
 **Before a product or case round, the user should use the product as a customer:** sign up, buy, search, walk the main flow, hit the paywall. Give them a short log to fill in: each touchpoint in order (when, which screen or message, what it did), then "What works," "Where it could connect better," "Tradeoffs to have a view on," and "What I can't tell from here." Each finding states its evidence and its limit ("I tested on iPhone; Android may differ"). In the room, two findings at most, framed as observations, never gotchas: "Here's what I saw from the outside. What am I missing?" Outside a case round, one line is plenty, and something they liked beats something they'd fix.
 

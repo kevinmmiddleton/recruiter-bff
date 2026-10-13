@@ -42,7 +42,7 @@ Run every source the profile has. Keep a tally for each one: did it work, and ho
 
 ### Saved search: the user's browser (preferred)
 
-Use a browser this session can drive: the browser built into the Claude desktop app (the user signs in to LinkedIn there once), or the user's own Chrome through Claude in Chrome.
+Use a browser this session can drive: the browser built into the Claude desktop app (the user signs in to LinkedIn there once), or the user's own Chrome through Claude in Chrome. In Codex or another agent with no browser it can drive, skip this section and use the paste flow below; don't go looking for browser tools.
 
 1. With Claude in Chrome, check a browser is connected (`list_connected_browsers`), loading the Chrome tools with ToolSearch (`query: "chrome", max_results: 20`) if they aren't loaded. With the built-in browser, use its own tools; the steps below name the Chrome tools, so use the built-in browser's equivalents. Work in a new tab, and close it when you're done.
 2. `navigate` to the saved-search URL and wait a few seconds for it to load.
