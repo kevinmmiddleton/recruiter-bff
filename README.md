@@ -78,6 +78,8 @@ Being one of the first 50 applicants beats being a polished 200th. Say "scan for
 
 ## Install
 
+### In the Claude desktop app
+
 You need a paid Claude plan (Pro, Max, Team, or Enterprise) and the Claude desktop app for Mac or Windows.
 
 1. Download the plugin: **[recruiter-bff.plugin](https://github.com/kevinmmiddleton/recruiter-bff/releases/latest/download/recruiter-bff.plugin)**
@@ -87,6 +89,20 @@ You need a paid Claude plan (Pro, Max, Team, or Enterprise) and the Claude deskt
 The skills are ready in your next conversation. Installing from Chat or Cowork adds them to your whole account, Claude Code sessions in the app included; installing from the Code side adds them to one project only. **To update,** download the new file and upload it the same way. Updates keep everything you've saved.
 
 **If you see "Skill files must have a .skill, .zip, or .md file extension,"** you're on the Skills tab. Use the Plugins tab instead.
+
+### In Codex
+
+<!-- verify on Codex (Mac and Windows) before release, and add the version checked -->
+```
+codex plugin marketplace add kevinmmiddleton/recruiter-bff
+codex plugin add recruiter-bff@recruiter-bff
+```
+
+Then open Codex in the folder you want to use for your job search and say "set up my job search." **To update,** run `codex plugin marketplace upgrade`. Codex can't drive a browser or run anything on a schedule, so scans work from results you paste in, and reminders are a check-in when you open Codex or an event in your calendar.
+
+### In ChatGPT, Microsoft Copilot, Gemini, or Claude without Cowork
+
+Download **[recruiter-bff-no-install-kit.zip](https://github.com/kevinmmiddleton/recruiter-bff/releases/latest/download/recruiter-bff-no-install-kit.zip)** and follow the README inside. You paste in the instructions, add your resume, and ask "should I apply?" There are no scans or reminders, and you save the files it hands you, but the fit check and the interview guides work the same way.
 
 ## Get started
 
@@ -117,7 +133,7 @@ Later, when you have half an hour, it can help you write a one-page "what I want
 
 ## Where your files live
 
-Everything is in a `job-search/` folder inside the folder you connected:
+Everything is in a `job-search/` folder inside the folder you connected (in Codex, the folder you opened):
 
 ```
 job-search/

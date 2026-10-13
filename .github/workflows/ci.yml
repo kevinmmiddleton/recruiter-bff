@@ -1,0 +1,44 @@
+name: checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: checks (${{ matrix.os }}, Python ${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python: ["3.9", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Derived files are current (Codex manifest, marketplace files)
+        run: python tools/build.py --check
+      - name: Snippet checks and copy checks
+        run: python tools/build.py --test
+      - name: Release files build (plugin and no-install kit)
+        run: python tools/build.py --dist
+
+  validate:
+    name: plugin manifest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm install -g @anthropic-ai/claude-code@2.1.286
+      - name: Validate the plugin
+        run: |
+          claude plugin validate .claude-plugin/plugin.json
+          claude plugin validate .
