@@ -202,6 +202,25 @@ def _zip_tree(zf: zipfile.ZipFile, base: Path, arc_prefix: str, only=()) -> None
         zf.writestr(info, p.read_bytes())
 
 
+KIT_PROJECT_FILES = (
+    "evaluate-role/references/scoring-rubric.md",
+    "find-jobs/references/classification-rubric.md",
+    "interview-guide-engine/references/guide-template.md",
+    "interview-guide-engine/references/answers-and-scripts.md",
+    "interview-guide-engine/references/story-bank-template.md",
+    "your-materials/references/review-pass.md",
+)
+
+
+def tracker_columns() -> list[str]:
+    """The tracker's columns, read from the snippets in tracker-schema.md, so the kit's blank tracker always matches."""
+    text = (SKILLS / "application-tracker" / "references" / "tracker-schema.md").read_text(encoding="utf-8")
+    m = re.search(r"^COLS = \[(.*?)\]", text, re.M | re.S)
+    if not m:
+        raise SystemExit("tracker-schema.md has no COLS list; update tracker_columns() in tools/build.py")
+    return re.findall(r'"([a-z_]+)"', m.group(1))
+
+
 def dist() -> int:
     write_derived()
     if test():
@@ -213,11 +232,23 @@ def dist() -> int:
     with zipfile.ZipFile(DIST / f"{NAME}.plugin", "w") as zf:
         _zip_tree(zf, ROOT, "", PLUGIN_FILES)
     shutil.copy(DIST / f"{NAME}.plugin", DIST / f"{OLD_NAME}.plugin")
-    # 2. No-install kit: the instructions and starter files, for ChatGPT, Copilot, Gemini, or Claude without Cowork
+    # 2. No-install kit, for ChatGPT, Copilot, Gemini, or Claude without Cowork: the instructions, the method files
+    #    copied from the skills (so the kit never drifts from the plugin), and a job-search folder with a blank tracker
     if KIT.exists():
         kit = f"{NAME}-no-install-kit"
-        with zipfile.ZipFile(DIST / f"{kit}.zip", "w") as zf:
-            _zip_tree(zf, KIT, f"{kit}/")
+        with tempfile.TemporaryDirectory() as tmp:
+            k = Path(tmp) / kit
+            k.mkdir()
+            for p in sorted(KIT.glob("*.md")):
+                shutil.copy(p, k / p.name)
+            (k / "Project files").mkdir()
+            for rel in KIT_PROJECT_FILES:
+                shutil.copy(SKILLS / rel, k / "Project files" / Path(rel).name)
+            (k / "job-search").mkdir()
+            with open(k / "job-search" / "job-tracker.csv", "w", encoding="utf-8-sig", newline="") as fh:
+                fh.write(",".join(tracker_columns()) + "\r\n")   # Excel's "CSV UTF-8": the start mark keeps accented names right
+            with zipfile.ZipFile(DIST / f"{kit}.zip", "w") as zf:
+                _zip_tree(zf, k, f"{kit}/")
     for p in sorted(DIST.iterdir()):
         print(f"  {p.name:40} {p.stat().st_size // 1024:>6} KB")
     return 0
