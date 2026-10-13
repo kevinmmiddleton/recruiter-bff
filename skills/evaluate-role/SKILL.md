@@ -107,7 +107,7 @@ Unknowns score a neutral 3, never lower. Pay is the exception: most postings lea
 Lead with the score and the action, then the details:
 
 ```
-**4.6 / 5: apply now.** Live on Fernhill's site, posted 2 days ago.
+**4.6 / 5: apply now.** Live on Fernhill's site (checked just now), posted 2 days ago.
 
 Fits what they want: [the table]
 Fits what you want: the role your one sentence describes; hybrid 2 days, inside your rule;

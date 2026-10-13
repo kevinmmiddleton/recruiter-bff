@@ -20,6 +20,8 @@ Three options, from most reliable to most ambitious:
 2. **A scheduled scan.** Cowork runs the job scan on a schedule. Convenient, with a real catch.
 3. **A self-hosted pipeline.** An always-on machine that scans and texts matches. A genuine engineering project.
 
+When the user starts a conversation about reminders, add "Reminders: YYYY-MM-DD (asked)" to the profile's Offered section, so it isn't offered again.
+
 **Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), follow "Folders from 0.4" in Step 0 of `job-search-setup`: rename only a folder 0.4 made, only during a request that writes something (never on a read-only question like "what's in my pipeline?", or for a draft nobody has saved), and name each file you renamed. Never rename or restructure files the user made themselves without asking. Until the files are renamed, or if they can't be renamed from here, use whichever name exists, the 1.0 name first and then the 0.4 one (`search-profile.md` or `profile.md`, `looking-for.md` or `preferences.md`, `job-tracker.csv` or `applications.csv`, `interview-stories.md` or `story-bank.md`, `companies/` or `interviews/`, `interview-guide.md` or `guide.md`), and put new files where the existing ones are.
 
 **No folder:** if you can't see the user's folder at all, say that and stop, as in Step 0 of `job-search-setup`. Never create `job-search/` or any of its files somewhere else.
@@ -159,21 +161,34 @@ says, so the next scan doesn't show them as new.
 
 Codex can't schedule anything by itself, and there's no scheduled-tasks tool to call. Say that once, plainly ("Codex can't run anything on a schedule by itself, but here's what works"), then offer these, in this order. Reminders still read only the user's files and never send, apply, or contact anyone.
 
-**1. A check-in when Codex opens (start here).** Codex reads a file called `AGENTS.md` in the folder it's opened in at the start of every session. With a yes, add this section to `AGENTS.md` in the folder that holds `job-search/` (create the file if there isn't one; if the user opens Codex inside `job-search/` itself, put it there and drop the `job-search/` prefix):
+**1. A check-in when Codex opens (start here).** Codex reads a file called `AGENTS.md` in the folder it's opened in at the start of every session. With a yes, add this section to `AGENTS.md` in the folder that holds `job-search/` (create the file if there isn't one; if the user opens Codex inside `job-search/` itself, put it there and drop the `job-search/` prefix). It's self-contained, so it works even in a session that never opens this skill:
 
 ```
 ## Recruiter BFF check-in
-At the start of a session in this folder, before answering, read the Reminders line in
-job-search/search-profile.md. If it says "check-in when Codex opens" and its last check-in
-date isn't today, first give the Recruiter BFF check-in: the five sections of the reminder in
-the job-search-automation skill, read-only, about 15 lines. Then change only that date to
-today, and answer what the user asked. If the user says "skip the check-in," skip it for this
-session.
+At the start of a session in this folder, before answering, read job-search/search-profile.md.
+If its Reminders section says "Codex check-in: on" and its "last run" isn't today, first give a
+short check-in (read-only, about 15 lines, real dates with weekdays) from
+job-search/job-tracker.csv and job-search/contacts.csv (if it exists):
+1. Coming up: rows whose next_date is in the next 7 days: weekday and date, company, role,
+   what it is, and companies/<company>/interview-guide.md if it exists. Before a recruiter
+   screen, add "pay line not set" if the profile's pay line is "(not set yet)".
+2. Follow-ups due: status screening, interview, final, or offer, next_date blank or past, and
+   last_update 7 or more days ago: "nudge" at 7 to 13 days, "chase or close" at 14 to 29,
+   "mark ghosted?" at 30 or more. Never rows with status applied.
+3. Roles you meant to apply to: status prospect, score 4 or higher, added in the last 14
+   days, and no rejected or closed row for the same company.
+4. People to get back to: contacts.csv rows whose next_date is today, past, or within 7 days.
+5. Fresh roles: the profile's company job site search links, then "Say 'scan for jobs' to
+   check your saved search too."
+If 1 to 4 are empty, say "Nothing due today." and then 5. Never say it without reading the
+tracker. Then change "last run" to today: the one file change this check-in may make. If that
+change is refused, don't retry; just go on. Then answer what the user asked. If the user says
+"skip the check-in," skip it for this session.
 ```
 
-Record it in the profile's Reminders status: "check-in when Codex opens (set up YYYY-MM-DD), last check-in YYYY-MM-DD". Tell the user it runs the first time they open Codex in this folder each day, and only then.
+Record it in the profile's Reminders section: "Codex check-in: on (set up YYYY-MM-DD), last run: never". Tell the user it runs the first time they open Codex in this folder each day, and only then. If Codex asks them to approve the date change each morning, approving it keeps the check-in to once a day.
 
-**2. A calendar reminder.** For a nudge on set days even when Codex is closed, ask which days and what time (same defaults as above), then write `job-search/check-in-reminder.ics` and tell the user to double-click it to add a repeating event to their calendar (Apple Calendar, Outlook, or Google Calendar's import). Fill in the start date (the next chosen day, `YYYYMMDD`), the time (`HHMMSS`, local time), and the days (`MO`, `TU`, `WE`, `TH`, `FR`, `SA`, `SU`):
+**2. A calendar reminder.** For a nudge on set days even when Codex is closed, ask which days and what time (same defaults as above), then write `job-search/check-in-reminder.ics` and tell the user to double-click it to add a repeating event to their calendar (Apple Calendar, Outlook, or Google Calendar's import). Codex makes the file; the user adds it. Fill in the start date (the next chosen day whose time hasn't passed yet, `YYYYMMDD`), the time (`HHMMSS`, local time), the days (`MO`, `TU`, `WE`, `TH`, `FR`, `SA`, `SU`), and the name of the folder that holds `job-search/`. Write it with Windows line endings (CRLF) if you can; most calendar apps also accept plain ones.
 
 ```
 BEGIN:VCALENDAR
@@ -186,14 +201,19 @@ DTSTART:[YYYYMMDD]T[HHMMSS]
 DURATION:PT15M
 RRULE:FREQ=WEEKLY;BYDAY=[MO,TH]
 SUMMARY:Job search check-in
-DESCRIPTION:Open Codex in your job-search folder and ask: what's due?
+DESCRIPTION:Open Codex in your [folder that holds job-search] folder. Your check-in runs on its own\, or ask: what's in my pipeline?
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Job search check-in
+TRIGGER:-PT0M
+END:VALARM
 END:VEVENT
 END:VCALENDAR
 ```
 
-Record it: "calendar reminder Mon and Thu at 8:30am (made YYYY-MM-DD)". A calendar file can't remove its own event, so to change or stop it, the user deletes the event in their calendar; for new days, make a new file. This works anywhere the user can open a file, including the Claude desktop app when the scheduled-tasks tool isn't available.
+Record it in the Reminders section: "Calendar reminder: Mon and Thu at 8:30am (made YYYY-MM-DD)". A calendar file can't remove its own event, so to change or stop it, the user deletes the event in their calendar; for new days, make a new file. This works anywhere the user can open a file, including the Claude desktop app when the scheduled-tasks tool isn't available.
 
-**3. Running with nobody there (only if they ask).** A computer's own scheduler (cron or launchd on a Mac, Task Scheduler on Windows) can start `codex exec` with the task prompt from section 1, so a check-in runs while they're away and is saved to a text file they open later. It's real setup: Codex must be signed in on that computer, the computer must be awake, each run uses their Codex plan, and flags change between versions. Never set it up without a clear yes. Check `codex exec --help` on their computer first and build the command from what it says, keep the run read-only, write the output to a file outside `job-search/` (like `check-in-latest.txt` next to it), and record it in the profile ("Codex scheduled check-in, weekdays 8:30am (set up YYYY-MM-DD)"). To stop it, remove the scheduler entry.
+**3. Running with nobody there.** When the user asks for anything automatic, mention this in one line; set it up only after a second, explicit yes. A computer's own scheduler (cron or launchd on a Mac, Task Scheduler on Windows) can start `codex exec` with the task prompt from section 1, so a check-in runs while they're away and is saved to a text file they open later. It's real setup: Codex must be signed in on that computer, the computer must be awake, each run uses their Codex plan, and flags change between versions. Never set it up without a clear yes. Check `codex exec --help` on their computer first and build the command from what it says, keep the run read-only, write the output to a file outside `job-search/` (like `check-in-latest.txt` next to it), and record it in the profile ("Codex scheduled check-in, weekdays 8:30am (set up YYYY-MM-DD)"). To stop it, remove the scheduler entry.
 
 **A scheduled scan in Codex:** there isn't one. Offer the check-in instead (it carries the fresh-role links), and "scan for jobs" whenever they're in Codex. In a Codex scan, the companies to watch work through their public feeds when Codex's network access is on; the saved LinkedIn search and the job site searches come back as links to click, or the user pastes the results.
 

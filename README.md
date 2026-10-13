@@ -66,7 +66,7 @@ Being one of the first 50 applicants beats being a polished 200th. Say "scan for
 
 ## Keep track, without a spreadsheet habit
 
-- **Your tracker** is a plain CSV that opens in Excel, Numbers, or Google Sheets. Say "what's in my pipeline?" and you get a table sorted by what needs doing. Close it in your spreadsheet app before you ask Claude to change it, so the app doesn't save its older copy over the update.
+- **Your tracker** is a plain CSV that opens in Excel, Numbers, or Google Sheets. Say "what's in my pipeline?" and you get a table sorted by what needs doing. Close it in your spreadsheet app before you ask Recruiter BFF to change it, so the app doesn't save its older copy over the update.
 - **Follow-ups** are flagged when an active process goes quiet (cold applications never nag you), and it offers a short draft.
 - **Reminders on your days:** pick the days and time, and it checks in with follow-ups due, interviews coming up, and links to fresh roles. Turn on two settings once so the check-in can read your files (it walks you through them), and keep the Claude app open; quitting the app pauses your check-in until you turn it back on.
 - **A weekly review** shows what moved, where things tend to stall, and which sources pay off.
@@ -98,7 +98,7 @@ codex plugin marketplace add kevinmmiddleton/recruiter-bff
 codex plugin add recruiter-bff@recruiter-bff
 ```
 
-Then open Codex in the folder you want to use for your job search and say "set up my job search." **To update,** run `codex plugin marketplace upgrade`. Codex can't drive a browser or run anything on a schedule, so scans work from results you paste in, and reminders are a check-in when you open Codex or an event in your calendar.
+Then open Codex in the folder you want to use for your job search and say "set up my job search." **To update,** run `codex plugin marketplace upgrade`. Codex can't drive a browser or run anything on a schedule, so scans work from results you paste in, and reminders are a check-in when you open Codex, or a calendar file you double-click to add.
 
 ### In ChatGPT, Microsoft Copilot, Gemini, or Claude without Cowork
 
@@ -149,7 +149,7 @@ job-search/
     └── <company>/        # job-post.md, fit-check.md, interview-guide.md
 ```
 
-**Your files are yours.** There's no Recruiter BFF server. Claude reads these files when you ask, the way it reads anything else you share with it, and writes to them only while doing something you asked for. Installing a new version replaces the plugin's skills and keeps everything you've saved. Everything is plain markdown and CSV, so if you stop using the plugin tomorrow, it's all still readable.
+**Your files are yours.** There's no Recruiter BFF server. Your assistant (Claude or Codex) reads these files when you ask, the way it reads anything else you share with it, and writes to them only while doing something you asked for. Installing a new version replaces the plugin's skills and keeps everything you've saved. Everything is plain markdown and CSV, so if you stop using the plugin tomorrow, it's all still readable.
 
 **Coming from 0.4?** The first time you ask it to save something in 1.0, it gives your files the names above if it can, and tells you which ones it renamed. Just asking what's in your pipeline never renames anything, and files you wrote yourself are renamed only if you say yes. Where it can't rename files (Cowork can't from every session), it keeps your current names, which work just as well, and tells you once how to rename them yourself if you'd like. The first time it updates your tracker, it adds two columns: the furthest stage each role reached, and the date of the next thing, filled in from your notes only when a note names one clear upcoming date. The first time it updates your profile, it moves it to the new section names. It tells you each time. Your notes, answers, and entries stay as you wrote them.
 

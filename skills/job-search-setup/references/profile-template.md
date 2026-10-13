@@ -98,7 +98,9 @@ Outcome first, then how, then scope. Both ends of every number.
 
 ## Reminders
 
-- **Status:** e.g., "Mon, Wed, Fri at 8:30am (created YYYY-MM-DD)"; "requested Mon and Thu at 8:30am, not created yet (YYYY-MM-DD)"; in Codex, "check-in when Codex opens (set up YYYY-MM-DD), last check-in YYYY-MM-DD" or "calendar reminder Mon and Thu at 8:30am (made YYYY-MM-DD)"; "none"; or "(not set yet)"
+- **Status:** e.g., "Mon, Wed, Fri at 8:30am (created YYYY-MM-DD)"; "requested Mon and Thu at 8:30am, not created yet (YYYY-MM-DD)"; "none"; or "(not set yet)"
+- **Codex check-in:** "on (set up YYYY-MM-DD), last run: never" (then the date it last ran), "off", or "(not set yet)"
+- **Calendar reminder:** "Mon and Thu at 8:30am (made YYYY-MM-DD)", "none", or "(not set yet)"
 - **Scheduled scan:** same forms, e.g., "every day at 7:30am (created YYYY-MM-DD)"; "requested every day at 7:30am, not created yet (YYYY-MM-DD)"; "none"; or "(not set yet)"
 
 ## Offered

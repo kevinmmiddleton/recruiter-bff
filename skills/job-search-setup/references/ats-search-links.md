@@ -37,7 +37,7 @@ A Google search URL is `https://www.google.com/search?q=<QUERY>&tbs=qdr:<R>`, UR
 
 ### Encoding
 
-Spaces -> `+` (or `%20`), `"` -> `%22`, `(` -> `%28`, `)` -> `%29`, leave `OR`, `site:`, and `:` as-is. Worked example (week recency):
+Spaces -> `+` (or `%20`), `"` -> `%22`, `(` -> `%28`, `)` -> `%29`, `:` -> `%3A`, and leave `OR` as is (an unencoded `site:` works too). Worked example (week recency):
 
 ```
 https://www.google.com/search?q=%28site%3Ajobs.ashbyhq.com+OR+site%3Aboards.greenhouse.io+OR+site%3Ajob-boards.greenhouse.io+OR+site%3Ajobs.lever.co+OR+site%3Ajobs.smartrecruiters.com+OR+site%3Acareers.workable.com%29+%28%22senior+product+manager%22+OR+%22product+manager%22%29+%22New+York%22&tbs=qdr:w

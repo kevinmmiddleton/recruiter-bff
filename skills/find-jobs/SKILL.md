@@ -57,7 +57,7 @@ This sees what the user would see, using the session they already have. It never
 
 ### Saved search: paste (always works)
 
-No browser, or the browser hit a wall: give the user their saved-search link, ask them to open it and paste the results (or the whole page) back. Never let a missing browser stop the scan.
+No browser, or the browser hit a wall: give the user their saved-search link, ask them to open it and paste the results (or the whole page) back. With more than one saved search, ask for one at a time and name it ("Paste what your NYC hybrid search shows"), so the source-health line can say which ones ran. Never let a missing browser stop the scan.
 
 Pasted results often have no links. Leave the link blank (never make one up), say once that the paste had no links, and ask the user to copy a role's address when they open it, so the tracker can keep it.
 
