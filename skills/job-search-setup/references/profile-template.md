@@ -13,7 +13,7 @@ Fill in what's known. Mark anything not captured yet as `(not set yet)`, so othe
 
 _Last updated: YYYY-MM-DD_
 _Preferences page: job-search/looking-for.md (or "not built yet")_
-_Resume: job-search/resume/resume.md, copied from Sam-Okafor-resume.pdf on YYYY-MM-DD. Other versions: Sam-Okafor-growth.pdf (growth roles)._
+_Resume: primary, job-search/resume/primary.md, copied from Sam-Okafor-resume.pdf on YYYY-MM-DD, for growth and retention PM roles. Alternate: job-search/resume/alternate.md, copied from Sam-Okafor-program.pdf on YYYY-MM-DD, for program manager roles (or "no alternate")._
 
 ## Search Targets
 
@@ -81,6 +81,8 @@ Outcome first, then how, then scope. Both ends of every number.
 
 ### Lead-With Guidance
 
+(For cover notes, written answers, and interviews; the resumes stay as they are.)
+
 - For growth roles, lead with: ...
 - For platform roles, lead with: ...
 
@@ -123,7 +125,7 @@ Optional things already offered, with the date, so no skill offers them twice. A
 - **Direct reports** the user doesn't want: flag the role and let them decide; don't skip it automatically.
 - **Company types** default to excluding staffing firms and aggregators that repost roles. The user can turn that off, but only an explicit line does it ("include staffing firms"); a missing line or "(none stated)" keeps the default.
 - **Company size and stage** shape the fit check's company score and the scan's ranking. A size or stage the user dislikes is a soft warning unless they call it a dealbreaker.
-- **The resume** lives in `job-search/resume/`: the user's own files, unchanged, plus `resume.md`, a plain-text copy of the current version. It's the record of what the resume really says, so every claim a skill makes can be checked against it. The profile summarizes it; it never replaces it.
+- **The resumes** live in `job-search/resume/`: the user's own files, unchanged, plus `primary.md` (and `alternate.md`, if there is one), plain-text copies of the current versions. Two at most: the primary, and an alternate only for a second kind of role or industry, never one per posting. The Resume line says which roles each covers, and every fit check uses the one that matches, so scores stay comparable. They're the record of what the resumes really say, so every claim a skill makes can be checked against them. The profile summarizes them; it never replaces them.
 - **Proof points** come from the resume first. Never invent a number: if the resume says "improved conversion," write that and mark the number as a gap to fill, like `[from ?% to ?%]`.
 - **Pay line:** this is what the user has decided to say. Skills can remind them of it; they never say it for the user.
 - **Reminders and the scheduled scan** are set up by `job-search-automation`; these lines record what the user chose and whether each task actually exists.
@@ -156,7 +158,7 @@ A profile from Job Search Agent or Recruiter BFF 0.4 has the same kinds of facts
 | "Salary expectation to state when asked" | "What I say when asked about pay" |
 | no "Phrases I like" or "Current LinkedIn headline" | add both to Voice and Logistics as "(not set yet)" |
 | `## Field notes for whoever fills this in` | drop it (the field notes live here) |
-| no Resume line | `_Resume: job-search/resume/resume.md, ..._` under the title if a copy exists, or `_Resume: not saved yet_` |
+| no Resume line | `_Resume: primary, job-search/resume/primary.md, ..._` (or `resume.md`, if that's what the folder has) under the title if a copy exists, or `_Resume: not saved yet_` |
 | no Preferences page line | `_Preferences page: job-search/looking-for.md_` if it exists, or "not built yet" |
 | no `## Reminders` or `## Offered` | add both, with Status and Scheduled scan as "(not set yet)" and an empty Offered list |
 

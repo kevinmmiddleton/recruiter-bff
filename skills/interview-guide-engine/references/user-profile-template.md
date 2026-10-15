@@ -21,7 +21,7 @@ Group them by strength if that helps ("growth," "platform," "0 to 1").
 
 ## Lead-with guidance (profile "Lead-With Guidance")
 
-Which proof points go first for which kind of role:
+Which proof points go first for which kind of role, in answers and stories (the resume itself stays as it is):
 
 | Role type | Lead with |
 |-----------|-----------|
@@ -38,7 +38,7 @@ Which proof points go first for which kind of role:
 
 ## Also read, if they exist
 
-- `job-search/resume/resume.md`: the resume as it stands. Proof points and answers should match its wording.
+- `job-search/resume/primary.md` (and `alternate.md`, if there is one): the resumes as they stand. Proof points and answers should match its wording.
 - `job-search/looking-for.md`: must-haves and must-nots become questions to ask; the one sentence shapes the fit story.
 - `job-search/interview-stories.md`: reuse banked stories before drafting new ones.
 - `job-search/companies/<company>/job-post.md` and `fit-check.md`: the saved job post and the fit check, so the guide starts from what's already known.

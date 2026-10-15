@@ -17,7 +17,7 @@ The full definition of `job-search/job-tracker.csv`, plus Python you can adapt f
 | `date_added` | ISO date the row entered the tracker |
 | `date_applied` | ISO date the user applied (blank until then) |
 | `last_update` | ISO date anything last happened: a status change, or a message either way |
-| `notes` | Free text, newest line last: resume version, contacts, round notes, promises made |
+| `notes` | Free text, newest line last: which resume (primary or alternate), contacts, round notes, promises made |
 | `furthest_stage` | The furthest stage this role ever reached. Never lowered, even on a rejection. |
 | `next_date` | ISO date of the next thing: an interview, a deadline, a follow-up the user promised. Blank if none. |
 

@@ -29,7 +29,7 @@ All of Recruiter BFF's data lives in a `job-search/` folder inside a folder on t
 1. Find the folder the user connected: in Cowork, a folder on their computer; in Claude Code or another agent, the folder you're working in.
 2. If no folder is connected, or you can't tell which one is theirs (Cowork on the web or a phone, a Chat conversation, or the Claude desktop app is closed), stop and say: "I can't reach a folder on your computer from here. In the Claude desktop app on your computer, choose Cowork if you see a Chat/Cowork switch, connect the folder you want to use for your job search, and ask again." Never create `job-search/` in a temporary workspace or start a second one somewhere else; it won't be there next time.
 3. Create `job-search/` there if it doesn't exist. If it's missing but the user talks about an earlier setup, ask whether they connected a different folder last time before starting over.
-4. The private profile is `job-search/search-profile.md`; the shareable page is `job-search/looking-for.md`; the resume lives in `job-search/resume/`.
+4. The private profile is `job-search/search-profile.md`; the shareable page is `job-search/looking-for.md`; the resumes live in `job-search/resume/` (`primary.md`, plus `alternate.md` if there is one).
 
 **Folders from 0.4.** If `job-search/` still has 0.4's file names, rename them before anything else, then tell the user in one line ("I gave your job-search files clearer names; nothing inside them changed"): `profile.md` to `search-profile.md`, `preferences.md` to `looking-for.md`, `applications.csv` to `job-tracker.csv`, `story-bank.md` to `interview-stories.md`, `interviews/` to `companies/`, and inside each company folder `guide.md` to `interview-guide.md`. If a new name already exists, don't overwrite it; ask which to keep.
 
@@ -41,20 +41,25 @@ If `search-profile.md` already exists and the user said "set up my job search," 
 
 ## Step 1: Start from the resume
 
-Ask for the resume first: "Paste your resume, or tell me which file in your folder it is." A PDF or document in their folder is fine; read it directly.
+Ask for one resume first: "Bring your one primary resume: paste it, or tell me which file in your folder it is." A PDF or document in their folder is fine; read it directly. Once you have it, ask once: "Are you also aiming at a second kind of role or a different industry, like PM and program manager, or fintech and health? If so, bring that resume too." If they are, take the alternate the same way, and ask which roles it's for. Two at most: one primary, plus one alternate for a second kind of role. Never a resume per posting.
 
-**Save it in the job-search folder,** so every skill works from the same version:
+**Save them in the job-search folder** once you know whether there's an alternate, so every skill works from the same resumes:
 
-- A file: copy it into `job-search/resume/` with its name unchanged. Copy, never move; the original stays where the user keeps it. If you can't copy files from here (the shell can't reach the folder, and the file tools can't copy a PDF or Word file), skip the copy and make `resume.md`'s first line say where the original is (`_Text of Sam-Okafor-resume.pdf, which stays in Documents, on 2026-10-06_`). Never write the resume's text into a file named `.pdf` or `.docx`.
-- Pasted text, or always alongside a file: write `job-search/resume/resume.md`, a plain-text copy of the resume as given, with a first line like `_Copied from Sam-Okafor-resume.pdf on 2026-10-06_`, or `_Pasted in chat on 2026-10-06_` for pasted text. Don't edit or improve it; it's the record of what the user's resume actually says.
-- Tell the user in one line: "I saved a copy of your resume in your job-search folder, so fit checks and interview guides all work from the same version." 
+- A file: copy it into `job-search/resume/` with its name unchanged. Copy, never move; the original stays where the user keeps it. If you can't copy files from here (the shell can't reach the folder, and the file tools can't copy a PDF or Word file), skip the copy and make the plain-text copy's first line say where the original is (`_Text of Sam-Okafor-resume.pdf, which stays in Documents, on 2026-10-06_`). Never write the resume's text into a file named `.pdf` or `.docx`.
+- Pasted text, or always alongside a file: write a plain-text copy of the resume as given, `job-search/resume/primary.md` for the primary and `job-search/resume/alternate.md` for the alternate, with a first line like `_Copied from Sam-Okafor-resume.pdf on 2026-10-06_`, or `_Pasted in chat on 2026-10-06_` for pasted text. Don't edit or improve it; it's the record of what the user's resume actually says.
+- Record in the profile's Resume line which roles each resume covers (the primary covers everything the alternate doesn't).
+- Tell the user in one line: "I saved your resume in your job-search folder. Every fit score runs off it, so the scores stay consistent: a 4.6 means the same thing every time." With an alternate: "I saved your resumes in your job-search folder (your alternate for [its roles]). Every fit score runs off the one that matches the role, so the scores stay consistent: a 4.6 means the same thing every time."
 
-From the resume, draft:
+**An honest read.** Then give a short, honest read of each resume: what's working, then the weakest spots by name (bullets with no results, bullets that only describe the job, a summary that reads like a timeline, a missing number). If it needs work, say so plainly ("This resume undersells you: three of your Brightloop bullets have no results.") and offer to help strengthen it with `your-materials` once setup is done, and note it; when you write the profile in Step 4, list "Resume help: YYYY-MM-DD" under Offered. Frame the offer as strengthening the resume they have; don't bring up per-job resumes unless the user asks for one. If it's strong, say so in a line.
+
+**An older folder** may have `job-search/resume/resume.md` (from a 1.0 test build) instead of `primary.md`. Read it as the primary, and rename it to `primary.md` the next time you write a resume file. If you can't rename from here, keep using `resume.md`.
+
+From the primary resume (and the alternate, for the roles it covers), draft:
 
 - **Background:** current or most recent title, years of experience, a two-sentence career arc.
 - **Proof points:** the 3 to 6 strongest accomplishments, each written outcome first, then how, then scope, with both ends of any number ("checkout drop-off from 32% to 21%, by redesigning the address step, for a 2-million-user store"). Keep each fact with the accomplishment the resume ties it to; a team size from one bullet doesn't belong on another. Where the resume gives no number, keep the outcome in words and add a placeholder.
 - **Likely target titles,** from the arc and the most recent role.
-- **Lead-with guidance:** which proof points to put first for which kinds of roles.
+- **Lead-with guidance:** which proof points to put first for which kinds of roles, in cover notes, written answers, and interviews (the resumes themselves stay as they are).
 
 Then show a short summary of what you drafted (five to eight lines, not the whole profile) and ask only what the resume couldn't tell you, including one question: "Anything you'd want to be upfront about in interviews, like a gap, a pivot, or something you haven't done yet?" If the user has no resume handy, ask for the same things conversationally instead.
 
@@ -119,7 +124,7 @@ For a one-field change (raise the floor, add a skip-list company, add an excepti
 
 **A restated search.** When the user describes their whole search again, change only what differs. Something they didn't mention isn't removed unless they say so: keep it, and say in one line what you kept ("I kept retention and your four strong signals; say if any should go").
 
-**A new resume.** When the user shares an updated resume, add the new file to `job-search/resume/` next to the old one (never overwrite or delete the old file) (if you can't copy files from here, skip that, as in Step 1), replace `resume.md` with the new text, update the profile's Resume line (add it under the title if the profile has none, as 0.4 profiles don't), and offer to refresh the proof points from what changed. Versions for different kinds of roles ("my growth version") sit side by side in the same folder, each named so the user can tell them apart; the profile lists them.
+**A new resume.** When the user shares an updated resume, ask whether it replaces the primary or the alternate, unless that's obvious. Add the new file to `job-search/resume/` next to the old one (never overwrite or delete the old file) (if you can't copy files from here, skip that, as in Step 1), replace `primary.md` or `alternate.md` with the new text, update the profile's Resume line with the date (add it under the title if the profile has none, as 0.4 profiles don't), and offer to refresh the proof points from what changed. Say in one line that fit scores from now on use the updated resume, and earlier scores used the old one. Two at most: for a third kind of role, ask which one it replaces. Never keep a resume per posting.
 
 ## Ending a reply
 

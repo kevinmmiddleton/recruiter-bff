@@ -33,12 +33,12 @@ Paste a posting, or a link, and ask "should I apply?"
 - It checks the posting is still live on the company's own site, and flags postings that look stale.
 - It matches every requirement to the line in your background that answers it, and calls partial matches partial.
 - It reads the role against what you want, separately: your one-sentence target, your must-haves, your dealbreakers.
-- It scores the role from 1 to 5, tells you to apply or skip, and says what to lead with if you apply.
+- It scores the role from 1 to 5, tells you to apply or skip, and says what to lead with in your note and first conversations if you apply.
 - It saves the posting and the evaluation, so the interview guide can start from them later.
 
 ## Apply early, to the right roles
 
-Being one of the first 50 applicants beats being a perfectly tailored 200th. Say "scan for jobs":
+Being one of the first 50 applicants beats being a polished 200th. Say "scan for jobs":
 
 - It reads your saved LinkedIn search in a browser you're logged in to (the Claude desktop app's built-in browser, or the Claude in Chrome extension), or you paste the results in.
 - It builds one-click Google searches of recent posts on company job sites like Greenhouse, Lever, and Ashby, where lots of roles get posted and never reach LinkedIn.
@@ -54,7 +54,7 @@ Being one of the first 50 applicants beats being a perfectly tailored 200th. Say
 
 ## Your materials, and your people
 
-- **Your materials:** resume bullets rewritten as outcome, then how, then scope; a LinkedIn headline people actually search for; "why us" answers that couldn't go to any other company. It never invents a number.
+- **Your materials:** sharpen your primary resume bullet by bullet, written as outcome, then how, then scope (it won't make a new resume for every job); a LinkedIn headline people actually search for; "why us" answers that couldn't go to any other company. It never invents a number.
 - **Contacts:** download your LinkedIn connections and it shows who you know at the companies you're pursuing, suggests one next move per person, and drafts short notes you send yourself.
 
 ## Install
@@ -69,7 +69,7 @@ The skills are ready in your next conversation. **To update,** download the new 
 
 ## Get started
 
-Say **"set up my job search"** and paste your resume. It drafts your background from the resume, asks only what's missing (the roles you want, where, your pay floor, your dealbreakers), and builds your searches. Then it offers a first scan.
+Say **"set up my job search"** and paste your primary resume (plus an alternate, if you're aiming at a second kind of role). It gives you an honest read on it, drafts your background from it, asks only what's missing (the roles you want, where, your pay floor, your dealbreakers), and builds your searches. Then it offers a first scan.
 
 Later, when you have half an hour, it can help you write a one-page "what I want next" to share with people who can help. It ends in one sentence that makes it easy for anyone to keep an eye out for you.
 
@@ -100,7 +100,7 @@ Everything is in a `job-search/` folder inside the folder you connected:
 
 ```
 job-search/
-├── resume/               # your resume files, plus a plain-text copy every tool reads
+├── resume/               # your primary resume (and an alternate), plus plain-text copies every tool reads
 ├── search-profile.md     # your search, pay, dealbreakers, and background (private)
 ├── looking-for.md        # what you want next, in one page you can share
 ├── job-tracker.csv       # your tracker; opens in any spreadsheet app
