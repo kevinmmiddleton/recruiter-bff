@@ -49,7 +49,7 @@ Being one of the first 50 applicants beats being a polished 200th. Say "scan for
 
 - **Your tracker** is a plain CSV that opens in Excel, Numbers, or Google Sheets. Say "what's in my pipeline?" and you get a table sorted by what needs doing. Close it in your spreadsheet app before you ask Claude to change it, so the app doesn't save its older copy over the update.
 - **Follow-ups** are flagged when an active process goes quiet (cold applications never nag you), and it offers a short draft.
-- **Reminders on your days:** pick the days and time, and it checks in with follow-ups due, interviews coming up, and links to fresh roles.
+- **Reminders on your days:** pick the days and time, and it checks in with follow-ups due, interviews coming up, and links to fresh roles. Turn on two settings once so the check-in can read your files (it walks you through them), and keep the Claude app open; quitting the app pauses your check-in until you turn it back on.
 - **A weekly review** shows what moved, where things tend to stall, and which sources pay off.
 
 ## Your materials, and your people
@@ -62,10 +62,12 @@ Being one of the first 50 applicants beats being a polished 200th. Say "scan for
 You need a paid Claude plan (Pro, Max, Team, or Enterprise) and the Claude desktop app for Mac or Windows.
 
 1. Download the plugin: **[recruiter-bff.plugin](https://github.com/kevinmmiddleton/recruiter-bff/releases/latest/download/recruiter-bff.plugin)**
-2. In the Claude app, open **Customize**, then **Plugins**, then **Add**, then **Upload plugin**, and pick the file. <!-- verify the exact button names in the app on release day -->
+2. In the Claude desktop app, with Chat or Cowork selected (the switch at the top left), open **Customize** in the left sidebar, then the **Plugins** tab. Click **+ Add**, then **Upload plugin**, pick the file, and click **Upload**. You'll see the standard warning for installing a plugin. The plugin's page then has a **Try in Cowork** button.
 3. Choose Cowork if your message box shows a Chat/Cowork switch, then connect a folder on your computer for your job search. Setup creates `job-search/` inside it.
 
-The skills are ready in your next conversation. **To update,** download the new file and upload it the same way. Updates keep everything you've saved.
+The skills are ready in your next conversation. Installing from Chat or Cowork adds them to your whole account, Claude Code sessions in the app included; installing from the Code side adds them to one project only. **To update,** download the new file and upload it the same way. Updates keep everything you've saved.
+
+**If you see "Skill files must have a .skill, .zip, or .md file extension,"** you're on the Skills tab. Use the Plugins tab instead.
 
 ## Get started
 
@@ -90,7 +92,7 @@ Later, when you have half an hour, it can help you write a one-page "what I want
 
 ## What you need
 
-- **A paid Claude plan** (Pro, Max, Team, or Enterprise) and the **Claude desktop app** for Mac or Windows. Cowork reaches your folder through the desktop app, so keep the app open while you work and when reminders run.
+- **A paid Claude plan** (Pro, Max, Team, or Enterprise) and the **Claude desktop app** for Mac or Windows. Cowork reaches your folder through the desktop app, so keep the app open while you work and when reminders run. Quitting the app pauses your reminders until you turn them back on in **Scheduled**.
 - **A folder on your computer, connected in Claude.** Setup creates `job-search/` there.
 - **Optional:** a browser Claude can drive (the Claude desktop app's built-in browser, or the Claude in Chrome extension), so scans can read your saved LinkedIn search. Without one, you paste results in. See `CONNECTORS.md`.
 
@@ -113,7 +115,7 @@ job-search/
 
 **Your files are yours.** There's no Recruiter BFF server. Claude reads these files when you ask, the way it reads anything else you share with it, and writes to them only while doing something you asked for. Installing a new version replaces the plugin's skills and keeps everything you've saved. Everything is plain markdown and CSV, so if you stop using the plugin tomorrow, it's all still readable.
 
-**Coming from 0.4?** The first time you use 1.0, it gives your files the names above if it can. Where it can't rename files (Cowork can't from every session), it keeps your current names, which work just as well, and tells you once how to rename them yourself if you'd like. The first time it updates your tracker, it adds two columns: the furthest stage each role reached, and the date of the next thing, filled in from your notes only when a note names one clear upcoming date. The first time it updates your profile, it moves it to the new section names. It tells you each time. Your notes, answers, and entries stay as you wrote them.
+**Coming from 0.4?** The first time you ask it to save something in 1.0, it gives your files the names above if it can, and tells you which ones it renamed. Just asking what's in your pipeline never renames anything, and files you wrote yourself are renamed only if you say yes. Where it can't rename files (Cowork can't from every session), it keeps your current names, which work just as well, and tells you once how to rename them yourself if you'd like. The first time it updates your tracker, it adds two columns: the furthest stage each role reached, and the date of the next thing, filled in from your notes only when a note names one clear upcoming date. The first time it updates your profile, it moves it to the new section names. It tells you each time. Your notes, answers, and entries stay as you wrote them.
 
 **Had Job Search Agent?** Uninstall it first, so only one of them answers.
 

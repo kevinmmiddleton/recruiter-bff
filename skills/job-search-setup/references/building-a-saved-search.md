@@ -39,13 +39,13 @@ A senior PM, NYC metro, remote or hybrid, looking at the last week, newest first
 https://www.linkedin.com/jobs/search/?keywords=product%20manager&location=New%20York%2C%20New%20York%2C%20United%20States&f_E=4&f_WT=2,3&f_TPR=r604800&sortBy=DD
 ```
 
-Confirm the assembled URL with the user before saving. If you want to be sure it's valid, you can open it in the browser during setup and check that real results load.
+Show the assembled URL in the save message, so the user can correct it without a turn of its own. If you want to be sure it's valid, you can open it in the browser during setup and check that real results load.
 
 ### Multiple keywords
 
-LinkedIn treats the keyword field as an OR-ish phrase match. To cover several titles, either:
-- keep `keywords` broad (`product%20manager`) and let the plugin's filtering catch level/title, or
-- save two searches, one broad and one narrow (e.g., `product%20lead`), and scan both.
+LinkedIn treats the keyword field loosely, so extra words barely narrow a search: in testing, a "senior product manager growth" search returned mostly the same roles as "product manager." So:
+- keep `keywords` broad (`product%20manager`) and let the scan's filtering catch level, title, and signals like growth, and
+- add a second search only when it covers ground the first misses: another title (`product%20lead`, `program%20manager`) or another place the first doesn't cover (a second city, or remote when the first search doesn't already include the remote filter). Scan both.
 
 ## Any other board: capture an existing search
 
@@ -59,4 +59,4 @@ The scan doesn't care which board the URL points at. It reads whatever results t
 
 ## Saving
 
-Write the chosen URL(s) into the **Saved Searches** section of `job-search/search-profile.md`. Label each (e.g., "Primary (broad)" / "Secondary (narrow)") and record which board it's on. The `find-jobs` skill picks these up automatically.
+Write the chosen URL(s) into the **Saved Searches** section of `job-search/search-profile.md`. Label each (e.g., "Primary" / "Second search: product lead") and record which board it's on. The `find-jobs` skill picks these up automatically.

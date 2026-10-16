@@ -14,7 +14,7 @@ description: >
 
 A scan says a role exists and looks plausible. This skill answers the next question: is this one worth an application? It reads the whole posting, checks it's still live, makes two separate reads (does the user fit what they want, and does the role fit what the user wants), scores it, and says what it would do.
 
-**Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), rename them first, as in Step 0 of `job-search-setup`. If they can't be renamed from here, use whichever name exists, the 1.0 name first and then the 0.4 one (`search-profile.md` or `profile.md`, `looking-for.md` or `preferences.md`, `job-tracker.csv` or `applications.csv`, `interview-stories.md` or `story-bank.md`, `companies/` or `interviews/`, `interview-guide.md` or `guide.md`), and put new files where the existing ones are.
+**Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), follow "Folders from 0.4" in Step 0 of `job-search-setup`: rename only a folder 0.4 made, only during a request that writes something (never on a read-only question like "what's in my pipeline?"), and name each file you renamed. Never rename or restructure files the user made themselves without asking. Until the files are renamed, or if they can't be renamed from here, use whichever name exists, the 1.0 name first and then the 0.4 one (`search-profile.md` or `profile.md`, `looking-for.md` or `preferences.md`, `job-tracker.csv` or `applications.csv`, `interview-stories.md` or `story-bank.md`, `companies/` or `interviews/`, `interview-guide.md` or `guide.md`), and put new files where the existing ones are.
 
 ## Never
 
@@ -27,9 +27,13 @@ A scan says a role exists and looks plausible. This skill answers the next quest
 
 ## Step 1: Load what you know
 
-Read `job-search/search-profile.md`. No profile: hand off to `job-search-setup` rather than scoring against guesses. If you can't see the user's folder at all, say that instead of starting setup. Also read `job-search/looking-for.md` and the resumes in `job-search/resume/` if they exist (`primary.md`, and `alternate.md` if the profile lists one; a folder from a 1.0 test build may have `resume.md`, which is the primary). The resume is where evidence comes from: cite its lines, not just the profile's summary. With no saved resume (older folders don't have one), cite the profile's Background and Proof Points, say so in one line, and mention once that pasting the resume lets you save a copy (add "Resume copy: YYYY-MM-DD" to the profile's Offered section so it isn't repeated).
+**No folder, no score.** If you can't see the user's folder at all (no folder connected, Cowork on the web or a phone, a Chat conversation), don't score the posting, don't save anything, and don't offer to track it. Say: "I can't see your job-search folder from here, so I can't check this against your resume and what you want. In the Claude desktop app on your computer, choose Cowork if you see a Chat/Cowork switch, connect the folder you use for your job search, and ask again." If they'd rather not, you can list the posting's requirements and any red flags, with no score.
+
+Read `job-search/search-profile.md`. No profile: hand off to `job-search-setup` rather than scoring against guesses. Also read `job-search/looking-for.md` and the resumes in `job-search/resume/` if they exist (`primary.md`, and `alternate.md` if the profile lists one; a folder from a 1.0 test build may have `resume.md`, which is the primary). The resume is where evidence comes from: cite its lines, not just the profile's summary. With no `primary.md` (or `resume.md`) but resume files in `job-search/resume/`, follow "Resumes already in the folder" in Step 1 of `job-search-setup` before scoring: ask which is the primary (and which, if any, is the alternate), then save its plain-text copy the way setup does (setup's honest read of the resume can wait for a quieter moment). With no resume at all (older folders don't have one), cite the profile's Background and Proof Points, say so in one line, and mention once that pasting the resume lets you save a copy (add "Resume copy: YYYY-MM-DD" to the profile's Offered section so it isn't repeated).
 
 **Which resume.** Check the posting against the resume that matches its kind of role: the primary by default, the alternate if the profile's Resume line says it covers this kind of role. Say which one in the verdict ("Checked against your primary resume."). Every posting is measured against the same base, so scores compare across postings.
+
+**A newer original.** If the resume's original file has changed since its plain-text copy was made (compare the file's last-changed date and time with the "last changed" ones in the copy's first line), say so in one line and offer to refresh the copy first, the way setup's "A new resume" does (without its proof-point offer), so the score uses the resume the user actually sends.
 
 **A different resume pasted in.** If the user pastes another version of their resume for this posting, don't score against it. Ask, and wait for the answer: "Should this replace your primary resume? Only if it's the version you'd send everywhere, not just to [Company]. I check every posting against the same resume, so the scores stay comparable." (Say "your alternate" instead when the posting is the kind of role the alternate covers.) If yes, update it the way setup's "A new resume" does, then score; if the new version adds a claim the old one didn't have (a new number, a new scope), confirm it's true before using it as evidence. If not, or the next message doesn't answer, score against the saved one, and say in one line which pasted lines weren't counted (quote them; never use them as evidence). If an earlier fit check used an older version of that resume (`fit-check.md` records which version), say so when comparing scores.
 
@@ -70,7 +74,7 @@ Trace every requirement to the line in the user's background that answers it:
 | Managed a PM (nice to have) | Nothing in your background | ❌ gap |
 ```
 
-- **Cite the actual line.** A match with no evidence is a guess.
+- **Cite the actual line.** A match with no evidence is a guess. A proof point marked "not on your resume yet" can count, labeled that way, with a note that the recruiter won't see it until it's on the resume.
 - **For each gap:** one line on the honest answer (a transferable skill, a learning curve), or "real gap, expect the question."
 
 ## Step 5: Read two: does it fit what you want?
@@ -112,6 +116,8 @@ What pushes it up: ...
 What holds it back: ...
 If you apply: lead with [proof point] in your note and first conversations; expect the question about [gap].
 ```
+
+"If you apply" always says where to lead with it: the cover note, written answers, and first conversations. Never suggest changing the resume for this posting.
 
 Tiers: **4.5 and up** apply now · **4.0 to 4.4** strong, apply · **3.5 to 3.9** decent, apply only with a specific reason (name it) · **3.0 to 3.4** weak fit, probably skip · **below 3.0** skip.
 
@@ -157,6 +163,8 @@ If the files already exist for the same role, update `fit-check.md` and keep the
 Then the tracker, through `application-tracker`:
 
 - **Already in the tracker** (logged from a scan, say): just update its score to this one, add the one-line verdict to `notes`, and say so. Don't ask again.
+- **No tracker, and the user tracks elsewhere** (the profile's Offered section says so): don't offer to start one.
+- **No tracker file at all:** the offer is application-tracker's "No tracker yet" question (do they keep their applications somewhere else?), not "add it."
 - **Not in the tracker yet:** offer once to add it, as `prospect` (or `skipped` if the verdict was skip and the user agrees), with the score to one decimal and the verdict in `notes`.
 
 Comparing several roles? Score each the same way and finish with a one-line ranking.

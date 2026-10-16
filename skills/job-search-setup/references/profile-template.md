@@ -29,10 +29,11 @@ _Resume: primary, job-search/resume/primary.md, copied from Sam-Okafor-resume.pd
 
 - **Size:** 50 to 2,000 people
 - **Stage and ownership:** Series B or later, or public
+- **Industries I like:** consumer subscription apps, consumer health (these lift a fit check's company score; on their own they don't make a scanned role STRONG)
 
 ## Signals
 
-- **Strong** (what I want most; makes a role top-tier): growth, retention, or lifecycle work; consumer subscription products
+- **Strong** (what I want most; makes a role top-tier): growth, retention, or lifecycle work, ideally at a consumer subscription company
 - **Parked** (a lane I like but keep stalling in, or am not chasing right now): Group PM roles with direct reports
 - **Weak** (soft warnings: flag it, rank it lower, never cut it): contract or contract-to-hire roles; titles that often mean sales-facing work
 - **Pickiness:** strong plus maybe (show STRONG and INCLUDE) | strong only
@@ -46,8 +47,8 @@ _Resume: primary, job-search/resume/primary.md, copied from Sam-Okafor-resume.pd
 
 ## Saved Searches
 
-- **Primary (broad):** <URL>
-- **Secondary (narrow):** <URL or "(not set yet)">
+- **Primary:** <URL>
+- **Second search:** <URL or "(not set yet)"> (only for a title or a place the primary misses)
 - **Board:** LinkedIn
 
 ## Company Job Site Searches
@@ -69,7 +70,7 @@ Companies the user would jump at, checked through their public job feeds on ever
 - **Current or most recent title:**
 - **Years of experience:**
 - **Career arc (2 sentences):**
-- **Currently:** employed / searching full time / between roles since [month]
+- **Currently:** employed / searching full time / between roles since [month] (only what the user says; the resume's dates aren't enough, so leave "(not set yet)" until they tell you)
 - **Why looking:**
 
 ### Proof Points (3 to 6 strongest)

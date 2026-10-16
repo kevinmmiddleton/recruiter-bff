@@ -57,18 +57,26 @@ Two spot checks ran alongside: the tracker snippets at the new `job-tracker.csv`
 - **Instructions:** more rows in the 0.4 profile table; a restated search keeps what the user didn't mention and says so; no saved resume means working from the profile and mentioning once that a pasted resume can be saved; the guide engine's posting rule split into two cases, and the new top goes above the old guide, which stays below under "Earlier prep"; after a booked round, the next offer is the guide if there isn't one; a booked date that has passed shows "Ask how it went"; a weekday scan uses past-week links on Mondays; a reminder listed as "not created yet" asks first whether the user set it up; the schema says a file-tool round trip may drop Excel's start mark.
 - **Not changed:** the scheduled task's own clock (below) and the version in `plugin.json` (release day).
 
+## Kevin's Cowork test of 1.0.0-rc.2 (Oct 14 to 16, 2026)
+
+A live run of the release candidate in the Claude desktop app, on fictional test folders: install (one upload, account-wide), setup with the resume rule, the first scan in the app's built-in browser (signed in to LinkedIn), the watchlist feeds from Cowork, the tracker, a fit check, the tailor test, a new conversation finding the folder, reminders (created, run with the app open, skipped and paused with the app closed, re-enabled), a scheduled scan, a 0.4 folder upgrade, and cleanup. Every section passed; nothing was lost or overwritten. It produced a 17-item fix list (upgrades on hand-made files, "Currently," the narrow search, question batches, install wording, the display name, the rubric, the Require this computer and Local folder steps, the pause when the app is quit, exact times, the scan prompt's weak-signal rule and "you," and the no-folder fit check). All but the scan's "seen before" list were fixed in Phase 3.
+
+## Run 7: the final simulation (Oct 16, 2026)
+
+Five parts on the fixed skills: upgrades and folders, setup and reminders, the resume-rule scenarios again, the full seven-turn case, and a follow-up on the fixes it found. Details in `run-7-2026-10-16.md`.
+
 ## Live LinkedIn check (Oct 6, 2026)
 
 A real, signed-in LinkedIn saved search, read through Claude in Chrome. Found: reading the page's text returned only the description of the job open on the right, not the results list. Fixed in `8c40f07`: find the results list, scroll so the cards load, read the list, strip tracking from job links, page with `&start=25`, and keep "N connections work here" as a contacts hint.
 
 ## Known gaps
 
-- **The fixes since run 6 haven't been run end to end.** Run 5 covered the 1.0 names and the round-1 fixes; run 6 covered the round-2 fixes with file-tool-only access. The changes made since are covered by the snippet checks where they're code; the instruction changes (the rename list and its Offered line, the restated search, the guide's "Earlier prep," the weekday window, the "not created yet" question, and from the round-4 review: a resume file that can't be copied, setting `FIRST_IMPORT`, copying every file the import reads, and rows put back on their own lines in a copy) have no simulation yet. Run 7, on the final code, is planned for them.
+- **Run 7 didn't repeat every run-6 case.** It covered the Phase 3 fixes and the full case, with a shell that could reach the folder. File-tool-only access, a contacts import rerun, and a Mac-saved tracker on one line were last simulated in runs 5 and 6 and are covered by the snippet checks.
 - **A scheduled task trusts its own clock.** The reminder prompt takes today's date from the system; in run 6 the shell's clock was wrong. The snippets say to use the conversation's date, but a scheduled task has no conversation. Low; not handled.
 - **Excel on a Mac can overwrite an update.** A Mac doesn't lock a file that's open in Excel, so if the tracker is open there during an update and the user saves in Excel afterwards, Excel's older copy replaces the update. README and the tracker skill now tell the user to close it first; not tested.
 - **File-tool-only access** was simulated in run 6, not tried in a real Cowork session.
 - **Plain-CSV accent detection has limits.** From a Mac's plain CSV, an í still slips through (it reads as the same apostrophe Windows uses), and so does an Ñ, Ö, Ç, or Ä starting a word. A Windows plain CSV read directly with š, ž, or œ inside a word, or a dash or ™ between two words with no spaces, gets asked for one re-save as CSV UTF-8.
 - **No Windows run.** The snippet checks simulate Windows' default file encoding and console; nothing has run on a Windows machine.
-- **No live Cowork run** of install, a connected folder, a scheduled task firing (with the desktop app open and closed), the built-in browser, the watchlist feeds from Cowork, or the shell's clock.
+- **The live Cowork run was on rc.2** (Kevin, Oct 14 to 16). The Phase 3 fixes since then were simulated (run 7), not run live. The shell's clock in Cowork wasn't checked.
 - **No browser in any simulation.** The LinkedIn steps were checked once live, not inside a full scan.
 - **Still open from run 4:** no guidance for remote-anywhere-in-the-US searches in `building-a-saved-search.md`, and the scan's headline count ("9 new roles, 3 strong") was read two ways across runs.

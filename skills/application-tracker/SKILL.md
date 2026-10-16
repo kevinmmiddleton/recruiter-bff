@@ -14,7 +14,7 @@ description: >
 
 A tracker that's just a file the user owns: `job-search/job-tracker.csv` in their Cowork folder. No database, no server. You keep it accurate, and you read it back like a coach who knows what needs doing next.
 
-**Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), rename them first, as in Step 0 of `job-search-setup`. If they can't be renamed from here, use whichever name exists, the 1.0 name first and then the 0.4 one (`search-profile.md` or `profile.md`, `looking-for.md` or `preferences.md`, `job-tracker.csv` or `applications.csv`, `interview-stories.md` or `story-bank.md`, `companies/` or `interviews/`, `interview-guide.md` or `guide.md`), and put new files where the existing ones are.
+**Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), follow "Folders from 0.4" in Step 0 of `job-search-setup`: rename only a folder 0.4 made, only during a request that writes something (never on a read-only question like "what's in my pipeline?"), and name each file you renamed. Never rename or restructure files the user made themselves without asking. Until the files are renamed, or if they can't be renamed from here, use whichever name exists, the 1.0 name first and then the 0.4 one (`search-profile.md` or `profile.md`, `looking-for.md` or `preferences.md`, `job-tracker.csv` or `applications.csv`, `interview-stories.md` or `story-bank.md`, `companies/` or `interviews/`, `interview-guide.md` or `guide.md`), and put new files where the existing ones are.
 
 **No folder:** if you can't see the user's folder at all, say that and stop, as in Step 0 of `job-search-setup`. Never create `job-search/` or any of its files somewhere else.
 
@@ -38,6 +38,8 @@ company,role,location,comp,url,source,status,score,date_added,date_applied,last_
 Statuses: `prospect`, `applied`, `screening`, `interview`, `final`, `offer`, `accepted`, `rejected`, `closed`, `hold`, `ghosted`, `withdrawn`, `skipped`. Full meanings, the matching rules, and the Python snippets are in `references/tracker-schema.md`. Read it before your first write in a conversation.
 
 Older trackers have no `furthest_stage` or `next_date` columns. The snippets add them on the next write, and fill `next_date` for an active process only when its notes hold one clear future date. Tell the user once, in a sentence, and name any date that was filled.
+
+**No tracker yet.** If there's no `job-tracker.csv` (or `applications.csv`), say so in one line and ask whether they keep their applications somewhere else. If they don't, offer once to start one here. If they do, add "Tracker: tracks elsewhere, YYYY-MM-DD" to the profile's Offered section (in a profile the user wrote themselves, that's in its `## Recruiter BFF` section), so no skill offers to start one again. Create the file only on a clear yes (a request to add a role, like "add Northstar as a prospect," is one).
 
 **Edit with Python, never by hand.** Hand-typed CSV rows break on commas and quotes. Use the snippets (they load, change, and save the whole file in one step, and keep any columns the user added). Read the file back after every write and say exactly what changed.
 

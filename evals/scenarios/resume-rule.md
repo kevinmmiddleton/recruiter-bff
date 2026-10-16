@@ -73,7 +73,7 @@ Pennant, Product Manager, 2019 to 2022
 - Gives an honest read of the resume.
 
 **(b) Setup with two kinds of roles.** Same, but Sam is also applying for program manager roles and has `sam-okafor-program-resume.txt`.
-- Asks for the alternate after Sam says yes to a second kind of role.
+- Asks for the alternate after Sam says yes to a second kind of role. (If both files are already in the folder, it may instead list them up front and ask which is the primary and whether the other is an alternate for a second kind of role; that passes too.)
 - Saves `primary.md` and `alternate.md` in `job-search/resume/`.
 - The profile's Resume line says which roles each covers.
 - Never offers or mentions a third resume, or one per posting.

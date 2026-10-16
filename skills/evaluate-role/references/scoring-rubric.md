@@ -50,7 +50,7 @@ From read one, every requirement traced to a line in the background.
 
 ### Company signals (10%)
 
-- **5:** a subject they'd care about every day, and the size, stage, and ownership they want. With no preferences page, use the profile's industries and strong signals for the subject, and don't go above 4.5 on a subject the user hasn't confirmed.
+- **5:** a subject they'd care about every day, and the size, stage, and ownership they want. With no preferences page, use the profile's industries and strong signals for the subject, and don't go above 4.5 on a subject the user hasn't confirmed (an industry they listed under Company counts as confirmed).
 - **4:** neutral to positive; nothing they've ruled out
 - **3:** no information either way
 - **2:** near something they've ruled out, or a size or ownership type they said they dislike

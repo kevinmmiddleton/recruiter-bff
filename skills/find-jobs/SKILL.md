@@ -14,7 +14,7 @@ description: >
 
 Pull fresh roles from the user's sources, cut the noise, and show them what's worth their time. It runs only when asked, on a normal laptop.
 
-**Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), rename them first, as in Step 0 of `job-search-setup`. If they can't be renamed from here, use whichever name exists, the 1.0 name first and then the 0.4 one (`search-profile.md` or `profile.md`, `looking-for.md` or `preferences.md`, `job-tracker.csv` or `applications.csv`, `interview-stories.md` or `story-bank.md`, `companies/` or `interviews/`, `interview-guide.md` or `guide.md`), and put new files where the existing ones are.
+**Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), follow "Folders from 0.4" in Step 0 of `job-search-setup`: rename only a folder 0.4 made, only during a request that writes something (never on a read-only question like "what's in my pipeline?"), and name each file you renamed. Never rename or restructure files the user made themselves without asking. Until the files are renamed, or if they can't be renamed from here, use whichever name exists, the 1.0 name first and then the 0.4 one (`search-profile.md` or `profile.md`, `looking-for.md` or `preferences.md`, `job-tracker.csv` or `applications.csv`, `interview-stories.md` or `story-bank.md`, `companies/` or `interviews/`, `interview-guide.md` or `guide.md`), and put new files where the existing ones are.
 
 ## Never
 
@@ -88,7 +88,7 @@ Read `job-search/job-tracker.csv` if it exists, and follow "Checking against the
 - A different role at a company already in the tracker stays in, tagged **New role at a company you know**, with one line of history.
 - A role whose old row is `closed` or `hold` may be back. Show it with its history.
 
-No tracker yet? Skip this step.
+No tracker yet? Skip this step. If the profile's Offered section says the user tracks elsewhere, don't offer to log matches.
 
 ## Step 5: Classify each role
 
@@ -118,9 +118,9 @@ watchlist ✓ 4 of 5 companies (Acme's feed didn't respond).
   Why it fits: a growth role, your strong signal; the range clears your floor
   <url>
 
-[INCLUDE] Northstar Learning: Senior PM, Retention · New role at a company you know
+[STRONG] Northstar Learning: Senior PM, Retention · New role at a company you know
   Remote (US) · $160k to $180k · posted 5 days ago
-  Why it fits: retention work; heads-up, the range starts under your floor
+  Why it fits: retention work, your strong signal; heads-up, the range starts under your floor
   History: you applied for Product Lead in August; it closed.
   <url>
 
@@ -139,7 +139,7 @@ Make **one** offer per message. Usually it's the tracker:
 
 > "Want me to add the strong ones to your tracker?"
 
-On yes, hand the chosen roles to `application-tracker` to add as prospects. That's also what keeps future scans from showing them again. Don't stack other offers (the preferences page, reminders) into the same message; they come at a quieter moment.
+With no tracker yet, the offer is application-tracker's "No tracker yet" question instead (still one offer), and if the profile says the user tracks elsewhere, there's no tracker offer. On yes, hand the chosen roles to `application-tracker` to add as prospects. That's also what keeps future scans from showing them again. Don't stack other offers (the preferences page, reminders) into the same message; they come at a quieter moment.
 
 **Who you know there.** If there's no `job-search/contacts.csv` but a LinkedIn connections export (`Connections.csv`) is in the Cowork folder, it's worth one offer, following the order in "Ending a reply": "Your LinkedIn export is in your folder. Want me to check who you know at these companies?" (That's the `contacts` skill.)
 

@@ -63,7 +63,7 @@ _Updated YYYY-MM-DD · from the posting saved [date] · [live on the company's s
 |---|---|---|
 
 **[Name, title]**: why they're on this panel · 2 or 3 points to land, in their language · likely probes, with answers · two questions · one real overlap, mentioned once
-(Confirm who's who in the first minute: "[Name], I understand this role would report to you.")
+(Confirm who's who in the first minute, without assuming the reporting line: "[Name], how would this role work with yours?")
 
 ### The company
 - **Snapshot:** what they sell, to whom, how they make money, size and stage

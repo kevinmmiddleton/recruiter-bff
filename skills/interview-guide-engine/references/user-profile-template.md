@@ -8,7 +8,7 @@ Interview guides read the shared profile at `job-search/search-profile.md` (buil
 - **Current or most recent title**
 - **Years of experience**
 - **Career arc** (2 sentences)
-- **Currently:** employed, searching full time, or between roles since a month
+- **Currently:** employed, searching full time, or between roles since a month (only what the user says; the resume's dates aren't enough, so leave "(not set yet)" until they tell you)
 - **Why looking:** their prepared answer, in their words
 
 ## Proof points (profile "Proof Points")
