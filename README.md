@@ -140,4 +140,4 @@ The scored evaluation (dimension scores with action tiers, every requirement tra
 
 The preferences page, the one-sentence target, and the early-conversation questions are adapted from Phyl Terry's book *Never Search Alone: The Job Seeker's Playbook*. The wording here is the plugin's own.
 
-Made by [Kevin Middleton](https://middleton.io). Free and open source under the MIT license.
+Made by [Kevin Middleton](https://middleton.io). Free and open source under the MIT license. More at [middleton.io/recruiter-bff](https://middleton.io/recruiter-bff/).
