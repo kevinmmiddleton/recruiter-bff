@@ -1,19 +1,26 @@
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/kevinmmiddleton/recruiter-bff/raw/main/assets/brand/svg/recruiter-bff-horizontal-white.svg">
-    <img src="https://github.com/kevinmmiddleton/recruiter-bff/raw/main/assets/brand/svg/recruiter-bff-horizontal.svg" alt="Recruiter BFF. A recruiter that works for you." width="300">
-  </picture>
+  <img src="https://github.com/kevinmmiddleton/recruiter-bff/raw/main/assets/brand/banners/github-social-1280x640.png" alt="Recruiter BFF. A recruiter that works for you." width="640">
+</p>
+
+<p align="center">
+  <a href="https://github.com/kevinmmiddleton/recruiter-bff/releases/latest"><img alt="Download the latest release" src="https://img.shields.io/badge/download-latest-5FD6A4?style=for-the-badge&labelColor=16131F"></a>
+  <a href="#install"><img alt="Runs in Claude Cowork" src="https://img.shields.io/badge/runs%20in-Cowork-FFE14D?style=for-the-badge&labelColor=16131F"></a>
+  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-FFF8EF?style=for-the-badge&labelColor=16131F"></a>
 </p>
 
 # Recruiter BFF
 
-A recruiter that works for you. *Formerly Job Search Agent.*
+Find out if you're a match before you apply, then walk in prepared.
 
-Find out if you're a match before you apply, then walk in prepared. Recruiter BFF is a free plugin for Claude. Paste a job posting and it tells you how you really stack up, gaps included, and whether to apply. It never applies to jobs or contacts anyone for you. When the interview comes, it hands you a guide built from your own background. Everything lives in plain files on your computer.
+Paste a job posting and Recruiter BFF checks the key requirements against your resume, scores the match from 1 to 5, names the gaps, and tells you to apply or skip. When you land the interview, it hands you a guide built from your own background.
 
-It runs when you ask, in Claude Cowork with the Claude desktop app (Mac or Windows), on a normal laptop. Nothing to host: no servers of your own, no scrapers, no always-on machine.
+It's a free plugin for Claude Cowork, which needs a paid Claude plan and the desktop app. It never applies to jobs or contacts anyone for you, and everything lives in plain files on your computer. *Formerly Job Search Agent.*
+
+It runs when you ask, on a normal laptop. Nothing to host: no servers of your own, no scrapers, no always-on machine.
 
 ## Walk in prepared
+
+<p align="center"><img src="https://github.com/kevinmmiddleton/recruiter-bff/raw/main/assets/brand/marketing/recruiter-bff-guide-wd-ice.gif" alt="Someone asks Recruiter BFF to prep them for an interview with Fernhill, and it builds a guide for the Senior PM, Growth role: the role in plain words, their fit, and their gap, with the question to expect and how to answer it." width="720"></p>
 
 Tell it you have an interview and paste the posting. Every guide opens with four things, in this order:
 
@@ -27,6 +34,8 @@ Above them: a one-line verdict, the one big risk, and what the next round tests.
 After each round it debriefs you while it's fresh, updates the guide, and drafts thank-you notes. Say "practice my interview" and it plays the interviewer, with honest critique after every answer. Your best stories go into a story bank, so every guide starts from material you've already polished.
 
 ## Check your fit before you apply
+
+<p align="center"><img src="https://github.com/kevinmmiddleton/recruiter-bff/raw/main/assets/brand/marketing/recruiter-bff-fit-wd-ice.gif" alt="A job posting for Senior PM, Growth at Fernhill gets a fit check: 4.6 out of 5, apply now, with each requirement marked a match, a partial match, or a gap, and what to lead with if you apply." width="720"></p>
 
 Paste a posting, or a link, and ask "should I apply?"
 

@@ -4,6 +4,11 @@ Matches Unpaid Intern's set: link-preview-1200x630, github-social-1280x640, wide
 (everything inside a centered square, so square crops are safe), square-1080x1080, and
 portrait-1080x1350. Each is an SVG plus PNG and @2x PNG.
 
+github-social-1280x640 (the README banner) uses the share arrangement Kevin picked on Oct 17,
+the same one as the landing page's share image: the cup big on the left, the wordmark big on
+the right, the tagline below. It sits closer to the edges than the kit's clear-space rule, on
+purpose, so it skips that check. The other four keep the lockups and the clear space.
+
 The logo art is used exactly as shipped in assets/brand/svg/ (never edited here). The tagline
 is Poppins Bold, outlined to filled paths, so every SVG is paths only: no fonts, no CSS.
 
@@ -44,7 +49,7 @@ CUP_UNITS = 100
 # name, width, height, lockup, tagline lines, logo height, tagline size, frame (x0, y0, x1, y1)
 BANNERS = [
     ("link-preview-1200x630",  1200,  630, "horizontal", 1, 320, 46, (0, 0, 1200, 630)),
-    ("github-social-1280x640", 1280,  640, "horizontal", 1, 320, 46, (0, 0, 1280, 640)),
+    ("github-social-1280x640", 1280,  640, "share",      1, 0,   0,  (0, 0, 1280, 640)),
     ("wide-1600x900",          1600,  900, "horizontal", 2, 420, 60, (350, 0, 1250, 900)),
     ("square-1080x1080",       1080, 1080, "stacked",    2, 600, 64, (0, 0, 1080, 1080)),
     ("portrait-1080x1350",     1080, 1350, "stacked",    2, 760, 68, (0, 0, 1080, 1350)),
@@ -157,10 +162,36 @@ def build(name, W, H, kind, n_lines, logo_h, size, frame, tag, text):
     return path, logo_h
 
 
+def build_share(name, W, H, tag, text):
+    """The Oct 17 share arrangement, laid out in 1200 x 630 units (the landing page's share
+    image) and scaled to the frame height: cup 430 tall at y 40, wordmark 330 tall at y 92,
+    64 apart and centered together, tagline 44 px on a baseline at 548."""
+    k = H / 630
+    (mvx, mvy, mvw, mvh), mark = load_logo("mark")
+    (wvx, wvy, wvw, wvh), word = load_logo("wordmark")
+    ch, wh, gap = 430 * k, 330 * k, 64 * k
+    cw, ww = ch * mvw / mvh, wh * wvw / wvh
+    x0 = (W - (cw + gap + ww)) / 2
+    parts = [f'<rect x="0" y="0" width="{W}" height="{H}" fill="{PAPER}"/>',
+             f'<g transform="translate({x0:.2f} {40 * k:.2f}) scale({ch / mvh:.4f}) translate({-mvx:.2f} {-mvy:.2f})">', mark, "</g>",
+             f'<g transform="translate({x0 + cw + gap:.2f} {92 * k:.2f}) scale({wh / wvh:.4f}) translate({-wvx:.2f} {-wvy:.2f})">', word, "</g>"]
+    size = 44 * k
+    b = tag.measure(text, size)
+    d, _ = tag.line(text, size, (W - (b[2] - b[0])) / 2 - b[0], 548 * k)
+    parts.append(f'<path fill="{INK}" d="{d}"/>')
+    label = f"Recruiter BFF: {text[0].lower() + text[1:]}" if text.startswith("A ") else f"Recruiter BFF. {text}"
+    svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" aria-label="{label}">\n'
+           f"<title>{label}</title>\n" + "\n".join(parts) + "\n</svg>\n")
+    path = os.path.join(OUT_DIR, f"{name}.svg")
+    open(path, "w").write(svg)
+    return path, round(ch)
+
+
 def rasterize(items):
     from playwright.sync_api import sync_playwright
     with sync_playwright() as p:
-        browser = p.chromium.launch()
+        # PW_CHANNEL=chrome uses an installed Chrome when Playwright's own Chromium isn't there
+        browser = p.chromium.launch(channel=os.environ.get("PW_CHANNEL") or None)
         for svg_path, W, H in items:
             sized = open(svg_path).read().replace("<svg ", '<svg width="%d" height="%d" ' % (W, H), 1)
             html = '<html><body style="margin:0">' + sized + "</body></html>"
@@ -182,8 +213,11 @@ def main():
     tag = Tagline(find_font(a.font))
     built = []
     for name, W, H, kind, n, logo_h, size, frame in BANNERS:
-        path, _ = build(name, W, H, kind, n, logo_h, size, frame, tag, a.tagline)
-        print(f"{name}: {kind} lockup {logo_h}px tall")
+        if kind == "share":
+            path, logo_h = build_share(name, W, H, tag, a.tagline)
+        else:
+            path, _ = build(name, W, H, kind, n, logo_h, size, frame, tag, a.tagline)
+        print(f"{name}: {kind} {'arrangement, cup' if kind == 'share' else 'lockup'} {logo_h}px tall")
         built.append((path, W, H))
     if not a.svg_only:
         rasterize(built)
