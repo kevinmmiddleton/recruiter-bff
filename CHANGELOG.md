@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.1 (2026-10-21)
+
+**Your story bank now helps with applications.** When an application asks "tell us about a time" or "why us," your materials starts from an answer you saved before, matched by meaning (so "a time you pushed back" and "a disagreement with a stakeholder" count as the same question), or builds from the matching story in your story bank. It tells the story the same way the bank does, keeps its "Say carefully" line, and says which answer or story it started from. Saved answers live in `materials/answers.md` with the question, the story, where you've used it, and what to change for the next company. One offer saves the answer and, if it told a story the bank doesn't have yet, adds the story too.
+
+- **Applications and interviews tell the same story.** The interview guide reads what you already wrote to that company, so a story from the application is told the same way in the interview, with more depth. A story's "Used in" line now counts applications, and "I applied to X" records which saved answer and story you sent.
+- **A new plugin description** that leads with the fit check and names the story bank.
+
 ## 1.0.0 (2026-10-16)
 
 **Clearer file names.** Your `job-search/` folder now reads like what's in it: `search-profile.md`, `looking-for.md`, `job-tracker.csv`, `interview-stories.md`, `contacts.csv`, `resume/`, and `companies/<company>/` with `job-post.md`, `fit-check.md`, and `interview-guide.md`. A 0.4 folder is renamed the first time 1.0 saves something (never on a read-only question like "what's in my pipeline?"), where it can be, and it names each file it renamed. Files you made yourself are renamed only if you say yes, and a profile you wrote yourself keeps its layout; where files can't be renamed from the session, the old names keep working, and it tells you once how to rename them yourself. The tracker gets its two new columns the first time it's updated, and the profile moves to the new section names the first time it's updated; it tells you each time, and what you wrote stays as you wrote it.

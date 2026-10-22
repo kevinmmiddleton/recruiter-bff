@@ -65,6 +65,10 @@ A live run of the release candidate in the Claude desktop app, on fictional test
 
 Five parts on the fixed skills: upgrades and folders, setup and reminders, the resume-rule scenarios again, the full seven-turn case, and a follow-up on the fixes it found. Details in `run-7-2026-10-16.md`.
 
+## Run 8: the story bank for applications (Oct 21, 2026)
+
+The 1.0.1 change: written answers start from saved answers and the story bank. Seven scenarios in order (save, submit, a repeat question at a second company, a failure question with no story, pay, the tailor decline, and an interview guide that reads the application) plus a cold folder. 54 of 55; the miss was the test's own wording. Five wording fixes went in before release. Details in `run-8-2026-10-21.md`.
+
 ## Live LinkedIn check (Oct 6, 2026)
 
 A real, signed-in LinkedIn saved search, read through Claude in Chrome. Found: reading the page's text returned only the description of the job open on the right, not the results list. Fixed in `8c40f07`: find the results list, scroll so the cards load, read the list, strip tracking from job links, page with `&start=25`, and keep "N connections work here" as a contacts hint.

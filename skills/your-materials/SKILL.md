@@ -8,8 +8,10 @@ description: >
   here," "write a cover note," "does this sound like AI," "is this too much," or "make sure my
   resume and LinkedIn match." Strengthens the user's primary resume and their alternate (two
   at most) and never makes a resume per posting: asked to tailor one for a job, it explains
-  why not and offers a fit check. Reads the shared profile and preferences page, never invents
-  experience or numbers, and hands back drafts the user approves.
+  why not and offers a fit check. Written answers start from the user's story bank and saved
+  answers, so a question they've answered before isn't written from scratch. Reads the shared
+  profile and preferences page, never invents experience or numbers, and hands back drafts the
+  user approves.
 ---
 
 # Your Materials
@@ -34,7 +36,7 @@ Make the resume, LinkedIn, and written answers say what the user has actually do
 
 ## Before you start
 
-Read the resumes in `job-search/resume/` (`primary.md`, and `alternate.md` if there is one; a folder from a 1.0 test build may have `resume.md`, which is the primary), `job-search/search-profile.md` (background, proof points, voice), and `job-search/looking-for.md` if it exists (the one sentence, must-haves). No saved resume (older folders don't have one)? For a single bullet or answer, work from what the user pasted and the profile's Background and Proof Points, and mention once that pasting the resume lets you save a copy (add "Resume copy: YYYY-MM-DD" to the profile's Offered section so it isn't repeated). For a full resume review, ask for it, and save it the way setup does. If the user is working on a specific application, read that company's folder in `job-search/companies/<company>/` (the saved posting and evaluation).
+Read the resumes in `job-search/resume/` (`primary.md`, and `alternate.md` if there is one; a folder from a 1.0 test build may have `resume.md`, which is the primary), `job-search/search-profile.md` (background, proof points, voice), and `job-search/looking-for.md` if it exists (the one sentence, must-haves). No saved resume (older folders don't have one)? For a single bullet or answer, work from what the user pasted and the profile's Background and Proof Points, and mention once that pasting the resume lets you save a copy (add "Resume copy: YYYY-MM-DD" to the profile's Offered section so it isn't repeated). For a full resume review, ask for it, and save it the way setup does. If the user is working on a specific application, read that company's folder in `job-search/companies/<company>/` (the saved posting and evaluation). For a written answer, also read the story bank (`job-search/interview-stories.md`) and the saved answers (`job-search/materials/answers.md`) if they exist.
 
 If there's no preferences page, don't wait for one. The page is a possible offer (see "Ending a reply"); it makes the summary and headline easier, since they should say the one sentence.
 
@@ -90,6 +92,14 @@ If the user asks you to tailor or rewrite their resume for a specific posting, d
 
 For "why us," "tell us about a time," cover notes, and short-answer boxes:
 
+**Start from what's saved.** Most applications ask the same handful of questions in different words. Before drafting:
+
+- **A saved answer to the same question?** Check `materials/answers.md`, matching on meaning: "tell us about a time you pushed back" and "describe a disagreement with a stakeholder" are the same question. If one fits, start from it. Keep the facts and the story, redo the lines that were about the last company, follow its "Change for the next company" note, and say which saved answer you started from.
+- **No saved answer, but a story that fits?** Check the story bank's Themes and build the answer from the best match. Tell it the way the bank does: the same facts, and its Say carefully line holds. Say which story you used.
+- **Nothing saved yet,** or nothing fits? Draft from the resume and profile as usual. If neither holds a true story for the question (a failure, say), ask the user for one instead of building one.
+
+Then follow the rules below either way, and run the review pass on the result.
+
 1. **Lead with what the user brings,** not a warm-up paragraph. The first sentence should answer the question.
 2. **"Why us" formula:** open with something the user built that resembles the company's product, if it's true: "I've built [X], and it's a small version of what you do." ("Small," never "worse.") Add one fact about their business that only research turns up, and tie the user's proof to the posting's own words: "That's most of your [named requirement]." Then the **swap test** on every sentence: put a competitor's name in. If it's still true, it's generic; make it specific or cut it. An open "tell us about yourself" box may want a plain background statement instead.
    Keep logistics (location, start date) out of why-fit answers.
@@ -113,7 +123,17 @@ When the user edits a draft, notice what they changed: what they cut, what they 
 ## Where things go
 
 - Approved resume bullets and the summary: offer to update the proof points in `job-search/search-profile.md`.
-- Answers worth reusing: offer to save them in `job-search/materials/answers.md`, with the question, the answer, and a note on what to change for the next company.
+- Answers worth reusing: offer to save them in `job-search/materials/answers.md`. One offer covers it: if the answer told a story the story bank doesn't have yet (or there's no bank), the same offer adds the story to the bank too, in the format in `interview-guide-engine`'s `references/story-bank-template.md`. Each saved answer looks like this. A newer version of a question replaces the older one once the user says yes, and keeps a line naming the companies that got the older version ("Earlier version sent to: Fernhill"), so a later interview guide knows they read something slightly different:
+  ```
+  ## Tell us about a time you pushed back
+  - Also asked as: a disagreement with a stakeholder; a time you said no
+  - Story: The paywall test everyone wanted to kill
+  - Used for: Fernhill (2026-10-21)
+  - Change for the next company: the last line ties it to their product
+
+  [the answer, as the user approved it]
+  ```
+- When the user uses an answer, add the company to its "Used for" line (if it isn't there already), and to the story's "Used in" line in the story bank (say "application," so a later interview guide knows what that company has already read).
 - Nothing is overwritten without the user's yes.
 
 ## Ending a reply
@@ -122,7 +142,7 @@ End with at most one offer. If several apply, pick the first that fits:
 
 1. **Anything time-sensitive:** thank-you notes the same day, a reply someone is waiting on.
 2. **Someone to ask before applying:** after a fit check that says apply, if the user knows someone there (from `contacts.csv`), offer the referral note; if there's no `contacts.csv` but a LinkedIn export is in the folder, offer to check it. A referral matters most before the application goes in.
-3. **The obvious next step for what the user just did:** after setup, a first scan; after a scan, adding matches to the tracker (or a fit check on a strong one); after a fit check, adding the role to the tracker (once per role; skip it if the role is already tracked); after a booked round, the interview guide if that company doesn't have one yet, otherwise a practice run; after building the preferences page, drafting the message to share it.
+3. **The obvious next step for what the user just did:** after setup, a first scan; after a scan, adding matches to the tracker (or a fit check on a strong one); after a fit check, adding the role to the tracker (once per role; skip it if the role is already tracked); after a booked round, the interview guide if that company doesn't have one yet, otherwise a practice run; after building the preferences page, drafting the message to share it; after a written answer, saving it (see "Where things go").
 4. **Checking the user's LinkedIn export** for people they know, in general. If there's no export in the folder, offer once to walk them through requesting one (LinkedIn usually sends it within about 10 minutes; the steps are in the contacts skill), then move on.
 5. **The preferences page.**
 6. **Reminders.**

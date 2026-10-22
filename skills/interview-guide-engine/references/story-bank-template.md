@@ -31,7 +31,7 @@ _Last updated: YYYY-MM-DD_
 - **Themes are the index.** Tag each story with the plain theme names guides use ("experimentation," "post-acquisition integration"). Matching happens on these.
 - **Reflection is required.** A story without one is a status report. If the user can't name the lesson, help them find it before banking the story.
 - **Say carefully keeps claims straight.** A team result stays a team result; a number keeps its caveat. Every round and every written answer should tell the story the same way.
-- **Used in is the memory.** It stops the same story being told twice to the same company, and a story that keeps landing is the one to lead with.
+- **Used in is the memory.** It stops the same story being told twice to the same company, and a story that keeps landing is the one to lead with. Applications count too ("Fernhill application, 2026-10"): the interview can build on a story the company has already read, but shouldn't retell it as if it were new.
 - **Gaps in the bank matter.** Before a round, check the bank covers what the round will ask (a failure, a disagreement, a hard call). If it doesn't, say so and help draft one from the user's real experience.
 - **The facts are the user's.** Never embellish a banked story. Adapting means choosing which true details to stress for this role, nothing more.
 - **Read it out loud.** A told story should take about 90 seconds. If it runs long, cut the situation, not the result.

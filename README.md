@@ -31,7 +31,16 @@ Tell it you have an interview and paste the posting. Every guide opens with four
 
 Above them: a one-line verdict, the one big risk, and what the next round tests. Below them: a plan for each interviewer, company research with sources, likely questions with answers in your words, scripts for the awkward questions and the pay question, and a method for case rounds.
 
-After each round it debriefs you while it's fresh, updates the guide, and drafts thank-you notes. Say "practice my interview" and it plays the interviewer, with honest critique after every answer. Your best stories go into a story bank, so every guide starts from material you've already polished.
+After each round it debriefs you while it's fresh, updates the guide, and drafts thank-you notes. Say "practice my interview" and it plays the interviewer, with honest critique after every answer. Your best stories go into your story bank, so every guide starts from material you've already polished.
+
+## Your story bank
+
+Every search asks the same questions in different words, first in the application and then in the interview. Your best stories live in a story bank (`interview-stories.md`), in your own words, with the numbers you can stand behind, so you only have to tell each one once.
+
+- **Applications start there.** When an application asks "tell us about a time" or "why us," it starts from the answer you saved last time, or from your best matching story, and adjusts it for this company. It tells you which one it used.
+- **So do your interview guides.** It picks the stories each round will ask for and adjusts the emphasis for the role. The facts stay the same, and a story the company already read in your application gets told the same way, with more depth.
+- **It spots what's missing.** If a round will ask about a failure and you don't have one ready, it helps you draft one from your real experience.
+- **It remembers how they landed.** Each story notes where you've used it, applications included, and your debriefs note how it went.
 
 ## Check your fit before you apply
 
@@ -63,7 +72,7 @@ Being one of the first 50 applicants beats being a polished 200th. Say "scan for
 
 ## Your materials, and your people
 
-- **Your materials:** sharpen your primary resume bullet by bullet, written as outcome, then how, then scope (it won't make a new resume for every job); a LinkedIn headline people actually search for; "why us" answers that couldn't go to any other company. It never invents a number.
+- **Your materials:** sharpen your primary resume bullet by bullet, written as outcome, then how, then scope (it won't make a new resume for every job); a LinkedIn headline people actually search for; "why us" and "tell us about a time" answers that start from your story bank and couldn't go to any other company. It never invents a number.
 - **Contacts:** download your LinkedIn connections and it shows who you know at the companies you're pursuing, suggests one next move per person, and drafts short notes you send yourself.
 
 ## Install
@@ -115,9 +124,9 @@ job-search/
 ├── search-profile.md     # your search, pay, dealbreakers, and background (private)
 ├── looking-for.md        # what you want next, in one page you can share
 ├── job-tracker.csv       # your tracker; opens in any spreadsheet app
-├── interview-stories.md  # your interview stories, reused across guides
+├── interview-stories.md  # your story bank, reused in applications and interviews
 ├── contacts.csv          # people at companies you're pursuing, and next moves
-├── materials/            # written answers worth reusing
+├── materials/            # answers.md: application answers worth reusing
 └── companies/
     └── <company>/        # job-post.md, fit-check.md, interview-guide.md
 ```
@@ -139,7 +148,7 @@ job-search/
 | `evaluate-role` | "should I apply to this?" | Checks a posting is live, scores it, and saves it |
 | `interview-guide-engine` | "prep me for my interview" | Guides, debriefs, practice, and the story bank |
 | `application-tracker` | "what's in my pipeline?" | Your tracker, follow-ups, weekly review, thank-you drafts |
-| `your-materials` | "fix this bullet" | Resume, LinkedIn, and written answers, in your voice |
+| `your-materials` | "fix this bullet" | Resume, LinkedIn, and written answers from your story bank, in your voice |
 | `contacts` | "who do I know at [company]?" | Your LinkedIn connections matched to your search, and drafts |
 | `job-search-automation` | "remind me on Mondays" | Reminders, scheduled scans, and the self-hosted option |
 

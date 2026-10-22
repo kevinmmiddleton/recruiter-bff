@@ -51,7 +51,7 @@ Older trackers have no `furthest_stage` or `next_date` columns. The snippets add
 
 **Already tracked.** If the user asks to add a role that's already in the tracker, say so, show its status, and don't add it twice.
 
-**"I applied to X."** If X is a prospect, move it to `applied` and set `date_applied` (to the day they applied, if they say "yesterday" or a date). If it isn't tracked, add it, then mark it applied. Put which resume they used (primary or alternate) or anything else they mention in `notes`.
+**"I applied to X."** If X is a prospect, move it to `applied` and set `date_applied` (to the day they applied, if they say "yesterday" or a date). If it isn't tracked, add it, then mark it applied. Put which resume they used (primary or alternate) or anything else they mention in `notes`. If they sent an answer saved in `job-search/materials/answers.md`, add the company to that answer's "Used for" line (if it isn't there already) and to its story's "Used in" line in `interview-stories.md`, as `your-materials` says.
 
 **Moving forward.** Screens, interviews, finals, offers: update `status` and `last_update`, and set `next_date` when there's a date ("screen Thursday" means this coming Thursday; work out the date from today and say it back with the weekday). Add a dated note with any context. If a prospect moves straight to a screen or later with no `date_applied` (the snippet prints an ASK line), ask when they applied and set it; if the recruiter reached out first, note that and set `source` to `recruiter`. Don't leave it blank without asking.
 

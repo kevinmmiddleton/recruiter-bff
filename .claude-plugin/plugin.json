@@ -1,9 +1,9 @@
 {
   "name": "recruiter-bff",
   "displayName": "Recruiter BFF",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
-  "description": "A recruiter that works for you. Interview guides that open with the role, your fit, your gaps, and questions to ask; an apply-or-skip fit check for any posting; on-demand scans for fresh roles; a tracker with follow-ups, reminders, and a weekly review; resume and LinkedIn help in your voice; and your LinkedIn connections matched to your search. Plain files you own, no servers. Formerly Job Search Agent.",
+  "description": "A recruiter that works for you. Paste a job posting and find out if you're a match before you apply: a score from 1 to 5, the key requirements checked against your resume, and a straight answer to apply or skip. Land the interview and it builds you a guide with the role, your fit, your gaps, and questions to ask. A story bank keeps your best answers for applications and interviews. It also scans for fresh roles, tracks your applications, and helps with your resume and LinkedIn. It never applies for you. Plain files you own. Formerly Job Search Agent.",
   "author": {
     "name": "Kevin Middleton"
   },
