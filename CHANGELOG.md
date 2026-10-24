@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.2 (2026-10-24)
+
+- **Fixed: missing pay is scored one way.** The fit check's rules disagreed about a posting that doesn't list pay: the Logistics scale gave it a 4, and the general "unknowns score 3" rule gave it a 3, enough to move an overall score across a tier (3.5 to 3.4). Now, when location and work mode fit, unlisted pay always scores Logistics 4, with or without a comfortable number in your profile, and never lower. Posting quality still gives a 4 instead of a 5 when pay isn't listed. Found by an outside tester running Recruiter BFF in Codex.
+- **Fixed: a missing range where the law requires one.** In places like New York that require a pay range, a posting without one gets a one-line heads-up to check the company's own posting, and its scores stay the same as any other unlisted pay. Before, the rules could read it either way, enough to change the verdict.
+- **Fixed: "score it anyway" keeps the skip.** When a role fails one of your hard rules (say, the whole pay range is below your floor) and you ask for a score anyway, you get the number, and the verdict still says skip and names the rule it failed.
+
 ## 1.0.1 (2026-10-21)
 
 **Your story bank now helps with applications.** When an application asks "tell us about a time" or "why us," your materials starts from an answer you saved before, matched by meaning (so "a time you pushed back" and "a disagreement with a stakeholder" count as the same question), or builds from the matching story in your story bank. It tells the story the same way the bank does, keeps its "Say carefully" line, and says which answer or story it started from. Saved answers live in `materials/answers.md` with the question, the story, where you've used it, and what to change for the next company. One offer saves the answer and, if it told a story the bank doesn't have yet, adds the story too.

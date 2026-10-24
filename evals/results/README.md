@@ -69,6 +69,10 @@ Five parts on the fixed skills: upgrades and folders, setup and reminders, the r
 
 The 1.0.1 change: written answers start from saved answers and the story bank. Seven scenarios in order (save, submit, a repeat question at a second company, a failure question with no story, pay, the tailor decline, and an interview guide that reads the application) plus a cold folder. 54 of 55; the miss was the test's own wording. Five wording fixes went in before release. Details in `run-8-2026-10-21.md`.
 
+## Run 9: unlisted pay scored one way (Oct 24, 2026)
+
+The 1.0.2 fix: a posting with no pay listed scores Logistics 4, never 3. Seven cases on five postings and two profiles (with and without a comfortable number): unlisted pay, a range that reaches comfortable, one entirely below the floor, one that starts below it, a vague posting with no pay, and the same posting scored three times by fresh agents that didn't know what was being tested (4.0, 4.0, 4.0). 32 of 33; the miss was a "score it anyway" that called a role below the floor "strong, apply." A blind run on a New York posting with no range found the ghost-job flag and the new rule disagreeing. Three rubric fixes went in before release, and blind reruns of both cases passed. Details in `run-9-2026-10-24.md`.
+
 ## Live LinkedIn check (Oct 6, 2026)
 
 A real, signed-in LinkedIn saved search, read through Claude in Chrome. Found: reading the page's text returned only the description of the job open on the right, not the results list. Fixed in `8c40f07`: find the results list, scroll so the cards load, read the list, strip tracking from job links, page with `&start=25`, and keep "N connections work here" as a contacts hint.

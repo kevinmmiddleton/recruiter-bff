@@ -99,7 +99,7 @@ Apply `references/scoring-rubric.md`. Score each dimension from 1 to 5, then tak
 - **Company signals** (10%): industry, size, stage, and ownership against stated preferences; the subject test.
 - **Posting quality** (10%): how clear and specific the posting is; ghost-job flags count here.
 
-Unknowns score a neutral 3, never lower. Most postings leave out pay. Round the overall score to one decimal, half up (4.85 becomes 4.9), and use that same number in the verdict, `fit-check.md`, and the tracker.
+Unknowns score a neutral 3, never lower. Pay is the exception: most postings leave it out, so with location and work mode inside the rules, unlisted pay scores Logistics 4 (the rubric's "Unknowns score 3" rule says why). Round the overall score to one decimal, half up (4.85 becomes 4.9), and use that same number in the verdict, `fit-check.md`, and the tracker.
 
 ## Step 7: Give the verdict
 
