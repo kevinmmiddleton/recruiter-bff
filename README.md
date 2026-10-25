@@ -92,19 +92,26 @@ The skills are ready in your next conversation. Installing from Chat or Cowork a
 
 ### In Codex
 
-You need Codex, in the ChatGPT desktop app or the Codex CLI, and Python 3 on your computer for the tracker and contacts (on Windows, from python.org or the Microsoft Store). It works best on a paid ChatGPT plan, with GPT-6.1 Sol (the default there). The free plan's model can get scans and fit checks wrong, so if you're on it, check what it hides and how it scores. In a terminal (Terminal on a Mac, PowerShell on Windows), run:
+You need Codex, in the ChatGPT desktop app or the Codex CLI, and Python 3 on your computer for the tracker and contacts (on Windows, from python.org or the Microsoft Store). It works best on a paid ChatGPT plan, with GPT-6.1 Sol (the default there). The free plan's model can get scans and fit checks wrong, so if you're on it, check what it hides and how it scores.
+
+**In the ChatGPT desktop app:**
+
+1. Open **Plugins** in the sidebar, click **Add**, then **Add a marketplace**. For Source, enter `kevinmmiddleton/recruiter-bff`, and click **Add marketplace**.
+2. Find Recruiter BFF on the Plugins page (search "recruiter") and click **+** to install it.
+3. Start a new chat and switch it to **Work** (the switch at the top). Under the message box, click **Choose project**, then **New project**, and add the folder you want to use for your job search. Then say "set up my job search."
+
+Use Work, not Chat: the plugin's **Try now** opens a Chat conversation, and the plugin doesn't load there. **To update,** open Settings, then Plugins, then the **Marketplace** tab, and click **Upgrade** next to Recruiter BFF.
+
+**In the Codex CLI,** run these in a terminal (Terminal on a Mac, PowerShell on Windows):
 
 ```
 codex plugin marketplace add kevinmmiddleton/recruiter-bff
 codex plugin add recruiter-bff@recruiter-bff
 ```
 
-**If it says `codex` isn't found,** you have the ChatGPT desktop app but not the Codex command. Install it with OpenAI's one-line installer, open a new terminal, and run the two commands again. Plugins you add this way show up in the desktop app too.
+Then start Codex in the folder you want to use for your job search and say "set up my job search." **To update,** run `codex plugin marketplace upgrade`. If your terminal says `codex` isn't found, use the app steps above (the app doesn't add the command), or install the CLI with [OpenAI's one-line installer](https://github.com/openai/codex#readme).
 
-- Mac: `curl -fsSL https://chatgpt.com/codex/install.sh | sh`
-- Windows, in PowerShell: `powershell -ExecutionPolicy ByPass -c "irm https://chatgpt.com/codex/install.ps1 | iex"`
-
-Then start a new Codex chat in the folder you want to use for your job search (in the ChatGPT desktop app, File, then Open Folder) and say "set up my job search." **To update,** run `codex plugin marketplace upgrade`. Updates keep everything you've saved. Checked with the Codex CLI 0.164.0 and GPT-6.1 Sol on a Mac.
+Updates keep everything you've saved. Checked on a Mac with the Codex CLI 0.164.0 and the ChatGPT desktop app, on GPT-6.1 Sol.
 
 In the ChatGPT desktop app, Codex can read your saved LinkedIn search in its built-in browser (sign in to LinkedIn there once), and reminders run as scheduled tasks while the app is open. In the Codex CLI, you paste search results in, and reminders are a check-in the first time you open Codex each day, or a calendar file you double-click to add.
 
