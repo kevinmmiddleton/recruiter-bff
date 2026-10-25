@@ -9,6 +9,8 @@
 - **Windows:** files are saved in a format other apps read correctly, even from PowerShell, and the skills use no characters that garble there.
 - **Opening Codex inside `job-search/`** works too: it's treated as the data home, not a place to start a second one.
 - **Interview guides** keep a half-given interview time as "not given" and ask once, instead of guessing.
+- **The same score every time.** Two tie-breakers in the fit check: a skill that's only listed on your resume is a partial match for a posting that asks for strength in it, and a company in a field your background covers scores 4. The same posting now scores the same in Claude and in Codex.
+- **Scans skip less by accident.** Every scan runs its steps in order; a source it can't reach says why (never "checked" from a web search); "show them" leaves out roles that no longer fit your rules. An example in the scan rules named a company, which led a real Codex run to keep a role below the floor; the examples are neutral now.
 
 ## 1.0.4 (2026-10-24)
 

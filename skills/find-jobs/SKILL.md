@@ -108,7 +108,7 @@ No tracker yet? Skip this step. If the profile's Offered section says the user t
 
 Roles an earlier scan showed, that the user didn't add to the tracker, shouldn't come back as new. Run `seen_before(cards)` from `references/scan-history.md` on what's left after the tracker check (set the snippet's `TODAY` to the conversation's date, and its `PM_MEANS` to match the tracker's). A role it returns was shown in the last 30 days: hold it back from the list and count it ("3 shown in an earlier scan"). Then run `shown_earlier(cards)` on the rest: a role last shown more than 30 days ago (but within the history's 60 days) stays on the list with the tag "Shown [the date it was last shown], still open" ("Shown Sep 19, still open") instead of reading as brand new. A near match isn't held back. No `scan-history.csv` yet means nothing was seen. If the snippet says it can't read the file, every role counts as new this time; say so in one line, and add: "Say 'set it aside' and I'll move it out of the way, so the next scan starts a fresh history." Like "show them," that line isn't an offer. On "set it aside," run `set_aside()`, then record this scan's shown roles as usual.
 
-If the user asks to see the held-back roles ("show them"), list them with the date each was last shown.
+If the user asks to see the held-back roles ("show them"), list them with the date each was last shown, leaving out any that now fail the profile's rules (a raised floor, a new exclusion) with a count.
 
 ## Step 5: Classify each role
 
