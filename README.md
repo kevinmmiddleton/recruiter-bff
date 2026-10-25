@@ -92,15 +92,19 @@ The skills are ready in your next conversation. Installing from Chat or Cowork a
 
 ### In Codex
 
-<!-- verify on Codex (Mac and Windows) before release, and add the version checked -->
-You need Codex, in the ChatGPT desktop app or the Codex CLI, and Python 3 on your computer for the tracker and contacts (on Windows, from python.org or the Microsoft Store). It works best on a paid ChatGPT plan, with GPT-6.1 Sol (the default there). The free plan's model can get scans and fit checks wrong, so if you're on it, check what it hides and how it scores. In a terminal, run:
+You need Codex, in the ChatGPT desktop app or the Codex CLI, and Python 3 on your computer for the tracker and contacts (on Windows, from python.org or the Microsoft Store). It works best on a paid ChatGPT plan, with GPT-6.1 Sol (the default there). The free plan's model can get scans and fit checks wrong, so if you're on it, check what it hides and how it scores. In a terminal (Terminal on a Mac, PowerShell on Windows), run:
 
 ```
 codex plugin marketplace add kevinmmiddleton/recruiter-bff
 codex plugin add recruiter-bff@recruiter-bff
 ```
 
-Then start a new Codex chat in the folder you want to use for your job search and say "set up my job search." **To update,** run `codex plugin marketplace upgrade`. Updates keep everything you've saved.
+**If it says `codex` isn't found,** you have the ChatGPT desktop app but not the Codex command. Install it with OpenAI's one-line installer, open a new terminal, and run the two commands again. Plugins you add this way show up in the desktop app too.
+
+- Mac: `curl -fsSL https://chatgpt.com/codex/install.sh | sh`
+- Windows, in PowerShell: `powershell -ExecutionPolicy ByPass -c "irm https://chatgpt.com/codex/install.ps1 | iex"`
+
+Then start a new Codex chat in the folder you want to use for your job search (in the ChatGPT desktop app, File, then Open Folder) and say "set up my job search." **To update,** run `codex plugin marketplace upgrade`. Updates keep everything you've saved. Checked with the Codex CLI 0.164.0 and GPT-6.1 Sol on a Mac.
 
 In the ChatGPT desktop app, Codex can read your saved LinkedIn search in its built-in browser (sign in to LinkedIn there once), and reminders run as scheduled tasks while the app is open. In the Codex CLI, you paste search results in, and reminders are a check-in the first time you open Codex each day, or a calendar file you double-click to add.
 
