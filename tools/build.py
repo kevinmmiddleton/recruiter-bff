@@ -175,6 +175,10 @@ def check_copy() -> int:
             if bad:
                 problems.append(f"{p.relative_to(ROOT).as_posix()}:{n} has box-drawing or arrow characters "
                                 f"({', '.join(bad)}); use plain indents and ->")
+    inst = KIT / "INSTRUCTIONS.md"
+    if inst.exists() and len(inst.read_text(encoding="utf-8")) > 8000:
+        problems.append(f"extras/no-install-kit/INSTRUCTIONS.md is {len(inst.read_text(encoding='utf-8'))} characters; "
+                        "ChatGPT's project instructions hold 8,000")
     for msg in problems:
         print("  FAIL ", msg)
     print(f"copy checks: {'ok' if not problems else str(len(problems)) + ' problem(s)'}")

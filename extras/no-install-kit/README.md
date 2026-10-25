@@ -10,8 +10,8 @@ The trade-off: a chat can't save files, search job sites, or remind you. So it h
 
 1. Unzip this kit. Move the `job-search` folder somewhere you keep your files, like Documents. That's your search's home.
 2. Make a new project. Paste everything in `INSTRUCTIONS.md` into the project's instructions.
-3. Upload to the project: the eight files in `Project files`, and your resume.
-4. Start a chat in the project and say "set me up."
+3. Upload to the project: the eight files in `Project files`, and your resume. (In ChatGPT, a project's files are called Sources: open the project, choose Sources, then Add sources.)
+4. Start a chat in the project and say "set me up." If ChatGPT offers to continue in Work, choose Stay in Chat.
 5. Paste a job posting anytime and ask "should I apply?" Before an interview, say "prep me for [company]."
 6. Before you close the chat, say **"wrap up."** It hands you each file that changed. Save each one in your `job-search` folder (see below), replacing the old copy. Then in the project, delete the old copy and upload the new one, so there's only ever one version. **If you don't say "wrap up," nothing from that chat is saved.**
 
