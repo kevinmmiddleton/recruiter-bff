@@ -209,6 +209,8 @@ KIT_PROJECT_FILES = (
     "interview-guide-engine/references/answers-and-scripts.md",
     "interview-guide-engine/references/story-bank-template.md",
     "your-materials/references/review-pass.md",
+    "job-search-setup/references/building-a-saved-search.md",
+    "job-search-setup/references/ats-search-links.md",
 )
 
 

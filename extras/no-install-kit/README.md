@@ -10,7 +10,7 @@ The trade-off: a chat can't save files, search job sites, or remind you. So it h
 
 1. Unzip this kit. Move the `job-search` folder somewhere you keep your files, like Documents. That's your search's home.
 2. Make a new project. Paste everything in `INSTRUCTIONS.md` into the project's instructions.
-3. Upload to the project: the six files in `Project files`, and your resume.
+3. Upload to the project: the eight files in `Project files`, and your resume.
 4. Start a chat in the project and say "set me up."
 5. Paste a job posting anytime and ask "should I apply?" Before an interview, say "prep me for [company]."
 6. Before you close the chat, say **"wrap up."** It hands you each file that changed. Save each one in your `job-search` folder (see below), replacing the old copy. Then in the project, delete the old copy and upload the new one, so there's only ever one version. **If you don't say "wrap up," nothing from that chat is saved.**
@@ -41,7 +41,7 @@ Files ending in `.md` are plain text; any text editor opens them. `job-tracker.c
 |---|---|
 | `INSTRUCTIONS.md` | Paste into a project's instructions (option 1) |
 | `QUICK-START-PROMPT.md` | Paste as your first message (option 2) |
-| `Project files/` | Six files for a project to follow: how roles are scored, how job lists are sorted, the interview guide template, answer scripts, the story bank template, and the review checklist |
+| `Project files/` | Eight files for a project to follow: how roles are scored, how job lists are sorted, the interview guide template, answer scripts, the story bank template, the review checklist, and how search links are built |
 | `job-search/` | Your search's home, with a blank tracker to start from |
 
 ## Finding roles
