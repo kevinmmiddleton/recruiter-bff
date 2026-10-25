@@ -47,7 +47,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir verify
-          gh release download "$GITHUB_REF_NAME" --dir verify
+          gh release download "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" --dir verify
           for f in dist/*; do
             cmp -s "$f" "verify/$(basename "$f")" || { echo "$(basename "$f") on the release differs from the build"; exit 1; }
           done
