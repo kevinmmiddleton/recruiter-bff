@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://github.com/kevinmmiddleton/recruiter-bff/releases/latest"><img alt="Download the latest release" src="https://img.shields.io/badge/download-latest-5FD6A4?style=for-the-badge&labelColor=16131F"></a>
-  <a href="#install"><img alt="Runs in Claude Cowork" src="https://img.shields.io/badge/runs%20in-Cowork-FFE14D?style=for-the-badge&labelColor=16131F"></a>
+  <a href="#install"><img alt="Runs in Claude Cowork and Codex" src="https://img.shields.io/badge/runs%20in-Cowork%20%C2%B7%20Codex-FFE14D?style=for-the-badge&labelColor=16131F"></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-FFF8EF?style=for-the-badge&labelColor=16131F"></a>
 </p>
 
@@ -14,7 +14,7 @@ Find out if you're a match before you apply, then walk in prepared.
 
 Paste a job posting and Recruiter BFF checks the key requirements against your resume, scores the match from 1 to 5, names the gaps, and tells you to apply or skip. When you land the interview, it hands you a guide built from your own background.
 
-It's a free plugin for Claude Cowork, which needs a paid Claude plan and the desktop app. It never applies to jobs or contacts anyone for you, and everything lives in plain files on your computer. *Formerly Job Search Agent.*
+It's a free plugin for Claude Cowork (with a paid Claude plan and the Claude desktop app) and for Codex (with a ChatGPT account). It never applies to jobs or contacts anyone for you, and everything lives in plain files on your computer. *Formerly Job Search Agent.*
 
 It runs when you ask, on a normal laptop. Nothing to host: no servers of your own, no scrapers, no always-on machine.
 
@@ -58,7 +58,7 @@ Paste a posting, or a link, and ask "should I apply?"
 
 Being one of the first 50 applicants beats being a polished 200th. Say "scan for jobs":
 
-- It reads your saved LinkedIn search in a browser you're logged in to (the Claude desktop app's built-in browser, or the Claude in Chrome extension), or you paste the results in.
+- It reads your saved LinkedIn search in a browser you're logged in to (the built-in browser in the Claude or ChatGPT desktop app, or the Claude in Chrome extension), or you paste the results in.
 - It builds one-click Google searches of recent posts on company job sites like Greenhouse, Lever, and Ashby, where some roles get posted and never reach LinkedIn.
 - It checks the public job feeds of companies on your watchlist.
 - It hides your dealbreakers, staffing firms, job aggregators, and postings that don't name the company, says why each match made the cut, and tells you if any source failed.
@@ -68,7 +68,7 @@ Being one of the first 50 applicants beats being a polished 200th. Say "scan for
 
 - **Your tracker** is a plain CSV that opens in Excel, Numbers, or Google Sheets. Say "what's in my pipeline?" and you get a table sorted by what needs doing. Close it in your spreadsheet app before you ask Recruiter BFF to change it, so the app doesn't save its older copy over the update.
 - **Follow-ups** are flagged when an active process goes quiet (cold applications never nag you), and it offers a short draft.
-- **Reminders on your days:** pick the days and time, and it checks in with follow-ups due, interviews coming up, and links to fresh roles. Turn on two settings once so the check-in can read your files (it walks you through them), and keep the Claude app open; quitting the app pauses your check-in until you turn it back on.
+- **Reminders on your days:** pick the days and time, and it checks in with follow-ups due, interviews coming up, and links to fresh roles. In the Claude app, turn on two settings once so the check-in can read your files (it walks you through them), and keep the app open; quitting it pauses your check-in until you turn it back on. In Codex, check-ins run as scheduled tasks in the ChatGPT desktop app while it's open. In the Codex CLI, you get a check-in the first time you open Codex each day, or a calendar reminder.
 - **A weekly review** shows what moved, where things tend to stall, and which sources pay off.
 
 ## Your materials, and your people
@@ -93,16 +93,16 @@ The skills are ready in your next conversation. Installing from Chat or Cowork a
 ### In Codex
 
 <!-- verify on Codex (Mac and Windows) before release, and add the version checked -->
+You need Codex, in the ChatGPT desktop app or the Codex CLI, and Python 3 on your computer for the tracker and contacts (on Windows, from python.org or the Microsoft Store). In a terminal, run:
+
 ```
 codex plugin marketplace add kevinmmiddleton/recruiter-bff
 codex plugin add recruiter-bff@recruiter-bff
 ```
 
-Then open Codex in the folder you want to use for your job search and say "set up my job search." **To update,** run `codex plugin marketplace upgrade`. Codex can't drive a browser or run anything on a schedule, so scans work from results you paste in, and reminders are a check-in when you open Codex, or a calendar file you double-click to add.
+Then start a new Codex chat in the folder you want to use for your job search and say "set up my job search." **To update,** run `codex plugin marketplace upgrade`. Updates keep everything you've saved.
 
-### In ChatGPT, Microsoft Copilot, Gemini, or Claude without Cowork
-
-Download **[recruiter-bff-no-install-kit.zip](https://github.com/kevinmmiddleton/recruiter-bff/releases/latest/download/recruiter-bff-no-install-kit.zip)** and follow the README inside. You paste in the instructions, add your resume, and ask "should I apply?" There are no scans or reminders, and you save the files it hands you, but the fit check and the interview guides work the same way.
+In the ChatGPT desktop app, Codex can read your saved LinkedIn search in its built-in browser (sign in to LinkedIn there once), and reminders run as scheduled tasks while the app is open. In the Codex CLI, you paste search results in, and reminders are a check-in the first time you open Codex each day, or a calendar file you double-click to add.
 
 ## Get started
 
@@ -127,9 +127,9 @@ Later, when you have half an hour, it can help you write a one-page "what I want
 
 ## What you need
 
-- **A paid Claude plan** (Pro, Max, Team, or Enterprise) and the **Claude desktop app** for Mac or Windows. Cowork reaches your folder through the desktop app, so keep the app open while you work and when reminders run. Quitting the app pauses your reminders until you turn them back on in **Scheduled**.
-- **A folder on your computer, connected in Claude.** Setup creates `job-search/` there.
-- **Optional:** a browser Claude can drive (the Claude desktop app's built-in browser, or the Claude in Chrome extension), so scans can read your saved LinkedIn search. Without one, you paste results in. See `CONNECTORS.md`.
+- **In Claude:** a paid Claude plan (Pro, Max, Team, or Enterprise) and the **Claude desktop app** for Mac or Windows. Cowork reaches your folder through the desktop app, so keep the app open while you work and when reminders run. Quitting the app pauses your reminders until you turn them back on in **Scheduled**. Connect a folder on your computer; setup creates `job-search/` there.
+- **In Codex:** Codex in the ChatGPT desktop app or the Codex CLI, opened in a folder for your job search, and Python 3 for the tracker and contacts.
+- **Optional:** a browser your assistant can drive (the built-in browser in the Claude or ChatGPT desktop app, or the Claude in Chrome extension), so scans can read your saved LinkedIn search. Without one, you paste results in. See `CONNECTORS.md`.
 
 ## Where your files live
 
@@ -168,7 +168,7 @@ job-search/
 | `application-tracker` | "what's in my pipeline?" | Your tracker, follow-ups, weekly review, thank-you drafts |
 | `your-materials` | "fix this bullet" | Resume, LinkedIn, and written answers from your story bank, in your voice |
 | `contacts` | "who do I know at [company]?" | Your LinkedIn connections matched to your search, and drafts |
-| `job-search-automation` | "remind me on Mondays" | Reminders, scheduled scans, and the self-hosted option |
+| `job-search-automation` | "remind me on Mondays" | Reminders and scheduled scans (in Claude or Codex), and the self-hosted option |
 
 ## Credits
 

@@ -1,6 +1,16 @@
 # Changelog
 
-## 1.0.4 (2026-10-25)
+## 1.1.0 (unreleased)
+
+**Recruiter BFF now runs in Codex.** Install it with two commands, start a Codex chat in a folder for your job search, and say "set up my job search." That folder is your search's home, and everything works the same way: the fit check, interview guides, the story bank, scans, the tracker, contacts, and your materials. It works in Codex in the ChatGPT desktop app and in the Codex CLI.
+
+- **Scans in Codex:** in the ChatGPT desktop app, Codex reads your saved LinkedIn search in its built-in browser after you sign in there once. In the Codex CLI, you paste the results in. Watchlist feeds load when Codex's network access is on, and the scan says so when it's off.
+- **Reminders in Codex:** in the ChatGPT desktop app, check-ins and scheduled scans are Codex scheduled tasks, set up from a plain-words request like the Claude ones. In the Codex CLI, which can't schedule anything, you get a check-in the first time you open Codex in your folder each day, or a calendar reminder you add with one click.
+- **Windows:** files are saved in a format other apps read correctly, even from PowerShell, and the skills use no characters that garble there.
+- **Opening Codex inside `job-search/`** works too: it's treated as the data home, not a place to start a second one.
+- **Interview guides** keep a half-given interview time as "not given" and ask once, instead of guessing.
+
+## 1.0.4 (2026-10-24)
 
 From an outside tester's second round in Codex, on Windows:
 
@@ -11,7 +21,7 @@ From an outside tester's second round in Codex, on Windows:
 - **"I applied to Fernhill" with one Fernhill role tracked** updates that role and names it, so you can correct it, instead of asking which one.
 - **Checks:** 132 code checks.
 
-## 1.0.3 (2026-10-25)
+## 1.0.3 (2026-10-24)
 
 **Scans remember what they've shown you.** A role a scan showed you, that you didn't add to your tracker, no longer comes back as "new." Scans keep a small `scan-history.csv` in your folder, hold those roles back with a count ("Also held back: 3 shown in an earlier scan"), and list them if you say "show them." A role still posted a month after you last saw it comes back once, tagged "Shown Oct 24, still open." A near match ("Senior Product Manager, Platform" next to "Senior Product Manager") is never held back. Scheduled scans read the history and add what their digest showed.
 

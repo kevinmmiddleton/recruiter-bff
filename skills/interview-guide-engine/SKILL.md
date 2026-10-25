@@ -119,7 +119,7 @@ Build the rest of the guide from `references/guide-template.md`:
 
 Save to `job-search/companies/<company>/interview-guide.md`. Before saving, check every answer and claim in the guide against the resume, the profile, the story bank, and the saved answers, and cut anything without a source (a year count, a goal the user never stated, a fact moved to a person or a part it doesn't belong to). Then share only the top of the guide in the chat: the verdict, the next round, and the four blocks at a line or two each, 200 words or fewer for that part (count them before sending). Then say the rest is in the file, and end with at most one short offer. Don't paste the whole guide into the chat.
 
-Record what the user told you in the tracker through `application-tracker` (a booked round: the status and `next_date`, with `completed = False`) and say what changed. That's recording, not an offer. Ask at most the two questions that block this round (when, if it's missing, and the pay line before a recruiter screen); anything else, like a voice question or a missing story, goes on the prep checklist. Then make **one** offer: usually a practice run for this round.
+Record what the user told you in the tracker through `application-tracker` (a booked round: the status and `next_date`, with `completed = False`) and say what changed. That's recording, not an offer. Then make **one** offer: usually a practice run for this round.
 
 ## After the round: debrief
 

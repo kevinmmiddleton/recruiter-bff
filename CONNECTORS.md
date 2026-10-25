@@ -4,7 +4,7 @@ Very little, on purpose. It works with tools you already have, and every step ha
 
 ## A browser Claude can drive (optional, for scans)
 
-The scan reads your saved LinkedIn search the way you'd see it, in a browser Claude can drive. Two ways:
+The scan reads your saved LinkedIn search the way you'd see it, in a browser Claude can drive. Two ways (for Codex, see "In Codex" below):
 
 - **The browser built into the Claude desktop app.** Sign in to LinkedIn there once, and Claude reads your search the same way. (You can import your logins instead: from Chrome, Edge, or Firefox on a Mac, or from Firefox on Windows.)
 - **The Claude in Chrome extension.** Claude opens your saved search in your own logged-in Chrome and reads the results, including roles behind your login.
@@ -23,16 +23,12 @@ Reminders and scheduled scans use Cowork's built-in scheduled tasks. No extra co
 
 ## In Codex
 
-Codex has none of the Claude-only pieces above, and every step still works:
+The same pieces work in Codex, with Codex's own tools:
 
-- **No browser it can drive.** Scans give you your saved search and company job site links to open, and you paste the results in.
+- **A browser.** In the ChatGPT desktop app, Codex can drive its built-in browser: sign in to LinkedIn there once, and scans read your saved search. The Codex CLI has no browser it can drive, so you open your saved search yourself and paste the results in.
 - **Web search** is a Codex setting that may be off. Without it, interview guides build the company section from the posting and give you a short research list.
 - **Watchlist feeds** are fetched with `curl` when Codex's network access is on. When it's off, the scan says the watchlist wasn't available instead of reporting no new roles.
-- **No scheduling.** Reminders become a check-in the first time you open Codex in your folder each day (a short section in that folder's `AGENTS.md`), or a calendar event you add with one click. Running a check-in with no one there, through your computer's own scheduler and `codex exec`, is possible if you ask, but it's real setup.
-
-## The no-install kit
-
-ChatGPT, Microsoft Copilot, Gemini, and Claude without Cowork connect to nothing here. You paste in your resume, job postings, and search results, and it hands you files to keep.
+- **Scheduling.** In the ChatGPT desktop app, reminders and scheduled scans are Codex scheduled tasks. They run while your computer is on and the app is running, and each run shows up under **Scheduled** in the app's sidebar. They use your default sandbox setting: a check-in only reads, so it works in any setting, but a scheduled scan needs network access for the watchlist. The Codex CLI can't schedule anything, so reminders there are a check-in the first time you open Codex in your folder each day (a short section in that folder's `AGENTS.md`), or a calendar event you add with one click.
 
 ## Your LinkedIn connections (optional, for contacts)
 

@@ -7,7 +7,8 @@ description: >
   automatically," "schedule my scan," "run this every morning," or asks what it would take to
   build an always-on pipeline. Covers reminders on the user's chosen days (they read only
   the user's files), a scheduled scan (convenient, with a catch), and the serious self-hosted build.
-  In Codex, where nothing can be scheduled, offers a check-in when Codex opens and a calendar reminder.
+  In Codex, uses Codex's scheduled tasks when this session can create them, and otherwise a
+  check-in when Codex opens or a calendar reminder.
 ---
 
 # Job Search Automation
@@ -19,6 +20,8 @@ Three options, from most reliable to most ambitious:
 1. **Reminders on your days.** A check-in on the days and time the user picks. It reads only their files, so it needs no browser and no login. Most people should start here.
 2. **A scheduled scan.** Cowork runs the job scan on a schedule. Convenient, with a real catch.
 3. **A self-hosted pipeline.** An always-on machine that scans and texts matches. A genuine engineering project.
+
+**Where you're running decides how.** Sections 1 and 2 are written for the Claude desktop app's scheduled tasks. In Codex, follow "In Codex" below: it uses the same reminder and scan prompts, but Codex's own scheduling, settings, and limits.
 
 When the user starts a conversation about reminders, add "Reminders: YYYY-MM-DD (asked)" to the profile's Offered section, so it isn't offered again.
 
@@ -157,9 +160,29 @@ the digest showed to scan-history.csv, the way the find-jobs skill's references/
 says, so the next scan doesn't show them as new.
 ```
 
-## In Codex and other coding agents
+## In Codex
 
-Codex can't schedule anything by itself, and there's no scheduled-tasks tool to call. Say that once, plainly ("Codex can't run anything on a schedule by itself, but here's what works"), then offer these, in this order. Reminders still read only the user's files and never send, apply, or contact anyone.
+Codex runs in two places, and only one can schedule. **Codex in the ChatGPT desktop app** has scheduled tasks (they appear under Scheduled in the app's sidebar). **The Codex CLI** (Codex in a terminal) has none. Check what this session actually has: a tool for creating scheduled tasks or automations. Don't guess from where you think you're running, and don't call Claude's scheduled-tasks tool names; they don't exist in Codex.
+
+Reminders and scans in Codex still read only the user's files and never send, apply, or contact anyone.
+
+### When this session can create scheduled tasks
+
+Set up reminders (section 1) and a scheduled scan (section 2) the same way, with these differences:
+
+1. **Read the scheduling tool's own description first** and follow it. The Claude desktop app's steps don't apply here: no Require this computer, no Local folder, and no pause when the app is quit, unless the tool's description says so.
+2. **Make it a task that starts a new chat on each run** (not one that returns to this conversation), and have it work in the folder that holds `job-search/`: the folder Codex is open in. If the tool asks for a project or folder, choose that one. Fill the same task prompt with the full path, as in section 1, and where the prompt names the Claude app, name the ChatGPT desktop app instead ("Open the ChatGPT app on your computer and ask Codex 'what's in my pipeline?'").
+3. **Use the confirmed days and time.** If the tool takes a recurrence rule, weekdays at 8:30am is `RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=8;BYMINUTE=30`, and Mon and Thu is `BYDAY=MO,TH`.
+4. **Read back the schedule the tool returns** and tell the user exactly that. If it differs from what they asked, say so; don't change it silently.
+5. **Say how it runs.** OpenAI's help (October 2026) says a scheduled task that uses local files runs only while the computer is on and the ChatGPT desktop app is running, and each run's result shows up under Scheduled in the app's sidebar. Tell the user that, and what the tool's description adds. Don't promise a phone notification.
+6. **Say what the sandbox allows.** Scheduled tasks run with the user's default sandbox setting. A check-in only reads, so it works in any setting. A scheduled scan also fetches the watchlist feeds and adds to `scan-history.csv`; if the default setting is read-only or has network access off, those parts fail, and the digest says the watchlist wasn't available. Say that before creating a scan.
+7. **Record it** in the profile's Reminders status, as in section 1: "Mon and Thu at 8:30am (created YYYY-MM-DD, Codex)". A scheduled scan gets the Scheduled scan line the same way.
+
+"Change my reminders" and "stop my reminders" use the same tool to update, pause, or delete the task, after confirming, then update the profile. If the tool can't find the task, tell the user it's under Scheduled in the app's sidebar, where they can change or delete it themselves.
+
+### When it can't (the Codex CLI)
+
+Say it once, plainly: "I can't create scheduled tasks from here. Codex in the ChatGPT desktop app can, or here's what works now." Then offer these, in this order.
 
 **1. A check-in when Codex opens (start here).** Codex reads a file called `AGENTS.md` in the folder it's opened in at the start of every session. With a yes, add this section to `AGENTS.md` in the folder that holds `job-search/` (create the file if there isn't one; if the user opens Codex inside `job-search/` itself, put it there and drop the `job-search/` prefix). It's self-contained, so it works even in a session that never opens this skill:
 
@@ -213,11 +236,9 @@ END:VCALENDAR
 
 Record it in the Reminders section: "Calendar reminder: Mon and Thu at 8:30am (made YYYY-MM-DD)". A calendar file can't remove its own event, so to change or stop it, the user deletes the event in their calendar; for new days, make a new file. This works anywhere the user can open a file, including the Claude desktop app when the scheduled-tasks tool isn't available.
 
-**3. Running with nobody there.** When the user asks for anything automatic, mention this in one line; set it up only after a second, explicit yes. A computer's own scheduler (cron or launchd on a Mac, Task Scheduler on Windows) can start `codex exec` with the task prompt from section 1, so a check-in runs while they're away and is saved to a text file they open later. It's real setup: Codex must be signed in on that computer, the computer must be awake, each run uses their Codex plan, and flags change between versions. Never set it up without a clear yes. Check `codex exec --help` on their computer first and build the command from what it says, keep the run read-only, write the output to a file outside `job-search/` (like `check-in-latest.txt` next to it), and record it in the profile ("Codex scheduled check-in, weekdays 8:30am (set up YYYY-MM-DD)"). To stop it, remove the scheduler entry.
+**A scheduled scan in the Codex CLI:** there isn't one. Offer the check-in instead (it carries the fresh-role links), and "scan for jobs" whenever they're in Codex.
 
-**A scheduled scan in Codex:** there isn't one. Offer the check-in instead (it carries the fresh-role links), and "scan for jobs" whenever they're in Codex. In a Codex scan, the companies to watch work through their public feeds when Codex's network access is on; the saved LinkedIn search and the job site searches come back as links to click, or the user pastes the results.
-
-**Changing or stopping in Codex:** "change my reminders" edits the days and time (a new calendar file, or the scheduler entry); "stop my reminders" removes the `AGENTS.md` section, tells them to delete the calendar event, and removes any scheduler entry they set up. Update the profile's Reminders status either way.
+**Changing or stopping:** "change my reminders" makes a new calendar file for the new days and time; "stop my reminders" removes the `AGENTS.md` section and tells them to delete the calendar event. Update the profile's Reminders status either way.
 
 ## 3. A self-hosted pipeline
 
@@ -230,6 +251,7 @@ The one-line version: an always-on computer runs a scheduled script that loads t
 ## How to talk about this
 
 - **Lead with reminders.** They're reliable and take two minutes.
+- **In Codex, check for a scheduling tool first.** With one, set reminders up the Codex way above; without one, say so once and lead with the check-in when Codex opens.
 - **State how schedules run,** in the scheduling tool's current terms (see above): a task reads the files only after the user turns on Require this computer and sets the Local folder, and then only while the computer is awake and the Claude desktop app is open. Quitting the app pauses it until they turn it back on.
 - **The scheduled scan is convenience, not a guarantee.** Say why.
 - **The self-hosted pipeline is opt-in and serious.** A blueprint for the ambitious, with real upkeep.
