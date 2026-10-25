@@ -946,9 +946,10 @@ def scan_history_cases():
     before = SCAN_HEADER + chr(10) + shift(-2) + ",Acme,Product Lead,,linkedin,INCLUDE" + chr(10)
     d = folder("scan_perms", files={SCAN_PATH: before})
     (d / SCAN_PATH).chmod(0o640)
+    want = mode(d, SCAN_PATH)   # 0o640, or 0o666 on Windows
     out = run(d, scan(recorded([FERN])), base=False)
     check("a save keeps the history's permissions and leaves no temp file",
-          out.startswith("scan history: 1 new") and mode(d, SCAN_PATH) == 0o640 and not leftovers(d), out + " " + oct(mode(d, SCAN_PATH)))
+          out.startswith("scan history: 1 new") and mode(d, SCAN_PATH) == want and not leftovers(d), out + " " + oct(mode(d, SCAN_PATH)))
     d = folder("scan_locked", files={SCAN_PATH: before})
     out = run(d, scan(recorded([FERN]) + "print('THE SCAN GOES ON')\n"), base=False, pre=EXCEL_LOCK)
     check("a save blocked by another app says so in one line, the scan goes on, and the old history stays",
