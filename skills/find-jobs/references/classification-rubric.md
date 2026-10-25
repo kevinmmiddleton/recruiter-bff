@@ -18,7 +18,7 @@ A role that survives all six is at least INCLUDE. Then:
 7. **Strong signal.** Hits one or more strong signals: upgrade to **STRONG**.
 8. **Parked lanes** don't upgrade anything. A role that mainly hits a parked lane is INCLUDE, listed after the STRONG roles, with the reason and a revisit note ("a lane you've parked: Group PM with reports").
 9. **Weak signals** are soft warnings. They never cut a role and never upgrade one: flag it ("heads-up: contract-to-hire") and rank it lower within its tier. A role with a strong signal and a weak one stays STRONG, with the heads-up, listed after the STRONG roles that have none (a fintech role the user loves, at a B2B company they'd rank lower).
-10. **Unknown company:** never a reason to exclude, downgrade, or flag a role. If you can't tell what a company does and it matters for the fit, say so in "Why it fits" ("I can't tell what Tallyho does; check before you spend time"). A posting that hides the company entirely is different: see "Postings that hide the company" below. Missing pay or location: never a reason to exclude.
+10. **Unknown company:** never a reason to exclude, downgrade, or flag a role, and never a reason to keep one that fails an earlier rule (a range entirely below the floor is still hidden). If you can't tell what a company does and it matters for the fit, say so in "Why it fits" ("I can't tell what this company does; check before you spend time"). A posting that hides the company entirely is different: see "Postings that hide the company" below. Missing pay or location: never a reason to exclude.
 11. **Pay that starts under the floor** but reaches it doesn't change the tier: a STRONG role stays STRONG, with the heads-up.
 
 Signals rank; exclusions cut. Keep the two apart.

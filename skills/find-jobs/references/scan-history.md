@@ -16,7 +16,7 @@ A near match is not seen: "Senior Product Manager" and "Senior Product Manager, 
 
 ## The snippet
 
-Run Python the way `tracker-schema.md` says (which Python, a temporary `.py` file, never a heredoc): copy the snippet, then add the calls after it. If the shell can't see the job-search folder, copy `scan-history.csv` in with the tracker when the user's folder has one, each row on its own line; a copy without it starts a new history, and writing that back would replace the old one. The snippet always names the encoding, since Windows Python otherwise reads and writes cp1252.
+Run Python the way `tracker-schema.md` says (which Python, a temporary `.py` file, never a heredoc): copy the snippet, then add the calls after it. Use it as written; don't write your own CSV code for this file, even a one-liner, since the snippet keeps the old rows, their dates, and the checks. If the shell can't see the job-search folder, copy `scan-history.csv` in with the tracker when the user's folder has one, each row on its own line; a copy without it starts a new history, and writing that back would replace the old one. The snippet always names the encoding, since Windows Python otherwise reads and writes cp1252.
 
 ```python
 import csv, io, os, re, sys, datetime, shutil, tempfile
