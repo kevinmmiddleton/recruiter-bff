@@ -64,7 +64,7 @@ If `next_date` is in the future (an interview is booked, or they said "we'll kno
 
 Updating the wrong row is worse than updating none. So:
 
-1. **Same company, same role, after normalizing.** Roles: lowercase, drop punctuation, `sr`/`sr.` becomes `senior`, `pm` becomes `product manager`, `&` becomes `and`, collapse spaces; keep seniority words, since "Senior Product Manager" and "Product Manager" are different roles. Companies: the same, plus drop trailing legal suffixes (Inc, LLC, Ltd, Corp, Co) and anything in parentheses, so "Fernhill, Inc." matches "Fernhill." 
+1. **Same company, same role, after normalizing.** Roles: lowercase, drop punctuation, `sr`/`sr.` becomes `senior`, `pm` becomes the title in `PM_MEANS`, `&` becomes `and`, collapse spaces; keep seniority words, since "Senior Product Manager" and "Product Manager" are different roles. Set `PM_MEANS` in the load snippet from the profile's target titles: `"product manager"` (the default), `"project manager"` or `"program manager"` for those fields, or `None` if the profile's target titles include more than one kind of PM role, so "Senior PM" is left as it is and gets the close-title question (rule 3 or 4) instead of matching the wrong role. Companies: the same, plus drop trailing legal suffixes (Inc, LLC, Ltd, Corp, Co) and anything in parentheses, so "Fernhill, Inc." matches "Fernhill." 
 2. **One match:** update it.
 3. **No exact match, but one open role at that company:** ask whether that's the one before updating it. Finished rows (rejected, closed, withdrawn, skipped, ghosted, accepted) are never a fallback: a new role at a company with only finished rows gets its own row.
 4. **No exact match and several roles at that company:** don't guess. Show the candidates and ask which one.
@@ -83,7 +83,7 @@ Rejection emails are often vague ("we've decided to move forward with other cand
 - **Company name from the sender, too.** If the email's company name doesn't match, try the sender's domain ("careers@fernhillhealth.com"), the normalized name, and near matches (rule 6: "Northstar" for "Northstar Learning") before saying "not in the tracker." Only then, if the user wants, add a new row as `rejected`.
 - **Generic rejection, one open application at that company:** that's the one. Update it.
 - **Generic rejection, several open applications at that company:** put it on a **"which one?"** list and ask. Don't guess.
-- **The company is in the tracker only as a prospect** (the user never logged applying): they probably applied and forgot to say so. Ask one question: "I have the Senior PM, Retention role as a prospect. Is that the one you applied to?" On yes, or "you pick," mark that row: set `date_applied` if they know it, `status` to `rejected`, and `furthest_stage` to `applied`. Run the rejection snippet with `include_prospects = True`.
+- **The company is in the tracker only as a prospect** (the user never logged applying): they probably applied and forgot to say so. Ask one question: "I have the Senior PM, Retention role as a prospect. Is that the one you applied to?" On yes, or "you pick," mark that row: set `date_applied` if they know it, `status` to `rejected`, and `furthest_stage` to `applied`. Run the rejection snippet with `include_prospects = True` and `role` set to that row's title, so it isn't asked about again.
 - **The company isn't in the tracker at all:** if the user wants it recorded, add it as rejected with the snippet below.
 - Set `status` to `rejected`, update `last_update`, leave `furthest_stage` alone, and add a dated note with the stage it ended at if known ("2026-10-06: rejected after the hiring manager round").
 
@@ -91,7 +91,7 @@ For a batch, finish with a summary that includes days since applying: "Marked 4 
 
 ## Snippets
 
-Adapt paths and values, save the code to a temporary `.py` file, and run it with the first Python that prints a version: `python3`, then `python`, then `py -3` on Windows (Windows' `python3` can be a Microsoft Store shortcut that does nothing). Don't use a shell heredoc; PowerShell doesn't have one. If the shell can't see the job-search folder (in Cowork's cloud sessions the shell runs on Anthropic's servers), read the file with the file tool, write that text to a copy in the shell's folder, run the snippet on the copy, write the whole result back with the file tool, and read it back. Put each row on its own line in the copy, even if the file tool shows them run together (Excel on a Mac can end rows with a bare carriage return); if the rows still run into the header, the snippets stop. A round trip through the file tools may drop Excel's start mark and change the line endings: the rows are the same, but Excel may show accented names wrongly until the file is saved as CSV UTF-8 again. `PATH` finds `job-tracker.csv`, or `applications.csv` in a 0.4 folder that hasn't been renamed (see Step 0 of `job-search-setup`). The snippets keep quoting correct, write the whole file in one step, and never drop columns the user added by hand.
+Adapt paths and values, save the code to a temporary `.py` file, and run it with the first Python that prints a version: `python3`, then `python`, then `py -3` on Windows (Windows' `python3` can be a Microsoft Store shortcut that does nothing). Don't use a shell heredoc; PowerShell doesn't have one. If the shell can't see the job-search folder (in Cowork's cloud sessions the shell runs on Anthropic's servers), read the file with the file tool, write that text to a copy in the shell's folder, run the snippet on the copy, write the whole result back with the file tool, and read it back. Put each row on its own line in the copy, even if the file tool shows them run together (Excel on a Mac can end rows with a bare carriage return); if the rows still run into the header or into each other, the snippets stop and write nothing. A round trip through the file tools may drop Excel's start mark and change the line endings: the rows are the same, but Excel may show accented names wrongly until the file is saved as CSV UTF-8 again. `PATH` finds `job-tracker.csv`, or `applications.csv` in a 0.4 folder that hasn't been renamed (see Step 0 of `job-search-setup`). The snippets keep quoting correct, write the whole file in one step, and never drop columns the user added by hand.
 
 They also cope with a file saved from a spreadsheet app: Excel's "CSV UTF-8" (which adds an invisible mark at the start), Windows' plain "CSV", and dates rewritten as `9/15/2026`. Dates go back to YYYY-MM-DD on the next write; when that happens, tell the user once. Excel on a Mac saves plain "CSV" in an older encoding the snippets can't read safely, so they stop and say to save it as CSV UTF-8 and close it in Excel. They also stop when the text holds the replacement character (�): the file wasn't UTF-8 when the file tool read it (Excel's plain CSV, from a Mac or Windows), and writing it back would lose the real letters for good. The snippets write UTF-8: a new tracker starts with Excel's mark, so Excel shows accented names correctly, and an existing one the snippet reads itself is written back the way it was read, with the mark or without. A save keeps the file's permissions. A missing tracker is never treated as an empty one: every snippet but "create" stops with NO TRACKER. If a save fails because the file is open in Excel, ask the user to close it, then run the snippet again.
 
@@ -111,12 +111,14 @@ STAGES = ["prospect","applied","screening","interview","final","offer"]
 ACTIVE = {"screening","interview","final","offer"}
 DATES = ["date_added","date_applied","last_update","next_date"]
 TODAY = datetime.date.today().isoformat()   # if the shell's clock may differ from the user's, use today's date from the conversation
+PM_MEANS = "product manager"                # from the profile's target titles: "project manager" or "program manager" for those fields; None if the profile's target titles include more than one kind of PM role
 FILLED = []                                 # next dates taken from notes on a tracker's first 1.0 write
 
 def norm(s):
     s = (s or "").lower().replace("&", " and ")
     s = re.sub(r"\bsr\b\.?", "senior", s)
-    s = re.sub(r"\bpm\b", "product manager", s)
+    if PM_MEANS:                        # None: "pm" stays as it is, so "Senior PM" gets the close-title question
+        s = re.sub(r"\bpm\b", PM_MEANS.lower(), s)
     s = re.sub(r"[^\w\s]", " ", s)
     return " ".join(s.split())
 
@@ -160,12 +162,19 @@ def load(path=PATH, must_exist=True):
             reader = csv.DictReader(io.StringIO(text, newline=""))
             rows = list(reader)
             cols = list(reader.fieldnames or COLS)
-            if not rows and (set(cols) & set(STAGES + ["accepted", "rejected", "closed", "hold", "ghosted", "withdrawn", "skipped"])
-                             or any(re.fullmatch(r"\d{4}-\d{2}-\d{2}", iso(c)) or "://" in c for c in cols)):
-                # every row has a status, and a real header holds no status, date, or link, so this one swallowed the rows
+            if (any(re.fullmatch(r"\d{4}-\d{2}-\d{2}", iso(c)) or "://" in c for c in cols)
+                    or not rows and set(cols) & set(STAGES + ["accepted", "rejected", "closed", "hold", "ghosted", "withdrawn", "skipped"])):
+                # every row has a status, and a real header holds no status, date, or link, so this one swallowed rows
                 raise SystemExit("CAN'T READ " + path + ": its rows ran together into the header, so a copy lost the line "
                                  "breaks (Excel on a Mac can end rows with a bare carriage return). Write the copy again with "
                                  "each row on its own line, then run this again. Never write this copy back.")
+            if any(None in r for r in rows):
+                # a row with more values than the header has columns: rows that ran together, or a comma outside quotes;
+                # a save would drop what doesn't fit
+                raise SystemExit("CAN'T READ " + path + ": a row has more values than the header has columns. Either rows "
+                                 "ran together into one (a copy lost the line breaks) or a value has a comma that isn't in quotes, "
+                                 "and saving now would drop data. Don't repair it without the user's yes: the fix is each row on its own line "
+                                 "and any comma inside a value in quotes. Then run this again. Never write this copy back.")
             break
         except UnicodeDecodeError:
             continue
@@ -360,7 +369,7 @@ company = "Acme"
 role = None                 # the role named in the email, or None if it's a general no
 email_date = TODAY          # the date the rejection arrived (YYYY-MM-DD), if the user says or the email shows it
 stage_note = ""             # e.g. "after the hiring manager round"
-include_prospects = False   # True only after the user confirms a prospect row is the one they applied to
+include_prospects = False   # True only after the user confirms a prospect row is the one they applied to (set role to its title too)
 date_applied = ""           # if the user says when they applied (ISO date); used for a confirmed prospect
 
 OPEN = {"applied","screening","interview","final","offer","hold"} | ({"prospect"} if include_prospects else set())
@@ -390,7 +399,8 @@ elif len(pool) == 1 and not named_unmatched:
 elif not pool:
     prospects = [r["role"] for r in same if r["status"] == "prospect"]
     if prospects and not include_prospects:
-        print("ONLY PROSPECTS at", company, "- ask if they applied to one of:", prospects)
+        print("ONLY PROSPECTS at", company, "- ask if they applied to one of:", prospects,
+              "Yes: rerun with include_prospects = True and role set to that title.")
     else:
         print("NO MATCH: nothing open at", company, "applied on or before", email_date,
               "| rows there:", [(r["role"], r["status"], r["date_applied"]) for r in same])

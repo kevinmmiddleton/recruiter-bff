@@ -14,7 +14,7 @@ description: >
 
 Pull fresh roles from the user's sources, cut the noise, and show them what's worth their time. It runs only when asked, on a normal laptop.
 
-**Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), follow "Folders from 0.4" in Step 0 of `job-search-setup`: rename only a folder 0.4 made, only during a request that writes something (never on a read-only question like "what's in my pipeline?"), and name each file you renamed. Never rename or restructure files the user made themselves without asking. Until the files are renamed, or if they can't be renamed from here, use whichever name exists, the 1.0 name first and then the 0.4 one (`search-profile.md` or `profile.md`, `looking-for.md` or `preferences.md`, `job-tracker.csv` or `applications.csv`, `interview-stories.md` or `story-bank.md`, `companies/` or `interviews/`, `interview-guide.md` or `guide.md`), and put new files where the existing ones are.
+**Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), follow "Folders from 0.4" in Step 0 of `job-search-setup`: rename only a folder 0.4 made, only during a request that writes something (never on a read-only question like "what's in my pipeline?", or for a draft nobody has saved), and name each file you renamed. Never rename or restructure files the user made themselves without asking. Until the files are renamed, or if they can't be renamed from here, use whichever name exists, the 1.0 name first and then the 0.4 one (`search-profile.md` or `profile.md`, `looking-for.md` or `preferences.md`, `job-tracker.csv` or `applications.csv`, `interview-stories.md` or `story-bank.md`, `companies/` or `interviews/`, `interview-guide.md` or `guide.md`), and put new files where the existing ones are.
 
 ## Never
 
@@ -78,7 +78,7 @@ One record per posting:
 - **posted** (the age or date if shown)
 - **url** (the direct posting link)
 
-Throw out page junk: pagination, "promoted" labels, ads, anything missing both a company and a title.
+Throw out page junk: pagination, ads, and anything missing both a company and a title. A "Promoted" card is a real posting: drop the label and keep the card.
 
 ## Step 4: Check against the tracker
 
@@ -90,13 +90,19 @@ Read `job-search/job-tracker.csv` if it exists, and follow "Checking against the
 
 No tracker yet? Skip this step. If the profile's Offered section says the user tracks elsewhere, don't offer to log matches.
 
+## Step 4b: Check against earlier scans
+
+Roles an earlier scan showed, that the user didn't add to the tracker, shouldn't come back as new. Run `seen_before(cards)` from `references/scan-history.md` on what's left after the tracker check (set the snippet's `TODAY` to the conversation's date, and its `PM_MEANS` to match the tracker's). A role it returns was shown in the last 30 days: hold it back from the list and count it ("3 shown in an earlier scan"). Then run `shown_earlier(cards)` on the rest: a role last shown more than 30 days ago (but within the history's 60 days) stays on the list with the tag "Shown [the date it was last shown], still open" ("Shown Sep 19, still open") instead of reading as brand new. A near match isn't held back. No `scan-history.csv` yet means nothing was seen. If the snippet says it can't read the file, every role counts as new this time; say so in one line, and add: "Say 'set it aside' and I'll move it out of the way, so the next scan starts a fresh history." Like "show them," that line isn't an offer. On "set it aside," run `set_aside()`, then record this scan's shown roles as usual.
+
+If the user asks to see the held-back roles ("show them"), list them with the date each was last shown.
+
 ## Step 5: Classify each role
 
 Apply `references/classification-rubric.md`, with the profile and preferences page as the rules:
 
 - **STRONG:** a clear fit that hits a strong signal. Lead with these.
-- **INCLUDE:** fits the basics, worth a look. Parked lanes land here, flagged. An unknown company is flagged too, but it can still be STRONG.
-- **EXCLUDE:** fails a rule (wrong level, an excluded function with no exception that applies, an excluded industry, a staffing firm or aggregator, a skip-list company, a place they won't work, a listed range entirely below the floor). Hidden, with a count.
+- **INCLUDE:** fits the basics, worth a look. Parked lanes land here, flagged.
+- **EXCLUDE:** fails a rule (wrong level, an excluded function with no exception that applies, an excluded industry, a staffing firm or aggregator, a skip-list company, a place they won't work, a listed range entirely below the floor, a posting that hides the company). Hidden, with a count.
 
 When genuinely unsure, INCLUDE. A borderline role the user dismisses in two seconds costs far less than a good one they never see.
 
@@ -109,7 +115,7 @@ Pickiness decides what's shown: "strong plus maybe" (the default) shows STRONG a
 Open with the summary and the source-health line, then the roles:
 
 ```
-9 new roles, 3 strong.
+9 new roles, 3 of them strong.
 Sources: LinkedIn saved search ✓ 18 results · company job sites ✓ 2 searches, 11 results ·
 watchlist ✓ 4 of 5 companies (Acme's feed didn't respond).
 
@@ -125,13 +131,16 @@ watchlist ✓ 4 of 5 companies (Acme's feed didn't respond).
   <url>
 
 Hid 6: 2 staffing firms, 2 wrong level, 1 on-site only, 1 already tracked.
+Also held back: 3 shown in an earlier scan. Say "show them" to see them.
 ```
 
-- **The source-health line is never skipped.** List each saved search on its own ("LinkedIn, New York ✓ 18 · LinkedIn, remote: skipped"), so a partial paste is clear. A source that failed, timed out, or hit a login says so, and a source that returned zero results says "0 results," so the user can tell a quiet day from a broken search. Say it louder, in its own line, when fewer than half the sources you tried worked, when a logged-in source keeps returning nothing (the login has probably expired), or when saving to the tracker failed. A source the user chose to skip, or one that can't run in this session (no browser, no web access), isn't a failure: label it "skipped" or "not available here" and leave it out of the count.
+- **The headline counts what's shown.** The first number is every new role on the list; the strong count is part of it, never added to it. Roles tagged "Shown ..., still open" aren't new: count them after ("6 new roles, 2 of them strong; 3 shown before and still open").
+- **The source-health line is never skipped.** List each saved search on its own ("LinkedIn, New York ✓ 18 · LinkedIn, remote: skipped (no browser)"), so a partial paste is clear. A source that failed, timed out, or hit a login says so, and a source that returned zero results says "0 results," so the user can tell a quiet day from a broken search. Say it louder, in its own line, when fewer than half the sources you tried worked, when a logged-in source keeps returning nothing (the login has probably expired), or when saving to the tracker failed. A source the user chose to skip, or one that can't run in this session (no browser, no web access), isn't a failure: label it with the reason, "skipped (no browser)", "skipped (you asked)", or "not available (no web access)", and leave it out of the count. Listing a skipped source's links so the user can open them is part of that line, not an offer.
 - **Carry each role's real source** into the tracker: where it came from, not how it reached you. Pasted LinkedIn results are `linkedin`; pasted company job site results are `ats-board`. It's what later shows which sources lead to interviews.
-- **"Why it fits"** is one specific line naming the signal it hit, never a generic compliment. Use only what the card, the posting, or the user said. Don't describe a company you can't verify ("a consumer subscription company") unless the listing says so; if it matters and you can't tell, say that instead ("I can't tell what Tallyho does; check before you spend time"). Add any flag after it: a weak signal ("heads-up: contract-to-hire"), a parked lane, an unknown company, pay that starts below the floor.
+- **"Why it fits"** is one specific line naming the signal it hit, never a generic compliment. Use only what the card, the posting, or the user said. Don't describe a company you can't verify ("a consumer subscription company") unless the listing says so; if it matters and you can't tell, say that instead ("I can't tell what Tallyho does; check before you spend time"). Add any flag after it: a weak signal ("heads-up: contract-to-hire"), a parked lane, pay that starts below the floor.
 - **Posting age** goes on every card when you know it. Very old postings (about 60 days or more) get a short flag: "posted 9 weeks ago, may be stale." Flag, don't hide.
 - If the user knows someone at a company (from `job-search/contacts.csv`, if it exists), add: "You know Priya Shah there."
+- **Then record the scan.** Run `record(cards)` from `references/scan-history.md` on the roles this reply showed, each with its `source` and `tier`. Held-back roles keep their old date, and roles hidden by an exclusion or by "strong only" aren't recorded, since the user never saw them. If the save fails, the snippet says so; mention it in one line and carry on, since the scan itself is fine.
 
 ## Step 7: One next step
 
@@ -167,4 +176,4 @@ Before offering 4, 5, or 6, check the **Offered** section of `job-search/search-
 - **Run only when asked.** No background loop unless the user set one up through `job-search-automation`.
 - **High recall, honest filtering.** Show borderline roles and say what you cut.
 - **Specific reasons.** Every "why it fits" ties to something in the profile.
-- **The tracker is the memory.** Logging matches keeps the next scan clean.
+- **The tracker is the memory, and the scan history backs it up.** Logging matches keeps the next scan clean; the scan history keeps roles the user passed on from coming back as new.

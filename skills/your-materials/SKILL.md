@@ -18,7 +18,7 @@ description: >
 
 Make the resume, LinkedIn, and written answers say what the user has actually done, in words recruiters search for and in the user's own voice. Do this after the one sentence exists if possible: know the target, then make the materials say it.
 
-**Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), follow "Folders from 0.4" in Step 0 of `job-search-setup`: rename only a folder 0.4 made, only during a request that writes something (never on a read-only question like "what's in my pipeline?"), and name each file you renamed. Never rename or restructure files the user made themselves without asking. Until the files are renamed, or if they can't be renamed from here, use whichever name exists, the 1.0 name first and then the 0.4 one (`search-profile.md` or `profile.md`, `looking-for.md` or `preferences.md`, `job-tracker.csv` or `applications.csv`, `interview-stories.md` or `story-bank.md`, `companies/` or `interviews/`, `interview-guide.md` or `guide.md`), and put new files where the existing ones are.
+**Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), follow "Folders from 0.4" in Step 0 of `job-search-setup`: rename only a folder 0.4 made, only during a request that writes something (never on a read-only question like "what's in my pipeline?", or for a draft nobody has saved), and name each file you renamed. Never rename or restructure files the user made themselves without asking. Until the files are renamed, or if they can't be renamed from here, use whichever name exists, the 1.0 name first and then the 0.4 one (`search-profile.md` or `profile.md`, `looking-for.md` or `preferences.md`, `job-tracker.csv` or `applications.csv`, `interview-stories.md` or `story-bank.md`, `companies/` or `interviews/`, `interview-guide.md` or `guide.md`), and put new files where the existing ones are.
 
 **No folder:** if you can't see the user's folder at all, say that and stop, as in Step 0 of `job-search-setup`. Never create `job-search/` or any of its files somewhere else.
 
@@ -36,7 +36,7 @@ Make the resume, LinkedIn, and written answers say what the user has actually do
 
 ## Before you start
 
-Read the resumes in `job-search/resume/` (`primary.md`, and `alternate.md` if there is one; a folder from a 1.0 test build may have `resume.md`, which is the primary), `job-search/search-profile.md` (background, proof points, voice), and `job-search/looking-for.md` if it exists (the one sentence, must-haves). No saved resume (older folders don't have one)? For a single bullet or answer, work from what the user pasted and the profile's Background and Proof Points, and mention once that pasting the resume lets you save a copy (add "Resume copy: YYYY-MM-DD" to the profile's Offered section so it isn't repeated). For a full resume review, ask for it, and save it the way setup does. If the user is working on a specific application, read that company's folder in `job-search/companies/<company>/` (the saved posting and evaluation). For a written answer, also read the story bank (`job-search/interview-stories.md`) and the saved answers (`job-search/materials/answers.md`) if they exist.
+Read the resumes in `job-search/resume/` (`primary.md`, and `alternate.md` if there is one; a folder from a 1.0 test build may have `resume.md`, which is the primary), `job-search/search-profile.md` (background, proof points, voice), and `job-search/looking-for.md` if it exists (the one sentence, must-haves). No saved resume (older folders don't have one)? For a single bullet or answer, work from what the user pasted and the profile's Background and Proof Points, and mention once that pasting the resume lets you save a copy (add "Resume copy: YYYY-MM-DD" to the profile's Offered section the next time this conversation saves a file, so it isn't repeated; a draft alone writes nothing). For a full resume review, ask for it, and save it the way setup does. If the user is working on a specific application, read that company's folder in `job-search/companies/<company>/` (the saved posting and evaluation). For a written answer, also read the story bank (`job-search/interview-stories.md`) and the saved answers (`job-search/materials/answers.md`) if they exist.
 
 If there's no preferences page, don't wait for one. The page is a possible offer (see "Ending a reply"); it makes the summary and headline easier, since they should say the one sentence.
 
@@ -96,6 +96,7 @@ For "why us," "tell us about a time," cover notes, and short-answer boxes:
 
 - **A saved answer to the same question?** Check `materials/answers.md`, matching on meaning: "tell us about a time you pushed back" and "describe a disagreement with a stakeholder" are the same question. If one fits, start from it. Keep the facts and the story, redo the lines that were about the last company, follow its "Change for the next company" note, and say which saved answer you started from.
 - **No saved answer, but a story that fits?** Check the story bank's Themes and build the answer from the best match. Tell it the way the bank does: the same facts, and its Say carefully line holds. Say which story you used.
+- **Two saved answers fit?** Pick the closer one, say which and why, and build from that one story. Never mix facts from two stories into one answer.
 - **Nothing saved yet,** or nothing fits? Draft from the resume and profile as usual. If neither holds a true story for the question (a failure, say), ask the user for one instead of building one.
 
 Then follow the rules below either way, and run the review pass on the result.
@@ -123,7 +124,7 @@ When the user edits a draft, notice what they changed: what they cut, what they 
 ## Where things go
 
 - Approved resume bullets and the summary: offer to update the proof points in `job-search/search-profile.md`.
-- Answers worth reusing: offer to save them in `job-search/materials/answers.md`. One offer covers it: if the answer told a story the story bank doesn't have yet (or there's no bank), the same offer adds the story to the bank too, in the format in `interview-guide-engine`'s `references/story-bank-template.md`. Each saved answer looks like this. A newer version of a question replaces the older one once the user says yes, and keeps a line naming the companies that got the older version ("Earlier version sent to: Fernhill"), so a later interview guide knows they read something slightly different:
+- Answers worth reusing: offer to save them in `job-search/materials/answers.md`. One offer covers it: if the answer told a story the story bank doesn't have yet (or there's no bank), the same offer adds the story to the bank too, in the format in `interview-guide-engine`'s `references/story-bank-template.md`. A banked story needs its Reflection line (what the user learned or would do differently); if they haven't said one, ask before banking it. Each saved answer looks like this. A newer answer to the same question replaces the older one once the user says yes (an answer to a different question gets its own entry), and keeps a line naming the companies that got the older version ("Earlier version sent to: Fernhill"), so a later interview guide knows they read something slightly different:
   ```
   ## Tell us about a time you pushed back
   - Also asked as: a disagreement with a stakeholder; a time you said no
@@ -133,6 +134,8 @@ When the user edits a draft, notice what they changed: what they cut, what they 
 
   [the answer, as the user approved it]
   ```
+  "Used for" names the companies the answer was written for, filled in when it's saved; a later "I applied" never adds one twice.
+- If that company already has an interview guide (`companies/<company>/interview-guide.md`), the same save adds one line to its likely questions: which story the application used, so the interview builds on it.
 - When the user uses an answer, add the company to its "Used for" line (if it isn't there already), and to the story's "Used in" line in the story bank (say "application," so a later interview guide knows what that company has already read).
 - Nothing is overwritten without the user's yes.
 

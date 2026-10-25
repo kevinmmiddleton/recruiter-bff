@@ -73,6 +73,10 @@ The 1.0.1 change: written answers start from saved answers and the story bank. S
 
 The 1.0.2 fix: a posting with no pay listed scores Logistics 4, never 3. Seven cases on five postings and two profiles (with and without a comfortable number): unlisted pay, a range that reaches comfortable, one entirely below the floor, one that starts below it, a vague posting with no pay, and the same posting scored three times by fresh agents that didn't know what was being tested (4.0, 4.0, 4.0). 32 of 33; the miss was a "score it anyway" that called a role below the floor "strong, apply." A blind run on a New York posting with no range found the ghost-job flag and the new rule disagreeing. Three rubric fixes went in before release, and blind reruns of both cases passed. Details in `run-9-2026-10-24.md`.
 
+## Runs 10 and 11: the 1.0.3 batch (Oct 24 and 25, 2026)
+
+Every known open item fixed before launch, then tested in parallel parts with blind agents wherever a reading could go two ways. Run 10: scans and the new scan history (10a, 60 of 60), fit checks, tracker "PM," and contacts (10b, 55 of 56), story bank, guides, and reminders (10c, 47 of 50), and the full end-to-end case on a new persona (10d, 49 of 55). The fixes after it included the tracker's silent row loss when a copy's rows run together under an intact header, confidential postings excluded, the "unknown company" flag dropped, the scan history recording only what was shown, and Requirements counted first. Run 11 rechecked those: data safety and scans (11a, 41 of 46: the agent repaired a damaged tracker without asking, now an offer with a backup), fit checks, guides, and the story bank (11b, 49 of 51), and a blind recheck of the last fixes (11c, 33 of 34). Code checks went from 94 to 130. Details in `run-10a` to `run-10d` and `run-11a` to `run-11c`.
+
 ## Live LinkedIn check (Oct 6, 2026)
 
 A real, signed-in LinkedIn saved search, read through Claude in Chrome. Found: reading the page's text returned only the description of the job open on the right, not the results list. Fixed in `8c40f07`: find the results list, scroll so the cards load, read the list, strip tracking from job links, page with `&start=25`, and keep "N connections work here" as a contacts hint.
@@ -80,11 +84,11 @@ A real, signed-in LinkedIn saved search, read through Claude in Chrome. Found: r
 ## Known gaps
 
 - **Run 7 didn't repeat every run-6 case.** It covered the Phase 3 fixes and the full case, with a shell that could reach the folder. File-tool-only access, a contacts import rerun, and a Mac-saved tracker on one line were last simulated in runs 5 and 6 and are covered by the snippet checks.
-- **A scheduled task trusts its own clock.** The reminder prompt takes today's date from the system; in run 6 the shell's clock was wrong. The snippets say to use the conversation's date, but a scheduled task has no conversation. Low; not handled.
+- **A scheduled task trusts its own clock.** The reminder prompt takes today's date from the system; in run 6 the shell's clock was wrong. Since 1.0.3 the check-in and the scheduled scan start with the date they're using, so a wrong clock is easy to spot, but nothing corrects it.
 - **Excel on a Mac can overwrite an update.** A Mac doesn't lock a file that's open in Excel, so if the tracker is open there during an update and the user saves in Excel afterwards, Excel's older copy replaces the update. README and the tracker skill now tell the user to close it first; not tested.
 - **File-tool-only access** was simulated in run 6, not tried in a real Cowork session.
 - **Plain-CSV accent detection has limits.** From a Mac's plain CSV, an í still slips through (it reads as the same apostrophe Windows uses), and so does an Ñ, Ö, Ç, or Ä starting a word. A Windows plain CSV read directly with š, ž, or œ inside a word, or a dash or ™ between two words with no spaces, gets asked for one re-save as CSV UTF-8.
 - **No Windows run.** The snippet checks simulate Windows' default file encoding and console; nothing has run on a Windows machine.
 - **The live Cowork run was on rc.2** (Kevin, Oct 14 to 16). The Phase 3 fixes since then were simulated (run 7), not run live. The shell's clock in Cowork wasn't checked.
 - **No browser in any simulation.** The LinkedIn steps were checked once live, not inside a full scan.
-- **Still open from run 4:** no guidance for remote-anywhere-in-the-US searches in `building-a-saved-search.md`, and the scan's headline count ("9 new roles, 3 strong") was read two ways across runs.
+- **Run 4's two open items are closed in 1.0.3:** remote-anywhere-in-the-US guidance is in `building-a-saved-search.md`, and the headline reads "9 new roles, 3 of them strong."

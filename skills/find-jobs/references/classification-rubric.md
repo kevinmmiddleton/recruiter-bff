@@ -18,7 +18,7 @@ A role that survives all six is at least INCLUDE. Then:
 7. **Strong signal.** Hits one or more strong signals: upgrade to **STRONG**.
 8. **Parked lanes** don't upgrade anything. A role that mainly hits a parked lane is INCLUDE, listed after the STRONG roles, with the reason and a revisit note ("a lane you've parked: Group PM with reports").
 9. **Weak signals** are soft warnings. They never cut a role and never upgrade one: flag it ("heads-up: contract-to-hire") and rank it lower within its tier. A role with a strong signal and a weak one stays STRONG, with the heads-up, listed after the STRONG roles that have none (a fintech role the user loves, at a B2B company they'd rank lower).
-10. **Unknown company:** never a reason to exclude or downgrade. Flag it ("unknown company"); a role at an unknown company can still be STRONG. Missing pay or location: never a reason to exclude.
+10. **Unknown company:** never a reason to exclude, downgrade, or flag a role. If you can't tell what a company does and it matters for the fit, say so in "Why it fits" ("I can't tell what Tallyho does; check before you spend time"). A posting that hides the company entirely is different: see "Postings that hide the company" below. Missing pay or location: never a reason to exclude.
 11. **Pay that starts under the floor** but reaches it doesn't change the tier: a STRONG role stays STRONG, with the heads-up.
 
 Signals rank; exclusions cut. Keep the two apart.
@@ -35,7 +35,9 @@ Staffing firms post roles on behalf of unnamed clients; aggregators repost other
 
 **Card tells,** on LinkedIn result cards: hourly pay ("$75/hr") on a role that's normally salaried, plus Easy Apply, from a company the user doesn't know. Hourly pay alone means contract work, a weak signal for most people.
 
-**The rule for an unknown company:** a name that isn't widely recognizable, and a posting that mentions consulting, staffing, talent solutions, recruitment process outsourcing (RPO), staff or talent augmentation, "on behalf of our client," "W2 or C2C," or contract-to-hire: probably staffing. Exclude it, and say so in the tally.
+**The rule for an unknown company:** a name that isn't widely recognizable, and a posting that mentions consulting, staffing, talent solutions, recruitment process outsourcing (RPO), staff or talent augmentation, "on behalf of our client," or "W2 or C2C": probably staffing. Exclude it, and say so in the tally. Contract or contract-to-hire on its own is a weak signal (rule 9), never a staffing tell.
+
+**Postings that hide the company:** "Confidential," "Confidential Company," "Undisclosed," "Company name withheld," "our client," or "a leading [industry] company" in place of a name. The user can't check the company or whether the job is real, and these are often staffing firms. Excluded by default, counted as "confidential" in the tally; only an explicit profile line turns it off ("include confidential postings"). A company that names itself as a stealth startup isn't hiding; judge it like any other.
 
 **Types to exclude:** staffing and recruiting agencies (including niche and interim staffing firms); IT consulting and staff-augmentation firms that place contractors; RPO firms; aggregators that repost other companies' roles under their own name (remote-job aggregators, newsletter job boards, "AI job matching" boards); and candidate-matching services.
 
@@ -63,7 +65,7 @@ Adjust the same idea for other fields: the user's target titles and seniority se
 
 ## Checking against the tracker
 
-Normalize company and role the same way the tracker does (lowercase, drop punctuation, `sr` to `senior`, `pm` to `product manager`, `&` to `and`; keep seniority words).
+Normalize company and role the same way the tracker does (lowercase, drop punctuation, `sr` to `senior`, `pm` to whatever the tracker's `PM_MEANS` says (set from the profile's target titles; product manager by default), `&` to `and`; keep seniority words).
 
 - **Same company, same role:** already tracked. Drop it from the list and count it in the "already tracked" tally.
 - **Same company, different role:** show it, tagged **New role at a company you know**, with one line of history from the tracker: "You applied for Senior PM in August; it closed after the recruiter screen." The user decides. A rejection for one role says little about another, and a company that liked them once is worth a look.

@@ -23,11 +23,13 @@ Append these parameters, joined with `&`:
 | `f_WT` | Work type (comma-joined) | `f_WT=2` (remote) |
 | `sortBy` | Sort order | `sortBy=DD` (most recent) |
 
-**`f_E` experience codes:** `2`=Entry, `3`=Associate, `4`=Mid-Senior, `5`=Director, `6`=Executive. Pick the levels the user is actually after: a senior individual-contributor search is usually `4` alone; add `5` for director-level searches. `6` (executive) lets VP and C-level roles in, so leave it out unless they want those.
+**`f_E` experience codes:** `2`=Entry, `3`=Associate, `4`=Mid-Senior, `5`=Director, `6`=Executive. Pick the levels the user is actually after: a senior individual-contributor search is usually `4` alone; add `5` for director-level searches. `6` (executive) lets VP and C-level roles in, so leave it out unless they want those. LinkedIn often tags Group PM, Principal PM, and Lead PM roles as Director, so a senior search that includes those titles needs `f_E=4,5`.
 
 **`f_TPR` time windows:** `r86400`=last 24 hours, `r43200`=last 12 hours, `r604800`=last week. Match it to how often the user scans. Scans here run when the user asks, often a few times a week, so `r604800` (last week) is the default; use `r86400` for someone who scans every morning.
 
 **`f_WT` work types:** `1`=Onsite, `2`=Remote, `3`=Hybrid. Comma-join for multiple (`f_WT=2,3`). Omit the parameter entirely to include all.
+
+**Remote anywhere in the US:** use `location=United%20States` with `f_WT=2`. If the user would also take hybrid near home, keep a second search for their city with `f_WT=3`.
 
 **`sortBy`:** `DD`=date (newest first), best for scanning. `R`=relevance.
 
@@ -45,7 +47,7 @@ Show the assembled URL in the save message, so the user can correct it without a
 
 LinkedIn treats the keyword field loosely, so extra words barely narrow a search: in testing, a "senior product manager growth" search returned mostly the same roles as "product manager." So:
 - keep `keywords` broad (`product%20manager`) and let the scan's filtering catch level, title, and signals like growth, and
-- add a second search only when it covers ground the first misses: another title (`product%20lead`, `program%20manager`) or another place the first doesn't cover (a second city, or remote when the first search doesn't already include the remote filter). Scan both.
+- add a second search only when it covers ground the first misses (if the user needs both a second title and a second place, that's at most two more searches; never multiply every title by every place): another title (`product%20lead`, `program%20manager`) or another place the first doesn't cover (a second city, or remote when the first search doesn't already include the remote filter). Scan both.
 
 ## Any other board: capture an existing search
 

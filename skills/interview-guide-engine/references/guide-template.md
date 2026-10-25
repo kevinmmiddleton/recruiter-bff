@@ -77,7 +77,7 @@ _Updated YYYY-MM-DD · from the posting saved [date] · [live on the company's s
 
 ### Likely questions and answers
 **[Question]**
-[Answer in the user's voice, under 150 words. For "and" questions, the second half first. Story bank story named if used.]
+[Answer in the user's voice, under 150 words. For "and" questions, the second half first. Story bank story named if used, and noted if the company already read it in the application.]
 
 ### Awkward questions, scripted
 [Only the ones that apply: why leaving, short stints, overqualified, current employment, applied before, "what are your hesitations?"]

@@ -42,7 +42,7 @@ _Resume: primary, job-search/resume/primary.md, copied from Sam-Okafor-resume.pd
 
 - **Functions:** data science PM (but growth analytics is fine); ad-tech PM
 - **Industries:** crypto; gambling and sports betting
-- **Company types:** staffing and recruiting firms; job aggregators that repost other companies' roles
+- **Company types:** staffing and recruiting firms; job aggregators that repost other companies' roles; postings that hide the company ("Confidential")
 - **Named companies to skip:** (add over time)
 
 ## Saved Searches
@@ -124,7 +124,7 @@ Optional things already offered, with the date, so no skill offers them twice. A
 - **Industries** are judged by the company's core business, not one product line. A software company that sells *to* an excluded industry gets shown with a flag, not cut.
 - **Temporary blocks** carry a reason and a revisit date: "Acme: hiring freeze, revisit January," or a cooling-off period after a rejection when the same role keeps getting reposted. The named-companies list grows over time; append, don't replace.
 - **Direct reports** the user doesn't want: flag the role and let them decide; don't skip it automatically.
-- **Company types** default to excluding staffing firms and aggregators that repost roles. The user can turn that off, but only an explicit line does it ("include staffing firms"); a missing line or "(none stated)" keeps the default.
+- **Company types** default to excluding staffing firms, aggregators that repost roles, and postings that hide the company. The user can turn those off, but only an explicit line does it ("include staffing firms," "include confidential postings"); a Company types line that still reads the old default (staffing firms and aggregators only) gets "postings that hide the company" added the next time the profile is written, and the user is told once; a missing line or "(none stated)" keeps the default.
 - **Company size and stage** shape the fit check's company score and the scan's ranking. A size or stage the user dislikes is a soft warning unless they call it a dealbreaker.
 - **The resumes** live in `job-search/resume/`: the user's own files, unchanged, plus `primary.md` (and `alternate.md`, if there is one), plain-text copies of the current versions. Two at most: the primary, and an alternate only for a second kind of role or industry, never one per posting. The Resume line says which roles each covers, and every fit check uses the one that matches, so scores stay comparable. They're the record of what the resumes really say, so every claim a skill makes can be checked against them. The profile summarizes them; it never replaces them.
 - **Proof points** come from the resume first. Never invent a number: if the resume says "improved conversion," write that and mark the number as a gap to fill, like `[from ?% to ?%]`.
@@ -149,7 +149,7 @@ A profile from Job Search Agent or Recruiter BFF 0.4 has the same kinds of facts
 | `## Strong-Fit Signals (flag these as top-tier)` | `## Signals`: the old list becomes **Strong**; add **Parked** and **Weak** as "(not set yet)" and **Pickiness** as "strong plus maybe" |
 | `## Exclusions` | `## Exclusions (exceptions written in)` |
 | `## Exclusions` field "Role types / functions" | "Functions" |
-| `## Exclusions` field "Company types: (none stated)" or missing | "Company types: staffing and recruiting firms; job aggregators that repost other companies' roles" (the default; tell the user once) |
+| `## Exclusions` field "Company types: (none stated)" or missing | "Company types: staffing and recruiting firms; job aggregators that repost other companies' roles; postings that hide the company" (the default; tell the user once) |
 | `## ATS Board Searches (Google site: dorks)` | `## Company Job Site Searches` |
 | `## Companies to Watch (optional)` | `## Companies to Watch` |
 | `## Background (for fit reads + interview prep)` | `## Background (drafted from the resume)` |

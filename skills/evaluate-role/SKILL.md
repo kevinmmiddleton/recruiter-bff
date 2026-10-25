@@ -14,7 +14,7 @@ description: >
 
 A scan says a role exists and looks plausible. This skill answers the next question: is this one worth an application? It reads the whole posting, checks it's still live, makes two separate reads (does the user fit what they want, and does the role fit what the user wants), scores it, and says what it would do.
 
-**Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), follow "Folders from 0.4" in Step 0 of `job-search-setup`: rename only a folder 0.4 made, only during a request that writes something (never on a read-only question like "what's in my pipeline?"), and name each file you renamed. Never rename or restructure files the user made themselves without asking. Until the files are renamed, or if they can't be renamed from here, use whichever name exists, the 1.0 name first and then the 0.4 one (`search-profile.md` or `profile.md`, `looking-for.md` or `preferences.md`, `job-tracker.csv` or `applications.csv`, `interview-stories.md` or `story-bank.md`, `companies/` or `interviews/`, `interview-guide.md` or `guide.md`), and put new files where the existing ones are.
+**Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), follow "Folders from 0.4" in Step 0 of `job-search-setup`: rename only a folder 0.4 made, only during a request that writes something (never on a read-only question like "what's in my pipeline?", or for a draft nobody has saved), and name each file you renamed. Never rename or restructure files the user made themselves without asking. Until the files are renamed, or if they can't be renamed from here, use whichever name exists, the 1.0 name first and then the 0.4 one (`search-profile.md` or `profile.md`, `looking-for.md` or `preferences.md`, `job-tracker.csv` or `applications.csv`, `interview-stories.md` or `story-bank.md`, `companies/` or `interviews/`, `interview-guide.md` or `guide.md`), and put new files where the existing ones are.
 
 ## Never
 
@@ -127,7 +127,7 @@ If the user knows someone at the company (from `job-search/contacts.csv`), add o
 
 ## Step 8: Save it
 
-The first time a role is evaluated, save two files in the company folder, `job-search/companies/<company>/` (create it; name it the company in lowercase, hyphens for spaces, no Inc or LLC, like `fernhill` or `northstar-learning`, and use the same name everywhere). Postings get taken down, and the guide needs the text later.
+The first time a role is evaluated, save two files in the company folder, `job-search/companies/<company>/` (create it; name it the company in lowercase, hyphens for spaces, no Inc or LLC, like `fernhill` or `northstar-learning`, and use the same name everywhere; for a posting that hides the company, `confidential-YYYY-MM-DD`). Postings get taken down, and the guide needs the text later.
 
 `job-post.md`:
 ```
@@ -158,6 +158,8 @@ Requirements [x] · What you want [x] · Logistics and pay [x] · Company [x] ·
 [what to lead with in the cover note, written answers, and first conversations (the resume stays as it is); what to expect]
 ```
 
+A role stopped at the gate gets both files too, with the second line of `fit-check.md` reading `YYYY-MM-DD · No score (stopped at the gate) · [the rule it failed]`, so a later "score it anyway" or a scan knows why.
+
 If the files already exist for the same role, update `fit-check.md` and keep the original job post. For a second role at the same company, add the role to the name: `job-post-product-lead.md`, `fit-check-product-lead.md`.
 
 Then the tracker, through `application-tracker`:
@@ -165,7 +167,7 @@ Then the tracker, through `application-tracker`:
 - **Already in the tracker** (logged from a scan, say): just update its score to this one, add the one-line verdict to `notes`, and say so. Don't ask again.
 - **No tracker, and the user tracks elsewhere** (the profile's Offered section says so): don't offer to start one.
 - **No tracker file at all:** the offer is application-tracker's "No tracker yet" question (do they keep their applications somewhere else?), not "add it."
-- **Not in the tracker yet:** offer once to add it, as `prospect` (or `skipped` if the verdict was skip and the user agrees), with the score to one decimal and the verdict in `notes`.
+- **Not in the tracker yet:** offer once to add it (never after a skip at the gate; that reply ends without an offer), as `prospect` (or `skipped` if the verdict was skip and the user agrees), with the score to one decimal and the verdict in `notes`.
 
 Comparing several roles? Score each the same way and finish with a one-line ranking.
 
@@ -179,6 +181,8 @@ End with at most one offer. If several apply, pick the first that fits:
 4. **Checking the user's LinkedIn export** for people they know, in general. If there's no export in the folder, offer once to walk them through requesting one (LinkedIn usually sends it within about 10 minutes; the steps are in the contacts skill), then move on.
 5. **The preferences page.**
 6. **Reminders.**
+
+A skip at the gate ends with no offer, and so does a "score it anyway" reply: don't invite a score, and don't offer to change the user's floor or rules unless they bring it up.
 
 Logging an application or another status change has no next step of its own (a booked round is the exception: see 3). That reply is the quiet moment for 4, 5, and 6. A reply that carries out something the user just said yes to (a contacts import, a draft, the preferences page) doesn't add a new optional offer; at most it ends with that task's own next step from 3.
 

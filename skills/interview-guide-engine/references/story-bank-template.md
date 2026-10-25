@@ -20,7 +20,7 @@ _Last updated: YYYY-MM-DD_
 - **Result:** The outcome, with both ends of the number if there is one.
 - **Reflection:** What they learned or would do differently. This line makes it a senior answer.
 - **Say carefully:** exact numbers, who else deserves credit, anything never to claim.
-- **Used in:** Fernhill recruiter screen 2026-10, Northstar panel 2026-11
+- **Used in:** Fernhill application, 2026-10; Fernhill recruiter screen, 2026-10; Northstar panel, 2026-11
 - **Notes:** how it landed, follow-up questions it drew, framings that worked.
 ```
 

@@ -18,7 +18,7 @@ Use the labels in the second column wherever the user sees scores: the fit check
 
 ## Anchors
 
-Score whole or half points. The anchors are the calibration; land between them when it fits.
+Score whole or half points. The anchors are the calibration; land between them when it fits. For Requirements, count first: everything matched is 5; one partial with everything else matched is 4; one real must-have gap is 3, however many other items match; a half point only when the count sits exactly between two anchors. Count each requirement once, even if the posting lists it twice: a gap plus partials is still 3, and two partials with no gap is 3.5.
 
 ### Requirements match (40%)
 
@@ -63,13 +63,13 @@ A clear, specific posting signals a team that knows what it's hiring for.
 - **5:** specific duties, a named team and scope, a clear level, pay listed
 - **4:** clear and specific, pay unlisted
 - **3:** standard boilerplate; nothing alarming
-- **2:** vague duties, a kitchen-sink list, "wear many hats" signs of understaffing, or one ghost-job flag
+- **2:** vague duties, a kitchen-sink list, "wear many hats" signs of understaffing, or one ghost-job flag (a missing pay range where the law requires one doesn't count here; see Rules)
 - **1:** barely a posting: generic paragraphs, contradictory level signals, or several ghost-job flags
 
 ## Rules
 
 - **Unknowns score 3.** Unstated work mode, no stage information: neutral, never a penalty. Pay is the one exception, because most postings leave it out: with location and work mode inside the rules, unlisted pay scores Logistics 4 (see Logistics and "Only a floor set"), and Posting quality already gives it a 4 instead of a 5. Never score unlisted pay 3, and never below. The profile's "Unlisted pay: neutral" means exactly this 4. A missing range in a place that requires one (New York, California, Colorado, Washington, and others) is a ghost-job flag to mention in one line, "Heads-up: [place] requires a pay range, and this posting doesn't show one. If you copied it from somewhere else, check the company's own page; if it isn't there either, ask the recruiter early," and Logistics and Posting quality still stay 4 for it. For a remote posting, count it only if the posting names a place that requires a range.
-- **The gate comes first.** If the role fails a hard rule from the find-jobs classification rubric (skip-list company, a place they won't work, an excluded function with no exception that applies), say so. It needs a skip, not a score. Score it anyway only if the user asks, and then the verdict still says skip and names the rule it failed: "4.0 on paper, but skip: the whole range is below your floor."
+- **The gate comes first.** If the role fails a hard rule from the find-jobs classification rubric (skip-list company, a place they won't work, an excluded function with no exception that applies, a listed range entirely below the floor, a posting that hides the company), say so. It needs a skip, not a score. Score it anyway only if the user asks, and then the verdict still says skip and names the rule it failed: "4.0 on paper, but skip: the whole range is below your floor."
 - **Exceptions win.** If an exclusion has an exception and the role fits the exception, it passes the gate ("data science PM out, growth analytics in": a growth analytics PM role passes).
 - **Round to one decimal, half up,** everywhere a score is computed or shown: the verdict, `fit-check.md`, and the tracker. 4.85 becomes 4.9; 4.84 becomes 4.8. If you compute it in code, use `Decimal(str(round(x, 2))).quantize(Decimal("0.1"), rounding=ROUND_HALF_UP)`; Python's `round(x, 1)` gives 4.8 for 4.85.
 - **Show the dimension scores.** The overall number earns trust by being something you can take apart.

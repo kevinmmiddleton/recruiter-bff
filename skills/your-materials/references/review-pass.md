@@ -26,7 +26,7 @@ Read every draft the way a tired, skeptical hiring manager would, then fix what 
 Unless the user's own edits say otherwise:
 
 - Delete the opener; start on something concrete. Same for bridge sentences in the middle. (A short "why are you a fit" box may open with one plain, warm line of confidence.)
-- No slogan closer in form fields. End on a fact, a link, or the last real thing done. Save point-of-view lines for interviews.
+- No slogan closer in form fields. End on a fact, a link, or the last real thing done. Ending a story on what the user learned, in one plain sentence, is fine: that's the story's Reflection, not a slogan. Save point-of-view lines for interviews.
 - Don't default to three examples.
 - Fewer words. If a sentence works without a phrase, cut the phrase.
 - Less polish, same warmth. Sand off cleverness, not enthusiasm.

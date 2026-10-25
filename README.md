@@ -59,9 +59,10 @@ Paste a posting, or a link, and ask "should I apply?"
 Being one of the first 50 applicants beats being a polished 200th. Say "scan for jobs":
 
 - It reads your saved LinkedIn search in a browser you're logged in to (the Claude desktop app's built-in browser, or the Claude in Chrome extension), or you paste the results in.
-- It builds one-click Google searches of recent posts on company job sites like Greenhouse, Lever, and Ashby, where lots of roles get posted and never reach LinkedIn.
+- It builds one-click Google searches of recent posts on company job sites like Greenhouse, Lever, and Ashby, where some roles get posted and never reach LinkedIn.
 - It checks the public job feeds of companies on your watchlist.
-- It hides your dealbreakers, staffing firms, and job aggregators, says why each match made the cut, and tells you if any source failed.
+- It hides your dealbreakers, staffing firms, job aggregators, and postings that don't name the company, says why each match made the cut, and tells you if any source failed.
+- It remembers what it showed you, so a role you passed on in a recent scan doesn't come back as new. Say "show them" to see those again.
 
 ## Keep track, without a spreadsheet habit
 
@@ -124,6 +125,7 @@ job-search/
 ├── search-profile.md     # your search, pay, dealbreakers, and background (private)
 ├── looking-for.md        # what you want next, in one page you can share
 ├── job-tracker.csv       # your tracker; opens in any spreadsheet app
+├── scan-history.csv      # roles earlier scans showed, so they don't come back as new
 ├── interview-stories.md  # your story bank, reused in applications and interviews
 ├── contacts.csv          # people at companies you're pursuing, and next moves
 ├── materials/            # answers.md: application answers worth reusing

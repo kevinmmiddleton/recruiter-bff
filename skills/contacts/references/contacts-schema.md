@@ -9,7 +9,7 @@
 | `name` | Full name |
 | `company` | Where they work now |
 | `title` | Their title |
-| `tags` | Any of: `recruiter`, `product`, `engineering`, `design`, `leader`, `helped-me`, `referrer` (separated by `;`) |
+| `tags` | Any of: `recruiter`, `same-role` (works in the user's own function), `engineering`, `design`, `leader`, `helped-me`, `referrer` (separated by `;`). Older files may say `product`, which means the same thing as `same-role`. |
 | `closeness` | `close` (would pick up the phone), `friendly` (worked together or know well), `loose` (met, shared contact), `never-spoke` (connected, no real contact) |
 | `linkedin_url` | Their profile link, if known |
 | `last_contact` | ISO date of the last real exchange either way. Blank means never. |
@@ -86,14 +86,21 @@ def read_csv(path):
                                  "Ask the user to save it as CSV UTF-8, then close it in Excel, then run this again.")
             reader = csv.DictReader(io.StringIO(text, newline=""))
             rows, cols = list(reader), list(reader.fieldnames or [])
-            if not rows and (set(cols) & {"never-spoke", "loose", "friendly", "close", "prospect", "applied", "screening",
-                                          "interview", "final", "offer", "hold", "rejected", "closed", "ghosted", "withdrawn"}
-                             or any(is_date(c) or "://" in c for c in cols)):
+            if (any(is_date(c) or "://" in c for c in cols)
+                    or not rows and set(cols) & {"never-spoke", "loose", "friendly", "close", "prospect", "applied", "screening",
+                                                 "interview", "final", "offer", "hold", "rejected", "closed", "ghosted", "withdrawn"}):
                 # every contact has a closeness and every tracker row a status, and a real header holds no dates or links,
-                # so a header holding one has swallowed the rows
+                # so a header holding one has swallowed rows
                 raise SystemExit("CAN'T READ " + path + ": its rows ran together into the header, so a copy lost the line "
                                  "breaks (Excel on a Mac can end rows with a bare carriage return). Write the copy again with "
                                  "each row on its own line, then run this again. Never write this copy back.")
+            if any(None in r for r in rows):
+                # a row with more values than the header has columns: rows that ran together, or a comma outside quotes;
+                # a save would drop what doesn't fit
+                raise SystemExit("CAN'T READ " + path + ": a row has more values than the header has columns. Either rows "
+                                 "ran together into one (a copy lost the line breaks) or a value has a comma that isn't in quotes, "
+                                 "and saving now would drop data. Don't repair it without the user's yes: the fix is each row on its own line "
+                                 "and any comma inside a value in quotes. Then run this again. Never write this copy back.")
             return rows, cols
         except UnicodeDecodeError:
             continue
@@ -127,13 +134,13 @@ def clean(name):
         s = re.sub(SUFFIX, "", s)
     return ALIASES.get(s, s)
 
-# Same-function titles: set these from the user's target function. Product management shown here;
-# neighbors that share a word ("Product Designer," "Product Marketing") are left out on purpose.
+# Same-function titles: set these from the user's target function. The tag is "same-role" whatever the function.
+# Product management shown here; neighbors that share a word ("Product Designer," "Product Marketing") are left out on purpose.
 SAME_FUNCTION = r"product manager|product management|head of product|(vp|vice president|director)\W+(of\s+)?product\b(?!\s+(design|marketing))|\bcpo\b|chief product|product owner|product lead|\bpm\b"
 def tags_for(title):
     t = (title or "").lower(); tags = []
     if re.search(r"recruit|talent acquisition|talent partner|\bsourc(er|ing)\b|people ops|head of (people|talent)|\bhrbp\b|human resources|staffing", t): tags.append("recruiter")
-    if re.search(SAME_FUNCTION, t): tags.append("product")
+    if re.search(SAME_FUNCTION, t): tags.append("same-role")
     if re.search(r"engineer|developer|\bcto\b", t): tags.append("engineering")
     if re.search(r"design|\bux\b", t): tags.append("design")
     if re.search(r"\b(vp|vice president|director|head of|chief|founder|co-founder|ceo|coo|cpo|gm|general manager|partner)\b", t) and "recruiter" not in tags: tags.append("leader")

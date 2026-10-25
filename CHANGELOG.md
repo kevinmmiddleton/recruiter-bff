@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.0.3 (2026-10-25)
+
+**Scans remember what they've shown you.** A role a scan showed you, that you didn't add to your tracker, no longer comes back as "new." Scans keep a small `scan-history.csv` in your folder, hold those roles back with a count ("Also held back: 3 shown in an earlier scan"), and list them if you say "show them." A role still posted a month after you last saw it comes back once, tagged "Shown Oct 24, still open." A near match ("Senior Product Manager, Platform" next to "Senior Product Manager") is never held back. Scheduled scans read the history and add what their digest showed.
+
+**Your tracker can't lose rows to a damaged copy.** If a copy of `job-tracker.csv` or `contacts.csv` comes back with rows run together (or a value with a stray comma), the plugin now stops instead of saving a copy that drops rows. It says which row looks wrong and how to fix it, and offers to fix it for you, saving a backup copy first; it never repairs the file without your yes.
+
+- **Confidential postings are out.** A posting that hides the company ("Confidential," "our client") is excluded by default, in scans and at the fit check's gate. A profile line ("include confidential postings") turns them back on. The "unknown company" flag is gone; when it matters, the reason line says it can't tell what a company does.
+- **"PM" means your kind of PM.** The tracker and scans read "PM" as product, project, or program manager, from the roles in your profile. If you look at more than one kind, it asks which role you mean.
+- **Contract roles aren't mistaken for staffing firms.** Contract or contract-to-hire is a soft warning, never a reason to hide a role.
+- **"I applied" starts your tracker** if you don't have one yet, and "do you track somewhere else?" is asked once per conversation at most.
+- **Fit checks score more consistently.** Requirements are counted first (one partial is a 4, one real gap is a 3), and a role stopped at the gate gets its files saved, marked with the rule it failed, with no offer after.
+- **Scans read cleaner.** Every skipped source says why, a "Promoted" card is kept, and the headline reads "9 new roles, 3 of them strong."
+- **Saved searches** include Group, Principal, and Lead PM roles (LinkedIn often tags them Director), with guidance for remote anywhere in the US.
+- **Story bank and guides:** a story needs its lesson before it's banked, and "add this to my story bank" works; two matching saved answers never get mixed; an answer written after a guide adds a line to that guide; guides are checked against your own files before saving, and the chat reply stays short.
+- **Older folders:** drafting something in a 0.4 folder no longer renames your files.
+- **Contacts in your own field are tagged `same-role`,** whatever your field.
+- **Reminders start with the date they're using,** so a wrong clock is easy to spot.
+- **Checks:** 130 code checks (up from 94).
+
 ## 1.0.2 (2026-10-24)
 
 - **Fixed: missing pay is scored one way.** The fit check's rules disagreed about a posting that doesn't list pay: the Logistics scale gave it a 4, and the general "unknowns score 3" rule gave it a 3, enough to move an overall score across a tier (3.5 to 3.4). Now, when location and work mode fit, unlisted pay always scores Logistics 4, with or without a comfortable number in your profile, and never lower. Posting quality still gives a 4 instead of a 5 when pay isn't listed. Found by an outside tester running Recruiter BFF in Codex.

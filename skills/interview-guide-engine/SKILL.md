@@ -7,7 +7,8 @@ description: >
   [company]," "interview guide," "what should I expect," "I have a screen with [company],"
   "add a round," "who am I meeting," "how do I answer the pay question," or "help with this
   case." Also use after an interview ("debrief," "how did that go," "here's what they asked")
-  and for practice ("practice my interview," "mock interview," "quiz me"). Reads the shared
+  and for practice ("practice my interview," "mock interview," "quiz me"), and to add or fix a
+  story in the story bank ("add this to my story bank," "save this story"). Reads the shared
   profile, preferences page, and story bank, and saves the guide in the company's folder.
 ---
 
@@ -17,7 +18,7 @@ Help the user walk into every conversation knowing what the role really is, how 
 
 Every guide opens with the same four blocks, in this order: **the role in plain words, your fit, your gaps, questions to ask.** Above them sit a one-line verdict and the next round. Everything else comes after.
 
-**Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), follow "Folders from 0.4" in Step 0 of `job-search-setup`: rename only a folder 0.4 made, only during a request that writes something (never on a read-only question like "what's in my pipeline?"), and name each file you renamed. Never rename or restructure files the user made themselves without asking. Until the files are renamed, or if they can't be renamed from here, use whichever name exists, the 1.0 name first and then the 0.4 one (`search-profile.md` or `profile.md`, `looking-for.md` or `preferences.md`, `job-tracker.csv` or `applications.csv`, `interview-stories.md` or `story-bank.md`, `companies/` or `interviews/`, `interview-guide.md` or `guide.md`), and put new files where the existing ones are.
+**Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), follow "Folders from 0.4" in Step 0 of `job-search-setup`: rename only a folder 0.4 made, only during a request that writes something (never on a read-only question like "what's in my pipeline?", or for a draft nobody has saved), and name each file you renamed. Never rename or restructure files the user made themselves without asking. Until the files are renamed, or if they can't be renamed from here, use whichever name exists, the 1.0 name first and then the 0.4 one (`search-profile.md` or `profile.md`, `looking-for.md` or `preferences.md`, `job-tracker.csv` or `applications.csv`, `interview-stories.md` or `story-bank.md`, `companies/` or `interviews/`, `interview-guide.md` or `guide.md`), and put new files where the existing ones are.
 
 ## Never
 
@@ -30,8 +31,8 @@ Every guide opens with the same four blocks, in this order: **the role in plain 
 
 ## Step 0: Load what's known
 
-1. Read `job-search/search-profile.md` and the resume this role was checked against: the one `fit-check.md` names, or the primary unless the profile says the alternate covers this kind of role (`job-search/resume/primary.md` or `alternate.md`; a folder from a 1.0 test build may have `resume.md`, which is the primary). Never write or output a resume. No profile: run `job-search-setup` first (it builds the background from the resume, so the user never answers twice). If you can't see the user's folder at all, say that instead of starting setup. Proof points and answers trace back to the resume's own wording. With no saved resume (older folders don't have one), work from the profile's Background and Proof Points, say so in one line, and mention once that pasting the resume lets you save a copy (add "Resume copy: YYYY-MM-DD" to the profile's Offered section so it isn't repeated).
-2. If there are no proof points, collect them first (see `references/user-profile-template.md`) and write them back into the profile. Voice notes are nice to have: if they're missing, write in plain, direct sentences built from the user's own resume wording, ask one optional question ("How would you describe how you come across in interviews?"), and move on. Never start a second profile.
+1. Read `job-search/search-profile.md` and the resume this role was checked against: the one `fit-check.md` names, or the primary unless the profile says the alternate covers this kind of role (`job-search/resume/primary.md` or `alternate.md`; a folder from a 1.0 test build may have `resume.md`, which is the primary). Never write or output a resume. No profile: run `job-search-setup` first (it builds the background from the resume, so the user never answers twice). If you can't see the user's folder at all, say that instead of starting setup. Proof points and answers trace back to the resume's own wording. With no saved resume (older folders don't have one), work from the profile's Background and Proof Points, say so in one line, and mention once that pasting the resume lets you save a copy (add "Resume copy: YYYY-MM-DD" to the profile's Offered section the next time this conversation saves a file, so it isn't repeated; a draft alone writes nothing).
+2. If there are no proof points, collect them first (see `references/user-profile-template.md`) and write them back into the profile. Voice notes are nice to have: if they're missing, write in plain, direct sentences built from the user's own resume wording, ask one optional question ("How would you describe how you come across in interviews?"), but only in a reply that asks nothing else and ends without an offer, and move on. Never start a second profile.
 3. Read, if they exist: `job-search/looking-for.md` (must-haves and must-nots become questions), `job-search/interview-stories.md` (reuse stories before drafting new ones), `job-search/materials/answers.md` (anything the user already wrote to this company: a story that went into the application gets told the same way in the interview, with more depth), the company folder `job-search/companies/<company>/` (`job-post.md`, `fit-check.md`, and any existing `interview-guide.md`), and `job-search/contacts.csv` (anyone the user knows there). No `contacts.csv` but a LinkedIn export (`Connections.csv`) in the Cowork folder? Checking it is a possible offer (see "Ending a reply"): someone who works there is the best prep there is.
 4. Get the round details: when, what kind of round, and who. If the user doesn't say, ask once: "Who are you meeting, and when?" Work out real dates from today and say them back with the weekday.
 
@@ -115,7 +116,7 @@ Build the rest of the guide from `references/guide-template.md`:
 
 ## Step 8: Save and hand off
 
-Save to `job-search/companies/<company>/interview-guide.md`. Share the top of the guide in the chat (verdict, next round, four blocks), and say the rest is in the file.
+Save to `job-search/companies/<company>/interview-guide.md`. Before saving, check every answer and claim in the guide against the resume, the profile, the story bank, and the saved answers, and cut anything without a source (a year count, a goal the user never stated, a fact moved to a person or a part it doesn't belong to). Then share only the top of the guide in the chat: the verdict, the next round, and the four blocks at a line or two each, 200 words or fewer for that part (count them before sending). Then say the rest is in the file, and end with at most one short offer. Don't paste the whole guide into the chat.
 
 Record what the user told you in the tracker through `application-tracker` (a booked round: the status and `next_date`, with `completed = False`) and say what changed. That's recording, not an offer. Then make **one** offer: usually a practice run for this round.
 
@@ -167,7 +168,7 @@ Prep compounds when stories are kept. The bank lives at `job-search/interview-st
 
 - **Reuse** a matching story before drafting a new one; adapt the emphasis to this role, never the facts.
 - **Check for gaps** before each round: if the round will ask about a failure or a disagreement and the bank has none, say so and help draft one from the user's real experience.
-- **Deposit:** after a guide or a debrief, offer once to save any new story.
+- **Deposit:** after a guide or a debrief, offer once to save any new story. When the user asks to add one ("add this to my story bank"), bank it in the template's format; it needs its Reflection, so ask for the lesson first if they haven't given one.
 - **Maintain:** when the user corrects a story, fix the bank, not just the guide. Around ten stories, suggest which one a new story replaces.
 
 ## Ending a reply

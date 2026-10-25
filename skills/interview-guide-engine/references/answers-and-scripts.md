@@ -43,7 +43,7 @@ Several applications at one company: "I applied broadly here because [the work] 
 
 ## Pay
 
-Spoken lines only. The user's own line lives in the profile ("What I say when asked about pay"), with their floor, comfortable, and ideal numbers. Know all three before any call; if they aren't set, ask before the round.
+Spoken lines only. The user's own line lives in the profile ("What I say when asked about pay"), with their floor, comfortable, and ideal numbers. Know all three before any call; if they aren't set, ask before the round, in a reply that doesn't also end with an offer.
 
 **Which line to use:** when the posting lists a range, compare it with the user's own line. If their target sits inside the posted range, "The posted range works for me" is enough, and their own line is the answer if pushed for a number. If their target is near or above the top, use their own line, or the near-the-top version below. Never give two different numbers to the same company.
 
