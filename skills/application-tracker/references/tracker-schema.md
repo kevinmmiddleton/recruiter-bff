@@ -66,7 +66,7 @@ Updating the wrong row is worse than updating none. So:
 
 1. **Same company, same role, after normalizing.** Roles: lowercase, drop punctuation, `sr`/`sr.` becomes `senior`, `pm` becomes the title in `PM_MEANS`, `&` becomes `and`, collapse spaces; keep seniority words, since "Senior Product Manager" and "Product Manager" are different roles. Set `PM_MEANS` in the load snippet from the profile's target titles: `"product manager"` (the default), `"project manager"` or `"program manager"` for those fields, or `None` if the profile's target titles include more than one kind of PM role, so "Senior PM" is left as it is and gets the close-title question (rule 3 or 4) instead of matching the wrong role. Companies: the same, plus drop trailing legal suffixes (Inc, LLC, Ltd, Corp, Co) and anything in parentheses, so "Fernhill, Inc." matches "Fernhill." 
 2. **One match:** update it.
-3. **No exact match, but one open role at that company:** ask whether that's the one before updating it. Finished rows (rejected, closed, withdrawn, skipped, ghosted, accepted) are never a fallback: a new role at a company with only finished rows gets its own row.
+3. **No exact match, but one open role at that company:** if the user named only the company ("I applied to Fernhill"), that's the one: run the update with `role = ""` and `confirmed_row = True` (`None` would also match the company's finished rows) and name the role in the reply so they can correct it ("Marked Senior PM, Growth at Fernhill as applied"). If they named a role that doesn't match it, ask whether that's the one before updating it. Finished rows (rejected, closed, withdrawn, skipped, ghosted, accepted) are never a fallback: a new role at a company with only finished rows gets its own row.
 4. **No exact match and several roles at that company:** don't guess. Show the candidates and ask which one.
 5. **Never update by the first word of a title,** and never update every row at a company unless the user asks for exactly that.
 6. **A shorter or longer company name** ("Northstar" for "Northstar Learning"): when there's no exact company match, a tracked company whose name starts with the other one at a word boundary is a near match. The snippets print CHECK FIRST with those rows. Ask which one the user means, and never add a new row until they say it's a different company.
@@ -207,14 +207,15 @@ def save(rows, cols, path=PATH):
     if any("\ufffd" in v for r in rows for v in r.values() if isinstance(v, str)):   # load() refuses a file with it, so it's new
         raise SystemExit("NOT SAVED: a new value holds the replacement character (\ufffd), so a letter was lost on the way in. "
                          "Ask the user for the real spelling, then run this again.")
-    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     bom = True                          # a new tracker gets Excel's start mark, so Excel shows accented names correctly
     if os.path.exists(path):            # an existing one is written back the way it was read (an empty file counts as new)
         with open(path, "rb") as f:
             head = f.read(3)
         bom = head in (b"\xef\xbb\xbf", b"")
-    fd, tmp = tempfile.mkstemp(dir=os.path.dirname(path) or ".", suffix=".csv")
-    try:
+    tmp = None
+    try:                                # the folder and the temp file are inside the try, so a folder this session can't write to says so
+        os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+        fd, tmp = tempfile.mkstemp(dir=os.path.dirname(path) or ".", suffix=".csv")
         with os.fdopen(fd, "w", newline="", encoding="utf-8-sig" if bom else "utf-8") as f:
             w = csv.DictWriter(f, fieldnames=cols, extrasaction="ignore")
             w.writeheader()
@@ -230,10 +231,14 @@ def save(rows, cols, path=PATH):
         if FILLED:
             print("next_date filled from notes (tell the user):", FILLED)
             FILLED.clear()
-    except PermissionError:
-        raise SystemExit("NOT SAVED: " + path + " is probably open in Excel. Ask the user to close it, then run this again.")
+    except PermissionError as e:
+        # usually the file is open in a spreadsheet app (Windows locks it); in a sandboxed session the folder may not be writable
+        raise SystemExit("NOT SAVED: " + path + " couldn't be written (" + str(e) + "). It's usually open in a spreadsheet "
+                         "app, or the file is marked locked or read-only: ask the user to close it or unlock it, then run "
+                         "this again. If neither, this session may not be allowed to write to that folder; say so and ask the "
+                         "user to check the folder's access.")
     finally:
-        if os.path.exists(tmp):
+        if tmp and os.path.exists(tmp):
             os.remove(tmp)
 
 def raise_stage(r, status, completed=False):

@@ -11,7 +11,7 @@ Check in this order. The first rule a role fails sends it to EXCLUDE, with that 
 3. **Excluded function, unless an exception applies.** If the role is an excluded function, check the exception written next to it first. "Data science PM out, growth analytics in": a growth analytics PM role passes. No exception applies: EXCLUDE, "excluded function."
 4. **Excluded industry.** Judge by the company's core business, not one product line. A company whose core business is on the exclusions or the preferences page's "no thanks" list: EXCLUDE, "excluded industry." A software company that sells *to* that industry: show it with a flag.
 5. **Location.** On-site only somewhere the user won't work, or a place they ruled out: EXCLUDE, "location." Remote or unstated always passes.
-6. **Pay.** Only when the posting lists a range and the whole range is below the floor: EXCLUDE, "pay below floor." A range that starts below the floor but reaches it passes, with a heads-up in "why it fits." Unlisted pay always passes.
+6. **Pay.** Only when the posting lists a range and the whole range is below the floor: EXCLUDE, "pay below floor." A range that starts below the floor but reaches it passes, with a heads-up in "why it fits." "Starting at $X" or "from $X" gives only the bottom of the range, so it never counts as below the floor; a heads-up is enough. Unlisted pay always passes.
 
 A role that survives all six is at least INCLUDE. Then:
 

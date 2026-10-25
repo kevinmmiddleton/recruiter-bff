@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.4 (2026-10-25)
+
+From an outside tester's second round in Codex, on Windows:
+
+- **Scans notice when LinkedIn changes your saved search.** LinkedIn sometimes redirects a saved search into its newer AI-powered search and changes it on the way (a different area, a pay filter, a different date window, or results no longer newest first). Scans now compare the page's filters to your saved link, name each change in the source line, and tell you how to scan with your own filters: set them back on the LinkedIn page, then paste the results.
+- **"I applied" remembers your saved answer.** If you saved an answer written for that company, applying notes its story as used in that application, and tells you in one line so you can correct it.
+- **"Starting at $X" never counts as below your floor.** It only shows the bottom of the range, so the role stays, with a heads-up.
+- **A save that's blocked says why.** It's usually the file open in a spreadsheet app, or marked locked or read-only; if not, the session may not be allowed to write to that folder, and the plugin now says so instead of assuming Excel. A folder the session can't write to now gets that message instead of an error.
+- **"I applied to Fernhill" with one Fernhill role tracked** updates that role and names it, so you can correct it, instead of asking which one.
+- **Checks:** 132 code checks.
+
 ## 1.0.3 (2026-10-25)
 
 **Scans remember what they've shown you.** A role a scan showed you, that you didn't add to your tracker, no longer comes back as "new." Scans keep a small `scan-history.csv` in your folder, hold those roles back with a count ("Also held back: 3 shown in an earlier scan"), and list them if you say "show them." A role still posted a month after you last saw it comes back once, tagged "Shown Oct 24, still open." A near match ("Senior Product Manager, Platform" next to "Senior Product Manager") is never held back. Scheduled scans read the history and add what their digest showed.

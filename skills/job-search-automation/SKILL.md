@@ -133,8 +133,8 @@ closed), write only: "I couldn't reach your job-search folder, so I didn't scan.
 app on your computer and say 'scan for jobs'."
 
 Check the companies to watch through their public job feeds. If a browser you can drive is
-connected, also read the saved searches and the company job site searches; if not, list those
-links to click. Filter the results against the profile's targets and exclusions (postings that
+connected, also read the saved searches and the company job site searches (if LinkedIn changed
+a saved search's filters, say which in that source's line); if not, list those links to click. Filter the results against the profile's targets and exclusions (postings that
 hide the company are excluded unless the profile says to include them), drop
 roles already in the tracker or shown in a scan in the last 30 days (scan-history.csv, if it
 exists; say how many you held back), and write a short digest of new matches, strongest first,

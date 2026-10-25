@@ -121,8 +121,12 @@ def write_csv(path, rows, cols):
         with open(path, "w", newline="", encoding="utf-8-sig" if bom else "utf-8") as f:
             w = csv.DictWriter(f, fieldnames=cols, extrasaction="ignore")
             w.writeheader(); w.writerows(rows)
-    except PermissionError:
-        raise SystemExit("NOT SAVED: " + path + " is probably open in Excel. Ask the user to close it, then run this again.")
+    except PermissionError as e:
+        # usually the file is open in a spreadsheet app (Windows locks it); in a sandboxed session the folder may not be writable
+        raise SystemExit("NOT SAVED: " + path + " couldn't be written (" + str(e) + "). It's usually open in a spreadsheet "
+                         "app, or the file is marked locked or read-only: ask the user to close it or unlock it, then run "
+                         "this again. If neither, this session may not be allowed to write to that folder; say so and ask the "
+                         "user to check the folder's access.")
 
 SUFFIX = r"\s+(inc|incorporated|llc|ltd|limited|corp|corporation|co|company|plc|gmbh|sa|ag|nv)$"  # legal suffixes only: "Fernhill Labs" is not "Fernhill"
 def clean(name):

@@ -77,6 +77,10 @@ The 1.0.2 fix: a posting with no pay listed scores Logistics 4, never 3. Seven c
 
 Every known open item fixed before launch, then tested in parallel parts with blind agents wherever a reading could go two ways. Run 10: scans and the new scan history (10a, 60 of 60), fit checks, tracker "PM," and contacts (10b, 55 of 56), story bank, guides, and reminders (10c, 47 of 50), and the full end-to-end case on a new persona (10d, 49 of 55). The fixes after it included the tracker's silent row loss when a copy's rows run together under an intact header, confidential postings excluded, the "unknown company" flag dropped, the scan history recording only what was shown, and Requirements counted first. Run 11 rechecked those: data safety and scans (11a, 41 of 46: the agent repaired a damaged tracker without asking, now an offer with a backup), fit checks, guides, and the story bank (11b, 49 of 51), and a blind recheck of the last fixes (11c, 33 of 34). Code checks went from 94 to 130. Details in `run-10a` to `run-10d` and `run-11a` to `run-11c`.
 
+## Run 12: the 1.0.4 fixes (Oct 25, 2026)
+
+From Clint's second Codex round: LinkedIn changing a saved search, "I applied" noting the saved answer, "starting at" pay, and a blocked save. 16 of 19 at first: the rebuild changed the user's filters, and a tracker save in a folder the session can't write to raised a raw error (fixed, with a 131st check). 12b, 14 of 15, and 12c, 7 of 9 (the misses on a rebuild path that was then removed), passed the changed-search reply, the one-row "I applied," and the role setting (132nd check). Details in `run-12-2026-10-25.md`.
+
 ## Live LinkedIn check (Oct 6, 2026)
 
 A real, signed-in LinkedIn saved search, read through Claude in Chrome. Found: reading the page's text returned only the description of the job open on the right, not the results list. Fixed in `8c40f07`: find the results list, scroll so the cards load, read the list, strip tracking from job links, page with `&start=25`, and keep "N connections work here" as a contacts hint.

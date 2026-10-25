@@ -326,6 +326,13 @@ def tracker_cases():
     out = run(d, update("Acme", "Staff PM", "applied", confirmed_row=True))
     check("after the user confirms, it updates that row",
           "updated: Acme | Senior Product Manager -> applied" in out and ",applied," in text(d), out)
+    # "I applied to Acme" with only the company named: one open row and one finished row at Acme
+    before = (H14 + "Acme,Senior Product Manager,NY,,u,linkedin,prospect,4,2026-10-01,,2026-10-01,,prospect,\n"
+              + "Acme,Data Analyst,NY,,u,linkedin,rejected,3,2026-08-01,2026-08-02,2026-08-20,,applied,\n")
+    d = folder("company_only", before)
+    out = run(d, update("Acme", "", "applied", confirmed_row=True))
+    check("company named only (role \"\", confirmed): the one open row is updated, the finished row is left alone",
+          "updated: Acme | Senior Product Manager -> applied" in out and "Acme,Data Analyst,NY,,u,linkedin,rejected" in text(d), out)
 
     # Excel "CSV UTF-8" adds a start mark (BOM)
     d = folder("bom", "\ufeff" + H12 + "Fernhill,Senior PM,NYC,,u,linkedin,screening,4,2026-09-01,2026-09-02,2026-09-20,\n")
@@ -574,6 +581,17 @@ def tracker_cases():
     out = run(d, update("Fernhill", "Senior PM", "screening"), pre=EXCEL_LOCK)
     check("a save blocked by Excel says to close the file, and leaves no temp file",
           "NOT SAVED" in out and "close it" in out and text(d) == before and not leftovers(d), out)
+
+    # A folder this session can't write to (a sandboxed session): NOT SAVED, not a raw traceback
+    d = folder("readonly_folder", before)
+    jd = (d / TRACKER_PATH).parent
+    os.chmod(jd, 0o555)
+    try:
+        out = run(d, update("Fernhill", "Senior PM", "screening"))
+    finally:
+        os.chmod(jd, 0o755)
+    check("a folder this session can't write to says NOT SAVED and names the folder's access, with no traceback",
+          "NOT SAVED" in out and "folder's access" in out and "Traceback" not in out and text(d) == before and not leftovers(d), out)
 
 
 EXPORT = '''Notes:
