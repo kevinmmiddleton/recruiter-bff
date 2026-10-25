@@ -14,7 +14,7 @@ Find out if you're a match before you apply, then walk in prepared.
 
 Paste a job posting and Recruiter BFF checks the key requirements against your resume, scores the match from 1 to 5, names the gaps, and tells you to apply or skip. When you land the interview, it hands you a guide built from your own background.
 
-It's a free plugin for Claude Cowork (with a paid Claude plan and the Claude desktop app) and for Codex (with a ChatGPT account). It never applies to jobs or contacts anyone for you, and everything lives in plain files on your computer. *Formerly Job Search Agent.*
+It's a free plugin for Claude Cowork (with a paid Claude plan and the Claude desktop app) and for Codex (best on a paid ChatGPT plan). It never applies to jobs or contacts anyone for you, and everything lives in plain files on your computer. *Formerly Job Search Agent.*
 
 It runs when you ask, on a normal laptop. Nothing to host: no servers of your own, no scrapers, no always-on machine.
 
@@ -93,7 +93,7 @@ The skills are ready in your next conversation. Installing from Chat or Cowork a
 ### In Codex
 
 <!-- verify on Codex (Mac and Windows) before release, and add the version checked -->
-You need Codex, in the ChatGPT desktop app or the Codex CLI, and Python 3 on your computer for the tracker and contacts (on Windows, from python.org or the Microsoft Store). In a terminal, run:
+You need Codex, in the ChatGPT desktop app or the Codex CLI, and Python 3 on your computer for the tracker and contacts (on Windows, from python.org or the Microsoft Store). It works best on a paid ChatGPT plan, with GPT-6.1 Sol (the default there). The free plan's model can get scans and fit checks wrong, so if you're on it, check what it hides and how it scores. In a terminal, run:
 
 ```
 codex plugin marketplace add kevinmmiddleton/recruiter-bff
@@ -128,7 +128,7 @@ Later, when you have half an hour, it can help you write a one-page "what I want
 ## What you need
 
 - **In Claude:** a paid Claude plan (Pro, Max, Team, or Enterprise) and the **Claude desktop app** for Mac or Windows. Cowork reaches your folder through the desktop app, so keep the app open while you work and when reminders run. Quitting the app pauses your reminders until you turn them back on in **Scheduled**. Connect a folder on your computer; setup creates `job-search/` there.
-- **In Codex:** Codex in the ChatGPT desktop app or the Codex CLI, opened in a folder for your job search, and Python 3 for the tracker and contacts.
+- **In Codex:** Codex in the ChatGPT desktop app or the Codex CLI, opened in a folder for your job search, and Python 3 for the tracker and contacts. A paid ChatGPT plan works best.
 - **Optional:** a browser your assistant can drive (the built-in browser in the Claude or ChatGPT desktop app, or the Claude in Chrome extension), so scans can read your saved LinkedIn search. Without one, you paste results in. See `CONNECTORS.md`.
 
 ## Where your files live

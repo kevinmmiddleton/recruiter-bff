@@ -2,7 +2,7 @@
 
 ## 1.1.0 (unreleased)
 
-**Recruiter BFF now runs in Codex.** Install it with two commands, start a Codex chat in a folder for your job search, and say "set up my job search." That folder is your search's home, and everything works the same way: the fit check, interview guides, the story bank, scans, the tracker, contacts, and your materials. It works in Codex in the ChatGPT desktop app and in the Codex CLI.
+**Recruiter BFF now runs in Codex.** Install it with two commands, start a Codex chat in a folder for your job search, and say "set up my job search." That folder is your search's home, and everything works the same way: the fit check, interview guides, the story bank, scans, the tracker, contacts, and your materials. It works in Codex in the ChatGPT desktop app and in the Codex CLI, and best on a paid ChatGPT plan: tested on GPT-6.1 Sol, every workflow held and repeated runs agreed, while the free plan's model got scans and fit checks wrong about half the time.
 
 - **Scans in Codex:** in the ChatGPT desktop app, Codex reads your saved LinkedIn search in its built-in browser after you sign in there once. In the Codex CLI, you paste the results in. Watchlist feeds load when Codex's network access is on, and the scan says so when it's off.
 - **Reminders in Codex:** in the ChatGPT desktop app, check-ins and scheduled scans are Codex scheduled tasks, set up from a plain-words request like the Claude ones. In the Codex CLI, which can't schedule anything, you get a check-in the first time you open Codex in your folder each day, or a calendar reminder you add with one click.
