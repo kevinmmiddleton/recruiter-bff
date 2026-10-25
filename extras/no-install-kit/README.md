@@ -9,7 +9,7 @@ The trade-off: a chat can't save files, search job sites, or remind you. So it h
 **1. You can make a project** (ChatGPT Projects, Claude Projects, a Gemini Gem, or anything that saves instructions and files)
 
 1. Unzip this kit. Move the `job-search` folder somewhere you keep your files, like Documents. That's your search's home.
-2. Make a new project. Paste everything in `INSTRUCTIONS.md` into the project's instructions.
+2. Make a new project (in ChatGPT, choose Project-only memory, so your search stays in the project). Paste everything in `INSTRUCTIONS.md` into the project's instructions.
 3. Upload to the project: the eight files in `Project files`, and your resume. (In ChatGPT, a project's files are called Sources: open the project, choose Sources, then Add sources.)
 4. Start a chat in the project and say "set me up." If ChatGPT offers to continue in Work, choose Stay in Chat.
 5. Paste a job posting anytime and ask "should I apply?" Before an interview, say "prep me for [company]."
