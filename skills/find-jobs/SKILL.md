@@ -126,7 +126,7 @@ Pickiness decides what's shown: "strong plus maybe" (the default) shows STRONG a
 
 ## Step 6: Present the matches
 
-Open with the summary and the source-health line, then the roles, laid out like this (pay ranges with "to," and no dashes):
+Open with the summary and the source-health line, then the roles, laid out like this: "Company: Role" with a colon, pay ranges with "to," and no em dashes anywhere in the reply:
 
 ```
 9 new roles, 3 of them strong.

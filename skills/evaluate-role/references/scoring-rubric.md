@@ -18,7 +18,7 @@ Use the labels in the second column wherever the user sees scores: the fit check
 
 ## Anchors
 
-Score whole or half points. The anchors are the calibration; land between them when it fits. For Requirements, count first: everything matched is 5; one partial with everything else matched is 4; one real must-have gap is 3, however many other items match; a half point only when the count sits exactly between two anchors. Count each requirement once, even if the posting lists it twice: a gap plus partials is still 3, and two partials with no gap is 3.5.
+Score whole or half points. The anchors are the calibration; land between them when it fits. For Requirements, count first: everything matched is 5; one partial with everything else matched is 4; one real must-have gap is 3, however many other items match; a half point only when the count sits exactly between two anchors. Count each requirement once, even if the posting lists it twice: a gap plus partials is still 3, and two partials with no gap is 3.5. When a requirement asks for strength or depth ("strong SQL," "deep experience with"), a skill that's only listed, with no line on the resume showing it used, is a partial; a plain ask ("familiar with SQL") is a match.
 
 ### Requirements match (40%)
 
@@ -51,7 +51,7 @@ From read one, every requirement traced to a line in the background.
 ### Company signals (10%)
 
 - **5:** a subject they'd care about every day, and the size, stage, and ownership they want. With no preferences page, use the profile's industries and strong signals for the subject, and don't go above 4.5 on a subject the user hasn't confirmed (an industry they listed under Company counts as confirmed).
-- **4:** neutral to positive; nothing they've ruled out
+- **4:** neutral to positive; nothing they've ruled out. A company whose subject matches the user's background or strong signals, but that isn't an industry they listed, lands here.
 - **3:** no information either way
 - **2:** near something they've ruled out, or a size or ownership type they said they dislike
 - **1:** an excluded industry or company type (this usually stops at the gate; score it only if the user asked anyway)

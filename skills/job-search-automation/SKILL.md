@@ -182,7 +182,10 @@ Set up reminders (section 1) and a scheduled scan (section 2) the same way, with
 
 ### When it can't (the Codex CLI)
 
-Say it once, plainly: "I can't create scheduled tasks from here. Codex in the ChatGPT desktop app can, or here's what works now." Then offer these, in this order.
+Say it once, plainly, with both halves: "I can't create scheduled tasks from here. Codex in the ChatGPT desktop app can, so you could set it up there; here's what works now." Then:
+
+- **If the user named days and a time,** make the calendar reminder (2, below) right away: it's the reminder they asked for. Then offer the check-in when Codex opens (1) in one line, as the reply's one offer.
+- **If they didn't,** offer the check-in first, then the calendar reminder.
 
 **1. A check-in when Codex opens (start here).** Codex reads a file called `AGENTS.md` in the folder it's opened in at the start of every session. With a yes, add this section to `AGENTS.md` in the folder that holds `job-search/` (create the file if there isn't one; if the user opens Codex inside `job-search/` itself, put it there and drop the `job-search/` prefix). It's self-contained, so it works even in a session that never opens this skill:
 
