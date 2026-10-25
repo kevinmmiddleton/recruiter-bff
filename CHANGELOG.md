@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.1 (2026-10-25)
+
+- **In the ChatGPT desktop app, your search stays where the next chat can find it.** A Work chat with no project works in a folder the app makes for that one chat, and the next chat gets a new one, so a search started there was out of reach a chat later. Every skill now asks you to start a Work chat with a project on your job search folder first, and saves nothing until you do.
+- **Installing in the ChatGPT desktop app needs no terminal:** Plugins, Add, Add a marketplace, then use the plugin in a Work chat. It doesn't load in a Chat conversation, which is where its Try now button goes. The README and the page say so.
+
 ## 1.1.0 (2026-10-24)
 
 **Recruiter BFF now runs in Codex.** Install it with two commands, start a Codex chat in a folder for your job search, and say "set up my job search." That folder is your search's home, and everything works the same way: the fit check, interview guides, the story bank, scans, the tracker, contacts, and your materials. It works in Codex in the ChatGPT desktop app and in the Codex CLI, and best on a paid ChatGPT plan: tested on GPT-6.1 Sol, every workflow held and repeated runs agreed, while the free plan's model got scans and fit checks wrong about half the time.

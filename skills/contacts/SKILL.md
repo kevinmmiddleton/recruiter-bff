@@ -16,7 +16,7 @@ Many hires come through people, not job boards. This skill helps the user see wh
 
 **Older folders:** if `job-search/` still has 0.4's file names (`profile.md`, `applications.csv`, `story-bank.md`, `interviews/`), follow "Folders from 0.4" in Step 0 of `job-search-setup`: rename only a folder 0.4 made, only during a request that writes something (never on a read-only question like "what's in my pipeline?", or for a draft nobody has saved), and name each file you renamed. Never rename or restructure files the user made themselves without asking. Until the files are renamed, or if they can't be renamed from here, use whichever name exists, the 1.0 name first and then the 0.4 one (`search-profile.md` or `profile.md`, `looking-for.md` or `preferences.md`, `job-tracker.csv` or `applications.csv`, `interview-stories.md` or `story-bank.md`, `companies/` or `interviews/`, `interview-guide.md` or `guide.md`), and put new files where the existing ones are.
 
-**No folder:** if you can't see the user's folder at all, say that and stop, as in Step 0 of `job-search-setup`. Never create `job-search/` or any of its files somewhere else.
+**No folder:** if you can't see the user's folder at all, say that and stop, as in Step 0 of `job-search-setup`. A Work chat in the ChatGPT desktop app with no project counts as no folder (its folder is a dated one under `Documents/Codex/`, made for that chat alone): say "This chat doesn't have a folder of its own. Start a new Work chat with a project on the folder you use for your job search (Choose project, then New project, then add the folder), and ask again there." Never create `job-search/` or any of its files somewhere else.
 
 ## Never
 
