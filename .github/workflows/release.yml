@@ -1,0 +1,56 @@
+name: release
+
+# Push a tag like v1.2.0 and this builds the release files, publishes them, and checks the downloads match.
+# Run it by hand (Actions, release, Run workflow) to build and check everything without publishing.
+# Kept the same in recruiter-bff and unpaid-intern, so the two release the same way.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check, test, and build
+        run: |
+          python tools/build.py --check
+          python tools/build.py --dist
+      - name: Release notes start with a title
+        run: |
+          head -n 1 .github/release-notes.md | grep -q '^# ' || { echo ".github/release-notes.md must start with '# Title'"; exit 1; }
+          v=$(python -c "import json;print(json.load(open('.claude-plugin/plugin.json'))['version'])")
+          echo "Version $v: $(head -n 1 .github/release-notes.md | sed 's/^# //')"
+      - name: Tag matches the plugin version
+        if: github.event_name == 'push'
+        run: |
+          v=$(python -c "import json;print(json.load(open('.claude-plugin/plugin.json'))['version'])")
+          [ "v$v" = "$GITHUB_REF_NAME" ] || { echo "Tag $GITHUB_REF_NAME does not match plugin.json version $v"; exit 1; }
+      - name: Publish the release
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/* \
+            --title "$(head -n 1 .github/release-notes.md | sed 's/^# //')" \
+            --notes-file <(tail -n +3 .github/release-notes.md)
+      - name: Downloads match the build
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir verify
+          gh release download "$GITHUB_REF_NAME" --dir verify
+          for f in dist/*; do
+            cmp -s "$f" "verify/$(basename "$f")" || { echo "$(basename "$f") on the release differs from the build"; exit 1; }
+          done
+          echo "All $(ls dist | wc -l | tr -d ' ') release files match the build."
+          latest=$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)
+          [ "$latest" = "$GITHUB_REF_NAME" ] || echo "Note: the latest release is $latest, not $GITHUB_REF_NAME"

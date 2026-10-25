@@ -9,6 +9,10 @@
 The repo root is the plugin. The skills live in skills/<name>/. Derived files are committed, so the plugin
 installs straight from GitHub in Claude Code and Codex; this script keeps them in sync with
 .claude-plugin/plugin.json, the one place the name, version, and description are written.
+
+To release: bump the version in .claude-plugin/plugin.json, add a CHANGELOG.md entry, update
+.github/release-notes.md (first line "# Title"), merge to main, then push a matching tag (v1.1.2).
+.github/workflows/release.yml builds the files, publishes them, and checks the downloads match.
 """
 from __future__ import annotations
 
