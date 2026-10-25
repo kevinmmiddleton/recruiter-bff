@@ -197,7 +197,16 @@ def leftovers(d):
 
 # ---------- checking ----------
 
-passed, failed = 0, []
+passed, failed, skipped = 0, [], []
+WIN = os.name == "nt"   # Windows has no POSIX file modes: chmod only sets or clears the read-only flag
+
+for _s in (sys.stdout, sys.stderr):   # a detail line can hold an emoji; Windows' console encoding can't print it
+    try: _s.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError): pass
+
+def skip(name, why):
+    skipped.append(name)
+    print(f"  skip  {name} ({why})")
 
 def check(name, ok, detail=""):
     global passed
@@ -301,8 +310,9 @@ def tracker_cases():
     # File permissions survive a save
     d = folder("perms", H14 + "Fernhill,Senior PM,NYC,,u,linkedin,applied,4,2026-09-01,2026-09-02,2026-09-20,,applied,\n")
     (d / TRACKER_PATH).chmod(0o644)
+    want = mode(d)   # 0o644, or 0o666 on Windows, where only the read-only flag exists
     out = run(d, update("Fernhill", "Senior PM", "screening"))
-    check("a save keeps the tracker's permissions", out.startswith("updated:") and mode(d) == 0o644, oct(mode(d)))
+    check("a save keeps the tracker's permissions", out.startswith("updated:") and mode(d) == want, oct(mode(d)))
     d = folder("perms_new")
     run(d, CREATE)
     check("a new tracker gets normal permissions, not owner-only", mode(d) == default_mode(), oct(mode(d)))
@@ -583,15 +593,19 @@ def tracker_cases():
           "NOT SAVED" in out and "close it" in out and text(d) == before and not leftovers(d), out)
 
     # A folder this session can't write to (a sandboxed session): NOT SAVED, not a raw traceback
-    d = folder("readonly_folder", before)
-    jd = (d / TRACKER_PATH).parent
-    os.chmod(jd, 0o555)
-    try:
-        out = run(d, update("Fernhill", "Senior PM", "screening"))
-    finally:
-        os.chmod(jd, 0o755)
-    check("a folder this session can't write to says NOT SAVED and names the folder's access, with no traceback",
-          "NOT SAVED" in out and "folder's access" in out and "Traceback" not in out and text(d) == before and not leftovers(d), out)
+    name = "a folder this session can't write to says NOT SAVED and names the folder's access, with no traceback"
+    if WIN:
+        skip(name, "chmod can't make a Windows folder unwritable; the Excel-lock check covers a refused save there")
+    else:
+        d = folder("readonly_folder", before)
+        jd = (d / TRACKER_PATH).parent
+        os.chmod(jd, 0o555)
+        try:
+            out = run(d, update("Fernhill", "Senior PM", "screening"))
+        finally:
+            os.chmod(jd, 0o755)
+        check(name, "NOT SAVED" in out and "folder's access" in out and "Traceback" not in out and text(d) == before
+              and not leftovers(d), out)
 
 
 EXPORT = '''Notes:
@@ -686,10 +700,11 @@ def contacts_cases():
         "\ufeffname,company,title,tags,closeness,linkedin_url,last_contact,next_move,next_date,notes,source\n"
         "Priya Shah,Fernhill,Talent,recruiter,close,,2026-09-01,follow up,,,added\n")
     (d / CONTACTS_PATH).chmod(0o644)
+    want = mode(d, CONTACTS_PATH)
     out = run(d, IMPORT, base=False)
     body = (d / CONTACTS_PATH).read_text(encoding="utf-8-sig")
     check("contacts saved by Excel keep their start mark and permissions, with one clean name column",
-          has_mark(d, CONTACTS_PATH) and mode(d, CONTACTS_PATH) == 0o644 and body.startswith("name,company,")
+          has_mark(d, CONTACTS_PATH) and mode(d, CONTACTS_PATH) == want and body.startswith("name,company,")
           and "\ufeff" not in body and body.count("Priya Shah,") == 1, out)
 
     d = contacts_folder("contacts_not_copied")
@@ -961,10 +976,11 @@ def main():
     finally:
         shutil.rmtree(WORK, ignore_errors=True)
     print()
+    note = f" ({len(skipped)} skipped on this system)" if skipped else ""
     if failed:
-        print(f"{len(failed)} of {passed + len(failed)} checks failed.")
+        print(f"{len(failed)} of {passed + len(failed)} checks failed{note}.")
         sys.exit(1)
-    print(f"All {passed} checks passed.")
+    print(f"All {passed} checks passed{note}.")
 
 
 if __name__ == "__main__":
