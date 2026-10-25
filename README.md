@@ -14,7 +14,7 @@ Find out if you're a match before you apply, then walk in prepared.
 
 Paste a job posting and Recruiter BFF checks the key requirements against your resume, scores the match from 1 to 5, names the gaps, and tells you to apply or skip. When you land the interview, it hands you a guide built from your own background.
 
-It's a free plugin for Claude Cowork (with a paid Claude plan and the Claude desktop app) and for Codex (best on a paid ChatGPT plan). It never applies to jobs or contacts anyone for you, and everything lives in plain files on your computer. *Formerly Job Search Agent.*
+It's a free plugin for Claude Cowork (with a paid Claude plan and the Claude desktop app) and for Codex (best on a paid ChatGPT plan). No Claude or Codex? The no-install kit brings the fit check and interview guides to ChatGPT or any AI chat. It never applies to jobs or contacts anyone for you, and everything lives in plain files on your computer. *Formerly Job Search Agent.*
 
 It runs when you ask, on a normal laptop. Nothing to host: no servers of your own, no scrapers, no always-on machine.
 
@@ -104,6 +104,12 @@ Then start a new Codex chat in the folder you want to use for your job search an
 
 In the ChatGPT desktop app, Codex can read your saved LinkedIn search in its built-in browser (sign in to LinkedIn there once), and reminders run as scheduled tasks while the app is open. In the Codex CLI, you paste search results in, and reminders are a check-in the first time you open Codex each day, or a calendar file you double-click to add.
 
+### In ChatGPT or any AI chat (the no-install kit)
+
+Download **[recruiter-bff-no-install-kit.zip](https://github.com/kevinmmiddleton/recruiter-bff/releases/latest/download/recruiter-bff-no-install-kit.zip)** and follow the README inside. Make a project, paste in the kit's instructions, add its method files and your resume, and say "set me up." You get the fit check, interview guides, pasted job lists sorted to what you want, written answers from your story bank, and a tracker. A chat can't save files, scan job sites, or remind you, so it hands you each file to keep when you say "wrap up," you paste in your search results, and you add reminders to your own calendar.
+
+Tested in ChatGPT Projects with ChatGPT's default model. It should work the same way in any AI chat that keeps instructions and files, like a Gemini Gem or Claude Projects; [tell me](https://github.com/kevinmmiddleton/recruiter-bff/issues/new) how it goes.
+
 ## Get started
 
 Say **"set up my job search"** and paste your primary resume (plus an alternate, if you're aiming at a second kind of role). It gives you an honest read on it, drafts your background from it, asks only what's missing (the roles you want, where, your pay floor, your dealbreakers), and builds your searches. Then it offers a first scan.
@@ -129,6 +135,7 @@ Later, when you have half an hour, it can help you write a one-page "what I want
 
 - **In Claude:** a paid Claude plan (Pro, Max, Team, or Enterprise) and the **Claude desktop app** for Mac or Windows. Cowork reaches your folder through the desktop app, so keep the app open while you work and when reminders run. Quitting the app pauses your reminders until you turn them back on in **Scheduled**. Connect a folder on your computer; setup creates `job-search/` there.
 - **In Codex:** Codex in the ChatGPT desktop app or the Codex CLI, opened in a folder for your job search, and Python 3 for the tracker and contacts. A paid ChatGPT plan works best.
+- **With the no-install kit:** any AI chat. One with projects (ChatGPT Projects, a Gemini Gem, Claude Projects) remembers your search between chats.
 - **Optional:** a browser your assistant can drive (the built-in browser in the Claude or ChatGPT desktop app, or the Claude in Chrome extension), so scans can read your saved LinkedIn search. Without one, you paste results in. See `CONNECTORS.md`.
 
 ## Where your files live

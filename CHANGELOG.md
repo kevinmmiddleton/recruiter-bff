@@ -6,6 +6,7 @@
 
 - **Scans in Codex:** in the ChatGPT desktop app, Codex reads your saved LinkedIn search in its built-in browser after you sign in there once. In the Codex CLI, you paste the results in. Watchlist feeds load when Codex's network access is on, and the scan says so when it's off.
 - **Reminders in Codex:** in the ChatGPT desktop app, check-ins and scheduled scans are Codex scheduled tasks, set up from a plain-words request like the Claude ones. In the Codex CLI, which can't schedule anything, you get a check-in the first time you open Codex in your folder each day, or a calendar reminder you add with one click.
+- **The no-install kit, for ChatGPT or any AI chat.** Paste-in instructions, the method files (copied from the skills at build time, so they match the plugin), and a blank tracker, as `recruiter-bff-no-install-kit.zip`. The fit check, interview guides, pasted job lists, and written answers work the same way; you save the files it hands you. Tested in ChatGPT Projects.
 - **Windows:** files are saved in a format other apps read correctly, even from PowerShell, and the skills use no characters that garble there.
 - **Opening Codex inside `job-search/`** works too: it's treated as the data home, not a place to start a second one.
 - **Interview guides** keep a half-given interview time as "not given" and ask once, instead of guessing.

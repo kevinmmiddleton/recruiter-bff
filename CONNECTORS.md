@@ -30,6 +30,10 @@ The same pieces work in Codex, with Codex's own tools:
 - **Watchlist feeds** are fetched with `curl` when Codex's network access is on. When it's off, the scan says the watchlist wasn't available instead of reporting no new roles.
 - **Scheduling.** In the ChatGPT desktop app, reminders and scheduled scans are Codex scheduled tasks. They run while your computer is on and the app is running, and each run shows up under **Scheduled** in the app's sidebar. They use your default sandbox setting: a check-in only reads, so it works in any setting, but a scheduled scan needs network access for the watchlist. The Codex CLI can't schedule anything, so reminders there are a check-in the first time you open Codex in your folder each day (a short section in that folder's `AGENTS.md`), or a calendar event you add with one click.
 
+## The no-install kit
+
+ChatGPT, Microsoft Copilot, Gemini, and Claude without Cowork connect to nothing here. You paste in your resume, job postings, and search results, and it hands you files to keep when you say "wrap up."
+
 ## Your LinkedIn connections (optional, for contacts)
 
 The contacts skill reads `Connections.csv`, a file you download yourself from LinkedIn (Settings & Privacy → Data privacy → Get a copy of your data → Connections). No connector and no login: the file stays in your folder.
