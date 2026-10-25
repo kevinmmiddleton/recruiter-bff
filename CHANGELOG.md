@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.0 (unreleased)
+## 1.1.0 (2026-10-24)
 
 **Recruiter BFF now runs in Codex.** Install it with two commands, start a Codex chat in a folder for your job search, and say "set up my job search." That folder is your search's home, and everything works the same way: the fit check, interview guides, the story bank, scans, the tracker, contacts, and your materials. It works in Codex in the ChatGPT desktop app and in the Codex CLI, and best on a paid ChatGPT plan: tested on GPT-6.1 Sol, every workflow held and repeated runs agreed, while the free plan's model got scans and fit checks wrong about half the time.
 
