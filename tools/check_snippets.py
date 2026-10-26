@@ -435,6 +435,20 @@ def tracker_cases():
     check("a copy made by a file tool from a Mac CSV (replacement characters): stops, nothing written",
           out.startswith("CAN'T READ") and "close it in Excel" in out and text(d) == before, out)
 
+    # LibreOffice with Semicolon ticked as a separator: the notes split, the header gains a column with no name,
+    # and every value after the split sits under the wrong heading. Same column count on every row, so only the header shows it.
+    mangled = (H14.replace("next_date\n", "next_date,\n")
+               + "Fernhill Logistics,Senior Project Manager,,,,pasted,applied,,2026-10-25,2026-10-25,2026-10-25,"
+                 "2026-10-25: Recruiter: Ren\u00e9e Dubois, phone screen Thursday,applied,,\n")
+    d = folder("libreoffice_semicolon", mangled)
+    out = run(d, update("Fernhill Logistics", "Senior Project Manager", "screening"))
+    check("a header with a column with no name (LibreOffice split the notes): stops, names the separator, file untouched",
+          out.startswith("CAN'T READ") and "Semicolon" in out and text(d) == mangled, out)
+    dup = H14.replace("next_date\n", "next_date,notes\n") + "Acme,PM,NYC,,u,linkedin,applied,4,2026-10-01,2026-10-01,2026-10-01,a,,,b\n"
+    d = folder("duplicate_header", dup)
+    out = run(d, update("Acme", "PM", "screening"))
+    check("a header with the same column name twice: stops, file untouched", out.startswith("CAN'T READ") and text(d) == dup, out)
+
     # A new value that already holds the replacement character (a mangled dash in a pasted title) is never saved
     d = folder("new_value_replacement_char", H14)
     out = run(d, add([{"company": "Brightloop", "role": "Senior PM \ufffd Growth", "source": "linkedin", "score": "4"}]))

@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.2 (2026-10-26)
+
+Fixes from a Windows test of 1.1.1 in the ChatGPT app's Codex. The tracker, its lock protection, and a real scheduled reminder all passed; these smooth out what tripped people up.
+
+- **The tracker stops instead of saving a scrambled file.** Opening it in LibreOffice with Semicolon or Tab ticked as a separator splits your notes into extra columns, which moves values under the wrong headings. The tracker now notices the column with no name and stops, and the guide says how to open and save it in LibreOffice (Comma only, Unicode UTF-8).
+- **Windows Python:** setup recognizes another Microsoft Store shortcut error ("The file cannot be accessed by the system") and moves on to `py -3`.
+- **Scheduled reminders in the ChatGPT app:** it tells you where Scheduled is (the bar of icons on the far left), that each run starts a new chat, and that a run can start a few minutes late, and offers to check the first one ran.
+- **Reminders on your phone:** in the app, it also offers the calendar reminder, which your phone's calendar alerts you about even when your computer is off. It opens the file for you when it can, instead of asking you to find and double-click it.
+
 ## 1.1.1 (2026-10-25)
 
 - **In the ChatGPT desktop app, your search stays where the next chat can find it.** A Work chat with no project works in a folder the app makes for that one chat, and the next chat gets a new one, so a search started there was out of reach a chat later. Every skill now asks you to start a Work chat with a project on your job search folder first, and saves nothing until you do.

@@ -1,6 +1,6 @@
-# Recruiter BFF 1.1.1: your search stays put in the ChatGPT app
+# Recruiter BFF 1.1.2: Windows fixes
 
-In the ChatGPT desktop app, a Work chat with no project works in a folder the app makes for that one chat, and the next chat gets a new one. A search started there was out of reach a chat later. Recruiter BFF now asks you to start a Work chat with a project on your job search folder first, and saves nothing until you do.
+Fixes from a Windows test in the ChatGPT app's Codex. The tracker now stops instead of saving a file a spreadsheet app scrambled (LibreOffice with Semicolon ticked as a separator splits your notes into extra columns), and the guide says how to open it there. Setup recognizes another Windows Python error. Scheduled reminders say where to find them, and the calendar reminder reaches your phone.
 
 **Claude desktop app (paid Claude plan):** download `recruiter-bff.plugin`, then in the Claude app open Customize, then Plugins, click + Add, choose Upload plugin, and pick the file. Updates keep everything you've saved.
 
