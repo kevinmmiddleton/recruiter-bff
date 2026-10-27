@@ -54,6 +54,22 @@ Paste a posting, or a link, and ask "should I apply?"
 - It scores the role from 1 to 5, tells you to apply or skip, and says what to lead with in your note and first conversations if you apply.
 - It saves the posting and the evaluation, so the interview guide can start from them later.
 
+## See it in Claude and ChatGPT
+
+Real answers from a real run. Dana Brooks is a demo job seeker, a senior project manager in New York. The postings, scores, and skips are real. Company names are blurred.
+
+<p align="center"><img src="https://github.com/kevinmmiddleton/recruiter-bff/raw/main/assets/brand/marketing/real-chatgpt-skip.png" alt="ChatGPT desktop app. Asked whether to apply to a Principal Technical Program Manager role in the tracker, Recruiter BFF answers 2.7 out of 5, I'd skip this one, names the strongest match, and lists the five scores. The company name is blurred." width="720"></p>
+
+**It tells you to skip, too.** 2.7 out of 5 in ChatGPT, with the one strong match it found.
+
+<p align="center"><img src="https://github.com/kevinmmiddleton/recruiter-bff/raw/main/assets/brand/marketing/real-claude-skip.png" alt="Claude desktop app. Asked with /evaluate-role about a Program Lead role in the tracker, it answers 3.2 out of 5, weak fit, probably skip. The posting has been open about 19 weeks and wants deep TEFCA knowledge the resume doesn't show. The company name is blurred." width="720"></p>
+
+**Same straight answer in Claude.** Open 19 weeks, and missing the one thing the posting wants most.
+
+<p align="center"><img src="https://github.com/kevinmmiddleton/recruiter-bff/raw/main/assets/brand/marketing/real-chatgpt-pipeline.png" alt="ChatGPT desktop app. Asked what's in my pipeline, Recruiter BFF shows a table of three roles with status, score, last update, and next step: one in screening at 4.2 out of 5 with a recruiter screen Thursday, and two prospects. Company names are blurred." width="720"></p>
+
+**One tracker, either app.** Claude built this tracker, and ChatGPT reads the same plain files.
+
 ## Apply early, to the right roles
 
 Being one of the first 50 applicants beats being a polished 200th. Say "scan for jobs":
