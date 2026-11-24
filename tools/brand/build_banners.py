@@ -6,7 +6,7 @@ portrait-1080x1350. Each is an SVG plus PNG and @2x PNG.
 
 github-social-1280x640 (the README banner) uses the share arrangement Kevin picked on Oct 17,
 the same one as the landing page's share image: the cup big on the left, the wordmark big on
-the right, the tagline below. It sits closer to the edges than the kit's clear-space rule, on
+the right, the tagline below (on two lines when it doesn't fit on one). It sits closer to the edges than the kit's clear-space rule, on
 purpose, so it skips that check. The other four keep the lockups and the clear space.
 
 The logo art is used exactly as shipped in assets/brand/svg/ (never edited here). The tagline
@@ -16,6 +16,9 @@ Run from the repo root:
     python3 tools/brand/build_banners.py            # SVG + PNG (PNG needs Playwright)
     python3 tools/brand/build_banners.py --svg-only
     python3 tools/brand/build_banners.py --tagline "Every recruiter says you'd be a great fit. This one checks."
+
+Two-line taglines break at the most balanced space. A no-break space (U+00A0) keeps two words
+together, so the default tagline breaks after "Recruiter BFF" and never inside "right job".
 
 Needs: fontTools, uharfbuzz; Playwright with Chromium for the PNGs.
 """
@@ -32,7 +35,8 @@ SVG_DIR = os.path.join(ROOT, "assets", "brand", "svg")
 OUT_DIR = os.path.join(ROOT, "assets", "brand", "banners")
 
 INK, PAPER = "#16131F", "#FFF8EF"
-TAGLINE = "A recruiter that works for you."
+# 2026-11-24 (Kevin, loop #1481). Was "A recruiter that works for you."
+TAGLINE = "Every job seeker needs a Recruiter\u00a0BFF to help them land the right\u00a0job."
 FONT_CANDIDATES = [
     os.path.expanduser("~/Library/Fonts/Poppins-Bold.ttf"),
     "/Library/Fonts/Poppins-Bold.ttf",
@@ -50,6 +54,8 @@ CUP_UNITS = 100
 BANNERS = [
     ("link-preview-1200x630",  1200,  630, "horizontal", 1, 320, 46, (0, 0, 1200, 630)),
     ("github-social-1280x640", 1280,  640, "share",      1, 0,   0,  (0, 0, 1280, 640)),
+    # The landing page's share image (middleton.io/recruiter-bff/, og:image): the share arrangement at 1200 x 630
+    ("landing-og-1200x630",    1200,  630, "share",      1, 0,   0,  (0, 0, 1200, 630)),
     ("wide-1600x900",          1600,  900, "horizontal", 2, 420, 60, (350, 0, 1250, 900)),
     ("square-1080x1080",       1080, 1080, "stacked",    2, 600, 64, (0, 0, 1080, 1080)),
     ("portrait-1080x1350",     1080, 1350, "stacked",    2, 760, 68, (0, 0, 1080, 1350)),
@@ -82,7 +88,7 @@ class Tagline:
     def line(self, text, size, x, baseline):
         """Return (svg path d, ink bounds) for one line, left edge at x."""
         buf = hb.Buffer()
-        buf.add_str(text)
+        buf.add_str(text.replace("\u00a0", " "))
         buf.guess_segment_properties()
         hb.shape(self.hb_font, buf, {"kern": True, "liga": True})
         k = size / self.upm
@@ -103,7 +109,7 @@ class Tagline:
 
 
 def split_two(text):
-    words = text.split()
+    words = text.split(" ")  # plain spaces only: a no-break space keeps its words together
     best = None
     for i in range(1, len(words)):
         a, b = " ".join(words[:i]), " ".join(words[i:])
@@ -113,6 +119,11 @@ def split_two(text):
     return [best[1], best[2]]
 
 
+def _label(text):
+    text = text.replace("\u00a0", " ")
+    return f"Recruiter BFF: {text[0].lower() + text[1:]}" if text.startswith("A ") else f"Recruiter BFF. {text}"
+
+
 def build(name, W, H, kind, n_lines, logo_h, size, frame, tag, text):
     (vx, vy, vw, vh), logo = load_logo(kind)
     clear = logo_h * CUP_UNITS / vh / 4          # kit rule: a quarter of the cup's height
@@ -120,6 +131,10 @@ def build(name, W, H, kind, n_lines, logo_h, size, frame, tag, text):
     x0, y0, x1, y1 = frame[0] + clear, frame[1] + clear, frame[2] - clear, frame[3] - clear
     sw = x1 - x0
     lines = [text] if n_lines == 1 else split_two(text)
+    if len(lines) == 1:
+        b = tag.measure(text, size)
+        if b[2] - b[0] > sw:
+            lines = split_two(text)   # too long for one line at this size: two lines
 
     # Shrink the tagline if a long alternate line would overflow the safe width.
     while True:
@@ -132,6 +147,11 @@ def build(name, W, H, kind, n_lines, logo_h, size, frame, tag, text):
     bot_ink = ink[-1][3]           # last line: deepest descender below its baseline
     tag_h = top_ink + lead * (len(lines) - 1) + bot_ink
 
+    # A two-line tagline in a frame sized for one: shrink the logo until the clear space holds.
+    while logo_h + logo_h * CUP_UNITS / vh / 4 + tag_h > (frame[3] - frame[1]) - 2 * logo_h * CUP_UNITS / vh / 4 and logo_h > 120:
+        logo_h -= 4
+    clear = gap = logo_h * CUP_UNITS / vh / 4
+    x0, y0, x1, y1 = frame[0] + clear, frame[1] + clear, frame[2] - clear, frame[3] - clear
     logo_w = logo_h * vw / vh
     block_h = logo_h + gap + tag_h
     top = (H - block_h) / 2
@@ -154,7 +174,7 @@ def build(name, W, H, kind, n_lines, logo_h, size, frame, tag, text):
         parts.append(f'<path fill="{INK}" d="{d}"/>')
         baseline += lead
 
-    label = f"Recruiter BFF: {text[0].lower() + text[1:]}" if text.startswith("A ") else f"Recruiter BFF. {text}"
+    label = _label(text)
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" aria-label="{label}">\n'
            f"<title>{label}</title>\n" + "\n".join(parts) + "\n</svg>\n")
     path = os.path.join(OUT_DIR, f"{name}.svg")
@@ -177,14 +197,46 @@ def build_share(name, W, H, tag, text):
              f'<g transform="translate({x0 + cw + gap:.2f} {92 * k:.2f}) scale({wh / wvh:.4f}) translate({-wvx:.2f} {-wvy:.2f})">', word, "</g>"]
     size = 44 * k
     b = tag.measure(text, size)
-    d, _ = tag.line(text, size, (W - (b[2] - b[0])) / 2 - b[0], 548 * k)
-    parts.append(f'<path fill="{INK}" d="{d}"/>')
-    label = f"Recruiter BFF: {text[0].lower() + text[1:]}" if text.startswith("A ") else f"Recruiter BFF. {text}"
+    if b[2] - b[0] <= W - 2 * 60 * k:
+        d, _ = tag.line(text, size, (W - (b[2] - b[0])) / 2 - b[0], 548 * k)
+        parts.append(f'<path fill="{INK}" d="{d}"/>')
+    else:
+        parts = share_two_lines(W, H, k, tag, text, mark, (mvx, mvy, mvw, mvh), word, (wvx, wvy, wvw, wvh))
+    label = _label(text)
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" aria-label="{label}">\n'
            f"<title>{label}</title>\n" + "\n".join(parts) + "\n</svg>\n")
     path = os.path.join(OUT_DIR, f"{name}.svg")
     open(path, "w").write(svg)
     return path, round(ch)
+
+
+def share_two_lines(W, H, k, tag, text, mark, mvb, word, wvb):
+    """The share arrangement with the tagline on two lines (added 2026-11-24): cup 340 tall,
+    wordmark 261 (the same 430:330 ratio and offset), tagline 42 px at 1.22 leading, 44 under
+    the cup, and the whole block centered top to bottom."""
+    (mvx, mvy, mvw, mvh), (wvx, wvy, wvw, wvh) = mvb, wvb
+    lines = split_two(text)
+    size, lead, gap = 42 * k, 42 * k * 1.22, 44 * k
+    ink = [tag.measure(l, size) for l in lines]
+    while max(b[2] - b[0] for b in ink) > W - 2 * 60 * k:
+        size -= 1
+        lead = size * 1.22
+        ink = [tag.measure(l, size) for l in lines]
+    tag_h = -ink[0][1] + lead * (len(lines) - 1) + ink[-1][3]
+    ch = 340 * k
+    wh, wgap, wdy = ch * 330 / 430, ch * 64 / 430, ch * 52 / 430
+    cw, ww = ch * mvw / mvh, wh * wvw / wvh
+    top = (H - (ch + gap + tag_h)) / 2
+    x0 = (W - (cw + wgap + ww)) / 2
+    parts = [f'<rect x="0" y="0" width="{W}" height="{H}" fill="{PAPER}"/>',
+             f'<g transform="translate({x0:.2f} {top:.2f}) scale({ch / mvh:.4f}) translate({-mvx:.2f} {-mvy:.2f})">', mark, "</g>",
+             f'<g transform="translate({x0 + cw + wgap:.2f} {top + wdy:.2f}) scale({wh / wvh:.4f}) translate({-wvx:.2f} {-wvy:.2f})">', word, "</g>"]
+    baseline = top + ch + gap - ink[0][1]
+    for l, b in zip(lines, ink):
+        d, _ = tag.line(l, size, (W - (b[2] - b[0])) / 2 - b[0], baseline)
+        parts.append(f'<path fill="{INK}" d="{d}"/>')
+        baseline += lead
+    return parts
 
 
 def rasterize(items):
@@ -216,7 +268,7 @@ def main():
         if kind == "share":
             path, logo_h = build_share(name, W, H, tag, a.tagline)
         else:
-            path, _ = build(name, W, H, kind, n, logo_h, size, frame, tag, a.tagline)
+            path, logo_h = build(name, W, H, kind, n, logo_h, size, frame, tag, a.tagline)
         print(f"{name}: {kind} {'arrangement, cup' if kind == 'share' else 'lockup'} {logo_h}px tall")
         built.append((path, W, H))
     if not a.svg_only:

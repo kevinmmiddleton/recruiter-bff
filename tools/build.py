@@ -37,10 +37,10 @@ MARKETPLACE = NAME   # install as recruiter-bff@recruiter-bff, straight from thi
 
 OPENAI_INTERFACE = {
     "displayName": "Recruiter BFF",
-    "shortDescription": "Find out if you're a match before you apply, then walk in prepared.",
-    "longDescription": ("Paste a job posting and it tells you honestly whether you fit, gaps included, and whether to apply. "
-                        "When the interview comes, it builds a guide from your own background. It never applies for you, "
-                        "and that's the point: fewer, better applications, sent sooner."),
+    "shortDescription": "For job seekers: find out if you're a match before you apply, then walk in prepared.",
+    "longDescription": ("A free job search plugin for job seekers. Paste a job posting and Recruiter BFF tells you if you're "
+                        "a match before you apply, gaps included, and whether to apply. Land the interview and RBFF builds "
+                        "your guide from your own background. Free, in plain files you own."),
     "developerName": "Kevin Middleton",
     "category": "Productivity",
     "capabilities": ["Read", "Write"],

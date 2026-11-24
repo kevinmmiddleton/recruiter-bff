@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/kevinmmiddleton/recruiter-bff/raw/main/assets/brand/banners/github-social-1280x640.png" alt="Recruiter BFF. A recruiter that works for you." width="640">
+  <img src="https://github.com/kevinmmiddleton/recruiter-bff/raw/main/assets/brand/banners/github-social-1280x640.png?v=2" alt="Recruiter BFF. Every job seeker needs a Recruiter BFF to help them land the right job." width="640">
 </p>
 
 <p align="center">
@@ -10,7 +10,7 @@
 
 # Recruiter BFF
 
-Find out if you're a match before you apply, then walk in prepared.
+A free job search plugin for job seekers. Find out if you're a match before you apply, then walk in prepared.
 
 Paste a job posting and Recruiter BFF checks the key requirements against your resume, scores the match from 1 to 5, names the gaps, and tells you to apply or skip. When you land the interview, it hands you a guide built from your own background.
 

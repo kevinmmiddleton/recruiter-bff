@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+Copy only: every surface now says who Recruiter BFF is for.
+
+- **New tagline:** "Every job seeker needs a Recruiter BFF to help them land the right job." It replaces "A recruiter that works for you." on every banner (re-rendered with `tools/brand/build_banners.py`, which now breaks a long tagline into two balanced lines) and in the README banner's alt text.
+- **The description opens with "A free job search plugin for job seekers."** In the plugin manifest, both marketplace files, the Codex listing, and the README's first line. New keywords: `job seekers`, `job seeker`.
+- **New banner:** `landing-og-1200x630`, the share image for the landing page.
+
 ## 1.1.2 (2026-10-26)
 
 Fixes from a Windows test of 1.1.1 in the ChatGPT app's Codex. The tracker, its lock protection, and a real scheduled reminder all passed; these smooth out what tripped people up.
